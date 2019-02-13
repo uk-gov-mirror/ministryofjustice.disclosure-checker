@@ -1,24 +1,44 @@
 # Disclosure Checker MVP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a Rails application to enable citizens to check when their convictions are spent.  
+It is based on software patterns developed for the [C100 Application][c100-application].
 
-Things you may want to cover:
+## Getting Started
 
-* Ruby version
+* Copy `.env.example` to `.env` and replace with suitable values.  
 
-* System dependencies
+* `bundle install`
+* `bundle exec rails db:setup`
+* `bundle exec rails db:migrate`
+* `bundle exec rails server`
 
-* Configuration
+### For running the tests:
 
-* Database creation
+* Copy `.env.test.example` to `.env.test` and replace with suitable values if you expect to run the tests
+* `RAILS_ENV=test bundle exec rails db:setup`
+* `RAILS_ENV=test bundle exec rails db:migrate`
 
-* Database initialization
+You can then run all the code linters and tests with:
 
-* How to run the test suite
+* `RAILS_ENV=test bundle exec rake`  
+or  
+* `RAILS_ENV=test bundle exec rake test:all_the_things`
 
-* Services (job queues, cache servers, search engines, etc.)
+Or you can run specific tests as follows (refer to *lib/tasks/all_tests.rake* for the complete list):
 
-* Deployment instructions
+* `RAILS_ENV=test bundle exec rake spec`
+* `RAILS_ENV=test bundle exec rake brakeman`
 
-* ...
+## Cucumber features
+
+Not yet implemented.
+
+## K8s cluster staging environment
+
+Not yet implemented.
+
+## CircleCI and continuous deployment
+
+Not yet implemented.
+
+[c100-application]: https://github.com/ministryofjustice/c100-application
