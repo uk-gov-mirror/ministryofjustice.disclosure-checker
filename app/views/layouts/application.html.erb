@@ -1,4 +1,3 @@
-
 <% content_for?(:page_title) ? yield(:page_title) : fallback_title %>
 
 <% content_for(:head) do %>
@@ -11,6 +10,10 @@
 
     <%= yield %>
   </main>
+<% end %>
+
+<% content_for(:footer_support_links) do %>
+  <%= render partial: 'layouts/footer_links' %>
 <% end %>
 
 <%= render file: 'layouts/govuk_template' %>
