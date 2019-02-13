@@ -1,4 +1,6 @@
 
+<% content_for?(:page_title) ? yield(:page_title) : fallback_title %>
+
 <% content_for(:head) do %>
   <%= stylesheet_link_tag 'application', media: 'all' %>
 <% end %>

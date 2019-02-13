@@ -30,4 +30,10 @@
 # available at http://guides.rubyonrails.org/i18n.html.
 
 en:
+  service:
+    name: Disclosure Checker
   hello: "Hello world"
+
+  home:
+    index: 
+      page_title: Home
