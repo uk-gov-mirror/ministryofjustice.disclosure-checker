@@ -1,15 +1,14 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Disclosure</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-    <%= javascript_include_tag 'application' %>
-  </head>
+<% content_for(:head) do %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
+<% end %>
 
-  <body>
+<% content_for(:content) do %>
+  <main id="content" role="main">
+    <%= render partial: 'layouts/phase_banner' %>
+
     <%= yield %>
-  </body>
-</html>
+  </main>
+<% end %>
+
+<%= render file: 'layouts/govuk_template' %>
