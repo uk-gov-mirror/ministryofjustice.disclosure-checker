@@ -31,6 +31,9 @@ Rails.application.configure do
   # Print deprecation notices to the stderr.
   config.active_support.deprecation = :stderr
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  # NB: Because of the way the form builder works, and hence the
+  # gov.uk elements formbuilder, exceptions will not be raised for
+  # missing translations of model attribute names. The form will
+  # get the constantized attribute name itself, in form labels.
+  config.action_view.raise_on_missing_translations = true
 end

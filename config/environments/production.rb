@@ -1,6 +1,24 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  config.lograge.logger = ActiveSupport::Logger.new(STDOUT)
+  config.lograge.enabled = true
+  config.lograge.formatter = Lograge::Formatters::Logstash.new
+  config.log_level = :info
+  config.action_view.logger = nil
+
+  config.lograge.custom_options = lambda do |event|
+    exceptions = %w(controller action format id)
+    {
+      host: event.payload[:host],
+      params: event.payload[:params].except(*exceptions),
+      referrer: event.payload[:referrer],
+      session_id: event.payload[:session_id],
+      tags: %w{disclosure-checker},
+      user_agent: event.payload[:user_agent]
+    }
+  end
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
@@ -77,4 +95,21 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+
+  # Enforce SSl-only
+  config.force_ssl = true
+
+  # Prevent host header poisoning by enforcing absolute redirects
+  if ENV['EXTERNAL_URL'].present?
+    uri = URI.parse(ENV['EXTERNAL_URL'])
+    config.action_controller.default_url_options = {
+      host: uri.host, protocol: uri.scheme, port: uri.port
+    }
+  end
+
+  # NB: Because of the way the form builder works, and hence the
+  # gov.uk elements formbuilder, exceptions will not be raised for
+  # missing translations of model attribute names. The form will
+  # get the constantized attribute name itself, in form labels.
+  config.action_view.raise_on_missing_translations = false
 end

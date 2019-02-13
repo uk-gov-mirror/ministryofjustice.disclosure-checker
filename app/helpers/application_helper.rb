@@ -10,7 +10,8 @@ module ApplicationHelper
   def fallback_title
     exception = StandardError.new("page title missing: #{controller_name}##{action_name}")
     raise exception if Rails.application.config.consider_all_requests_local
-    # Raven.capture_exception(exception)
+    Raven.capture_exception(exception)
+
     title ''
   end
 end

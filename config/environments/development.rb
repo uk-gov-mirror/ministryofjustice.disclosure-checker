@@ -44,8 +44,11 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
-  # Raises error for missing translations
-  # config.action_view.raise_on_missing_translations = true
+  # NB: Because of the way the form builder works, and hence the
+  # gov.uk elements formbuilder, exceptions will not be raised for
+  # missing translations of model attribute names. The form will
+  # get the constantized attribute name itself, in form labels.
+  config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
