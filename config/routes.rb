@@ -4,5 +4,7 @@ Rails.application.routes.draw do
   get 'home/index'
 
   namespace :steps do
+    namespace :check do
+    end
   end
 end
