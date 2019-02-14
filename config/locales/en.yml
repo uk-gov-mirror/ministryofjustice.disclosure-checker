@@ -40,3 +40,5 @@ en:
   layouts:
     footer_links:
       help: Help
+    phase_banner:
+      feedback_contact_html: This is a new service. <a href="#">Report a problem</a> and help improve it for others.
