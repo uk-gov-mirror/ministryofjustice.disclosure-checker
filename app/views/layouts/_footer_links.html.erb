@@ -2,4 +2,16 @@
   <li>
     <%= link_to t('.help'), 'https://www.gov.uk/help', class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'help'} %>
   </li>
+  <li>
+    <%= link_to t('.contact'), about_contact_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'contact'} %>
+  </li>
+  <li>
+    <%= link_to t('.cookies'), about_cookies_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'cookies'} %>
+  </li>
+  <li>
+    <%= link_to t('.privacy'), about_privacy_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'privacy'} %>
+  </li>
+  <li>
+    <%= link_to t('.terms_and_conditions'), about_terms_and_conditions_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'terms and conditions'} %>
+  </li>
 </ul>
