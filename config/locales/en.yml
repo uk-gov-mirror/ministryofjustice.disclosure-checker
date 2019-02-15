@@ -77,3 +77,11 @@ en:
         edit:
           page_title: Caution or a conviction
           heading: Did you get a caution or a conviction?
+      caution_date:
+        edit:
+          page_title: Caution date
+          heading: When did you get the caution?
+          lead_text: This date will be written on the caution document the police gave you.
+          no_caution_document:
+            title: I don’t have my caution document
+            content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.

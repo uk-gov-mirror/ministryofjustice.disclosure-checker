@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_14_161559) do
+ActiveRecord::Schema.define(version: 2019_02_15_160946) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2019_02_14_161559) do
     t.integer "status", default: 0
     t.string "navigation_stack", default: [], array: true
     t.string "kind"
+    t.date "caution_date"
     t.index ["status"], name: "index_disclosure_checks_on_status"
   end
 

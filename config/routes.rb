@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   namespace :steps do
     namespace :check do
       edit_step :kind
+      edit_step :caution_date
     end
   end
 
