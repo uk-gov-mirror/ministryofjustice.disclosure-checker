@@ -1,3 +1,12 @@
+# :nocov:
+def edit_step(name)
+  resource name,
+           only: [:edit, :update],
+           controller: name,
+           path_names: {edit: ''}
+end
+# :nocov:
+
 Rails.application.routes.draw do
   root 'home#index'
 
@@ -5,6 +14,7 @@ Rails.application.routes.draw do
 
   namespace :steps do
     namespace :check do
+      edit_step :kind
     end
   end
 

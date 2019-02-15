@@ -34,10 +34,29 @@ en:
     name: Disclosure Checker
   hello: "Hello world"
 
+  shared:
+    back_link: Back
+
+  errors:
+    page_title_prefix: 'Error: '
+    error_summary:
+      heading: There is a problem on this page
+      text: ''
+    attributes:
+      kind:
+        inclusion: Select caution or conviction
 
   helpers:
     submit:
       continue: Continue
+    fieldset:
+      steps_check_kind_form:
+        kind: Did you get a caution or a conviction?
+    label:
+      steps_check_kind_form:
+        kind:
+          caution: Caution
+          conviction: Conviction
 
   home:
     index: 
@@ -47,3 +66,10 @@ en:
       help: Help
     phase_banner:
       feedback_contact_html: This is a new service. <a href="#">Report a problem</a> and help improve it for others.
+
+  steps:
+    check:
+      kind:
+        edit:
+          page_title: Caution or a conviction
+          heading: Did you get a caution or a conviction?
