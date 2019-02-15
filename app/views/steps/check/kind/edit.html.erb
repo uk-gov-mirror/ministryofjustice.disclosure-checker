@@ -1,0 +1,16 @@
+<% title t('.page_title') %>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <%= step_header %>
+
+    <h1 class="heading-xlarge"><%=t '.heading' %></h1>
+
+    <%= step_form @form_object do |f| %>
+      <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices,
+                                  legend_options: { class: 'visually-hidden' } %>
+
+      <%= f.continue_button %>
+    <% end %>
+  </div>
+</div>

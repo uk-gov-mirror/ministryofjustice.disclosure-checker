@@ -17,7 +17,7 @@ gem 'responders'
 gem 'sass-rails'
 gem 'sentry-raven'
 gem 'uglifier'
-#gem 'virtus'
+gem 'virtus'
 
 group :production do
   gem 'lograge'

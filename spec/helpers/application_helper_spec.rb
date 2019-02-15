@@ -1,6 +1,100 @@
 require 'rails_helper'
 
+# TestController doesn't have this method so we can't stub it nicely
+class ActionView::TestCase::TestController
+  def previous_step_path
+    '/foo/bar'
+  end
+end
+
 RSpec.describe ApplicationHelper, type: :helper do
+  let(:record) { DisclosureCheck.new }
+
+  describe '#step_form' do
+    let(:expected_defaults) { {
+      url: {
+        controller: "application",
+        action: :update
+      },
+      html: {
+        class: 'edit_disclosure_check'
+      },
+      method: :put
+    } }
+    let(:form_block) { Proc.new {} }
+
+    it 'acts like FormHelper#form_for with additional defaults' do
+      expect(helper).to receive(:form_for).with(record, expected_defaults) do |*_args, &block|
+        expect(block).to eq(form_block)
+      end
+      helper.step_form(record, &form_block)
+    end
+
+    it 'accepts additional options like FormHelper#form_for would' do
+      expect(helper).to receive(:form_for).with(record, expected_defaults.merge(foo: 'bar'))
+      helper.step_form(record, { foo: 'bar' })
+    end
+
+    it 'appends optional css classes if provided' do
+      expect(helper).to receive(:form_for).with(record, expected_defaults.merge(html: {class: %w(test edit_disclosure_check)}))
+      helper.step_form(record, html: {class: 'test'})
+    end
+  end
+
+  describe '#step_header' do
+    let(:form_object) { double('Form object') }
+
+    it 'renders the expected content' do
+      expect(helper).to receive(:render).with(partial: 'step_header', locals: {path: '/foo/bar'}).and_return('foo')
+
+      assign(:form_object, form_object)
+      expect(helper).to receive(:error_summary).with(form_object).and_return('bar')
+
+      expect(helper.step_header).to eq('foobar')
+    end
+  end
+
+  describe '#error_summary' do
+    context 'when no form object is given' do
+      let(:form_object) { nil }
+
+      it 'returns nil' do
+        expect(helper.error_summary(form_object)).to be_nil
+      end
+    end
+
+    context 'when a form object without errors is given' do
+      let(:form_object) { double('form object', errors: []) }
+
+      it 'returns nil' do
+        expect(helper.error_summary(form_object)).to be_nil
+      end
+    end
+
+    context 'when a form object with errors is given' do
+      let(:form_object) { double('form object', errors: [:blank]) }
+      let(:summary) { double('error summary') }
+
+      let(:title) { helper.content_for(:page_title) }
+
+      before do
+        helper.title('A page')
+      end
+
+      it 'delegates to GovukElementsErrorsHelper' do
+        expect(GovukElementsErrorsHelper).to receive(:error_summary).with(form_object, anything, anything).and_return(summary)
+
+        expect(helper.error_summary(form_object)).to eq(summary)
+      end
+
+      it 'prepends the page title with an error hint' do
+        expect(GovukElementsErrorsHelper).to receive(:error_summary)
+        helper.error_summary(form_object)
+        expect(title).to start_with('Error: A page')
+      end
+    end
+  end
+
   describe 'capture missing translations' do
     before do
       ActionView::Base.raise_on_missing_translations = false
