@@ -8,7 +8,8 @@ class StepGenerator < Rails::Generators::Base
   TYPE_TEMPLATES = {
     show: 'show.html.erb',
     edit: 'edit.html.erb',
-    question: 'edit.html.erb'
+    question: 'edit.html.erb',
+    date: 'edit.html.erb',
   }.freeze
 
   def validate_options!
@@ -35,7 +36,7 @@ class StepGenerator < Rails::Generators::Base
     case type
     when :show
       add_to_routes("show_step :#{step_name.underscore}")
-    when :edit, :question
+    else
       add_to_routes("edit_step :#{step_name.underscore}")
     end
   end

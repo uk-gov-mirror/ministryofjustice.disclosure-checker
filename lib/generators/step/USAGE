@@ -13,6 +13,7 @@ Description:
 Examples:
     rails generate step Appeal DisputeType
     rails generate step Petition Protection --type=question
+    rails generate step Petition OrderDate --type=date
     rails generate step Screener Done --type=show
 
     This will create:
