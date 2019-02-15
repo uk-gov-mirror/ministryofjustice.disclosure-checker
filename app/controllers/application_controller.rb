@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   include ErrorHandling
+  include SecurityHandling
 
   def current_disclosure_check
     @_current_disclosure_check ||= DisclosureCheck.find_by_id(session[:disclosure_check_id])
