@@ -34,6 +34,11 @@ en:
     name: Disclosure Checker
   hello: "Hello world"
 
+
+  helpers:
+    submit:
+      continue: Continue
+
   home:
     index: 
       page_title: Home
