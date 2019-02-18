@@ -4,12 +4,21 @@ class CheckDecisionTree < BaseDecisionTree
 
     case step_name
     when :kind
-      edit(:caution_date)
-    when :caution_date
-      # TODO: change when we have next step
-      { controller: '/home', action: :index }
+      after_kind_step
     else
       raise InvalidStep, "Invalid step '#{as || step_params}'"
+    end
+  end
+
+  private
+
+  def after_kind_step
+    case CheckKind.new(step_params[:kind])
+    when CheckKind::CAUTION
+      edit('/steps/caution/caution_date')
+    else
+      # TODO: update when we implement the conviction journey
+      raise NotImplementedError, 'conviction journey not implemented'
     end
   end
 end

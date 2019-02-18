@@ -1,6 +1,6 @@
 module Steps
-  module Check
-    class CautionDateController < Steps::CheckStepController
+  module Caution
+    class CautionDateController < Steps::CautionStepController
       def edit
         @form_object = CautionDateForm.new(
           disclosure_check: current_disclosure_check,

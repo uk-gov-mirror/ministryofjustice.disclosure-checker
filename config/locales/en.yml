@@ -32,7 +32,6 @@
 en:
   service:
     name: Disclosure Checker
-  hello: "Hello world"
 
   shared:
     back_link: Back
@@ -82,6 +81,7 @@ en:
         edit:
           page_title: Caution or a conviction
           heading: Did you get a caution or a conviction?
+    caution:
       caution_date:
         edit:
           page_title: Caution date

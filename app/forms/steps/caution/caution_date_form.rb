@@ -1,5 +1,5 @@
 module Steps
-  module Check
+  module Caution
     class CautionDateForm < BaseForm
       include GovUkDateFields::ActsAsGovUkDate
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-RSpec.describe Steps::Check::CautionDateForm do
+RSpec.describe Steps::Caution::CautionDateForm do
   let(:arguments) { {
     disclosure_check: disclosure_check,
     caution_date: caution_date

@@ -11,12 +11,16 @@ RSpec.describe CheckDecisionTree do
   it_behaves_like 'a decision tree'
 
   context 'when the step is `kind`' do
-    let(:step_params) { { kind: 'anything' } }
-    it { is_expected.to have_destination(:caution_date, :edit) }
-  end
+    let(:step_params) { { kind: kind } }
 
-  context 'when the step is `caution_date`' do
-    let(:step_params) { { caution_date: 'anything' } }
-    it { is_expected.to have_destination('/home', :index) }
+    context 'and the answer is `caution`' do
+      let(:kind) { 'caution' }
+      it { is_expected.to have_destination('/steps/caution/caution_date', :edit) }
+    end
+
+    context 'and the answer is `conviction`' do
+      let(:kind) { 'conviction' }
+      it { expect { subject.destination }.to raise_error(NotImplementedError) }
+    end
   end
 end
