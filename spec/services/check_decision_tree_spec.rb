@@ -10,21 +10,17 @@ RSpec.describe CheckDecisionTree do
 
   it_behaves_like 'a decision tree'
 
-  pending 'Write specs for CheckDecisionTree!'
+  context 'when the step is `kind`' do
+    let(:step_params) { { kind: kind } }
 
-  # TODO: The below can be uncommented and serves as a starting point
+    context 'and the answer is `caution`' do
+      let(:kind) { 'caution' }
+      it { is_expected.to have_destination('/steps/caution/caution_date', :edit) }
+    end
 
-  # context 'when the step is `user_type`' do
-  #   let(:step_params) { { user_type: 'anything' } }
-  #
-  #   context 'and the answer is `themself`' do
-  #     let(:disclosure_check) { instance_double(DisclosureCheck, user_type: UserType::THEMSELF) }
-  #     it { is_expected.to have_destination(:user_type, :edit) }
-  #   end
-  #
-  #   context 'and the answer is `representative`' do
-  #     let(:disclosure_check) { instance_double(DisclosureCheck, user_type: UserType::REPRESENTATIVE) }
-  #     it { is_expected.to have_destination(:user_type, :edit) }
-  #   end
-  # end
+    context 'and the answer is `conviction`' do
+      let(:kind) { 'conviction' }
+      it { expect { subject.destination }.to raise_error(NotImplementedError) }
+    end
+  end
 end

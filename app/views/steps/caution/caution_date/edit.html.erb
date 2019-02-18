@@ -1,0 +1,28 @@
+<% title t('.page_title') %>
+
+<div class="grid-row">
+  <div class="column-two-thirds">
+    <%= step_header %>
+
+    <h1 class="heading-xlarge gv-u-heading-xxlarge"><%=t '.heading' %></h1>
+
+    <p class="lede gv-u-text-lede"><%=t '.lead_text' %></p>
+
+    <details>
+      <summary>
+        <span class="summary" data-ga-category="explanations" data-ga-label="no caution document"><%=t '.no_caution_document.title' %></span>
+      </summary>
+      <div class="panel panel-border-narrow">
+        <p><%=t '.no_caution_document.content_html' %></p>
+      </div>
+    </details>
+
+    <%= step_form @form_object do |f| %>
+      <%= f.gov_uk_date_field :caution_date,
+                              legend_text: t('.date_legend'),
+                              form_hint_text: t('.date_hint') %>
+
+      <%= f.continue_button %>
+    <% end %>
+  </div>
+</div>
