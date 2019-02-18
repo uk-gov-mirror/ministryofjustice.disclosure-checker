@@ -38,6 +38,7 @@ en:
     back_link: Back
 
   errors:
+    format: "%{message}"
     page_title_prefix: 'Error: '
     error_summary:
       heading: There is a problem on this page
@@ -45,6 +46,10 @@ en:
     attributes:
       kind:
         inclusion: Select caution or conviction
+      caution_date:
+        blank: Enter the date of the caution
+        invalid: The caution date is not valid
+        future: The caution date can’t be in the future
 
   helpers:
     submit:
@@ -85,3 +90,5 @@ en:
           no_caution_document:
             title: I don’t have my caution document
             content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
+          date_legend: Enter the date
+          date_hint: For example, 29 1 2018

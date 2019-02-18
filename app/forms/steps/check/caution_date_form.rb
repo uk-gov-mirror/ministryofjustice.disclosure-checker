@@ -8,6 +8,7 @@ module Steps
       acts_as_gov_uk_date :caution_date
 
       validates_presence_of :caution_date
+      validates :caution_date, sensible_date: true
 
       private
 

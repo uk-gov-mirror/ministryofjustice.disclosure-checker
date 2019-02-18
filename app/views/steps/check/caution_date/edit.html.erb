@@ -18,7 +18,9 @@
     </details>
 
     <%= step_form @form_object do |f| %>
-      <%= f.gov_uk_date_field :caution_date, placeholders: true %>
+      <%= f.gov_uk_date_field :caution_date,
+                              legend_text: t('.date_legend'),
+                              form_hint_text: t('.date_hint') %>
 
       <%= f.continue_button %>
     <% end %>

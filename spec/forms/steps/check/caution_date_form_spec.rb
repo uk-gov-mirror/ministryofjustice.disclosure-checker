@@ -35,12 +35,30 @@ RSpec.describe Steps::Check::CautionDateForm do
         end
       end
 
-      xcontext 'when date is invalid' do
-        # Implement as needed
+      context 'when date is invalid' do
+        let(:caution_date) { Date.new(18, 10, 31) } # 2-digits year (18)
+
+        it 'returns false' do
+          expect(subject.save).to be(false)
+        end
+
+        it 'has a validation error on the field' do
+          expect(subject).to_not be_valid
+          expect(subject.errors.added?(:caution_date, :invalid)).to eq(true)
+        end
       end
 
-      xcontext 'when date is in the future' do
-        # Implement as needed
+      context 'when date is in the future' do
+        let(:caution_date) { Date.tomorrow }
+
+        it 'returns false' do
+          expect(subject.save).to be(false)
+        end
+
+        it 'has a validation error on the field' do
+          expect(subject).to_not be_valid
+          expect(subject.errors.added?(:caution_date, :future)).to eq(true)
+        end
       end
     end
 
