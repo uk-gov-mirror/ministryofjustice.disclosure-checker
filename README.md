@@ -12,6 +12,11 @@ It is based on software patterns developed for the [C100 Application][c100-appli
 * `bundle exec rails db:migrate`
 * `bundle exec rails server`
 
+### GOV.UK Frontend (styles, javascript and other assets)
+
+* `brew install yarn` # if you don't have it already
+* `yarn` # this will install the dependencies
+
 ### For running the tests:
 
 * Copy `.env.test.example` to `.env.test` and replace with suitable values if you expect to run the tests

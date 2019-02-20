@@ -67,13 +67,14 @@ en:
       page_title: Home
   layouts:
     footer_links:
+      header: Support links
       help: Help
       contact: Contact
       cookies: Cookies
       privacy: Privacy
       terms_and_conditions: Terms and conditions
     phase_banner:
-      feedback_contact_html: This is a new service. <a href="#">Report a problem</a> and help improve it for others.
+      feedback_contact_html: This is a new service. <a href="/about/contact">Report a problem</a> and help improve it for others.
 
   steps:
     check:

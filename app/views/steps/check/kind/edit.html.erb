@@ -1,16 +1,22 @@
 <% title t('.page_title') %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <%= step_header %>
+<div class="govuk-width-container">
+  <%= step_header %>
 
-    <h1 class="heading-xlarge"><%=t '.heading' %></h1>
+  <main class="govuk-main-wrapper">
 
-    <%= step_form @form_object do |f| %>
-      <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices,
-                                  legend_options: { class: 'visually-hidden' } %>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l"><%=t '.heading' %></h1>
 
-      <%= f.continue_button %>
-    <% end %>
-  </div>
+        <%= step_form @form_object do |f| %>
+          <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices,
+                                      legend_options: { class: 'visually-hidden' } %>
+
+          <%= f.continue_button %>
+        <% end %>
+      </div>
+    </div>
+
+  </main>
 </div>

@@ -10,6 +10,6 @@ module CustomFormHelpers
   private
 
   def submit_button(i18n_key, opts = {})
-    submit t("helpers.submit.#{i18n_key}"), {class: 'button'}.merge(opts)
+    submit t("helpers.submit.#{i18n_key}"), {class: 'govuk-button'}.merge(opts)
   end
 end
