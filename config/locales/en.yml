@@ -61,6 +61,9 @@ en:
         kind:
           caution: Caution
           conviction: Conviction
+    hint:
+      steps_check_kind_form:
+        kind: This is an example hint
 
   home:
     index: 

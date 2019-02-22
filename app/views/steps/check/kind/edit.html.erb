@@ -7,11 +7,8 @@
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-l"><%=t '.heading' %></h1>
-
         <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices,
-                                      legend_options: { class: 'visually-hidden' } %>
+          <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices %>
 
           <%= f.continue_button %>
         <% end %>

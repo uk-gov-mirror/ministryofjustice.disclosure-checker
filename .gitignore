@@ -34,3 +34,5 @@ tags
 
 public/assets/
 .DS_Store
+
+lib/govuk_components/html_examples
