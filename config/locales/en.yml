@@ -41,7 +41,6 @@ en:
     page_title_prefix: 'Error: '
     error_summary:
       heading: There is a problem on this page
-      text: ''
     attributes:
       kind:
         inclusion: Select caution or conviction

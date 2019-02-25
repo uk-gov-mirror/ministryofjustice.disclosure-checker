@@ -18,5 +18,6 @@
 # and refactored, we can consider extracting it to a gem for reuse in other projects.
 #
 require_relative '../../lib/govuk_components/form_builder'
+require_relative '../../lib/govuk_components/error_helpers'
 
 ActionView::Base.default_form_builder = GovukComponents::FormBuilder

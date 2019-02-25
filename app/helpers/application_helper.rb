@@ -22,10 +22,10 @@ module ApplicationHelper
       render partial: 'step_header', locals: {
         path: controller.previous_step_path
       }
-    end + error_summary(@form_object)
+    end
   end
 
-  def error_summary(form_object)
+  def error_summary(form_object = @form_object)
     return unless GovukElementsErrorsHelper.errors_exist?(form_object)
 
     content_for(:page_title, flush: true) do
@@ -35,7 +35,6 @@ module ApplicationHelper
     GovukElementsErrorsHelper.error_summary(
       form_object,
       t('errors.error_summary.heading'),
-      t('errors.error_summary.text')
     )
   end
 
