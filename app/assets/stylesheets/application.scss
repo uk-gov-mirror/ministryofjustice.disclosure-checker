@@ -4,8 +4,5 @@
 $govuk-assets-path: '/assets/govuk-frontend/assets/';
 @import 'govuk-frontend/all';
 
-// From MOJ gov_uk_date_fields
-@import 'govuk_date_fields';
-
 // Local CSS
 @import 'local/panels';

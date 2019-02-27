@@ -55,14 +55,22 @@ en:
     fieldset:
       steps_check_kind_form:
         kind: Did you get a caution or a conviction?
+      steps_caution_caution_date_form:
+        caution_date: When did you get the caution?
     label:
       steps_check_kind_form:
         kind:
           caution: Caution
           conviction: Conviction
+      steps_caution_caution_date_form:
+        day: Day
+        month: Month
+        year: Year
     hint:
       steps_check_kind_form:
         kind: This is an example hint
+      steps_caution_caution_date_form:
+        caution_date: For example, 12 11 2017
 
   home:
     index: 
