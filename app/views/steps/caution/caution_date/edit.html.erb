@@ -1,28 +1,37 @@
 <% title t('.page_title') %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <%= step_header %>
+<div class="govuk-width-container">
+  <%= step_header %>
 
-    <h1 class="heading-xlarge gv-u-heading-xxlarge"><%=t '.heading' %></h1>
+  <main class="govuk-main-wrapper">
 
-    <p class="lede gv-u-text-lede"><%=t '.lead_text' %></p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <%= error_summary %>
 
-    <details>
-      <summary>
-        <span class="summary" data-ga-category="explanations" data-ga-label="no caution document"><%=t '.no_caution_document.title' %></span>
-      </summary>
-      <div class="panel panel-border-narrow">
-        <p><%=t '.no_caution_document.content_html' %></p>
+        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <p class="govuk-body-l"><%=t '.lead_text' %></p>
+
+        <details class="govuk-details">
+          <summary class="govuk-details__summary">
+            <span class="govuk-details__summary-text summary" data-ga-category="explanations" data-ga-label="no caution document">
+              <%=t '.no_caution_document.title' %>
+            </span>
+          </summary>
+          <div class="govuk-details__text">
+            <%=t '.no_caution_document.content_html' %>
+          </div>
+        </details>
+
+        <%= step_form @form_object do |f| %>
+          <%= f.gov_uk_date_field :caution_date,
+                                  legend_options: { page_heading: false, visually_hidden: true } %>
+
+          <%= f.continue_button %>
+        <% end %>
       </div>
-    </details>
+    </div>
 
-    <%= step_form @form_object do |f| %>
-      <%= f.gov_uk_date_field :caution_date,
-                              legend_text: t('.date_legend'),
-                              form_hint_text: t('.date_hint') %>
-
-      <%= f.continue_button %>
-    <% end %>
-  </div>
+  </main>
 </div>

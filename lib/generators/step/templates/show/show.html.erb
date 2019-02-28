@@ -1,17 +1,21 @@
 <%% title t('.page_title') %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <%%= step_header %>
+<div class="govuk-width-container">
+  <%%= step_header %>
 
-    <h1 class="heading-xlarge gv-u-heading-xxlarge"><%%=t '.heading' %></h1>
+  <main class="govuk-main-wrapper">
 
-    <p class="lede"><%%=t '.lead_text' %></p>
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"><%%=t '.heading' %></h1>
 
-    <!-- TODO: Add the copy needed, and adapt the button linking to another step -->
+        <p class="govuk-body-l"><%%=t '.lead_text' %></p>
 
-    <div class="xform-group form-submit">
-      <%%= link_to t('.continue'), '#', class: 'button', role: 'button' %>
+        <!-- TODO: Add the copy needed, and adapt the button linking to another step -->
+
+        <%%= link_to t('.continue'), '#', class: 'govuk-button', role: 'button', draggable: false %>
+      </div>
     </div>
-  </div>
+
+  </main>
 </div>

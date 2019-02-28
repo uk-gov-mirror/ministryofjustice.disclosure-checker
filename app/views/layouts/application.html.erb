@@ -1,30 +1,34 @@
 <% content_for?(:page_title) ? yield(:page_title) : fallback_title %>
 
 <% content_for(:head) do %>
-  <%= stylesheet_link_tag 'application', media: 'all' %>
+  <!--[if !IE 8]><!-->
+  <%= stylesheet_link_tag 'application', media: 'all', integrity: true, crossorigin: 'anonymous' %>
+  <!--<![endif]-->
+
+  <!--[if IE 8]>
+  <%= stylesheet_link_tag '/assets/govuk-frontend/all-ie8.css', media: 'all', integrity: true, crossorigin: 'anonymous' %>
+  <![endif]-->
 <% end %>
 
-<% content_for(:header_class) do %>with-proposition<% end %>
+<% content_for(:service_name) do %>
+  <%= link_to service_name, '/', class: 'govuk-header__link govuk-header__link--service-name ga-pageLink', data: {ga_category: 'header', ga_label: 'service name'} %>
+<% end %>
 
-<% content_for(:proposition_header) do %>
-  <div class="header-proposition">
-    <div class="content">
-      <nav id="proposition-menu">
-        <%= link_to service_name, '/', id: 'proposition-name', class: 'ga-pageLink', data: {ga_category: 'header', ga_label: 'service name'} %>
-      </nav>
-    </div>
-  </div>
+<% content_for(:phase_banner) do %>
+  <%= render partial: 'layouts/phase_banner' %>
 <% end %>
 
 <% content_for(:content) do %>
-  <main id="content" role="main">
-    <%= render partial: 'layouts/phase_banner' %>
-    <%= yield %>
-  </main>
+  <%= yield %>
 <% end %>
-  
-<% content_for(:footer_support_links) do %>
+
+<% content_for(:footer_links) do %>
   <% render partial: 'layouts/footer_links' %>
+<% end %>
+
+<% content_for(:body_end) do %>
+  <%= javascript_include_tag 'application', integrity: true, crossorigin: 'anonymous' %>
+  <script>window.GOVUKFrontend.initAll();</script>
 <% end %>
 
 <%= render file: 'layouts/govuk_template' %>

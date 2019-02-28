@@ -1,62 +1,55 @@
 <% title 'Terms and conditions' %>
 
-<div class="grid-row">
-  <div class="column-two-thirds">
-    <div class="grid_content_header">
-      <h1 class="app__heading  heading-xlarge gv-u-heading-xxlarge">Terms and conditions</h1>
-      <p class="app__lede lede gv-u-text-lede">By using this service you agree to these terms and conditions.</p>
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+      
+        <h1 class="govuk-heading-xl">Terms and conditions</h1>
+        <p class="govuk-body">By using this service you agree to these terms and conditions.</p>
+        <p class="govuk-body">TODO: Add in appropriate content</p>
+
+        <section class="moj-Section about-section">
+          <h2 class="govuk-heading-m">Responsibility for the service</h2>
+          <div class="Section__content govuk-govspeak gv-s-prose">
+            <p class="govuk-body">The Ministry of Justice (MOJ) runs this service.</p>
+            <p class="govuk-body">We try to make sure the information we provide is accurate and complete and the service is always available and virus free.</p>
+            <p class="govuk-body">The MoJ accepts no liability for:</p>
+            <ul class="govuk-list govuk-list--bullet">
+              <li>you being unable to access the service (for example due to high demand or because we've taken it down for maintenance)</li>
+              <li>indirect damages arising from you using the service or relying on its content</li>
+              <li>the content and availability of external websites that link to the service or which link from it</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="moj-Section about-section" data-block-name="terms-conditions-phase">
+          <h2 class="govuk-heading-m">Public alpha</h2>
+          <div class="Section__content govuk-govspeak gv-s-prose">
+            <p class="govuk-body">This service is currently in ‘public alpha’. This means you’re looking at the first version of it.</p>
+            <p class="govuk-body">Something that's in ‘public alpha’ isn’t open to everyone or may not work for everyone. We do this so we can test and make improvements before releasing it to more people.</p>
+          </div>
+        </section>
+
+        <section class="moj-Section about-section" data-block-name="terms-conditions-phase">
+          <h2 class="govuk-heading-m">Information about you and your visits</h2>
+          <div class="Section__content govuk-govspeak gv-s-prose">
+            <p class="govuk-body">We collect information about you in accordance with our <%= link_to 'privacy policy', about_privacy_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'privacy'} %> and our <%= link_to 'cookie policy', about_cookies_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'cookies'} %>. By using this service you agree to us collecting this information and confirm that any data you provide is accurate.</p>
+          </div>
+        </section>
+
+        <section class="moj-Section about-section" data-block-name="terms-conditions-scope">
+          <h2 class="govuk-heading-m">Scotland and Northern Ireland</h2>
+          <div class="Section__content govuk-govspeak gv-s-prose">
+            <p class="govuk-body">Some parts of this service only apply to England and Wales.</p>
+            <p class="govuk-body">For example, if you want to go to court the process is different in
+              <a class="govuk-link" href="https://www.mygov.scot/crime-justice-and-the-law/courts-and-sentencing" rel="external" target="_blank">Scotland</a> and
+              <a class="govuk-link" href="https://www.nidirect.gov.uk/articles/solicitors-and-courts" rel="external" target="_blank">Northern Ireland</a>.
+            </p>
+          </div>
+        </section>
+
+      </div>
     </div>
-
-    <div class=" govuk-govspeak gv-s-prose">
-      <section class="moj-Section about-section">
-        <h2 class="heading-medium">Responsibility for the service</h2>
-
-        <div class="Section__content govuk-govspeak gv-s-prose">
-          <p>The Ministry of Justice (MOJ) runs this service.</p>
-          <p>We try to make sure the information we provide is accurate and complete and the service is always available and virus free.</p>
-          <p>The MoJ accepts no liability for:</p>
-
-          <ul class="list list-bullet">
-            <li>you being unable to access the service (for example due to high demand or because we've taken it down for maintenance)</li>
-            <li>indirect damages arising from you using the service or relying on its content</li>
-            <li>the content and availability of external websites that link to the service or which link from it</li>
-          </ul>
-        </div>
-      </section>
-
-      <section class="moj-Section about-section" data-block-name="terms-conditions-phase">
-        <h2 class="heading-medium">Public alpha</h2>
-
-        <div class="Section__content govuk-govspeak gv-s-prose">
-          <p>This service is currently in ‘public alpha’. This means you’re looking at the first version of it.</p>
-          <p>Something that's in ‘public alpha’ isn’t open to everyone or may not work for everyone. We do this so we
-            can test and make improvements before releasing it to more people.</p>
-        </div>
-      </section>
-
-      <section class="moj-Section about-section" data-block-name="terms-conditions-phase">
-        <h2 class="heading-medium">Information about you and your
-          visits</h2>
-
-        <div class="Section__content govuk-govspeak gv-s-prose">
-          <p>We collect information about you in accordance with
-            our <%= link_to 'privacy policy', about_privacy_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'privacy'} %>
-            and our <%= link_to 'cookie policy', about_cookies_path, class: 'ga-pageLink', data: {ga_category: 'footer', ga_label: 'cookies'} %>.
-            By using this service you agree to us collecting this information and confirm that any data you provide is accurate.</p>
-        </div>
-      </section>
-
-      <section class="moj-Section about-section" data-block-name="terms-conditions-scope">
-        <h2 class="moj-Section__heading moj-Section__heading--2 gv-u-heading-xlarge">Scotland and Northern Ireland</h2>
-
-        <div class="Section__content govuk-govspeak gv-s-prose">
-          <p>Some parts of this service only apply to England and Wales.</p>
-          <p>For example, if you want to go to court the process is different in
-            <a href="https://www.mygov.scot/crime-justice-and-the-law/courts-and-sentencing" rel="external" target="_blank">Scotland</a> and
-            <a href="https://www.nidirect.gov.uk/articles/solicitors-and-courts" rel="external" target="_blank">Northern Ireland</a>.
-          </p>
-        </div>
-      </section>
-    </div>
-  </div>
+  </main>
 </div>
