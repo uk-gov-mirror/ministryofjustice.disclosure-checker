@@ -3,7 +3,7 @@ module ValidationHelpers
 
   def check_errors(object, attribute, error)
     !object.valid?
-    object.errors.added?(attribute, error)
+    errors_for(attribute, object).include?(error)
   end
 
   def errors_for(attribute, object)
