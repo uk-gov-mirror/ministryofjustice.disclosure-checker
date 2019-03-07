@@ -15,7 +15,7 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          kind: kind,
+          kind: kind
         )
       end
     end
