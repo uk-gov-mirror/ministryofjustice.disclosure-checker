@@ -46,7 +46,7 @@ group :test do
   gem 'phantomjs'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
-  gem 'rubocop', '~> 0.52.1', require: false
+  gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'simplecov', require: false
   gem 'simplecov-rcov'

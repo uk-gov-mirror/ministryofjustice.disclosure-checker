@@ -24,11 +24,7 @@ module SecurityHandling
 
   def ensure_session_validity
     epoch = Time.now.to_i
-
-    if epoch - session.fetch(:last_seen, epoch) > session_expire_in_seconds
-      reset_session
-    end
-
+    reset_session if epoch - session.fetch(:last_seen, epoch) > session_expire_in_seconds
     session[:last_seen] = epoch
   end
 

@@ -67,7 +67,7 @@ module GovukComponents
       opts = legend_options.extract!(*default_opts.keys)
 
       legend_options[:class] << " govuk-fieldset__legend--#{opts[:size]}"
-      legend_options[:class] << " govuk-visually-hidden" if opts[:visually_hidden]
+      legend_options[:class] << ' govuk-visually-hidden' if opts[:visually_hidden]
 
       # The `page_heading` option can be false to disable "Legends as page headings"
       # https://design-system.service.gov.uk/get-started/labels-legends-headings/
@@ -101,6 +101,7 @@ module GovukComponents
 
     def hint(attribute)
       return unless hint_text(attribute)
+
       content_tag(:span, hint_text(attribute), class: 'govuk-hint', id: id_for(attribute, 'hint'))
     end
 

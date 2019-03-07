@@ -34,7 +34,7 @@ module ApplicationHelper
 
     GovukElementsErrorsHelper.error_summary(
       form_object,
-      t('errors.error_summary.heading'),
+      t('errors.error_summary.heading')
     )
   end
 
@@ -49,6 +49,7 @@ module ApplicationHelper
   def fallback_title
     exception = StandardError.new("page title missing: #{controller_name}##{action_name}")
     raise exception if Rails.application.config.consider_all_requests_local
+
     Raven.capture_exception(exception)
 
     title ''
