@@ -48,6 +48,8 @@ en:
         blank: Enter the date of the caution
         invalid: The caution date is not valid
         future: The caution date can’t be in the future
+      under_age:
+        inclusion: Select under 18 or over 18
 
   helpers:
     submit:
@@ -57,6 +59,9 @@ en:
         kind: Did you get a caution or a conviction?
       steps_caution_caution_date_form:
         caution_date: When did you get the caution?
+      steps_caution_under_age_form:
+        under_age: How old were you when you got the caution?
+
     label:
       steps_check_kind_form:
         kind:
@@ -66,6 +71,10 @@ en:
         day: Day
         month: Month
         year: Year
+      steps_caution_under_age_form:
+        under_age:
+          'yes': Under 18
+          'no': 18 or over
     hint:
       steps_check_kind_form:
         kind: This is an example hint
@@ -73,7 +82,7 @@ en:
         caution_date: For example, 12 11 2017
 
   home:
-    index: 
+    index:
       page_title: Home
   layouts:
     footer_links:
@@ -91,7 +100,6 @@ en:
       kind:
         edit:
           page_title: Caution or a conviction
-          heading: Did you get a caution or a conviction?
     caution:
       caution_date:
         edit:
@@ -103,3 +111,6 @@ en:
             content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
           date_legend: Enter the date
           date_hint: For example, 29 1 2018
+      under_age:
+        edit:
+          page_title: How old were you when you got the caution?
