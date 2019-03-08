@@ -48,6 +48,10 @@ en:
         blank: Enter the date of the caution
         invalid: The caution date is not valid
         future: The caution date can’t be in the future
+      conditional_date:
+        blank: Enter the date of the condition
+        invalid: The condition date is not valid
+        future: The condition date can’t be in the future
       under_age:
         inclusion: Select under 18 or over 18
       caution_type:
@@ -61,6 +65,8 @@ en:
         kind: Did you get a caution or a conviction?
       steps_caution_caution_date_form:
         caution_date: When did you get the caution?
+      steps_caution_conditional_end_date_form:
+        conditional_end_date: When did the conditions end?
       steps_caution_under_age_form:
         under_age: How old were you when you got the caution?
       steps_caution_caution_type_form:
@@ -72,6 +78,10 @@ en:
           caution: Caution
           conviction: Conviction
       steps_caution_caution_date_form:
+        day: Day
+        month: Month
+        year: Year
+      steps_caution_conditional_end_date_form:
         day: Day
         month: Month
         year: Year
@@ -91,6 +101,8 @@ en:
       steps_check_kind_form:
         kind: This is an example hint
       steps_caution_caution_date_form:
+        caution_date: For example, 12 11 2017
+      steps_caution_conditional_end_date_form:
         caution_date: For example, 12 11 2017
 
   home:
@@ -121,6 +133,16 @@ en:
           no_caution_document:
             title: I don’t have my caution document
             content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
+          date_legend: Enter the date
+          date_hint: For example, 29 1 2018
+      conditional_end_date:
+        edit:
+          page_title: Caution date
+          heading: When did the conditions end?
+          lead_text: This is the date you agreed for the conditions to end. It will be written on the caution document the police gave you. For example, ‘29 01 2018’.
+          unknown_conditional_end:
+            title: I don’t know when the conditions ended
+            content_html: If you don’t know the date you agreed for conditions to end, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
           date_legend: Enter the date
           date_hint: For example, 29 1 2018
       under_age:

@@ -1,7 +1,8 @@
 require 'rails_helper'
 
 RSpec.describe CautionDecisionTree do
-  let(:disclosure_check) { instance_double(DisclosureCheck) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, caution_type: caution_type) }
+  let(:caution_type)     { nil }
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
   let(:as)               { nil }
@@ -20,8 +21,20 @@ RSpec.describe CautionDecisionTree do
     it { is_expected.to have_destination(:caution_type, :edit) }
   end
 
-  context 'when the step is `under_age`' do
+  context 'when the step is `caution_type` does not equal conditional' do
+    let(:caution_type)  { CautionType::SIMPLE_CAUTION }
     let(:step_params) { { caution_type: 'anything' } }
+    it { is_expected.to have_destination('/home', :index) }
+  end
+
+  context 'when the step is `caution_type` is equal to conditional' do
+    let(:caution_type)  { CautionType::CONDITIONAL_CAUTION }
+    let(:step_params) { { caution_type: caution_type } }
+    it { is_expected.to have_destination(:conditional_end_date, :edit) }
+  end
+
+  context 'when the step is `conditional_end_date`' do
+    let(:step_params) { { conditional_end_date: 'conditional' } }
     it { is_expected.to have_destination('/home', :index) }
   end
 end
