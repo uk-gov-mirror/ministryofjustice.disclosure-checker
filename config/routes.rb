@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     namespace :caution do
       edit_step :caution_date
       edit_step :under_age
+      edit_step :caution_type
     end
   end
 

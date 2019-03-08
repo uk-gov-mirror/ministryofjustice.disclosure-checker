@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_07_102108) do
+ActiveRecord::Schema.define(version: 2019_03_07_150657) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_03_07_102108) do
     t.string "kind"
     t.date "caution_date"
     t.string "under_age"
+    t.string "caution_type"
     t.index ["status"], name: "index_disclosure_checks_on_status"
   end
 

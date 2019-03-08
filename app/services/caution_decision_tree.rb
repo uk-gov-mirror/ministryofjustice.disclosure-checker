@@ -6,6 +6,8 @@ class CautionDecisionTree < BaseDecisionTree
     when :caution_date
       edit(:under_age)
     when :under_age
+      edit(:caution_type)
+    when :caution_type
       # TODO: change when we have next step
       { controller: '/home', action: :index }
     else

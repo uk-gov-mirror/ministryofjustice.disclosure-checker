@@ -50,6 +50,8 @@ en:
         future: The caution date can’t be in the future
       under_age:
         inclusion: Select under 18 or over 18
+      caution_type:
+        inclusion: Select caution type
 
   helpers:
     submit:
@@ -61,6 +63,8 @@ en:
         caution_date: When did you get the caution?
       steps_caution_under_age_form:
         under_age: How old were you when you got the caution?
+      steps_caution_caution_type_form:
+        caution_type: What type of caution did you get?
 
     label:
       steps_check_kind_form:
@@ -75,6 +79,14 @@ en:
         under_age:
           'yes': Under 18
           'no': 18 or over
+      steps_caution_caution_type_form:
+        caution_type:
+          simple_caution: Simple caution
+          conditional_caution: Conditional caution
+          youth_simple_caution: Youth Simple caution
+          youth_conditional_caution: Youth Conditional caution
+
+
     hint:
       steps_check_kind_form:
         kind: This is an example hint
@@ -114,3 +126,6 @@ en:
       under_age:
         edit:
           page_title: How old were you when you got the caution?
+      caution_type:
+        edit:
+          page_title: Caution types
