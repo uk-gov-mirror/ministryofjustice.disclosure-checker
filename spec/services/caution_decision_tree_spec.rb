@@ -17,6 +17,11 @@ RSpec.describe CautionDecisionTree do
 
   context 'when the step is `under_age`' do
     let(:step_params) { { under_age: 'yes' } }
+    it { is_expected.to have_destination(:caution_type, :edit) }
+  end
+
+  context 'when the step is `under_age`' do
+    let(:step_params) { { caution_type: 'anything' } }
     it { is_expected.to have_destination('/home', :index) }
   end
 end
