@@ -7,6 +7,14 @@ def edit_step(name)
 end
 # :nocov:
 
+# :nocov:
+def show_step(name)
+  resource name,
+           only:       [:show],
+           controller: name
+end
+# :nocov:
+
 Rails.application.routes.draw do
   root 'home#index'
 
@@ -21,11 +29,16 @@ Rails.application.routes.draw do
     namespace :check do
       edit_step :kind
     end
+
     namespace :caution do
       edit_step :caution_date
       edit_step :under_age
       edit_step :caution_type
       edit_step :conditional_end_date
+    end
+
+    namespace :conviction do
+      show_step :exit
     end
   end
 
