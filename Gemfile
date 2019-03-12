@@ -31,9 +31,13 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
+  gem 'faker', '>=1.9.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry-byebug'
   gem 'pry-rails'
+
+  # Available in dev env for generators
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 

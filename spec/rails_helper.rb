@@ -23,6 +23,12 @@ RSpec.configure do |config|
   config.before(:each, js: true) do
     page.driver.browser.url_whitelist = %w(127.0.0.1 localhost)
   end
+
+  config.include FactoryBot::Syntax::Methods
+
+  config.before(:suite) do
+    Faker::Config.locale = 'en-GB'
+  end
 end
 
 RSpec::Matchers.define_negated_matcher :not_change, :change
