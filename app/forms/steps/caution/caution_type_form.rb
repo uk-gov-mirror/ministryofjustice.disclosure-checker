@@ -7,15 +7,9 @@ module Steps
 
       def choices
         if under_age?
-          [
-            CautionType::YOUTH_SIMPLE_CAUTION,
-            CautionType::YOUTH_CONDITIONAL_CAUTION
-          ]
+          CautionType::YOUTH_VALUES
         else
-          [
-            CautionType::SIMPLE_CAUTION,
-            CautionType::CONDITIONAL_CAUTION
-          ]
+          CautionType::NON_YOUTH_VALUES
         end.map(&:to_s)
       end
 

@@ -1,0 +1,37 @@
+<% title t('.page_title') %>
+
+<div class="govuk-width-container">
+  <%= step_header %>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <%= error_summary %>
+
+        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <p class="govuk-body-l"><%=t '.lead_text' %></p>
+        
+        <%= step_form @form_object do |f| %>
+          <%= f.gov_uk_date_field :conditional_end_date,
+          legend_options: { page_heading: false, visually_hidden: true } %>
+          
+          <details class="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text summary" data-ga-category="explanations" data-ga-label="no caution document">
+                <%=t '.unknown_conditional_end.title' %>
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <%=t '.unknown_conditional_end.content_html' %>
+            </div>
+          </details>
+
+          <%= f.continue_button %>
+        <% end %>
+      </div>
+    </div>
+
+  </main>
+</div>
