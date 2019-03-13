@@ -15,7 +15,7 @@ class CautionType < ValueObject
     [
       CONDITIONAL_CAUTION,
       YOUTH_CONDITIONAL_CAUTION
-  ].include?(self)
+    ].include?(self)
   end
 
   def youth?

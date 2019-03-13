@@ -5,14 +5,14 @@ RSpec.describe ExpiryDateCalculator do
 
   context 'caution' do
     context 'End date is date of caution' do
-      let(:disclosure_check) { create(:disclosure_check) }
+      let(:disclosure_check) { build(:disclosure_check) }
       it 'returns caution_date' do
         expect(subject).to eq(disclosure_check.caution_date)
       end
     end
 
     context 'Caution with conditional ' do
-      let(:disclosure_check) { create(:disclosure_check, :conditional_caution) }
+      let(:disclosure_check) { build(:disclosure_check, :conditional_caution) }
       it 'returns error' do
         expect { subject }.to raise_error(NotImplementedError)
       end
@@ -20,7 +20,7 @@ RSpec.describe ExpiryDateCalculator do
   end
 
   context 'conviction' do
-    let(:disclosure_check) { create(:disclosure_check, :conviction) }
+    let(:disclosure_check) { build(:disclosure_check, :conviction) }
     it 'returns error' do
       expect { subject }.to raise_error(NotImplementedError)
     end

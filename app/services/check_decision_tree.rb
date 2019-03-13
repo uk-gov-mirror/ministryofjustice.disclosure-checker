@@ -16,9 +16,8 @@ class CheckDecisionTree < BaseDecisionTree
     case CheckKind.new(step_params[:kind])
     when CheckKind::CAUTION
       edit('/steps/caution/caution_date')
-    else
-      # TODO: update when we implement the conviction journey
-      raise NotImplementedError, 'conviction journey not implemented'
+    when CheckKind::CONVICTION
+      show('/steps/conviction/exit')
     end
   end
 end

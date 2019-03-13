@@ -20,7 +20,7 @@ RSpec.describe CheckDecisionTree do
 
     context 'and the answer is `conviction`' do
       let(:kind) { 'conviction' }
-      it { expect { subject.destination }.to raise_error(NotImplementedError) }
+      it { is_expected.to have_destination('/steps/conviction/exit', :show) }
     end
   end
 end
