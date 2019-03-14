@@ -11,6 +11,8 @@ class CautionDecisionTree < BaseDecisionTree
     when :caution_type
       after_caution_type
     when :conditional_end_date
+      edit(:condition_complied)
+    when :condition_complied
       # TODO: change when we have next step
       home
     else

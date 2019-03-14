@@ -35,6 +35,11 @@ RSpec.describe CautionDecisionTree do
 
   context 'when the step is `conditional_end_date`' do
     let(:step_params) { { conditional_end_date: 'conditional' } }
+    it { is_expected.to have_destination(:condition_complied, :edit) }
+  end
+
+  context 'when the step is `condtion_complied`' do
+    let(:step_params) { { condition_complied: 'yes'} }
     it { is_expected.to have_destination('/home', :index) }
   end
 end
