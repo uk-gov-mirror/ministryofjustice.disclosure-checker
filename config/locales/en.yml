@@ -31,7 +31,7 @@
 
 en:
   service:
-    name: Disclosure Checker
+    name: Check if you need to disclose your criminal record
 
   shared:
     back_link: Back

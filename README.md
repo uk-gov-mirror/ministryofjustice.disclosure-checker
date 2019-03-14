@@ -1,11 +1,11 @@
-# Disclosure Checker MVP
+# Check if you need to disclose your criminal record MVP
 
-This is a Rails application to enable citizens to check when their convictions are spent.  
+This is a Rails application to enable citizens to check when their convictions are spent.
 It is based on software patterns developed for the [C100 Application][c100-application].
 
 ## Getting Started
 
-* Copy `.env.example` to `.env` and replace with suitable values.  
+* Copy `.env.example` to `.env` and replace with suitable values.
 
 * `bundle install`
 * `bundle exec rails db:setup`
@@ -25,8 +25,8 @@ It is based on software patterns developed for the [C100 Application][c100-appli
 
 You can then run all the code linters and tests with:
 
-* `RAILS_ENV=test bundle exec rake`  
-or  
+* `RAILS_ENV=test bundle exec rake`
+or
 * `RAILS_ENV=test bundle exec rake test:all_the_things`
 
 Or you can run specific tests as follows (refer to *lib/tasks/all_tests.rake* for the complete list):
