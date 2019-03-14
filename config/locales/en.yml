@@ -71,6 +71,8 @@ en:
         under_age: How old were you when you got the caution?
       steps_caution_caution_type_form:
         caution_type: What type of caution did you get?
+      steps_caution_condition_complied_form:
+        condition_complied: Did you stick to the conditions of the caution? 
 
     label:
       steps_check_kind_form:
@@ -95,7 +97,6 @@ en:
           conditional_caution: Conditional caution
           youth_simple_caution: Youth Simple caution
           youth_conditional_caution: Youth Conditional caution
-
 
     hint:
       steps_check_kind_form:
@@ -151,3 +152,12 @@ en:
       caution_type:
         edit:
           page_title: Caution types
+      condition_complied: 
+        edit:
+          page_title: Conditions complied
+          heading: Did you stick to the conditions of the caution?
+          inset_text_heading: If no is selected
+          inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution. 
+          inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
+
+

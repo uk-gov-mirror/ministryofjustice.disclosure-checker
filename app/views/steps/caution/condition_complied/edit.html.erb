@@ -1,0 +1,28 @@
+<% title t('.page_title') %>
+
+<div class="govuk-width-container">
+  <%= step_header %>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <%= error_summary %>
+
+        <!-- The header is part of the radios legend by default, but can be configured -->
+
+        <%= step_form @form_object do |f| %>
+          <%= f.radio_button_fieldset :condition_complied, inline: false, choices: GenericYesNo.values %>
+          <p class="govuk-body govuk-!-font-weight-bold"><%= t('.inset_text_heading') %></h2>
+          <div class="govuk-inset-text">
+            <p class="govuk-body"><%= t('.inset_text_paragraph_one') %></p>
+            <p class="govuk-body"><%= t('.inset_text_paragraph_two') %></p>
+          </div>
+          <%= f.continue_button %>
+        <% end %>
+
+      </div>
+    </div>
+
+  </main>
+</div>
