@@ -36,6 +36,11 @@ en:
   shared:
     back_link: Back
 
+  date:
+    formats:
+      default: '%d %B %Y'
+      long: '%d %B %y'
+
   errors:
     format: "%{message}"
     page_title_prefix: 'Error: '
@@ -72,7 +77,7 @@ en:
       steps_caution_caution_type_form:
         caution_type: What type of caution did you get?
       steps_caution_condition_complied_form:
-        condition_complied: Did you stick to the conditions of the caution? 
+        condition_complied: Did you stick to the conditions of the caution?
 
     label:
       steps_check_kind_form:
@@ -152,12 +157,34 @@ en:
       caution_type:
         edit:
           page_title: Caution types
-      condition_complied: 
+      condition_complied:
         edit:
           page_title: Conditions complied
           heading: Did you stick to the conditions of the caution?
           inset_text_heading: If no is selected
-          inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution. 
+          inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution.
           inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
 
-
+  caution_results_html:
+    kind:
+      question: Criminal record type
+      answers:
+        caution: Caution
+        conviction: Conviction
+    caution_date:
+      question: 'Date caution given:'
+      answers:
+        caution: Caution
+        conviction: Conviction
+    under_age:
+      question: 'Age at time of caution:'
+      answers:
+       'yes': Under 18
+       'no': 18 or over
+    caution_type:
+      question: 'Type of caution:'
+      answers:
+        simple_caution: Simple caution
+        conditional_caution: Conditional caution
+        youth_simple_caution: Youth Simple caution
+        youth_conditional_caution: Youth Conditional caution
