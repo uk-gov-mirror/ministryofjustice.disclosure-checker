@@ -21,7 +21,7 @@ class ExpiryDateCalculator
   end
 
   def conditional_date
-    # TODO: update when we implement caution with conditional journey
-    raise NotImplementedError
+    # TODO: update when we know what to do with a user who did not stick to there condition
+    disclosure_check.conditional_end_date
   end
 end

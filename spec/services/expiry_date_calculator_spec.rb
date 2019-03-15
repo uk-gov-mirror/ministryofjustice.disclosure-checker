@@ -13,8 +13,8 @@ RSpec.describe ExpiryDateCalculator do
 
     context 'Caution with conditional ' do
       let(:disclosure_check) { build(:disclosure_check, :conditional_caution) }
-      it 'returns error' do
-        expect { subject }.to raise_error(NotImplementedError)
+      it 'returns conditional_end_date' do
+        expect(subject).to eq(disclosure_check.conditional_end_date)
       end
     end
   end
