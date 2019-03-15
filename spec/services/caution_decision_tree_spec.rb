@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe CautionDecisionTree do
-  let(:disclosure_check) { instance_double(DisclosureCheck, caution_type: caution_type) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, caution_type: caution_type, condition_complied: condition_complied) }
   let(:caution_type)     { nil }
+  let(:condition_complied) { nil }
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
   let(:as)               { nil }
@@ -38,8 +39,15 @@ RSpec.describe CautionDecisionTree do
     it { is_expected.to have_destination(:condition_complied, :edit) }
   end
 
-  context 'when the step is `condtion_complied`' do
-    let(:step_params) { { condition_complied: 'yes'} }
-    it { is_expected.to have_destination('/home', :index) }
+  context 'when the step is `condtion_complied` is equal to `yes`' do
+    let(:condition_complied) { GenericYesNo::YES }
+    let(:step_params) { { condition_complied: condition_complied} }
+    it { is_expected.to have_destination(:result, :show) }
+  end
+
+  context 'when the step is `condtion_complied` is equal to `no`' do
+    let(:condition_complied) { GenericYesNo::NO }
+    let(:step_params) { { condition_complied: condition_complied} }
+    it { is_expected.to have_destination(:condition_complied, :edit) }
   end
 end
