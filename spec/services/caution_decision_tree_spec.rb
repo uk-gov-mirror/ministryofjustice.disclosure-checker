@@ -23,8 +23,8 @@ RSpec.describe CautionDecisionTree do
 
   context 'when the step is `caution_type` does not equal conditional' do
     let(:caution_type)  { CautionType::SIMPLE_CAUTION }
-    let(:step_params) { { caution_type: 'anything' } }
-    it { is_expected.to have_destination('/home', :index) }
+    let(:step_params) { { caution_type: caution_type } }
+    it { is_expected.to have_destination(:result, :show) }
   end
 
   context 'when the step is `caution_type` is equal to conditional' do

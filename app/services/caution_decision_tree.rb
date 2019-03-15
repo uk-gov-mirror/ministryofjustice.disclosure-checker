@@ -26,7 +26,11 @@ class CautionDecisionTree < BaseDecisionTree
   def after_caution_type
     return edit(:conditional_end_date) if CautionType.new(disclosure_check.caution_type).conditional?
 
-    home
+    result
+  end
+
+  def result
+    show(:result)
   end
 
   def home
