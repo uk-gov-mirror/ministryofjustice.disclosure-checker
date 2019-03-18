@@ -22,9 +22,12 @@ module FormAttributeMethods
   end
 
   module ClassMethods
+    # :nocov:
+    # TODO: This will be removed once we use non generic yes or no answers
     def attribute_names
       attribute_set.map(&:name)
     end
+    # :nocov:
 
     # Iterates through all declared attributes in the form object, mapping its values
     def attributes_map(origin)

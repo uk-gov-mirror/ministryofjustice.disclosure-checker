@@ -72,6 +72,7 @@ module GovukComponents
       # The `page_heading` option can be false to disable "Legends as page headings"
       # https://design-system.service.gov.uk/get-started/labels-legends-headings/
       #
+
       if opts[:page_heading]
         content_tag(:legend, legend_options) do
           content_tag(:h1, fieldset_text(attribute), class: 'govuk-fieldset__heading')
@@ -88,7 +89,10 @@ module GovukComponents
         input = radio_button(attribute, value, class: 'govuk-radios__input')
         label = label(attribute, value: value, class: 'govuk-label govuk-radios__label') do
           if options.key? :text_method
+            # :nocov:
+            # TODO: This will be removed once a text method is used
             choice.send(options[:text_method])
+            # :nocov:
           else
             localized_label("#{attribute}.#{choice}")
           end
