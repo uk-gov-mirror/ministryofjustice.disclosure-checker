@@ -9,10 +9,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # :nocov:
+  # TODO: This will be removed once session our being destoryed
   def reset_disclosure_check_session
     session.delete(:disclosure_check_id)
     session.delete(:last_seen)
   end
+  # :nocov:
 
   def initialize_disclosure_check(attributes = {})
     DisclosureCheck.create(attributes).tap do |disclosure_check|

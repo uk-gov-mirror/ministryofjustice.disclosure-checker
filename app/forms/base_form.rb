@@ -55,9 +55,11 @@ class BaseForm
 
   private
 
+  # :nocov:
   def record_id
     record&.id
   end
+  # :nocov:
 
   # When using concerns like `HasOneAssociationForm` or `SingleQuestionForm`, this ensures
   # a common interface to always have the correct record being updated in the `persist!` method.

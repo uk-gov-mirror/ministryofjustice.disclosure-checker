@@ -36,9 +36,12 @@ module GovukComponents
             child_to_parents = child_to_parent(object)
             messages = error_summary_messages(object, child_to_parents)
 
+            # :nocov:
+            # TODO: This will be removed once we have got child parent relationship
             messages << children_with_errors(object).map do |child|
               error_summary_messages(child, child_to_parents)
             end
+            # :nocov:
 
             messages.flatten.join('').html_safe
           end

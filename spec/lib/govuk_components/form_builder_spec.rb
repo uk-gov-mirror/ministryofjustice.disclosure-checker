@@ -30,10 +30,28 @@ RSpec.describe GovukComponents::FormBuilder do
   describe '#radio_button_fieldset' do
     let(:disclosure_check) { DisclosureCheck.new }
     let(:builder) { described_class.new :steps_check_kind_form, disclosure_check, helper, {} }
-    let(:html_output) { builder.radio_button_fieldset :kind, choices: CheckKind.string_values }
-
+    let(:legend_options) { { page_heading: true} }
+    let(:options) { { choices: CheckKind.string_values, legend_options: legend_options } }
+    let(:html_output) do
+      builder.radio_button_fieldset :kind, options
+    end
     context 'no errors' do
       let(:html_fixture) { file_fixture('radio_button_fieldset.html').read }
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to eq(
+          strip_text(html_fixture)
+        )
+      end
+    end
+
+    context 'page_heading set to false' do
+      let(:legend_options) { { page_heading: false } }
+
+      let(:html_fixture) { file_fixture('radio_button_fieldset_legend_options.html').read }
+
 
       it 'outputs the expected markup' do
         expect(
