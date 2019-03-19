@@ -1,0 +1,24 @@
+logs/
+log/
+tmp/
+Dockerfile
+docker-compose.yml
+README.md
+.env*
+
+.DS_Store
+.DS_Store/
+.git/
+.bundle/
+vendor/bundle/
+.circleci/
+.idea/
+
+.byebug_history
+/coverage/*
+tags
+.ctags_exclude
+
+# Do not bring over assets, as we pull and precompile them
+node_modules/
+public/assets/
