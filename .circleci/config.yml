@@ -109,7 +109,7 @@ jobs:
             export BUILD_DATE=$(date -Is) >> $BASH_ENV
             source $BASH_ENV
 
-            kubectl set image -n cdisclosure-checker-staging \
+            kubectl set image -n disclosure-checker-staging \
                     deployment/disclosure-checker-deployment-staging \
                     disclosure-checker-web-staging="${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}"
 
@@ -129,3 +129,6 @@ workflows:
           filters:
             branches:
               only: master
+      - deploy_staging:
+          requires:
+            - build_staging
