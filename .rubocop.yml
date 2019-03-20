@@ -9,6 +9,7 @@ AllCops:
     - 'lib/generators/**/*'
     - 'features/**/*'
     - 'spec/**/*'
+    - 'vendor/**/*'
 
 ####################################
 ## Customization for this project ##
