@@ -1,10 +1,8 @@
 FROM ministryofjustice/ruby:2.6.0-webapp-onbuild
 
-# The following are ENV variables that need to be present by the time
-# the assets pipeline run, but doesn't matter their value.
-#
-ENV EXTERNAL_URL    replace_this_at_build_time
-ENV SECRET_KEY_BASE replace_this_at_build_time
+# The following ENV variables need to be present by the time the assets precompile run
+ENV EXTERNAL_URL needed_for_assets_precompile
+ENV RAILS_ENV    production
 
 RUN touch /etc/inittab
 
@@ -14,10 +12,13 @@ RUN curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - && \
 
 RUN apt-get update && apt-get install yarn nodejs
 
-ENV RAILS_ENV production
-ENV PUMA_PORT 3000
-
 RUN bundle exec rake assets:precompile
+
+# Copy fonts and images (without digest) along with the digested ones,
+# as there are some hardcoded references in the `govuk-frontend` files
+# that will not be able to use the rails digest mechanism.
+RUN cp node_modules/govuk-frontend/assets/fonts/* public/assets/govuk-frontend/assets/fonts
+RUN cp node_modules/govuk-frontend/assets/images/* public/assets/govuk-frontend/assets/images
 
 ARG APP_BUILD_DATE
 ENV APP_BUILD_DATE ${APP_BUILD_DATE}
@@ -28,5 +29,7 @@ ENV APP_BUILD_TAG ${APP_BUILD_TAG}
 ARG APP_GIT_COMMIT
 ENV APP_GIT_COMMIT ${APP_GIT_COMMIT}
 
+ENV PUMA_PORT 3000
 EXPOSE $PUMA_PORT
+
 ENTRYPOINT ["./run.sh"]
