@@ -31,8 +31,7 @@ class CautionDecisionTree < BaseDecisionTree
   def after_condition_complied
     return result if GenericYesNo.new(disclosure_check.condition_complied).yes?
 
-    # TODO: change when we understand what to do with a user who did not stick to there condition
-    edit(:condition_complied)
+    show(:condition_exit)
   end
 
   def result

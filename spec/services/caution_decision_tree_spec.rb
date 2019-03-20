@@ -48,6 +48,6 @@ RSpec.describe CautionDecisionTree do
   context 'when the step is `condtion_complied` is equal to `no`' do
     let(:condition_complied) { GenericYesNo::NO }
     let(:step_params) { { condition_complied: condition_complied} }
-    it { is_expected.to have_destination(:condition_complied, :edit) }
+    it { is_expected.to have_destination(:condition_exit, :show) }
   end
 end
