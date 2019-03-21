@@ -51,6 +51,13 @@ Rails.application.routes.draw do
     get :not_found
   end
 
+  # Health and ping endpoints (`status` and `health` are alias)
+  defaults format: :json do
+    get :status, to: 'status#index'
+    get :health, to: 'status#index'
+    get :ping,   to: 'status#ping'
+  end
+
   # catch-all route
   # :nocov:
   match '*path', to: 'errors#not_found', via: :all, constraints:
