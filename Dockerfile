@@ -1,8 +1,9 @@
 FROM ministryofjustice/ruby:2.6.0-webapp-onbuild
 
 # The following ENV variables need to be present by the time the assets precompile run
-ENV EXTERNAL_URL needed_for_assets_precompile
-ENV RAILS_ENV    production
+ENV SECRET_KEY_BASE needed_for_assets_precompile
+ENV EXTERNAL_URL    needed_for_assets_precompile
+ENV RAILS_ENV       production
 
 RUN touch /etc/inittab
 

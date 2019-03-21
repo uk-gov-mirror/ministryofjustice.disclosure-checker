@@ -13,6 +13,7 @@ services:
     environment:
       - DATABASE_URL=postgresql://postgres@db/disclosure-checker
       - EXTERNAL_URL=http://localhost:3000
+      - SECRET_KEY_BASE=c263472f8aa91f4a277002e9652f86f330e636358e2090d86ab4a4f0684cefe2
       - RAILS_SERVE_STATIC_FILES=1
       - DISABLE_SSL=1
     ports:
