@@ -1,0 +1,19 @@
+<% title t('.page_title') %>
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <div class="form-submit">
+          <%= link_to t('.resume_link'), previous_step_path, class: 'govuk-button', data: {ga_category: 'in progress warning', ga_label: 'resume application'} %>
+          <%= link_to t('.restart_link'), root_path(new: 'y'), class: 'govuk-link govuk-!-margin-5 ', data: {ga_category: 'in progress warning', ga_label: 'new application'} %>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>

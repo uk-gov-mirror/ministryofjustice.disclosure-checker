@@ -165,6 +165,13 @@ en:
           inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution.
           inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
 
+  warning:
+    reset_session:
+      page_title: Disclosure check in progress
+      heading: It looks like you already have an disclosure check in progress
+      resume_link: Resume disclosure check
+      restart_link: Start a new disclosure check
+
   caution_results_html:
     kind:
       question: Criminal record type
