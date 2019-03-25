@@ -1,0 +1,61 @@
+---
+en:
+  steps:
+    caution:
+      caution_date:
+        edit:
+          page_title: Caution date
+          heading: When did you get the caution?
+          lead_text: This date will be written on the caution document the police gave you.
+          no_caution_document:
+            title: I don’t have my caution document
+            content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
+          date_legend: Enter the date
+          date_hint: For example, 29 1 2018
+      conditional_end_date:
+        edit:
+          page_title: Caution date
+          heading: When did the conditions end?
+          lead_text: This is the date you agreed for the conditions to end. It will be written on the caution document the police gave you. For example, ‘29 01 2018’.
+          unknown_conditional_end:
+            title: I don’t know when the conditions ended
+            content_html: If you don’t know the date you agreed for conditions to end, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
+          date_legend: Enter the date
+          date_hint: For example, 29 1 2018
+      under_age:
+        edit:
+          page_title: How old were you when you got the caution?
+      caution_type:
+        edit:
+          page_title: Caution types
+      condition_complied:
+        edit:
+          page_title: Conditions complied
+          heading: Did you stick to the conditions of the caution?
+          inset_text_heading: If no is selected
+          inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution.
+          inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
+
+  caution_results_html:
+    kind:
+      question: Criminal record type
+      answers:
+        caution: Caution
+        conviction: Conviction
+    caution_date:
+      question: 'Date caution given:'
+      answers:
+        caution: Caution
+        conviction: Conviction
+    under_age:
+      question: 'Age at time of caution:'
+      answers:
+       'yes': Under 18
+       'no': 18 or over
+    caution_type:
+      question: 'Type of caution:'
+      answers:
+        simple_caution: Simple caution
+        conditional_caution: Conditional caution
+        youth_simple_caution: Youth Simple caution
+        youth_conditional_caution: Youth Conditional caution
