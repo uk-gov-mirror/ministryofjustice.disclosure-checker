@@ -180,3 +180,48 @@ RSpec.shared_examples 'a show step controller' do
     end
   end
 end
+
+RSpec.shared_examples 'a completion step controller' do
+  describe '#show' do
+    let(:disclosure_disclosure_check) {
+      build(:disclosure_check, status: status, navigation_stack: %w(/not /empty))
+    }
+    let(:status) { :in_progress }
+
+    context 'when no case exists in the session' do
+      before do
+        # Needed because some specs that include these examples stub current_disclosure_check,
+        # which is undesirable for this particular test
+        allow(controller).to receive(:current_disclosure_check).and_return(nil)
+      end
+
+      it 'redirects to the invalid session error page' do
+        get :show
+        expect(response).to redirect_to(invalid_session_errors_path)
+      end
+    end
+
+    describe 'marking as completed' do
+      before do
+        allow(controller).to receive(:current_disclosure_check).and_return(disclosure_disclosure_check)
+      end
+
+      context 'when the check is not already marked as `completed`' do
+        it 'changes the status to `completed`' do
+          expect {
+            get :show, session: { disclosure_check_id: '123' }
+          }.to change { disclosure_disclosure_check.status }.from('in_progress').to('completed')
+        end
+      end
+
+      context 'when the check is already marked as `completed`' do
+        let(:status) { :completed }
+
+        it 'does not call the `mark_completed` method' do
+          expect(controller).not_to receive(:mark_completed)
+          get :show, session: { disclosure_check_id: '123' }
+        end
+      end
+    end
+  end
+end

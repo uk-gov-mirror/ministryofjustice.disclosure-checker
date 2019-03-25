@@ -1,13 +1,9 @@
 module Steps
   module Caution
     class ResultController < Steps::CautionStepController
-      before_action :set_presenter
+      include CompletionStep
 
-      def show; end
-
-      private
-
-      def set_presenter
+      def show
         @presenter = CautionResultPresenter.new(current_disclosure_check)
       end
     end
