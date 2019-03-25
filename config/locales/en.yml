@@ -61,6 +61,8 @@ en:
         inclusion: Select under 18 or over 18
       caution_type:
         inclusion: Select caution type
+      condition_complied:
+        inclusion: Select yes if you stuck with the conditions of the caution
 
   helpers:
     submit:
