@@ -61,6 +61,12 @@ en:
         inclusion: Select under 18 or over 18
       caution_type:
         inclusion: Select caution type
+    check_completed:
+      page_title: Check completed
+      heading: You have already completed this check
+      lead_text: If you want to make changes you will need to start a new check.
+      results_page: Go to results page
+      start_again: New check
 
   helpers:
     submit:

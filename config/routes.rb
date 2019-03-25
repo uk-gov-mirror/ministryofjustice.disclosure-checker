@@ -51,6 +51,7 @@ Rails.application.routes.draw do
     get :invalid_session
     get :unhandled
     get :not_found
+    get :check_completed
   end
 
   # Health and ping endpoints (`status` and `health` are alias)
