@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'about/privacy'
   get 'about/terms_and_conditions'
 
+  get 'warning/reset_session'
+
   namespace :steps do
     namespace :check do
       edit_step :kind
