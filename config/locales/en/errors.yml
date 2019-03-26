@@ -1,0 +1,29 @@
+---
+en:
+  errors:
+    format: "%{message}"
+    page_title_prefix: 'Error: '
+    error_summary:
+      heading: There is a problem on this page
+    attributes:
+      kind:
+        inclusion: Select caution or conviction
+      caution_date:
+        blank: Enter the date of the caution
+        invalid: The caution date is not valid
+        future: The caution date can’t be in the future
+      conditional_date:
+        blank: Enter the date of the condition
+        invalid: The condition date is not valid
+        future: The condition date can’t be in the future
+      under_age:
+        inclusion: Select under 18 or over 18
+      caution_type:
+        inclusion: Select caution type
+    check_completed:
+      page_title: Check completed
+      heading: You have already completed this check
+      lead_text: If you want to make changes you will need to start a new check.
+      results_page: Go to results page
+      start_again: New check
+

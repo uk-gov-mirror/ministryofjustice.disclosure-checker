@@ -1,0 +1,6 @@
+---
+en:
+  date:
+    formats:
+      default: '%d %B %Y'
+      long: '%d %B %y'

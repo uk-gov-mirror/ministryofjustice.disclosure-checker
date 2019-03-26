@@ -1,0 +1,53 @@
+---
+en:
+  helpers:
+    submit:
+      continue: Continue
+    fieldset:
+      steps_check_kind_form:
+        kind: Did you get a caution or a conviction?
+      steps_caution_caution_date_form:
+        caution_date: When did you get the caution?
+      steps_caution_conditional_end_date_form:
+        conditional_end_date: When did the conditions end?
+      steps_caution_under_age_form:
+        under_age: How old were you when you got the caution?
+      steps_caution_caution_type_form:
+        caution_type: What type of caution did you get?
+      steps_caution_condition_complied_form:
+        condition_complied: Did you stick to the conditions of the caution?
+
+    hint:
+      steps_check_kind_form:
+        kind: This is an example hint
+      steps_caution_caution_date_form:
+        caution_date: For example, 12 11 2017
+      steps_caution_conditional_end_date_form:
+        caution_date: For example, 12 11 2017
+
+    label:
+      steps_check_kind_form:
+        kind:
+          caution: Caution
+          conviction: Conviction
+      steps_caution_caution_date_form:
+        day: Day
+        month: Month
+        year: Year
+      steps_caution_conditional_end_date_form:
+        day: Day
+        month: Month
+        year: Year
+      steps_caution_under_age_form:
+        under_age:
+          'yes': Under 18
+          'no': 18 or over
+      steps_caution_caution_type_form:
+        caution_type:
+          simple_caution: Simple caution
+          conditional_caution: Conditional caution
+          youth_simple_caution: Youth Simple caution
+          youth_conditional_caution: Youth Conditional caution
+
+
+
