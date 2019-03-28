@@ -66,10 +66,12 @@ jobs:
           docker_layer_caching: true
 
       - run:
-          name: build docker image
+          name: build docker images
           command: |
             export BUILD_DATE=$(date -Is) >> $BASH_ENV
             source $BASH_ENV
+
+            docker build --file Dockerfile.nginx -t nginx .
 
             docker build \
               --label build.git.sha=${CIRCLE_SHA1} \
@@ -81,7 +83,7 @@ jobs:
               -t app .
 
       - run:
-          name: push docker image
+          name: push docker images
           command: |
             login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
             ${login}
@@ -91,6 +93,9 @@ jobs:
 
             docker tag app "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:staging.latest"
             docker push "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:staging.latest"
+
+            docker tag nginx "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:nginx.latest"
+            docker push "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:nginx.latest"
 
   deploy_staging:
     <<: *cloud_container
