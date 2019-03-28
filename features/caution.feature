@@ -8,6 +8,8 @@ Feature: Caution
   @happy_path
   Scenario: Caution happy path - over 18, conditional caution
     When I choose "Caution"
+    Then I should see "Do you know the date you were given the caution?"
+    And I choose "Yes"
     Then I should see "When did you get the caution?"
 
     And I fill in "Day" with "1"
@@ -34,6 +36,8 @@ Feature: Caution
   @happy_path
   Scenario: Caution happy path - under 18, conditional caution
     When I choose "Caution"
+    Then I should see "Do you know the date you were given the caution?"
+    And I choose "Yes"
     Then I should see "When did you get the caution?"
 
     And I fill in "Day" with "1"
@@ -60,6 +64,8 @@ Feature: Caution
   @happy_path
   Scenario: Caution happy path - over 18, simple caution
     When I choose "Caution"
+    Then I should see "Do you know the date you were given the caution?"
+    And I choose "Yes"
     Then I should see "When did you get the caution?"
 
     And I fill in "Day" with "1"
@@ -77,6 +83,8 @@ Feature: Caution
   @happy_path
   Scenario: Caution happy path - under 18, simple caution
     When I choose "Caution"
+    Then I should see "Do you know the date you were given the caution?"
+    And I choose "Yes"
     Then I should see "When did you get the caution?"
 
     And I fill in "Day" with "1"

@@ -8,10 +8,8 @@ class CautionResultPresenter
 
   def summary
     caution_questions.map do |item|
-      next if disclosure_check[item].nil?
-
       QuestionAnswerRow.new(item, disclosure_check[item])
-    end
+    end.compact
   end
 
   def expiry_date
@@ -19,6 +17,6 @@ class CautionResultPresenter
   end
 
   def caution_questions
-    [:kind, :caution_date, :under_age, :caution_date].freeze
+    [:kind, :known_caution_date, :caution_date, :under_age, :caution_type].freeze
   end
 end

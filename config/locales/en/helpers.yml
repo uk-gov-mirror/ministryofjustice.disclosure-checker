@@ -6,6 +6,8 @@ en:
     fieldset:
       steps_check_kind_form:
         kind: Did you get a caution or a conviction?
+      steps_caution_known_caution_date_form:
+        known_caution_date: Do you know the date you were given the caution?
       steps_caution_caution_date_form:
         caution_date: When did you get the caution?
       steps_caution_conditional_end_date_form:

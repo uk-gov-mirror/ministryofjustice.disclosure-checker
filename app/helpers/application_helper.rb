@@ -54,4 +54,10 @@ module ApplicationHelper
 
     title ''
   end
+
+  def display_result(object)
+    return object unless object.instance_of?(Date)
+
+    I18n.l(object)
+  end
 end
