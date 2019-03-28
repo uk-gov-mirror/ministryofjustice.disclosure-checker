@@ -5,18 +5,34 @@
 #
 version: '3'
 
+volumes:
+  assets:
+
 services:
   db:
     image: postgres
-  web:
+
+  webapp:
     build: .
     environment:
       - DATABASE_URL=postgresql://postgres@db/disclosure-checker
-      - EXTERNAL_URL=http://localhost:3000
+      - EXTERNAL_URL=http://localhost:8080
       - SECRET_KEY_BASE=c263472f8aa91f4a277002e9652f86f330e636358e2090d86ab4a4f0684cefe2
-      - RAILS_SERVE_STATIC_FILES=1
       - DISABLE_SSL=1
-    ports:
-      - "3000:3000"
     depends_on:
       - db
+    expose:
+      - 3000
+    volumes:
+      - assets:/usr/src/app/public
+
+  nginx:
+    build:
+      context: ./
+      dockerfile: Dockerfile.nginx
+    links:
+      - webapp
+    ports:
+      - "8080:80"
+    volumes:
+      - assets:/home/www/public
