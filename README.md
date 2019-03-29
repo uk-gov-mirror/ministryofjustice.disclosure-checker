@@ -10,12 +10,12 @@ nginx, and any other dependency for you, without having to configure anything in
 
 * `docker-compose up`
 
-The application will be run in "production" mode, so will be as accurate as the real production environment.  
+The application will be run in "production" mode, so will be as accurate as possible to a real production environment.  
 An nginx reverse proxy will also be run to serve the static assets and to fallback to a static error page if the 
 upstream server (rails with puma) does not respond.
 
-Please note, for simplicity, docker compose will create a shared volume for nginx to serve the precompiled 
-assets from the rails /public/assets directory.
+Please note, in production environments this is done in a slightly different way as we don't use docker-compose in those 
+environments (kubernetes cluster). But the general ideal is the same (nginx reverse proxy). 
 
 ## Getting Started
 

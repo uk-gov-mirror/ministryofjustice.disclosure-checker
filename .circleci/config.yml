@@ -71,8 +71,6 @@ jobs:
             export BUILD_DATE=$(date -Is) >> $BASH_ENV
             source $BASH_ENV
 
-            docker build --file Dockerfile.nginx -t nginx .
-
             docker build \
               --label build.git.sha=${CIRCLE_SHA1} \
               --label build.git.branch=${CIRCLE_BRANCH} \
@@ -94,9 +92,6 @@ jobs:
             docker tag app "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:staging.latest"
             docker push "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:staging.latest"
 
-            docker tag nginx "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:nginx.latest"
-            docker push "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:nginx.latest"
-
   deploy_staging:
     <<: *cloud_container
     steps:
@@ -116,7 +111,7 @@ jobs:
 
             kubectl set image -n disclosure-checker-staging \
                     deployment/disclosure-checker-deployment-staging \
-                    disclosure-checker-web-staging="${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}"
+                    webapp="${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}"
 
             kubectl annotate -n disclosure-checker-staging \
                     deployment/disclosure-checker-deployment-staging \
