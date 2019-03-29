@@ -9,5 +9,5 @@ en:
       privacy: Privacy
       terms_and_conditions: Terms and conditions
     phase_banner:
-      feedback_contact_html: This is a new service. <a href="/about/contact">Report a problem</a> and help improve it for others.
+      feedback_contact_html: This is a new service. <a class="govuk-link" href="/about/contact">Report a problem</a> and help improve it for others.
 
