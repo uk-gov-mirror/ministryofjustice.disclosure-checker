@@ -13,17 +13,38 @@ RSpec.describe GovukElementsErrorsHelper do
   #
   describe '.error_summary' do
     let(:disclosure_check) { DisclosureCheck.new }
-    let(:html_output) { GovukElementsErrorsHelper.error_summary(disclosure_check, 'There is an error') }
-    let(:html_fixture) { file_fixture('error_summary.html').read }
 
-    it 'outputs the expected markup' do
-      disclosure_check.errors.add(:kind, :inclusion)
+    context 'yes_no question' do
+      let(:html_output) { GovukElementsErrorsHelper.error_summary(disclosure_check, 'There is an error') }
+      let(:html_fixture) { file_fixture('error_summary.html').read }
 
-      expect(
-        strip_text(html_output)
-      ).to eq(
-        strip_text(html_fixture)
-      )
+
+      it 'outputs the expected markup' do
+        disclosure_check.errors.add(:kind, :inclusion)
+
+        expect(
+          strip_text(html_output)
+        ).to eq(
+          strip_text(html_fixture)
+        )
+      end
+    end
+
+    context 'choice question' do
+      let(:html_output) { GovukElementsErrorsHelper.error_summary(kind_form, 'Select caution or conviction') }
+      let(:html_fixture) { file_fixture('error_summary_choice.html').read }
+      let(:kind_form) { Steps::Check::KindForm.build(disclosure_check) }
+
+
+      it 'choice outputs the expected markup' do
+        kind_form.errors.add(:kind, :inclusion)
+
+        expect(
+          strip_text(html_output)
+        ).to eq(
+          strip_text(html_fixture)
+        )
+      end
     end
   end
 end
