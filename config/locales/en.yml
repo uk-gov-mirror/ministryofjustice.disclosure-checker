@@ -61,6 +61,8 @@ en:
         inclusion: Select under 18 or over 18
       caution_type:
         inclusion: Select caution type
+      condition_complied:
+        inclusion: Select yes if you stuck with the conditions of the caution
     check_completed:
       page_title: Check completed
       heading: You have already completed this check
@@ -129,7 +131,7 @@ en:
       privacy: Privacy
       terms_and_conditions: Terms and conditions
     phase_banner:
-      feedback_contact_html: This is a new service. <a href="/about/contact">Report a problem</a> and help improve it for others.
+      feedback_contact_html: This is a new service. <a href="/about/contact" class="govuk-link">Report a problem</a> and help improve it for others.
 
   steps:
     check:
@@ -144,7 +146,7 @@ en:
           lead_text: This date will be written on the caution document the police gave you.
           no_caution_document:
             title: I don’t have my caution document
-            content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
+            content_html: If you don’t know the date you were cautioned, you can get this information for free by asking the police for a <a class="govuk-link" href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
           date_legend: Enter the date
           date_hint: For example, 29 1 2018
       conditional_end_date:
@@ -154,7 +156,7 @@ en:
           lead_text: This is the date you agreed for the conditions to end. It will be written on the caution document the police gave you. For example, ‘29 01 2018’.
           unknown_conditional_end:
             title: I don’t know when the conditions ended
-            content_html: If you don’t know the date you agreed for conditions to end, you can get this information for free by asking the police for a <a href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
+            content_html: If you don’t know the date you agreed for conditions to end, you can get this information for free by asking the police for a <a class="govuk-link" href='https://www.gov.uk/copy-of-police-records'>subject access request (SAR)</a>.
           date_legend: Enter the date
           date_hint: For example, 29 1 2018
       under_age:

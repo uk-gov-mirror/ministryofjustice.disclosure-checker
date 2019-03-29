@@ -3,7 +3,7 @@
 <div class="govuk-width-container">
   <%= step_header %>
 
-  <main class="govuk-main-wrapper">
+  <main class="govuk-main-wrapper" id="main-content">
 
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
@@ -36,7 +36,7 @@
 
         <p class="govuk-body">
           If you need to change any information, or if you have another caution or conviction you’d like to
-          check, <%= link_to 'use the service again', root_path %>.
+          check, <%= link_to 'use the service again', root_path, { :class => "govuk-link" } %>.
         </p>
       </div>
     </div>
