@@ -3,6 +3,20 @@
 This is a Rails application to enable citizens to check when their convictions are spent.
 It is based on software patterns developed for the [C100 Application][c100-application].
 
+## Docker
+
+The application can be run inside a docker container. This will take care of the ruby environment, postgres database, 
+nginx, and any other dependency for you, without having to configure anything in your machine.
+
+* `docker-compose up`
+
+The application will be run in "production" mode, so will be as accurate as the real production environment.  
+An nginx reverse proxy will also be run to serve the static assets and to fallback to a static error page if the 
+upstream server (rails with puma) does not respond.
+
+Please note, for simplicity, docker compose will create a shared volume for nginx to serve the precompiled 
+assets from the rails /public/assets directory.
+
 ## Getting Started
 
 * Copy `.env.example` to `.env` and replace with suitable values.

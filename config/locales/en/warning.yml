@@ -1,0 +1,8 @@
+---
+en:
+  warning:
+    reset_session:
+      page_title: Disclosure check in progress
+      heading: It looks like you already have an disclosure check in progress
+      resume_link: Resume disclosure check
+      restart_link: Start a new disclosure check

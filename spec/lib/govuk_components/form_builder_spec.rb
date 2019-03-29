@@ -52,7 +52,6 @@ RSpec.describe GovukComponents::FormBuilder do
 
       let(:html_fixture) { file_fixture('radio_button_fieldset_legend_options.html').read }
 
-
       it 'outputs the expected markup' do
         expect(
           strip_text(html_output)

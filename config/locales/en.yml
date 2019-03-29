@@ -63,6 +63,12 @@ en:
         inclusion: Select caution type
       condition_complied:
         inclusion: Select yes if you stuck with the conditions of the caution
+    check_completed:
+      page_title: Check completed
+      heading: You have already completed this check
+      lead_text: If you want to make changes you will need to start a new check.
+      results_page: Go to results page
+      start_again: New check
 
   helpers:
     submit:
@@ -166,6 +172,13 @@ en:
           inset_text_heading: If no is selected
           inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution.
           inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
+
+  warning:
+    reset_session:
+      page_title: Disclosure check in progress
+      heading: It looks like you already have an disclosure check in progress
+      resume_link: Resume disclosure check
+      restart_link: Start a new disclosure check
 
   caution_results_html:
     kind:

@@ -35,6 +35,7 @@ group :development, :test do
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'i18n-tasks', '~> 0.9.28'
 
   # Available in dev env for generators
   gem 'factory_bot_rails'

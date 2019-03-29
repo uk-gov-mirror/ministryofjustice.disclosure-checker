@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   get 'about/privacy'
   get 'about/terms_and_conditions'
 
+  get 'warning/reset_session'
+
   namespace :steps do
     namespace :check do
       edit_step :kind
@@ -49,6 +51,7 @@ Rails.application.routes.draw do
     get :invalid_session
     get :unhandled
     get :not_found
+    get :check_completed
   end
 
   # Health and ping endpoints (`status` and `health` are alias)

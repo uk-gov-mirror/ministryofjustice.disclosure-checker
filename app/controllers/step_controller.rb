@@ -1,12 +1,7 @@
 class StepController < ApplicationController
   before_action :check_disclosure_check_presence
+  before_action :check_disclosure_check_not_completed, except: [:show]
   before_action :update_navigation_stack, only: [:show, :edit]
-
-  def previous_step_path
-    # Second to last element in the array, will be nil for arrays of size 0 or 1
-    current_disclosure_check&.navigation_stack&.slice(-2) || root_path
-  end
-  helper_method :previous_step_path
 
   private
 
