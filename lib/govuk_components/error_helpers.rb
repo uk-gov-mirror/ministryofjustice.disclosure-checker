@@ -48,8 +48,39 @@ module GovukComponents
         end
       end
 
-      def self.link_to_error(object_prefixes, attribute)
-        [*object_prefixes, attribute, 'error'].join('_').prepend('#')
+      # TODO: Remove this method when the GEM is updated.
+      def self.error_summary_message(object, attribute, child_to_parents)
+        messages = object.errors.full_messages_for attribute
+        messages.map do |message|
+          object_prefixes = object_prefixes object, child_to_parents
+          suffix = error_suffix(object)
+          link = link_to_error(object_prefixes, attribute, suffix)
+          message.sub! default_label(attribute), localized_label(object_prefixes, attribute)
+          content_tag(:li, content_tag(:a, message, href: link))
+        end
+      end
+
+      def self.link_to_error(object_prefixes, attribute, suffix)
+        [*object_prefixes, attribute, suffix].join('_').prepend('#')
+      end
+
+      def self.error_suffix(object)
+        return choice_string(object) if choice?(object)
+        return 'dd' if date_type?(object)
+
+        GenericYesNo.values.first.value.to_s
+      end
+
+      def self.date_type?(object)
+        DisclosureCheck.columns_hash[object.class.attribute_names.first.to_s].type.to_s == 'date'
+      end
+
+      def self.choice?(object)
+        object.class.respond_to?(:choices) || object.respond_to?(:choices)
+      end
+
+      def self.choice_string(object)
+        object.class.respond_to?(:choices) ? object.class.choices.first : object.choices.first
       end
     end
     # rubocop:enable Metrics/BlockLength
