@@ -11,6 +11,11 @@ RSpec.describe ConvictionDecisionTree do
   it_behaves_like 'a decision tree'
 
   context 'when the step is `exit`' do
+    let(:step_params) { { known_conviction_date: 'anything' } }
+    it { is_expected.to have_destination(:exit, :show) }
+  end
+
+  context 'when the step is `exit`' do
     let(:step_params) { { exit: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
   end

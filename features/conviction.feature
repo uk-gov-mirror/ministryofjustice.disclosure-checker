@@ -8,4 +8,4 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction happy path
     When I choose "Conviction"
-    Then I should see "Sorry, you can't use this service yet"
+    Then I should see "Do you know the date you were convicted?"

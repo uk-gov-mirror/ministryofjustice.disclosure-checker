@@ -17,7 +17,7 @@ class CheckDecisionTree < BaseDecisionTree
     when CheckKind::CAUTION
       edit('/steps/caution/known_caution_date')
     when CheckKind::CONVICTION
-      show('/steps/conviction/exit')
+      edit('/steps/conviction/known_conviction_date')
     end
   end
 end
