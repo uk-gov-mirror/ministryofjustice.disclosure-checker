@@ -33,6 +33,7 @@ Rails.application.routes.draw do
     end
 
     namespace :caution do
+      edit_step :known_caution_date
       edit_step :caution_date
       edit_step :under_age
       edit_step :caution_type

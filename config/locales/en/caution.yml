@@ -2,6 +2,10 @@
 en:
   steps:
     caution:
+      known_caution_date:
+        edit:
+          page_title: Know caution date
+          heading: Do you know the date you were given the caution?
       caution_date:
         edit:
           page_title: Caution date
@@ -36,17 +40,21 @@ en:
           inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution.
           inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
 
+  caution_result: "the day you were given it"
+
   caution_results_html:
     kind:
       question: Criminal record type
       answers:
         caution: Caution
         conviction: Conviction
+    known_caution_date:
+      question: Known caution date
+      answers:
+        'yes': 'Yes'
+        'no': 'No'
     caution_date:
       question: 'Date caution given:'
-      answers:
-        caution: Caution
-        conviction: Conviction
     under_age:
       question: 'Age at time of caution:'
       answers:

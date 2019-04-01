@@ -4,14 +4,14 @@ RSpec.describe CautionResultPresenter do
   let(:disclosure_check) { build(:disclosure_check) }
 
   describe '#caution_questions' do
-    it { expect(subject.caution_questions).to eq( [:kind, :caution_date, :under_age, :caution_date]) }
+    it { expect(subject.caution_questions).to eq( [:kind, :known_caution_date, :caution_date, :under_age, :caution_type]) }
   end
 
   describe '#summary' do
     let(:summary) { subject.summary }
 
     it 'return array of objects' do
-      expect(summary.size).to eq(4)
+      expect(summary.size).to eq(5)
 
       expect(summary[0].question).to eql(:kind)
       expect(summary[0].value).to eql(disclosure_check.kind)
@@ -20,9 +20,17 @@ RSpec.describe CautionResultPresenter do
 
   describe '#expiry_date' do
     let(:expiry_date) { subject.expiry_date }
+    context 'know caution date' do
+      it 'return formatted expiry_date' do
+        expect(expiry_date).to eql(disclosure_check.caution_date )
+      end
+    end
 
-    it 'return formatted expiry_date' do
-      expect(expiry_date).to eql(disclosure_check.caution_date )
+    context 'unknow caution date' do
+      let(:disclosure_check) { build(:disclosure_check, known_caution_date: 'no') }
+      it 'return a string' do
+        expect(expiry_date).to eql(I18n.t('caution_result'))
+      end
     end
   end
 end

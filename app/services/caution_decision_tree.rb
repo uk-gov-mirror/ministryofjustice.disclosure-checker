@@ -4,6 +4,8 @@ class CautionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
+    when :known_caution_date
+      after_known_caution_date
     when :caution_date
       edit(:under_age)
     when :under_age
@@ -21,6 +23,12 @@ class CautionDecisionTree < BaseDecisionTree
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
+
+  def after_known_caution_date
+    return edit(:caution_date) if GenericYesNo.new(disclosure_check.known_caution_date).yes?
+
+    edit(:under_age)
+  end
 
   def after_caution_type
     return edit(:conditional_end_date) if CautionType.new(disclosure_check.caution_type).conditional?
