@@ -46,6 +46,7 @@ Rails.application.routes.draw do
     namespace :conviction do
       show_step :exit
       edit_step :known_conviction_date
+      edit_step :under_age_conviction
     end
   end
 

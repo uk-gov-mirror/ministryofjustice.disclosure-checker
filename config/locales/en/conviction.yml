@@ -6,3 +6,6 @@ en:
         edit:
           page_title: Know convicted date
           heading: Do you know the date you were convicted?
+      under_age_conviction:
+        edit:
+          page_title: Do you know the date you were convicted?
