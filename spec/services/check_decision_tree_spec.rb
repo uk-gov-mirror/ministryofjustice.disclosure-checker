@@ -20,7 +20,7 @@ RSpec.describe CheckDecisionTree do
 
     context 'and the answer is `conviction`' do
       let(:kind) { 'conviction' }
-      it { is_expected.to have_destination('/steps/conviction/exit', :show) }
+      it { is_expected.to have_destination('/steps/conviction/known_conviction_date', :edit) }
     end
   end
 end

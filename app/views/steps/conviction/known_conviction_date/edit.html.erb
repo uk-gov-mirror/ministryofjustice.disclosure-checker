@@ -12,13 +12,11 @@
         <!-- The header is part of the radios legend by default, but can be configured -->
 
         <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :known_caution_date, inline: false, choices: GenericYesNo.values %>
+          <%= f.radio_button_fieldset :known_conviction_date, inline: false, choices: GenericYesNo.values %>
           <%= f.continue_button %>
         <% end %>
-
       </div>
     </div>
 
   </main>
 </div>
-

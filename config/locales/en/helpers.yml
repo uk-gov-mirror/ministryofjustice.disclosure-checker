@@ -18,6 +18,8 @@ en:
         caution_type: What type of caution did you get?
       steps_caution_condition_complied_form:
         condition_complied: Did you stick to the conditions of the caution?
+      steps_conviction_known_conviction_date_form:
+        known_conviction_date: Do you know the date you were convicted?
 
     hint:
       steps_check_kind_form:
