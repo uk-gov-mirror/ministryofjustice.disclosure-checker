@@ -28,6 +28,10 @@ en:
         inclusion: Select know convicted date yes or no
       under_age_conviction:
         inclusion: Select under 18 or over 18
+      conviction_date:
+        blank: Enter the date of the conviction
+        invalid: The conviction date is not valid
+        future: The conviction date can’t be in the future
     check_completed:
       page_title: Check completed
       heading: You have already completed this check
