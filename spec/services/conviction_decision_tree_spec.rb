@@ -14,7 +14,7 @@ RSpec.describe ConvictionDecisionTree do
   context 'when the step  `known_conviction_date` equal yes' do
     let(:known_conviction_date) { GenericYesNo::YES }
     let(:step_params) { { known_conviction_date: known_conviction_date} }
-    it { is_expected.to have_destination(:exit, :show) }
+    it { is_expected.to have_destination(:conviction_date, :edit) }
   end
 
   context 'when the step `known_conviction_date` equal no' do

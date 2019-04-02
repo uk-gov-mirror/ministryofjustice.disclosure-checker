@@ -22,6 +22,8 @@ en:
         known_conviction_date: Do you know the date you were convicted?
       steps_conviction_under_age_conviction_form:
         under_age_conviction: Do you know the date you were convicted?
+      steps_conviction_conviction_date_form:
+        conviction_date: When did you get convicted?
 
     hint:
       steps_check_kind_form:
@@ -30,6 +32,8 @@ en:
         caution_date: For example, 12 11 2017
       steps_caution_conditional_end_date_form:
         caution_date: For example, 12 11 2017
+      steps_conviction_conviction_date_form:
+        conviction_date: For example, 12 11 2017
 
     label:
       steps_check_kind_form:
@@ -58,6 +62,10 @@ en:
         under_age_conviction:
           'yes': Under 18
           'no': 18 or over
+      steps_conviction_conviction_date_form:
+        day: Day
+        month: Month
+        year: Year
 
 
 

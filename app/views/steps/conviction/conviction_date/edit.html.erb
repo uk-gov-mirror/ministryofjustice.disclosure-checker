@@ -1,0 +1,26 @@
+<% title t('.page_title') %>
+
+<div class="govuk-width-container">
+  <%= step_header %>
+
+  <main id="main-content" class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <%= error_summary %>
+
+        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <p class="govuk-body-l"><%=t '.lead_text' %></p>
+
+        <%= step_form @form_object do |f| %>
+          <%= f.gov_uk_date_field :conviction_date,
+                                  legend_options: { page_heading: false, visually_hidden: true } %>
+
+          <%= f.continue_button %>
+        <% end %>
+      </div>
+    </div>
+
+  </main>
+</div>
