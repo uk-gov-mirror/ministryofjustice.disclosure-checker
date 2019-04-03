@@ -27,6 +27,7 @@
 <% end %>
 
 <% content_for(:body_end) do %>
+  <%= render partial: 'layouts/analytics' if analytics_tracking_id.present? %>
   <%= javascript_include_tag 'application', integrity: true, crossorigin: 'anonymous' %>
   <script>window.GOVUKFrontend.initAll();</script>
 <% end %>

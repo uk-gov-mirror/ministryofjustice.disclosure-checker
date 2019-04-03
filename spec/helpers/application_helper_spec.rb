@@ -89,6 +89,13 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#analytics_tracking_id' do
+    it 'retrieves the environment variable' do
+      expect(ENV).to receive(:[]).with('GA_TRACKING_ID')
+      helper.analytics_tracking_id
+    end
+  end
+
   describe 'capture missing translations' do
     before do
       ActionView::Base.raise_on_missing_translations = false
