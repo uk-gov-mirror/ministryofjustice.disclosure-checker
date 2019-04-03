@@ -24,6 +24,8 @@ en:
         under_age_conviction: Do you know the date you were convicted?
       steps_conviction_conviction_date_form:
         conviction_date: When did you get convicted?
+      steps_conviction_conviction_type_form:
+        conviction_type: Which type of conviction were you given?
 
     hint:
       steps_check_kind_form:
@@ -34,6 +36,16 @@ en:
         caution_date: For example, 12 11 2017
       steps_conviction_conviction_date_form:
         conviction_date: For example, 12 11 2017
+      radio_buttons:
+         conviction_type:
+          community_sentence: For example, a curfew or unpaid work
+          custodial_sentence: For example, a prison sentence, suspended sentence or detention
+          discharge: For example, a conditional discharge order or bind over
+          financial: For example, paying a fine or compensation
+          hospital_order: For example, to treat a mental health problem
+          military: For example, removal from Her Majesty’s services
+          motoring: For example, penalty points or disqualification
+          rehabilitation_or_prevention: For example, an attendance centre order or supervision order
 
     label:
       steps_check_kind_form:
@@ -66,6 +78,16 @@ en:
         day: Day
         month: Month
         year: Year
+      steps_conviction_conviction_type_form:
+        conviction_type:
+          community_sentence: Community Sentence
+          custodial_sentence: Custodial Sentence
+          discharge: Discharge
+          financial: Financial
+          hospital_order: Hospital Order
+          military: Military
+          motoring: Motoring
+          rehabilitation_or_prevention: Rehabilitation or Prevention
 
 
 
