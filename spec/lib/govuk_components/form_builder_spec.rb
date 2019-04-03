@@ -29,11 +29,21 @@ RSpec.describe GovukComponents::FormBuilder do
   #
   describe '#radio_button_fieldset' do
     let(:disclosure_check) { DisclosureCheck.new }
-    let(:builder) { described_class.new :steps_check_kind_form, disclosure_check, helper, {} }
+    let(:form) { 'steps_check_kind_form' }
+    let(:builder) { described_class.new form.to_sym, disclosure_check, helper, {} }
     let(:legend_options) { { page_heading: true} }
-    let(:options) { { choices: CheckKind.string_values, legend_options: legend_options } }
+    let(:radio_hint) { nil }
+    let(:choices) { CheckKind.string_values }
+    let(:options) do
+      {
+        choices: choices,
+        legend_options: legend_options,
+        radio_hint: radio_hint
+      }
+    end
+    let(:attribute) { 'kind' }
     let(:html_output) do
-      builder.radio_button_fieldset :kind, options
+      builder.radio_button_fieldset attribute.to_sym, options
     end
     context 'no errors' do
       let(:html_fixture) { file_fixture('radio_button_fieldset.html').read }
@@ -45,6 +55,27 @@ RSpec.describe GovukComponents::FormBuilder do
           strip_text(html_fixture)
         )
       end
+
+      it 'does not contains radio label' do
+        expect(
+          strip_text(html_output)
+        ).not_to include('govuk-hint govuk-radios__hint')
+      end
+    end
+
+    context 'radio with hints' do
+      let(:attribute) { 'conviction_type' }
+      let(:form) { 'steps_conviction_conviction_type_form' }
+      let(:radio_hint) { true }
+      let(:choices) { ConvictionType.string_values }
+      let(:html_fixture) { file_fixture('radio_button_fieldset_legend_options.html').read }
+
+      it 'contains radio label' do
+        expect(
+          strip_text(html_output)
+        ).to include('govuk-hint govuk-radios__hint')
+      end
+
     end
 
     context 'page_heading set to false' do

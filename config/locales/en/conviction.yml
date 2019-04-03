@@ -18,4 +18,8 @@ en:
           date_hint: For example, 29 1 2018
       under_age_conviction:
         edit:
-          page_title: Do you know the date you were convicted?
+          page_title: convicted age
+      conviction_type:
+        edit:
+          page_title: conviction type
+          heading: Which type of conviction were you given?

@@ -97,10 +97,16 @@ module GovukComponents
             localized_label("#{attribute}.#{choice}")
           end
         end
+        radio_hint = options[:radio_hint].present? ? radio_hint(attribute, value) : ''
         content_tag(:div, class: 'govuk-radios__item') do
-          input + label
+          input + label + radio_hint
         end
       end
+    end
+
+    def radio_hint(attribute, value)
+      text = I18n.t("helpers.hint.radio_buttons.#{attribute}.#{value}")
+      content_tag(:span, text, class: 'govuk-hint govuk-radios__hint', id: id_for("#{attribute}_#{value}", 'hint'))
     end
 
     def hint(attribute)

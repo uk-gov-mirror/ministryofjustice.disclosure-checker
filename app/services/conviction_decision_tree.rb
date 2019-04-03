@@ -1,4 +1,5 @@
 class ConvictionDecisionTree < BaseDecisionTree
+  # rubocop:disable Metrics/CyclomaticComplexity
   def destination
     return next_step if next_step
 
@@ -6,6 +7,10 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :known_conviction_date
       after_known_conviction_date
     when :under_age_conviction
+      edit(:conviction_type)
+    when :conviction_date
+      edit(:under_age_conviction)
+    when :conviction_type
       show(:exit)
     when :exit
       show(:exit)
@@ -13,6 +18,7 @@ class ConvictionDecisionTree < BaseDecisionTree
       raise InvalidStep, "Invalid step '#{as || step_params}'"
     end
   end
+  # rubocop:enable Metrics/CyclomaticComplexity
 
   private
 

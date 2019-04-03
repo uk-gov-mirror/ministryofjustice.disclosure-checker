@@ -32,6 +32,9 @@ en:
         blank: Enter the date of the conviction
         invalid: The conviction date is not valid
         future: The conviction date can’t be in the future
+      conviction_type:
+        inclusion: Select conviction type
+
     check_completed:
       page_title: Check completed
       heading: You have already completed this check
