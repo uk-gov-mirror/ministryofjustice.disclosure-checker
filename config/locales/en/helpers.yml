@@ -6,6 +6,8 @@ en:
     fieldset:
       steps_check_kind_form:
         kind: Did you get a caution or a conviction?
+      steps_caution_known_caution_date_form:
+        known_caution_date: Do you know the date you were given the caution?
       steps_caution_caution_date_form:
         caution_date: When did you get the caution?
       steps_caution_conditional_end_date_form:
@@ -16,6 +18,14 @@ en:
         caution_type: What type of caution did you get?
       steps_caution_condition_complied_form:
         condition_complied: Did you stick to the conditions of the caution?
+      steps_conviction_known_conviction_date_form:
+        known_conviction_date: Do you know the date you were convicted?
+      steps_conviction_under_age_conviction_form:
+        under_age_conviction: Do you know the date you were convicted?
+      steps_conviction_conviction_date_form:
+        conviction_date: When did you get convicted?
+      steps_conviction_conviction_type_form:
+        conviction_type: Which type of conviction were you given?
 
     hint:
       steps_check_kind_form:
@@ -24,6 +34,18 @@ en:
         caution_date: For example, 12 11 2017
       steps_caution_conditional_end_date_form:
         caution_date: For example, 12 11 2017
+      steps_conviction_conviction_date_form:
+        conviction_date: For example, 12 11 2017
+      radio_buttons:
+         conviction_type:
+          community_sentence: For example, a curfew or unpaid work
+          custodial_sentence: For example, a prison sentence, suspended sentence or detention
+          discharge: For example, a conditional discharge order or bind over
+          financial: For example, paying a fine or compensation
+          hospital_order: For example, to treat a mental health problem
+          military: For example, removal from Her Majesty’s services
+          motoring: For example, penalty points or disqualification
+          rehabilitation_or_prevention: For example, an attendance centre order or supervision order
 
     label:
       steps_check_kind_form:
@@ -48,6 +70,25 @@ en:
           conditional_caution: Conditional caution
           youth_simple_caution: Youth Simple caution
           youth_conditional_caution: Youth Conditional caution
+      steps_conviction_under_age_conviction_form:
+        under_age_conviction:
+          'yes': Under 18
+          'no': 18 or over
+      steps_conviction_conviction_date_form:
+        day: Day
+        month: Month
+        year: Year
+      steps_conviction_conviction_type_form:
+        conviction_type:
+          community_sentence: Community Sentence
+          custodial_sentence: Custodial Sentence
+          discharge: Discharge
+          financial: Financial
+          hospital_order: Hospital Order
+          military: Military
+          motoring: Motoring
+          rehabilitation_or_prevention: Rehabilitation or Prevention
+
 
 
 

@@ -15,12 +15,12 @@ RSpec.describe CheckDecisionTree do
 
     context 'and the answer is `caution`' do
       let(:kind) { 'caution' }
-      it { is_expected.to have_destination('/steps/caution/caution_date', :edit) }
+      it { is_expected.to have_destination('/steps/caution/known_caution_date', :edit) }
     end
 
     context 'and the answer is `conviction`' do
       let(:kind) { 'conviction' }
-      it { is_expected.to have_destination('/steps/conviction/exit', :show) }
+      it { is_expected.to have_destination('/steps/conviction/known_conviction_date', :edit) }
     end
   end
 end

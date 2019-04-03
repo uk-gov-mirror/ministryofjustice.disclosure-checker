@@ -12,12 +12,18 @@ class ExpiryDateCalculator
   private
 
   def caution
-    disclosure_check.conditional_caution_type? ? conditional_date : disclosure_check.caution_date
+    disclosure_check.conditional_caution_type? ? conditional_date : caution_result
   end
 
   def conviction
     # TODO: update when we implement the conviction journey
     raise NotImplementedError
+  end
+
+  def caution_result
+    return disclosure_check.caution_date if GenericYesNo.new(disclosure_check.known_caution_date).yes?
+
+    I18n.t('caution_result')
   end
 
   def conditional_date

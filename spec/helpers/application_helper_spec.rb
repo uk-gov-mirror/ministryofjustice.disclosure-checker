@@ -151,4 +151,22 @@ RSpec.describe ApplicationHelper, type: :helper do
       helper.fallback_title
     end
   end
+
+  describe '#display_result' do
+    let(:display_result) { helper.display_result(value) }
+
+    context 'is a date' do
+      let(:value) { Date.new(2019, 1, 1) }
+      it 'returns a formatted date' do
+        expect(display_result).to eq(I18n.l(value))
+      end
+    end
+
+    context 'is not a date' do
+      let(:value) { Faker::TvShows::SiliconValley.quote }
+      it 'returns a string' do
+        expect(display_result).to eq(value)
+      end
+    end
+  end
 end
