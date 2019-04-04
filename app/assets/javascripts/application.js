@@ -13,7 +13,10 @@
 //= require rails-ujs
 //= require_tree .
 
+//= require jquery
 // GOV.UK Frontend
 // https://github.com/alphagov/govuk-frontend/blob/master/docs/installation/installing-with-npm.md
 //
 //= require govuk-frontend/all
+
+//= require moj

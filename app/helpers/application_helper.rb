@@ -38,6 +38,10 @@ module ApplicationHelper
     )
   end
 
+  def analytics_tracking_id
+    ENV['GA_TRACKING_ID']
+  end
+
   def service_name
     t('service.name')
   end
