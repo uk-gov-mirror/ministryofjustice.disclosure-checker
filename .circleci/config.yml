@@ -7,7 +7,7 @@ version: 2
 references:
   app_containers: &app_containers
     docker:
-      - image: circleci/ruby:2.6.0-node-browsers
+      - image: circleci/ruby:2.6.2-node-browsers
         environment:
           RAILS_ENV: test
           RACK_ENV: test
@@ -83,7 +83,7 @@ jobs:
       - run:
           name: push docker images
           command: |
-            login="$(aws ecr get-login --region eu-west-1 --no-include-email)"
+            login="$(aws ecr get-login --region ${AWS_DEFAULT_REGION} --no-include-email)"
             ${login}
 
             docker tag app "${ECR_ENDPOINT}/${GITHUB_TEAM_NAME_SLUG}/${CIRCLE_PROJECT_REPONAME}:${CIRCLE_SHA1}"
