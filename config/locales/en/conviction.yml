@@ -27,3 +27,7 @@ en:
         edit:
           page_title: community order
           heading: What was your community order?
+      custodial_sentence:
+        edit:
+          page_title: custodial sentence
+          heading: What was your custodial sentence?

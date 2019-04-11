@@ -27,7 +27,9 @@ en:
       steps_conviction_conviction_type_form:
         conviction_type: Which type of conviction were you given?
       steps_conviction_community_order_form:
-        community_order: What was your community order?
+        community_order: What was your community order
+      steps_conviction_custodial_sentence_form:
+        custodial_sentence: What was your custodial sentence?
 
     hint:
       steps_check_kind_form:
@@ -62,6 +64,11 @@ en:
           rehabilitation_activity_requirement: You were given appointments and activities to help support your rehabilitation
           residence_requirement: You were ordered to live in a specific place for a certain length of time
           unpaid_work: You were ordered to do community work without being paid
+        custodial_sentence:
+          detention_and_training_order: Detention and training order (DTO)
+          prision_sentence: Prision sentence
+          suspended_prision_sentence: Suspended prision sentence
+
 
     label:
       steps_check_kind_form:

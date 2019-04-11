@@ -14,6 +14,8 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_conviction_type
     when :community_order
       show(:exit)
+    when :custodial_sentence
+      show(:exit)
     when :exit
       show(:exit)
     else
@@ -32,6 +34,7 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   def after_conviction_type
     return edit(:community_order) if selected?(:conviction_type, value: 'community_sentence')
+    return edit(:custodial_sentence) if selected?(:conviction_type, value: 'custodial_sentence')
 
     show(:exit)
   end
