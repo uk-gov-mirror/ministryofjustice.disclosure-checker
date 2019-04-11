@@ -17,6 +17,10 @@ class BaseDecisionTree
 
   private
 
+  def selected?(attribute_name, value: 'yes')
+    step_params.fetch(attribute_name).eql?(value)
+  end
+
   def step_name
     (as || step_params.keys.first).to_sym
   end

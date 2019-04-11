@@ -11,6 +11,8 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :conviction_date
       edit(:under_age_conviction)
     when :conviction_type
+      after_conviction_type
+    when :community_order
       show(:exit)
     when :exit
       show(:exit)
@@ -26,5 +28,11 @@ class ConvictionDecisionTree < BaseDecisionTree
     return edit(:conviction_date) if GenericYesNo.new(disclosure_check.known_conviction_date).yes?
 
     edit(:under_age_conviction)
+  end
+
+  def after_conviction_type
+    return edit(:community_order) if selected?(:conviction_type, value: 'community_sentence')
+
+    show(:exit)
   end
 end

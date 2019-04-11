@@ -49,6 +49,7 @@ Rails.application.routes.draw do
       edit_step :under_age_conviction
       edit_step :conviction_date
       edit_step :conviction_type
+      edit_step :community_order
     end
   end
 

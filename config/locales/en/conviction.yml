@@ -23,3 +23,7 @@ en:
         edit:
           page_title: conviction type
           heading: Which type of conviction were you given?
+      community_order:
+        edit:
+          page_title: community order
+          heading: What was your community order?
