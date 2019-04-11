@@ -31,3 +31,7 @@ en:
         edit:
           page_title: custodial sentence
           heading: What was your custodial sentence?
+      discharge:
+        edit:
+          page_title: Discharge
+          heading: Which discharge were you given?

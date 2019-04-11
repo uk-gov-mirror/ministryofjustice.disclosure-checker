@@ -53,6 +53,11 @@ RSpec.describe ConvictionDecisionTree do
     it { is_expected.to have_destination(:custodial_sentence, :edit) }
   end
 
+  context 'when the step is `conviction_type` equal discharge' do
+    let(:step_params) { { conviction_type: 'discharge' } }
+    it { is_expected.to have_destination(:discharge, :edit) }
+  end
+
   context 'when the step is `conviction_type`' do
     let(:step_params) { { conviction_type: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
@@ -65,6 +70,11 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `custodial_sentence`' do
     let(:step_params) { { custodial_sentence: 'anything' } }
+    it { is_expected.to have_destination(:exit, :show) }
+  end
+
+  context 'when the step is `discharge`' do
+    let(:step_params) { { discharge: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
   end
 

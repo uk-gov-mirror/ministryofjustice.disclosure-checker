@@ -30,6 +30,8 @@ en:
         community_order: What was your community order
       steps_conviction_custodial_sentence_form:
         custodial_sentence: What was your custodial sentence?
+      steps_conviction_discharge_form:
+        discharge: Which discharge were you given?
 
     hint:
       steps_check_kind_form:
@@ -68,7 +70,10 @@ en:
           detention_and_training_order: Detention and training order (DTO)
           prision_sentence: Prision sentence
           suspended_prision_sentence: Suspended prision sentence
-
+        discharge:
+          absolute_discharge: You were found guilty of a crime but you did not given get a conviction
+          bind_over: Your sentence was postponed as long as you kept to certain
+          conditional_discharge_order: You were not sentenced for a crime, as long as you did not commit another crim within a certain period of time.
 
     label:
       steps_check_kind_form:
@@ -126,8 +131,10 @@ en:
           rehabilitation_activity_requirement: Rehabilitation activity requirement
           residence_requirement: Residence requirement
           unpaid_work: Unpaid work
-
-
-
+      steps_conviction_discharge_form:
+        discharge:
+          absolute_discharge: Absolute discharge
+          bind_over: Bind over
+          conditional_discharge_order: Conditional discharge order
 
 
