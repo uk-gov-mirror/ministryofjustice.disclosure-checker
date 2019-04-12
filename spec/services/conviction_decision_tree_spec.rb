@@ -43,24 +43,33 @@ RSpec.describe ConvictionDecisionTree do
     it { is_expected.to have_destination(:under_age_conviction, :edit) }
   end
 
-  context 'when the step is `conviction_type` equal community_sentence' do
-    let(:step_params) { { conviction_type: 'community_sentence' } }
-    it { is_expected.to have_destination(:community_order, :edit) }
-  end
-
-  context 'when the step is `conviction_type` equal community_sentence' do
-    let(:step_params) { { conviction_type: 'custodial_sentence' } }
-    it { is_expected.to have_destination(:custodial_sentence, :edit) }
-  end
-
-  context 'when the step is `conviction_type` equal discharge' do
-    let(:step_params) { { conviction_type: 'discharge' } }
-    it { is_expected.to have_destination(:discharge, :edit) }
-  end
-
   context 'when the step is `conviction_type`' do
-    let(:step_params) { { conviction_type: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    let(:step_params) { { conviction_type: type } }
+
+    context 'and type is `anything`' do
+      let(:type) { 'anything' }
+      it { is_expected.to have_destination(:exit, :show)  }
+    end
+
+    context 'and type is `community_order`' do
+      let(:type) { 'community_sentence' }
+      it { is_expected.to have_destination(:community_order, :edit) }
+    end
+
+    context 'and type is `custodial_sentence`' do
+      let(:type) { 'custodial_sentence' }
+      it { is_expected.to have_destination(:custodial_sentence, :edit) }
+    end
+
+    context 'and type is `discharge`' do
+      let(:type) { 'discharge' }
+      it { is_expected.to have_destination(:discharge, :edit) }
+    end
+
+    context 'and type is `financial`' do
+      let(:type) { 'financial' }
+      it { is_expected.to have_destination(:financial, :edit) }
+    end
   end
 
   context 'when the step is `community_order`' do
@@ -75,6 +84,11 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `discharge`' do
     let(:step_params) { { discharge: 'anything' } }
+    it { is_expected.to have_destination(:exit, :show) }
+  end
+
+  context 'when the step is `financial`' do
+    let(:step_params) { { financial: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
   end
 

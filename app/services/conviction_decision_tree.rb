@@ -19,6 +19,8 @@ class ConvictionDecisionTree < BaseDecisionTree
       show(:exit)
     when :discharge
       show(:exit)
+    when :financial
+      show(:exit)
     when :exit
       show(:exit)
     else
@@ -41,6 +43,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     return edit(:community_order) if selected?(:conviction_type, value: 'community_sentence')
     return edit(:custodial_sentence) if selected?(:conviction_type, value: 'custodial_sentence')
     return edit(:discharge) if selected?(:conviction_type, value: 'discharge')
+    return edit(:financial) if selected?(:conviction_type, value: 'financial')
 
     show(:exit)
   end
