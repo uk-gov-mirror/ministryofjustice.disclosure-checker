@@ -39,8 +39,11 @@ en:
         edit:
           page_title: Finacial
           heading: What were you ordered to pay?
+      military:
+        edit:
+          page_title: Military
+          heading: What was your military conviction?
       motoring:
         edit:
           page_title: Motoring
           heading: What was your motoring conviction?
-
