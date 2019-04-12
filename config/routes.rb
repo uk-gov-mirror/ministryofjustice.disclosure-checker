@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       edit_step :conviction_type
       edit_step :community_order
       edit_step :custodial_sentence
+      edit_step :discharge
     end
   end
 

@@ -1,5 +1,6 @@
 class ConvictionDecisionTree < BaseDecisionTree
   # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
   def destination
     return next_step if next_step
 
@@ -16,6 +17,8 @@ class ConvictionDecisionTree < BaseDecisionTree
       show(:exit)
     when :custodial_sentence
       show(:exit)
+    when :discharge
+      show(:exit)
     when :exit
       show(:exit)
     else
@@ -23,6 +26,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
 
   private
 
@@ -33,8 +37,10 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_conviction_type
+    # TODO: will refactor once i have step up all the steps for each conviction type
     return edit(:community_order) if selected?(:conviction_type, value: 'community_sentence')
     return edit(:custodial_sentence) if selected?(:conviction_type, value: 'custodial_sentence')
+    return edit(:discharge) if selected?(:conviction_type, value: 'discharge')
 
     show(:exit)
   end
