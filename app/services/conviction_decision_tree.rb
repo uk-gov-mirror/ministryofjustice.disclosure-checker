@@ -21,6 +21,8 @@ class ConvictionDecisionTree < BaseDecisionTree
       show(:exit)
     when :financial
       show(:exit)
+    when :motoring
+      show(:exit)
     when :exit
       show(:exit)
     else
@@ -44,6 +46,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     return edit(:custodial_sentence) if selected?(:conviction_type, value: 'custodial_sentence')
     return edit(:discharge) if selected?(:conviction_type, value: 'discharge')
     return edit(:financial) if selected?(:conviction_type, value: 'financial')
+    return edit(:motoring) if selected?(:conviction_type, value: 'motoring')
 
     show(:exit)
   end

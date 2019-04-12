@@ -70,6 +70,11 @@ RSpec.describe ConvictionDecisionTree do
       let(:type) { 'financial' }
       it { is_expected.to have_destination(:financial, :edit) }
     end
+
+    context 'and type is `motoring`' do
+      let(:type) { 'motoring' }
+      it { is_expected.to have_destination(:motoring, :edit) }
+    end
   end
 
   context 'when the step is `community_order`' do
@@ -89,6 +94,11 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `financial`' do
     let(:step_params) { { financial: 'anything' } }
+    it { is_expected.to have_destination(:exit, :show) }
+  end
+
+  context 'when the step is `motoring`' do
+    let(:step_params) { { motoring: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
   end
 

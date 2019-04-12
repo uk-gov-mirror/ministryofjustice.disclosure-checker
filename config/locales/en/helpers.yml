@@ -34,6 +34,8 @@ en:
         discharge: Which discharge were you given?
       steps_conviction_financial_form:
         financial: What were you ordered to pay?
+      steps_conviction_motoring_form:
+        motoring: What was your motoring conviction?
 
     hint:
       steps_check_kind_form:
@@ -76,6 +78,10 @@ en:
           absolute_discharge: You were found guilty of a crime but you did not given get a conviction
           bind_over: Your sentence was postponed as long as you kept to certain
           conditional_discharge_order: You were not sentenced for a crime, as long as you did not commit another crim within a certain period of time.
+        motoring:
+          disqualification: You were banned from driving for a certain period of time
+          endorsement: You were found guilty of a motoring offence, which is now included on your driver record
+          penalty_points: You were given number of penalty points for a driving offence
 
     label:
       steps_check_kind_form:
@@ -142,6 +148,8 @@ en:
         financial:
           fine: A fine
           compensation_to_a_victim: Compensation to a victim
-
-
-
+      steps_conviction_motoring_form:
+        motoring:
+          disqualification: Disqualification
+          endorsement: Endorsement
+          penalty_points: Penalty points
