@@ -40,5 +40,4 @@ ActiveRecord::Schema.define(version: 2019_04_12_142931) do
     t.string "motoring"
     t.index ["status"], name: "index_disclosure_checks_on_status"
   end
-
 end

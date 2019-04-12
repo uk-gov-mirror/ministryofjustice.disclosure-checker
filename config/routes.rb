@@ -53,6 +53,7 @@ Rails.application.routes.draw do
       edit_step :custodial_sentence
       edit_step :discharge
       edit_step :financial
+      edit_step :military
       edit_step :motoring
     end
   end

@@ -34,6 +34,8 @@ en:
         discharge: Which discharge were you given?
       steps_conviction_financial_form:
         financial: What were you ordered to pay?
+      steps_conviction_military_form:
+        military: What was your military conviction?
       steps_conviction_motoring_form:
         motoring: What was your motoring conviction?
 
@@ -148,6 +150,11 @@ en:
         financial:
           fine: A fine
           compensation_to_a_victim: Compensation to a victim
+      steps_conviction_military_form:
+        military:
+          military_disposal: Military disposal
+          removal_from_hms: Removal from her majesty’s services
+          service_detention: Service Detention
       steps_conviction_motoring_form:
         motoring:
           disqualification: Disqualification
