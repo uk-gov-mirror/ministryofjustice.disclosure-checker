@@ -32,6 +32,8 @@ en:
         custodial_sentence: What was your custodial sentence?
       steps_conviction_discharge_form:
         discharge: Which discharge were you given?
+      steps_conviction_financial_form:
+        financial: What were you ordered to pay?
 
     hint:
       steps_check_kind_form:
@@ -136,5 +138,10 @@ en:
           absolute_discharge: Absolute discharge
           bind_over: Bind over
           conditional_discharge_order: Conditional discharge order
+      steps_conviction_financial_form:
+        financial:
+          fine: A fine
+          compensation_to_a_victim: Compensation to a victim
+
 
 
