@@ -38,6 +38,9 @@ en:
         military: What was your military conviction?
       steps_conviction_motoring_form:
         motoring: What was your motoring conviction?
+      steps_conviction_rehabilitation_prevention_order_form:
+        rehabilitation_prevention_order: Which order were you given?
+
 
     hint:
       steps_check_kind_form:
@@ -84,6 +87,13 @@ en:
           disqualification: You were banned from driving for a certain period of time
           endorsement: You were found guilty of a motoring offence, which is now included on your driver record
           penalty_points: You were given number of penalty points for a driving offence
+        rehabilitation_prevention_order:
+          attendance_centre_order: You had to attend an attendance centre for a set number of hours
+          drug_rehabilitation: You were given treatment to help you stop taking drugs
+          reparation_order: You were given help to understand the effect your crime had on someone
+          sexual_harm_prevention_order: A court ruled that you pose a risk of causing sexual harm
+          supervision_order: A court ruled that you breached a civil injunction (previously called an ASBO)
+          youth_rehabilitation_order: You were given an order that had a requirement - for example, curfew, probation or supervision
 
     label:
       steps_check_kind_form:
@@ -160,3 +170,11 @@ en:
           disqualification: Disqualification
           endorsement: Endorsement
           penalty_points: Penalty points
+      steps_conviction_rehabilitation_prevention_order_form:
+        rehabilitation_prevention_order:
+          attendance_centre_order: Attendance centre order
+          drug_rehabilitation: Drug rehabilitation
+          reparation_order: Reparation order
+          sexual_harm_prevention_order: Sexual harm prevention order
+          supervision_order: Supervision order on breach of a civil injunction
+          youth_rehabilitation_order: Youth rehabilitation order

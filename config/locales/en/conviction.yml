@@ -47,3 +47,9 @@ en:
         edit:
           page_title: Motoring
           heading: What was your motoring conviction?
+      rehabilitation_prevention_order:
+        edit:
+          page_title: Rehabilitation Prevention Order
+          heading: Which order were you given?
+
+

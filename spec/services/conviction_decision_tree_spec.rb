@@ -80,6 +80,11 @@ RSpec.describe ConvictionDecisionTree do
       let(:type) { 'motoring' }
       it { is_expected.to have_destination(:motoring, :edit) }
     end
+
+    context 'and type is `rehabilitation_prevention' do
+      let(:type) { 'rehabilitation_or_prevention' }
+      it { is_expected.to have_destination(:rehabilitation_prevention_order, :edit) }
+    end
   end
 
   context 'when the step is `community_order`' do
@@ -109,6 +114,11 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `motoring`' do
     let(:step_params) { { motoring: 'anything' } }
+    it { is_expected.to have_destination(:exit, :show) }
+  end
+
+  context 'when the step is `rehabilitation_prevention_order`' do
+    let(:step_params) { { rehabilitation_prevention_order: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
   end
 
