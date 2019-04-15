@@ -26,6 +26,8 @@ class ConvictionDecisionTree < BaseDecisionTree
       show(:exit)
     when :motoring
       show(:exit)
+    when :rehabilitation_prevention_order
+      show(:exit)
     when :exit
       show(:exit)
     else
@@ -45,6 +47,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/PerceivedComplexity
   def after_conviction_type
     # TODO: will refactor once i have step up all the steps for each conviction type
     return edit(:community_order) if selected?(:conviction_type, value: 'community_sentence')
@@ -53,8 +56,10 @@ class ConvictionDecisionTree < BaseDecisionTree
     return edit(:financial) if selected?(:conviction_type, value: 'financial')
     return edit(:military) if selected?(:conviction_type, value: 'military')
     return edit(:motoring) if selected?(:conviction_type, value: 'motoring')
+    return edit(:rehabilitation_prevention_order) if selected?(:conviction_type, value: 'rehabilitation_or_prevention')
 
     show(:exit)
   end
   # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/PerceivedComplexity
 end
