@@ -51,5 +51,10 @@ en:
         edit:
           page_title: Rehabilitation Prevention Order
           heading: Which order were you given?
+      conviction_end_date:
+        edit:
+          page_title: conviction date
+          heading:  When did the conviction end?
+          lead_text: Date of conviction
 
 

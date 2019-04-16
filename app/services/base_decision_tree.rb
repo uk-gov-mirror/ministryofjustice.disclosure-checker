@@ -21,6 +21,10 @@ class BaseDecisionTree
     step_params.fetch(attribute_name).eql?(value)
   end
 
+  def step_value(attribute_name)
+    step_params.fetch(attribute_name)
+  end
+
   def step_name
     (as || step_params.keys.first).to_sym
   end

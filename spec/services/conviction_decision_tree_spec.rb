@@ -48,11 +48,11 @@ RSpec.describe ConvictionDecisionTree do
 
     context 'and type is `anything`' do
       let(:type) { 'anything' }
-      it { is_expected.to have_destination(:exit, :show)  }
+      it { is_expected.to have_destination(:exit, :show) }
     end
 
     context 'and type is `community_order`' do
-      let(:type) { 'community_sentence' }
+      let(:type) { 'community_order' }
       it { is_expected.to have_destination(:community_order, :edit) }
     end
 
@@ -71,6 +71,11 @@ RSpec.describe ConvictionDecisionTree do
       it { is_expected.to have_destination(:financial, :edit) }
     end
 
+    context 'and type is `hospital_order`' do
+      let(:type) { 'hospital_order' }
+      it { is_expected.to have_destination(:conviction_end_date, :edit) }
+    end
+
     context 'and type is `military`' do
       let(:type) { 'military' }
       it { is_expected.to have_destination(:military, :edit) }
@@ -82,43 +87,48 @@ RSpec.describe ConvictionDecisionTree do
     end
 
     context 'and type is `rehabilitation_prevention' do
-      let(:type) { 'rehabilitation_or_prevention' }
+      let(:type) { 'rehabilitation_prevention_order' }
       it { is_expected.to have_destination(:rehabilitation_prevention_order, :edit) }
     end
   end
 
   context 'when the step is `community_order`' do
     let(:step_params) { { community_order: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
   end
 
   context 'when the step is `custodial_sentence`' do
     let(:step_params) { { custodial_sentence: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
   end
 
   context 'when the step is `discharge`' do
-    let(:step_params) { { discharge: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    let(:step_params) { { discharge: 'absolute_discharge' } }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
   end
 
   context 'when the step is `financial`' do
     let(:step_params) { { financial: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
   end
 
   context 'when the step is `military`' do
     let(:step_params) { { military: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
   end
 
   context 'when the step is `motoring`' do
     let(:step_params) { { motoring: 'anything' } }
-    it { is_expected.to have_destination(:exit, :show) }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
   end
 
   context 'when the step is `rehabilitation_prevention_order`' do
     let(:step_params) { { rehabilitation_prevention_order: 'anything' } }
+    it { is_expected.to have_destination(:conviction_end_date, :edit) }
+  end
+
+  context 'when the step is `conviction_end_date`' do
+    let(:step_params) { { conviction_end_date: 'anything' } }
     it { is_expected.to have_destination(:exit, :show) }
   end
 
