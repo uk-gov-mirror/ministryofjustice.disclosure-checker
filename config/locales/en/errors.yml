@@ -34,6 +34,10 @@ en:
         future: The conviction date can’t be in the future
       conviction_type:
         inclusion: Select conviction type
+      conviction_end_date:
+        blank: Enter the date of the conviction
+        invalid: The conviction date is not valid
+        future: The conviction date can’t be in the future
 
     check_completed:
       page_title: Check completed

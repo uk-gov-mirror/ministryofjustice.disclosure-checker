@@ -1,7 +1,5 @@
 class ConvictionDecisionTree < BaseDecisionTree
   # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def destination
     return next_step if next_step
 
@@ -14,19 +12,9 @@ class ConvictionDecisionTree < BaseDecisionTree
       edit(:under_age_conviction)
     when :conviction_type
       after_conviction_type
-    when :community_order
-      show(:exit)
-    when :custodial_sentence
-      show(:exit)
-    when :discharge
-      show(:exit)
-    when :financial
-      show(:exit)
-    when :military
-      show(:exit)
-    when :motoring
-      show(:exit)
-    when :rehabilitation_prevention_order
+    when conviction_type?(step_name)
+      edit(:conviction_end_date)
+    when :conviction_end_date
       show(:exit)
     when :exit
       show(:exit)
@@ -35,8 +23,6 @@ class ConvictionDecisionTree < BaseDecisionTree
     end
   end
   # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   private
 
@@ -46,20 +32,14 @@ class ConvictionDecisionTree < BaseDecisionTree
     edit(:under_age_conviction)
   end
 
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/PerceivedComplexity
   def after_conviction_type
-    # TODO: will refactor once i have step up all the steps for each conviction type
-    return edit(:community_order) if selected?(:conviction_type, value: 'community_sentence')
-    return edit(:custodial_sentence) if selected?(:conviction_type, value: 'custodial_sentence')
-    return edit(:discharge) if selected?(:conviction_type, value: 'discharge')
-    return edit(:financial) if selected?(:conviction_type, value: 'financial')
-    return edit(:military) if selected?(:conviction_type, value: 'military')
-    return edit(:motoring) if selected?(:conviction_type, value: 'motoring')
-    return edit(:rehabilitation_prevention_order) if selected?(:conviction_type, value: 'rehabilitation_or_prevention')
+    return edit(:conviction_end_date) if selected?(:conviction_type, value: 'hospital_order')
+    return edit(step_value(:conviction_type).to_sym) if ConvictionType.types.include?(step_value(:conviction_type).to_sym)
 
     show(:exit)
   end
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/PerceivedComplexity
+
+  def conviction_type?(type)
+    return type if ConvictionType.types.include?(type)
+  end
 end

@@ -40,6 +40,8 @@ en:
         motoring: What was your motoring conviction?
       steps_conviction_rehabilitation_prevention_order_form:
         rehabilitation_prevention_order: Which order were you given?
+      steps_conviction_conviction_end_date_form:
+        conviction_end_date: When did the conviction end?
 
 
     hint:
@@ -53,14 +55,14 @@ en:
         conviction_date: For example, 12 11 2017
       radio_buttons:
         conviction_type:
-          community_sentence: For example, a curfew or unpaid work
+          community_order: For example, a curfew or unpaid work
           custodial_sentence: For example, a prison sentence, suspended sentence or detention
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation
           hospital_order: For example, to treat a mental health problem
           military: For example, removal from Her Majesty’s services
           motoring: For example, penalty points or disqualification
-          rehabilitation_or_prevention: For example, an attendance centre order or supervision order
+          rehabilitation_prevention_order: For example, an attendance centre order or supervision order
         community_order:
           alcohol_abstinence: You were ordered not to drink for a certain period of time
           alcohol_treatment: You were given treatment to help you stop drinking
@@ -128,14 +130,14 @@ en:
         year: Year
       steps_conviction_conviction_type_form:
         conviction_type:
-          community_sentence: Community Sentence
+          community_order: Community Sentence
           custodial_sentence: Custodial Sentence
           discharge: Discharge
           financial: Financial
           hospital_order: Hospital Order
           military: Military
           motoring: Motoring
-          rehabilitation_or_prevention: Rehabilitation or Prevention
+          rehabilitation_prevention_order: Rehabilitation or Prevention
       steps_conviction_community_order_form:
         community_order:
           alcohol_abstinence: Alcohol abstinence
@@ -178,3 +180,7 @@ en:
           sexual_harm_prevention_order: Sexual harm prevention order
           supervision_order: Supervision order on breach of a civil injunction
           youth_rehabilitation_order: Youth rehabilitation order
+      steps_conviction_conviction_end_date_form:
+        day: Day
+        month: Month
+        year: Year
