@@ -38,8 +38,8 @@ module ApplicationHelper
     )
   end
 
-  def analytics_tracking_id
-    ENV['GA_TRACKING_ID']
+  def google_tag_manager_id
+    ENV['GOOGLE_TAG_MANAGER_ID']
   end
 
   def service_name
