@@ -4,8 +4,8 @@ class ConvictionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-    when :known_conviction_date
-      after_known_conviction_date
+    when :is_date_known
+      after_is_date_known
     when :under_age_conviction
       edit(:conviction_type)
     when :known_date
@@ -26,8 +26,8 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   private
 
-  def after_known_conviction_date
-    return edit(:known_date) if GenericYesNo.new(disclosure_check.known_conviction_date).yes?
+  def after_is_date_known
+    return edit(:known_date) if GenericYesNo.new(disclosure_check.is_date_known).yes?
 
     edit(:under_age_conviction)
   end

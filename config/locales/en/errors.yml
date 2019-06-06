@@ -6,10 +6,10 @@ en:
     error_summary:
       heading: There is a problem on this page
     attributes:
-      known_caution_date:
-        inclusion: Select know caution date yes or no
       kind:
         inclusion: Select caution or conviction
+      is_date_known:
+        inclusion: Select if you know the date
       known_date:
         blank: Enter the date of the *****
         invalid: The date is not valid
@@ -24,8 +24,6 @@ en:
         inclusion: Select caution type
       condition_complied:
         inclusion: Select yes if you stuck with the conditions of the caution
-      known_conviction_date:
-        inclusion: Select know convicted date yes or no
       under_age_conviction:
         inclusion: Select under 18 or over 18
       conviction_type:

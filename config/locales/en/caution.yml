@@ -2,7 +2,7 @@
 en:
   steps:
     caution:
-      known_caution_date:
+      is_date_known:
         edit:
           page_title: Know caution date
           heading: Do you know the date you were given the caution?
@@ -48,7 +48,7 @@ en:
       answers:
         caution: Caution
         conviction: Conviction
-    known_caution_date:
+    is_date_known:
       question: Known caution date
       answers:
         'yes': 'Yes'

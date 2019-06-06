@@ -2,29 +2,32 @@ require 'rails_helper'
 
 RSpec.describe ConvictionDecisionTree do
   let(:disclosure_check) do
-    instance_double(DisclosureCheck, known_conviction_date: known_conviction_date,
-                                     conviction_type: conviction_type)
+    instance_double(
+      DisclosureCheck,
+      is_date_known: is_date_known,
+      conviction_type: conviction_type,
+    )
   end
 
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
   let(:as)               { nil }
-  let(:known_conviction_date) { nil }
-  let(:conviction_type) { nil }
+  let(:is_date_known)    { nil }
+  let(:conviction_type)  { nil }
 
   subject { described_class.new(disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step) }
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step  `known_conviction_date` equal yes' do
-    let(:known_conviction_date) { GenericYesNo::YES }
-    let(:step_params) { { known_conviction_date: known_conviction_date} }
+  context 'when the step  `is_date_known` equal yes' do
+    let(:is_date_known) { GenericYesNo::YES }
+    let(:step_params) { { is_date_known: is_date_known} }
     it { is_expected.to have_destination(:known_date, :edit) }
   end
 
-  context 'when the step `known_conviction_date` equal no' do
-    let(:known_conviction_date) { GenericYesNo::NO }
-    let(:step_params) { { known_conviction_date: known_conviction_date} }
+  context 'when the step `is_date_known` equal no' do
+    let(:is_date_known) { GenericYesNo::NO }
+    let(:step_params) { { is_date_known: is_date_known} }
     it { is_expected.to have_destination(:under_age_conviction, :edit) }
   end
 
