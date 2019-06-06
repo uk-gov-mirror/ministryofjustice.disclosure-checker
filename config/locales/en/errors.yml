@@ -1,19 +1,39 @@
 ---
 en:
+  activemodel:
+    errors:
+      models:
+        steps/caution/is_date_known_form:
+          attributes:
+            is_date_known:
+              inclusion: Select if you know the date you were given the caution
+        steps/caution/known_date_form:
+          attributes:
+            known_date:
+              blank: Enter the date of the caution
+              invalid: The date of the caution is not valid
+              future: The date of the caution can’t be in the future
+        steps/conviction/is_date_known_form:
+          attributes:
+            is_date_known:
+              inclusion: Select if you know the date you were given the conviction
+        steps/conviction/known_date_form:
+          attributes:
+            known_date:
+              blank: Enter the date of the conviction
+              invalid: The date of the conviction is not valid
+              future: The date of the conviction can’t be in the future
+
   errors:
     format: "%{message}"
     page_title_prefix: 'Error: '
     error_summary:
       heading: There is a problem on this page
     attributes:
+      # TODO: move all errors below to `activemodel.errors.models` section, so even in the case
+      # multiple forms points to the same attribute, the errors can be different for each one.
       kind:
         inclusion: Select caution or conviction
-      is_date_known:
-        inclusion: Select if you know the date
-      known_date:
-        blank: Enter the date of the *****
-        invalid: The date is not valid
-        future: The date can’t be in the future
       conditional_date:
         blank: Enter the date of the condition
         invalid: The condition date is not valid
