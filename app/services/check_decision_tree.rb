@@ -15,7 +15,7 @@ class CheckDecisionTree < BaseDecisionTree
   def after_kind_step
     case CheckKind.new(step_params[:kind])
     when CheckKind::CAUTION
-      edit('/steps/caution/known_caution_date')
+      edit('/steps/caution/is_date_known')
     when CheckKind::CONVICTION
       edit('/steps/conviction/known_conviction_date')
     end

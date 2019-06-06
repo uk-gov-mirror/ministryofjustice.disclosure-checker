@@ -6,8 +6,8 @@ en:
     error_summary:
       heading: There is a problem on this page
     attributes:
-      known_caution_date:
-        inclusion: Select know caution date yes or no
+      is_date_known:
+        inclusion: Select if you know the date
       kind:
         inclusion: Select caution or conviction
       known_date:

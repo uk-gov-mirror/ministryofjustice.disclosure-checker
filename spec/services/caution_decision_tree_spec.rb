@@ -2,13 +2,17 @@ require 'rails_helper'
 
 RSpec.describe CautionDecisionTree do
   let(:disclosure_check) do
-    instance_double(DisclosureCheck, caution_type: caution_type,
-                                     condition_complied: condition_complied,
-                                     known_caution_date: known_caution_date)
+    instance_double(
+      DisclosureCheck,
+      caution_type: caution_type,
+      condition_complied: condition_complied,
+      is_date_known: is_date_known,
+    )
   end
+
   let(:caution_type) { nil }
   let(:condition_complied) { nil }
-  let(:known_caution_date) { nil }
+  let(:is_date_known) { nil }
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
   let(:as)               { nil }
@@ -17,15 +21,15 @@ RSpec.describe CautionDecisionTree do
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step  `known_caution_date` equal yes' do
-    let(:known_caution_date) { GenericYesNo::YES }
-    let(:step_params) { { known_caution_date: known_caution_date} }
+  context 'when the step  `is_date_known` equal yes' do
+    let(:is_date_known) { GenericYesNo::YES }
+    let(:step_params) { { is_date_known: is_date_known} }
     it { is_expected.to have_destination(:known_date, :edit) }
   end
 
-  context 'when the step  `known_caution_date` equal no' do
-    let(:known_caution_date) { GenericYesNo::NO }
-    let(:step_params) { { known_caution_date: known_caution_date} }
+  context 'when the step  `is_date_known` equal no' do
+    let(:is_date_known) { GenericYesNo::NO }
+    let(:step_params) { { is_date_known: is_date_known} }
     it { is_expected.to have_destination(:under_age, :edit) }
   end
 

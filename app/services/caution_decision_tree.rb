@@ -4,8 +4,8 @@ class CautionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-    when :known_caution_date
-      after_known_caution_date
+    when :is_date_known
+      after_is_date_known
     when :known_date
       edit(:under_age)
     when :under_age
@@ -24,8 +24,8 @@ class CautionDecisionTree < BaseDecisionTree
 
   private
 
-  def after_known_caution_date
-    return edit(:known_date) if GenericYesNo.new(disclosure_check.known_caution_date).yes?
+  def after_is_date_known
+    return edit(:known_date) if GenericYesNo.new(disclosure_check.is_date_known).yes?
 
     edit(:under_age)
   end
