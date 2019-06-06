@@ -28,22 +28,22 @@ RSpec.describe ConvictionDecisionTree do
   context 'when the step `is_date_known` equal no' do
     let(:is_date_known) { GenericYesNo::NO }
     let(:step_params) { { is_date_known: is_date_known} }
-    it { is_expected.to have_destination(:under_age_conviction, :edit) }
+    it { is_expected.to have_destination(:under_age, :edit) }
   end
 
   context 'when the step is `under_age_conviction`' do
-    let(:step_params) { { under_age_conviction: 'yes' } }
+    let(:step_params) { { under_age: 'yes' } }
     it { is_expected.to have_destination(:conviction_type, :edit) }
   end
 
   context 'when the step is `under_age_conviction` equal no' do
-    let(:step_params) { { under_age_conviction: 'no' } }
+    let(:step_params) { { under_age: 'no' } }
     it { is_expected.to have_destination(:conviction_type, :edit) }
   end
 
   context 'when the step is `conviction_date` ' do
     let(:step_params) { { known_date: 'anything' } }
-    it { is_expected.to have_destination(:under_age_conviction, :edit) }
+    it { is_expected.to have_destination(:under_age, :edit) }
   end
 
   context 'when the step is `conviction_type`' do

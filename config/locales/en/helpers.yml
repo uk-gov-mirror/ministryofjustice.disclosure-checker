@@ -20,8 +20,8 @@ en:
         condition_complied: Did you stick to the conditions of the caution?
       steps_conviction_is_date_known_form:
         is_date_known: Do you know the date you were convicted?
-      steps_conviction_under_age_conviction_form:
-        under_age_conviction: Do you know the date you were convicted?
+      steps_conviction_under_age_form:
+        under_age: How old were you when you got the caution?
       steps_conviction_known_date_form:
         known_date: When did you get convicted?
       steps_conviction_conviction_type_form:
@@ -120,8 +120,8 @@ en:
           conditional_caution: Conditional caution
           youth_simple_caution: Youth Simple caution
           youth_conditional_caution: Youth Conditional caution
-      steps_conviction_under_age_conviction_form:
-        under_age_conviction:
+      steps_conviction_under_age_form:
+        under_age:
           'yes': Under 18
           'no': 18 or over
       steps_conviction_conviction_date_form:

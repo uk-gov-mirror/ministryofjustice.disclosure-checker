@@ -13,6 +13,10 @@ en:
               blank: Enter the date of the caution
               invalid: The date of the caution is not valid
               future: The date of the caution can’t be in the future
+        steps/caution/under_age_form:
+          attributes:
+            under_age:
+              inclusion: Select under 18 or over 18
         steps/conviction/is_date_known_form:
           attributes:
             is_date_known:
@@ -23,6 +27,10 @@ en:
               blank: Enter the date of the conviction
               invalid: The date of the conviction is not valid
               future: The date of the conviction can’t be in the future
+        steps/conviction/under_age_form:
+          attributes:
+            under_age:
+              inclusion: Select under 18 or over 18
 
   errors:
     format: "%{message}"
@@ -38,14 +46,10 @@ en:
         blank: Enter the date of the condition
         invalid: The condition date is not valid
         future: The condition date can’t be in the future
-      under_age:
-        inclusion: Select under 18 or over 18
       caution_type:
         inclusion: Select caution type
       condition_complied:
         inclusion: Select yes if you stuck with the conditions of the caution
-      under_age_conviction:
-        inclusion: Select under 18 or over 18
       conviction_type:
         inclusion: Select conviction type
       conviction_end_date:
