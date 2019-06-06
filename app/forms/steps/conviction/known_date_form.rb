@@ -8,6 +8,7 @@ module Steps
       acts_as_gov_uk_date :known_date
 
       validates_presence_of :known_date
+      validates :known_date, sensible_date: true
 
       private
 
