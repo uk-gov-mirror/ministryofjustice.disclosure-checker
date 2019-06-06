@@ -8,8 +8,8 @@ en:
         kind: Did you get a caution or a conviction?
       steps_caution_known_caution_date_form:
         known_caution_date: Do you know the date you were given the caution?
-      steps_caution_caution_date_form:
-        caution_date: When did you get the caution?
+      steps_caution_known_date_form:
+        known_date: When did you get the caution?
       steps_caution_conditional_end_date_form:
         conditional_end_date: When did the conditions end?
       steps_caution_under_age_form:
@@ -22,8 +22,8 @@ en:
         known_conviction_date: Do you know the date you were convicted?
       steps_conviction_under_age_conviction_form:
         under_age_conviction: Do you know the date you were convicted?
-      steps_conviction_conviction_date_form:
-        conviction_date: When did you get convicted?
+      steps_conviction_known_date_form:
+        known_date: When did you get convicted?
       steps_conviction_conviction_type_form:
         conviction_type: Which type of conviction were you given?
       steps_conviction_community_order_form:

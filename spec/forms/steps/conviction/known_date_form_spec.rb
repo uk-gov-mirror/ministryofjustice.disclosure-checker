@@ -1,17 +1,17 @@
 require 'spec_helper'
 
-RSpec.describe Steps::Conviction::ConvictionDateForm do
+RSpec.describe Steps::Conviction::KnownDateForm do
   let(:arguments) { {
     disclosure_check: disclosure_check,
-    conviction_date: conviction_date
+    known_date: known_date
   } }
   let(:disclosure_check) { instance_double(DisclosureCheck) }
-  let(:conviction_date) { 3.months.ago.to_date } # Change accordingly!
+  let(:known_date) { 3.months.ago.to_date } # Change accordingly!
 
   subject { described_class.new(arguments) }
 
   describe '#save' do
-    it { should validate_presence_of(:conviction_date) }
+    it { should validate_presence_of(:known_date) }
 
     context 'when no disclosure_check is associated with the form' do
       let(:disclosure_check) { nil }
@@ -23,7 +23,7 @@ RSpec.describe Steps::Conviction::ConvictionDateForm do
 
     context 'date validation' do
       context 'when date is not given' do
-        let(:conviction_date) { nil }
+        let(:known_date) { nil }
 
         it 'returns false' do
           expect(subject.save).to be(false)
@@ -31,7 +31,7 @@ RSpec.describe Steps::Conviction::ConvictionDateForm do
 
         it 'has a validation error on the field' do
           expect(subject).to_not be_valid
-          expect(subject.errors.added?(:conviction_date, :blank)).to eq(true)
+          expect(subject.errors.added?(:known_date, :blank)).to eq(true)
         end
       end
 
@@ -47,7 +47,7 @@ RSpec.describe Steps::Conviction::ConvictionDateForm do
     context 'when form is valid' do
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
-          conviction_date: 3.months.ago.to_date
+          known_date: 3.months.ago.to_date
         ).and_return(true)
 
         expect(subject.save).to be(true)

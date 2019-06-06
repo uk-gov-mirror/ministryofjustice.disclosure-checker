@@ -6,7 +6,7 @@ en:
         edit:
           page_title: Know caution date
           heading: Do you know the date you were given the caution?
-      caution_date:
+      known_date:
         edit:
           page_title: Caution date
           heading: When did you get the caution?
@@ -53,7 +53,7 @@ en:
       answers:
         'yes': 'Yes'
         'no': 'No'
-    caution_date:
+    known_date:
       question: 'Date caution given:'
     under_age:
       question: 'Age at time of caution:'

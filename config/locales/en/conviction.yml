@@ -6,7 +6,7 @@ en:
         edit:
           page_title: Know convicted date
           heading: Do you know the date you were convicted?
-      conviction_date:
+      known_date:
         edit:
           page_title: conviction date
           heading: When did you get convicted?
