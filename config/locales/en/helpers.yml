@@ -47,12 +47,12 @@ en:
     hint:
       steps_check_kind_form:
         kind: This is an example hint
-      steps_caution_caution_date_form:
-        caution_date: For example, 12 11 2017
+      steps_caution_known_date_form:
+        known_date: For example, 12 11 2017
       steps_caution_conditional_end_date_form:
-        caution_date: For example, 12 11 2017
-      steps_conviction_conviction_date_form:
-        conviction_date: For example, 12 11 2017
+        conditional_end_date: For example, 12 11 2017
+      steps_conviction_known_date_form:
+        known_date: For example, 12 11 2017
       radio_buttons:
         conviction_type:
           community_order: For example, a curfew or unpaid work
@@ -102,7 +102,7 @@ en:
         kind:
           caution: Caution
           conviction: Conviction
-      steps_caution_caution_date_form:
+      steps_caution_known_date_form:
         day: Day
         month: Month
         year: Year

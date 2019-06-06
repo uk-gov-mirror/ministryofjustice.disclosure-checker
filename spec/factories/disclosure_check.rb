@@ -1,14 +1,14 @@
 FactoryBot.define do
   factory :disclosure_check do
     kind { CheckKind::CAUTION }
-    caution_date { Faker::Date.backward(14).strftime('%Y-%m-%d') }
+    known_date { Faker::Date.backward(14).strftime('%Y-%m-%d') }
     under_age { 'no' }
     caution_type { CautionType::SIMPLE_CAUTION }
     is_date_known { 'yes' }
 
     trait :conviction do
       kind { CheckKind::CONVICTION }
-      caution_date { nil }
+      known_date { nil }
       under_age { nil }
       caution_type { nil }
     end
