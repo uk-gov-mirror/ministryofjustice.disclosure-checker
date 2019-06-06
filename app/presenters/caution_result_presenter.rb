@@ -17,6 +17,6 @@ class CautionResultPresenter
   end
 
   def caution_questions
-    [:kind, :known_caution_date, :caution_date, :under_age, :caution_type].freeze
+    [:kind, :known_caution_date, :known_date, :under_age, :caution_type].freeze
   end
 end

@@ -1,14 +1,14 @@
 module Steps
   module Caution
-    class CautionDateForm < BaseForm
+    class KnownDateForm < BaseForm
       include GovUkDateFields::ActsAsGovUkDate
 
-      attribute :caution_date, Date
+      attribute :known_date, Date
 
-      acts_as_gov_uk_date :caution_date
+      acts_as_gov_uk_date :known_date
 
-      validates_presence_of :caution_date
-      validates :caution_date, sensible_date: true
+      validates_presence_of :known_date
+      validates :known_date, sensible_date: true
 
       private
 
@@ -16,7 +16,7 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          caution_date: caution_date
+          known_date: known_date
         )
       end
     end

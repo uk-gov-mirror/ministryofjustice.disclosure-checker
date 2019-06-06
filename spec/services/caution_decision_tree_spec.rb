@@ -20,7 +20,7 @@ RSpec.describe CautionDecisionTree do
   context 'when the step  `known_caution_date` equal yes' do
     let(:known_caution_date) { GenericYesNo::YES }
     let(:step_params) { { known_caution_date: known_caution_date} }
-    it { is_expected.to have_destination(:caution_date, :edit) }
+    it { is_expected.to have_destination(:known_date, :edit) }
   end
 
   context 'when the step  `known_caution_date` equal no' do
@@ -30,7 +30,7 @@ RSpec.describe CautionDecisionTree do
   end
 
   context 'when the step is `caution_date`' do
-    let(:step_params) { { caution_date: 'anything' } }
+    let(:step_params) { { known_date: 'anything' } }
     it { is_expected.to have_destination(:under_age, :edit) }
   end
 

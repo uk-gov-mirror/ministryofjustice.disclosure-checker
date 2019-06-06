@@ -1,13 +1,13 @@
 module Steps
   module Conviction
-    class ConvictionDateForm < BaseForm
+    class KnownDateForm < BaseForm
       include GovUkDateFields::ActsAsGovUkDate
 
-      attribute :conviction_date, Date
+      attribute :known_date, Date
 
-      acts_as_gov_uk_date :conviction_date
+      acts_as_gov_uk_date :known_date
 
-      validates_presence_of :conviction_date
+      validates_presence_of :known_date
 
       private
 
@@ -15,7 +15,7 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          conviction_date: conviction_date
+          known_date: known_date
         )
       end
     end

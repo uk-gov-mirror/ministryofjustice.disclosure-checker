@@ -10,10 +10,10 @@ en:
         inclusion: Select know caution date yes or no
       kind:
         inclusion: Select caution or conviction
-      caution_date:
-        blank: Enter the date of the caution
-        invalid: The caution date is not valid
-        future: The caution date can’t be in the future
+      known_date:
+        blank: Enter the date of the *****
+        invalid: The date is not valid
+        future: The date can’t be in the future
       conditional_date:
         blank: Enter the date of the condition
         invalid: The condition date is not valid
@@ -28,10 +28,6 @@ en:
         inclusion: Select know convicted date yes or no
       under_age_conviction:
         inclusion: Select under 18 or over 18
-      conviction_date:
-        blank: Enter the date of the conviction
-        invalid: The conviction date is not valid
-        future: The conviction date can’t be in the future
       conviction_type:
         inclusion: Select conviction type
       conviction_end_date:

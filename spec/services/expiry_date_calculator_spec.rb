@@ -7,7 +7,7 @@ RSpec.describe ExpiryDateCalculator do
     context 'End date is date of caution' do
       let(:disclosure_check) { build(:disclosure_check) }
       it 'returns caution_date' do
-        expect(subject).to eq(disclosure_check.caution_date)
+        expect(subject).to eq(disclosure_check.known_date)
       end
     end
 
