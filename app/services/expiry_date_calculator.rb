@@ -21,7 +21,7 @@ class ExpiryDateCalculator
   end
 
   def caution_result
-    return disclosure_check.known_date if GenericYesNo.new(disclosure_check.is_date_known).yes?
+    return disclosure_check.known_date unless disclosure_check.known_date.nil?
 
     I18n.t('caution_result')
   end

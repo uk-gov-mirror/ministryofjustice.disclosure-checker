@@ -4,14 +4,12 @@ class CautionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-    when :is_date_known
-      after_is_date_known
-    when :known_date
-      edit(:under_age)
     when :under_age
-      edit(:caution_type)
+      after_under_age
     when :caution_type
       after_caution_type
+    when :known_date
+      result
     when :conditional_end_date
       edit(:condition_complied)
     when :condition_complied
@@ -24,16 +22,16 @@ class CautionDecisionTree < BaseDecisionTree
 
   private
 
-  def after_is_date_known
-    return edit(:known_date) if GenericYesNo.new(disclosure_check.is_date_known).yes?
+  def after_under_age
+    return edit(:caution_type) if GenericYesNo.new(disclosure_check.under_age).yes?
 
-    edit(:under_age)
+    show('/steps/conviction/exit')
   end
 
   def after_caution_type
     return edit(:conditional_end_date) if CautionType.new(disclosure_check.caution_type).conditional?
 
-    result
+    edit(:known_date)
   end
 
   def after_condition_complied
