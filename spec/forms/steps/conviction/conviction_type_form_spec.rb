@@ -22,7 +22,7 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
         hospital_order
         military
         motoring
-        rehabilitation_prevention_order
+        rehab_prev_order
       ))
     end
   end

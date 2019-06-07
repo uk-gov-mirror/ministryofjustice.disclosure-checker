@@ -62,7 +62,7 @@ en:
           hospital_order: For example, to treat a mental health problem
           military: For example, removal from Her Majesty’s services
           motoring: For example, penalty points or disqualification
-          rehabilitation_prevention_order: For example, an attendance centre order or supervision order
+          rehab_prev_order: For example, an attendance centre order or supervision order
         community_order:
           alcohol_abstinence: You were ordered not to drink for a certain period of time
           alcohol_treatment: You were given treatment to help you stop drinking
@@ -137,7 +137,7 @@ en:
           hospital_order: Hospital Order
           military: Military
           motoring: Motoring
-          rehabilitation_prevention_order: Rehabilitation or Prevention
+          rehab_prev_order: Rehabilitation or Prevention
       steps_conviction_community_order_form:
         community_order:
           alcohol_abstinence: Alcohol abstinence
