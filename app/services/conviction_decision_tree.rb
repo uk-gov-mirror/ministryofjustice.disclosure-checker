@@ -8,7 +8,7 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_under_age
     when :conviction_type
       after_conviction_type
-    when conviction_type?(step_name)
+    when :conviction_subtype
       edit(:conviction_end_date)
     when :conviction_end_date
       show(:exit)
@@ -29,13 +29,12 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_conviction_type
-    return edit(:conviction_end_date) if selected?(:conviction_type, value: 'hospital_order')
-    return edit(step_value(:conviction_type).to_sym) if ConvictionType.types.include?(step_value(:conviction_type).to_sym)
+    return edit(:conviction_subtype) if conviction.children.any?
 
-    show(:exit)
+    edit(:conviction_end_date)
   end
 
-  def conviction_type?(type)
-    return type if ConvictionType.types.include?(type)
+  def conviction
+    ConvictionType.new(step_value(:conviction_type))
   end
 end

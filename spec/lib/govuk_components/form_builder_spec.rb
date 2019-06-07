@@ -45,6 +45,7 @@ RSpec.describe GovukComponents::FormBuilder do
     let(:html_output) do
       builder.radio_button_fieldset attribute.to_sym, options
     end
+
     context 'no errors' do
       let(:html_fixture) { file_fixture('radio_button_fieldset.html').read }
 
@@ -59,23 +60,35 @@ RSpec.describe GovukComponents::FormBuilder do
       it 'does not contains radio label' do
         expect(
           strip_text(html_output)
-        ).not_to include('govuk-hint govuk-radios__hint')
+        ).not_to match(/govuk-hint govuk-radios__hint/)
       end
     end
 
     context 'radio with hints' do
-      let(:attribute) { 'conviction_type' }
-      let(:form) { 'steps_conviction_conviction_type_form' }
+      let(:attribute) { 'under_age' }
+      let(:form) { 'my_form' }
       let(:radio_hint) { true }
-      let(:choices) { ConvictionType.string_values }
-      let(:html_fixture) { file_fixture('radio_button_fieldset_legend_options.html').read }
+      let(:choices) { [:yes, :no] }
 
       it 'contains radio label' do
         expect(
           strip_text(html_output)
-        ).to include('govuk-hint govuk-radios__hint')
-      end
+        ).to match(/<span class="govuk-hint govuk-radios__hint" id="my_form_under_age_yes_hint">/)
 
+        expect(
+          strip_text(html_output)
+        ).to match(/<span class="govuk-hint govuk-radios__hint" id="my_form_under_age_no_hint">/)
+      end
+    end
+
+    context 'page_heading with a virtual attribute' do
+      let(:legend_options) { { virtual_attribute: 'example_attribute' } }
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to match(/<h1 class="govuk-fieldset__heading">Example attribute<\/h1>/)
+      end
     end
 
     context 'page_heading set to false' do

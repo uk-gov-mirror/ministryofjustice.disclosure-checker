@@ -17,10 +17,6 @@ class BaseDecisionTree
 
   private
 
-  def selected?(attribute_name, value: 'yes')
-    step_params.fetch(attribute_name).eql?(value)
-  end
-
   def step_value(attribute_name)
     step_params.fetch(attribute_name)
   end

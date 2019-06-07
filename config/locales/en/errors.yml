@@ -31,6 +31,14 @@ en:
           attributes:
             under_age:
               inclusion: Select under 18 or over 18
+        steps/conviction/conviction_type_form:
+          attributes:
+            conviction_type:
+              inclusion: Select the conviction type you were given
+        steps/conviction/conviction_subtype_form:
+          attributes:
+            conviction_subtype:
+              inclusion: Select an option from the list
 
   errors:
     format: "%{message}"
@@ -50,8 +58,6 @@ en:
         inclusion: Select caution type
       condition_complied:
         inclusion: Select yes if you stuck with the conditions of the caution
-      conviction_type:
-        inclusion: Select conviction type
       conviction_end_date:
         blank: Enter the date of the conviction
         invalid: The conviction date is not valid
