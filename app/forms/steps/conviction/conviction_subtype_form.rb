@@ -16,7 +16,7 @@ module Steps
       private
 
       def conviction_subtypes
-        ::Conviction.new(conviction_type).children
+        ConvictionType.new(conviction_type).children
       end
 
       def persist!

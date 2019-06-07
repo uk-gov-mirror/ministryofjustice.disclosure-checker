@@ -35,6 +35,6 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def conviction
-    Conviction.new(step_value(:conviction_type))
+    ConvictionType.new(step_value(:conviction_type))
   end
 end

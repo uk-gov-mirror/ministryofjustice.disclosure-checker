@@ -4,7 +4,7 @@ module Steps
       attribute :conviction_type, String
 
       def self.choices
-        ::Conviction::PARENT_TYPES.map(&:to_s)
+        ConvictionType::PARENT_TYPES.map(&:to_s)
       end
       validates_inclusion_of :conviction_type, in: choices
 
