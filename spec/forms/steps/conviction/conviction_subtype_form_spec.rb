@@ -1,0 +1,55 @@
+require 'spec_helper'
+
+RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
+  let(:arguments) do
+    {
+      disclosure_check: disclosure_check,
+      conviction_subtype: conviction_subtype,
+    }
+  end
+
+  let(:disclosure_check) {
+    instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: conviction_subtype)
+  }
+
+  let(:conviction_type) { 'community_order' } # any conviction with children will do
+  let(:conviction_subtype) { nil }
+
+  subject { described_class.new(arguments) }
+
+  describe '#choices' do
+    it 'returns the relevant choices (children of the conviction type)' do
+      expect(subject.choices).to eq(%w(
+        alcohol_abstinence
+        alcohol_treatment
+        behavioural_change_prog
+        curfew
+        drug_rehabilitation
+        exclusion_requirement
+        foreign_travel_prohibition
+        mental_health_treatment
+        prohibition
+        referral_order
+        rehab_activity_requirement
+        residence_requirement
+        unpaid_work
+      ))
+    end
+  end
+
+  describe '#save' do
+    it_behaves_like 'a value object form', attribute_name: :conviction_subtype, example_value: 'alcohol_abstinence'
+
+    context 'when form is valid' do
+      let(:conviction_subtype) { 'alcohol_abstinence' }
+
+      it 'saves the record' do
+        expect(disclosure_check).to receive(:update).with(
+          conviction_subtype: conviction_subtype
+        ).and_return(true)
+
+        expect(subject.save).to be(true)
+      end
+    end
+  end
+end
