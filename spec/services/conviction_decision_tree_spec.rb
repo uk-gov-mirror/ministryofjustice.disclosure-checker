@@ -4,13 +4,14 @@ RSpec.describe ConvictionDecisionTree do
   let(:disclosure_check) do
     instance_double(
       DisclosureCheck,
-      is_date_known: is_date_known,
+      under_age: under_age,
       conviction_type: conviction_type,
     )
   end
 
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
+  let(:under_age)        { nil }
   let(:as)               { nil }
   let(:is_date_known)    { nil }
   let(:conviction_type)  { nil }
@@ -19,31 +20,21 @@ RSpec.describe ConvictionDecisionTree do
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step  `is_date_known` equal yes' do
-    let(:is_date_known) { GenericYesNo::YES }
-    let(:step_params) { { is_date_known: is_date_known} }
-    it { is_expected.to have_destination(:known_date, :edit) }
-  end
-
-  context 'when the step `is_date_known` equal no' do
-    let(:is_date_known) { GenericYesNo::NO }
-    let(:step_params) { { is_date_known: is_date_known} }
-    it { is_expected.to have_destination(:under_age, :edit) }
-  end
-
   context 'when the step is `under_age_conviction`' do
-    let(:step_params) { { under_age: 'yes' } }
+    let(:under_age)  { GenericYesNo::YES }
+    let(:step_params) { { under_age: under_age } }
     it { is_expected.to have_destination(:conviction_type, :edit) }
   end
 
   context 'when the step is `under_age_conviction` equal no' do
-    let(:step_params) { { under_age: 'no' } }
-    it { is_expected.to have_destination(:conviction_type, :edit) }
+    let(:under_age)  { GenericYesNo::NO }
+    let(:step_params) { { under_age: under_age } }
+    it { is_expected.to have_destination(:exit, :show) }
   end
 
   context 'when the step is `conviction_date` ' do
-    let(:step_params) { { known_date: 'anything' } }
-    it { is_expected.to have_destination(:under_age, :edit) }
+    let(:step_params) { { conviction_end_date: 'anything' } }
+    it { is_expected.to have_destination(:exit, :show) }
   end
 
   context 'when the step is `conviction_type`' do
