@@ -21,7 +21,7 @@ en:
       steps_conviction_is_date_known_form:
         is_date_known: Do you know the date you were convicted?
       steps_conviction_under_age_form:
-        under_age: How old were you when you got the caution?
+        under_age: How old were you when you got convicted?
       steps_conviction_known_date_form:
         known_date: When did you get convicted?
       steps_conviction_conviction_type_form:

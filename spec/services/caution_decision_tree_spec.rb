@@ -7,12 +7,14 @@ RSpec.describe CautionDecisionTree do
       caution_type: caution_type,
       condition_complied: condition_complied,
       is_date_known: is_date_known,
+      under_age: under_age
     )
   end
 
   let(:caution_type) { nil }
   let(:condition_complied) { nil }
   let(:is_date_known) { nil }
+  let(:under_age) { nil }
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
   let(:as)               { nil }
@@ -21,32 +23,27 @@ RSpec.describe CautionDecisionTree do
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step  `is_date_known` equal yes' do
-    let(:is_date_known) { GenericYesNo::YES }
-    let(:step_params) { { is_date_known: is_date_known} }
-    it { is_expected.to have_destination(:known_date, :edit) }
-  end
-
-  context 'when the step  `is_date_known` equal no' do
-    let(:is_date_known) { GenericYesNo::NO }
-    let(:step_params) { { is_date_known: is_date_known} }
-    it { is_expected.to have_destination(:under_age, :edit) }
-  end
-
   context 'when the step is `caution_date`' do
     let(:step_params) { { known_date: 'anything' } }
-    it { is_expected.to have_destination(:under_age, :edit) }
+    it { is_expected.to have_destination(:result, :show) }
   end
 
-  context 'when the step is `under_age`' do
-    let(:step_params) { { under_age: 'yes' } }
+  context 'when the step is `under_age` is equal to yes' do
+    let(:under_age)  { GenericYesNo::YES }
+    let(:step_params) { { under_age: under_age } }
     it { is_expected.to have_destination(:caution_type, :edit) }
+  end
+
+   context 'when the step is `under_age` is equal to no' do
+    let(:under_age)  { GenericYesNo::NO }
+    let(:step_params) { { under_age: under_age } }
+    it { is_expected.to have_destination('/steps/conviction/exit', :show) }
   end
 
   context 'when the step is `caution_type` does not equal conditional' do
     let(:caution_type)  { CautionType::SIMPLE_CAUTION }
     let(:step_params) { { caution_type: caution_type } }
-    it { is_expected.to have_destination(:result, :show) }
+    it { is_expected.to have_destination(:known_date, :edit) }
   end
 
   context 'when the step is `caution_type` is equal to conditional' do
