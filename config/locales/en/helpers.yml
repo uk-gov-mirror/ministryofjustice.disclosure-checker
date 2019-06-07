@@ -26,6 +26,8 @@ en:
         known_date: When did you get convicted?
       steps_conviction_conviction_type_form:
         conviction_type: Which type of conviction were you given?
+      steps_conviction_conviction_subtype_form:
+        conviction_subtype: TBD
       steps_conviction_community_order_form:
         community_order: What was your community order
       steps_conviction_custodial_sentence_form:
@@ -63,10 +65,10 @@ en:
           military: For example, removal from Her Majesty’s services
           motoring: For example, penalty points or disqualification
           rehab_prev_order: For example, an attendance centre order or supervision order
-        community_order:
+        conviction_subtype:
           alcohol_abstinence: You were ordered not to drink for a certain period of time
           alcohol_treatment: You were given treatment to help you stop drinking
-          behavioural_change_programme: You were helped to change any dangerous or unwanted behaviour
+          behavioural_change_prog: You were helped to change any dangerous or unwanted behaviour
           curfew: You were ordered to remain in a specified place for a certain period of time
           drug_rehabilitation: You were ordered to receive to treatment during a specified time to reduce dependancy on drugs
           exclusion_requirement: You were ordered to stay away from a certain place or area
@@ -74,7 +76,7 @@ en:
           mental_health_treatment: You were given treatment for a mental health issue (for example cognitive behavioural treatment)
           prohibition: You were banned from doing something, such as watching football or using the internet
           referral_order: You were refferred to trained community volunteers and a member of the youth offending team
-          rehabilitation_activity_requirement: You were given appointments and activities to help support your rehabilitation
+          rehab_activity_requirement: You were given appointments and activities to help support your rehabilitation
           residence_requirement: You were ordered to live in a specific place for a certain length of time
           unpaid_work: You were ordered to do community work without being paid
         custodial_sentence:
@@ -138,11 +140,11 @@ en:
           military: Military
           motoring: Motoring
           rehab_prev_order: Rehabilitation or Prevention
-      steps_conviction_community_order_form:
-        community_order:
+      steps_conviction_conviction_subtype_form:
+        conviction_subtype:
           alcohol_abstinence: Alcohol abstinence
           alcohol_treatment: Alcohol treatment
-          behavioural_change_programme: Behavioural change programme
+          behavioural_change_prog: Behavioural change programme
           curfew: Curfew
           drug_rehabilitation: Drug rehabilitation
           exclusion_requirement: Exclusion requirement
@@ -150,7 +152,7 @@ en:
           mental_health_treatment: Mental health treatment
           prohibition: Prohibition
           referral_order: Referral order
-          rehabilitation_activity_requirement: Rehabilitation activity requirement
+          rehab_activity_requirement: Rehabilitation activity requirement
           residence_requirement: Residence requirement
           unpaid_work: Unpaid work
       steps_conviction_discharge_form:

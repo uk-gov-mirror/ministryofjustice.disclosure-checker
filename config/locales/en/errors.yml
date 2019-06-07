@@ -35,6 +35,10 @@ en:
           attributes:
             conviction_type:
               inclusion: Select the conviction type you were given
+        steps/conviction/conviction_subtype_form:
+          attributes:
+            conviction_subtype:
+              inclusion: Select an option from the list
 
   errors:
     format: "%{message}"
