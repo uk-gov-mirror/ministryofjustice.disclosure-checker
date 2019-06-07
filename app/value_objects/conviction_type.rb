@@ -1,4 +1,5 @@
 class ConvictionType < ValueObject
+  # :nocov:
   VALUES = [
     COMMUNITY_ORDER = new(:community_order),
     CUSTODIAL_SENTENCE = new(:custodial_sentence),
@@ -17,4 +18,5 @@ class ConvictionType < ValueObject
   def self.types
     VALUES.map(&:value)
   end
+  # :nocov:
 end

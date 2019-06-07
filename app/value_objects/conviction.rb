@@ -6,6 +6,7 @@ class Conviction < ValueObject
     super(raw_value)
   end
 
+  # :nocov:
   VALUES = [
     PARENT_TYPES = [
       COMMUNITY_ORDER    = new(:community_order),
@@ -32,10 +33,13 @@ class Conviction < ValueObject
     RESIDENCE_REQUIREMENT      = new(:residence_requirement,      parent: COMMUNITY_ORDER),
     UNPAID_WORK                = new(:unpaid_work,                parent: COMMUNITY_ORDER),
   ].flatten.freeze
+  # :nocov:
 
+  # :nocov:
   def self.values
     VALUES
   end
+  # :nocov:
 
   def children
     VALUES.select { |value| value.parent.eql?(self) }
