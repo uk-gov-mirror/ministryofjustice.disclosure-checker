@@ -75,7 +75,16 @@ RSpec.describe GovukComponents::FormBuilder do
           strip_text(html_output)
         ).to include('govuk-hint govuk-radios__hint')
       end
+    end
 
+    context 'page_heading with a virtual attribute' do
+      let(:legend_options) { { virtual_attribute: 'example_attribute' } }
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to match(/<h1 class="govuk-fieldset__heading">Example attribute<\/h1>/)
+      end
     end
 
     context 'page_heading set to false' do

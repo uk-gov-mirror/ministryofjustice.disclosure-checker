@@ -53,9 +53,12 @@ module GovukComponents
       )
     end
 
+    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
     def fieldset_legend(attribute, options)
       default_attrs = { class: 'govuk-fieldset__legend' }.freeze
-      default_opts  = { visually_hidden: false, page_heading: true, size: 'xl' }.freeze
+      default_opts  = {
+        visually_hidden: false, page_heading: true, size: 'xl', virtual_attribute: nil
+      }.freeze
 
       legend_options = merge_attributes(
         options[:legend_options],
@@ -69,6 +72,12 @@ module GovukComponents
       legend_options[:class] << " govuk-fieldset__legend--#{opts[:size]}"
       legend_options[:class] << ' govuk-visually-hidden' if opts[:visually_hidden]
 
+      # If a form view is reused but the attribute doesn't change (for example in
+      # partials) a `virtual_attribute` can be passed to the `legend_options` to
+      # lookup the legend locales based on this, instead of the original attribute
+      #
+      attribute = opts[:virtual_attribute] || attribute
+
       # The `page_heading` option can be false to disable "Legends as page headings"
       # https://design-system.service.gov.uk/get-started/labels-legends-headings/
       #
@@ -81,6 +90,7 @@ module GovukComponents
         content_tag(:legend, fieldset_text(attribute), legend_options)
       end
     end
+    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
     def radio_inputs(attribute, options)
       choices = options[:choices] || [:yes, :no]

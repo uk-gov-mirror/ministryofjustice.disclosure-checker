@@ -10,7 +10,8 @@
         <%= error_summary %>
 
         <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :conviction_subtype, choices: @form_object.choices, radio_hint: true %>
+          <%= f.radio_button_fieldset :conviction_subtype, choices: @form_object.choices, radio_hint: true,
+                                      legend_options: { virtual_attribute: @form_object.conviction_type } %>
           <%= f.continue_button %>
         <% end %>
       </div>

@@ -9,10 +9,14 @@ module Steps
         conviction_subtypes.map(&:to_s)
       end
 
+      def conviction_type
+        disclosure_check.conviction_type
+      end
+
       private
 
       def conviction_subtypes
-        ::Conviction.new(disclosure_check.conviction_type).children
+        ::Conviction.new(conviction_type).children
       end
 
       def persist!

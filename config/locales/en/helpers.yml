@@ -27,8 +27,6 @@ en:
       steps_conviction_conviction_type_form:
         conviction_type: Which type of conviction were you given?
       steps_conviction_conviction_subtype_form:
-        conviction_subtype: TBD
-      steps_conviction_community_order_form:
         community_order: What was your community order
       steps_conviction_custodial_sentence_form:
         custodial_sentence: What was your custodial sentence?
