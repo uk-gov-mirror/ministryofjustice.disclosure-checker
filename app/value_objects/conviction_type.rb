@@ -39,6 +39,9 @@ class ConvictionType < ValueObject
     ABSOLUTE_DISCHARGE         = new(:absolute_discharge,         parent: DISCHARGE),
     BIND_OVER                  = new(:bind_over,                  parent: DISCHARGE),
     CONDITIONAL_DISCHARGE      = new(:conditional_discharge,      parent: DISCHARGE),
+
+    PENALTY_FINE               = new(:penalty_fine,               parent: FINANCIAL),
+    COMPENSATION_TO_A_VICTIM   = new(:compensation_to_a_victim,   parent: FINANCIAL),
   ].flatten.freeze
 
   # :nocov:
