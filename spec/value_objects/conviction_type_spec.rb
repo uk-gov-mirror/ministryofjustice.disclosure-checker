@@ -77,5 +77,17 @@ RSpec.describe ConvictionType do
         ))
       end
     end
+
+    context 'Motoring endorsement' do
+      let(:conviction_type) { :motoring }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+          disqualification
+          endorsement
+          penalty_points
+        ))
+      end
+    end
   end
 end

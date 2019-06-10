@@ -42,6 +42,10 @@ class ConvictionType < ValueObject
 
     PENALTY_FINE               = new(:penalty_fine,               parent: FINANCIAL),
     COMPENSATION_TO_A_VICTIM   = new(:compensation_to_a_victim,   parent: FINANCIAL),
+
+    DISQUALIFICATION           = new(:disqualification,           parent: MOTORING),
+    ENDORSEMENT                = new(:endorsement,                parent: MOTORING),
+    PENALTY_POINTS             = new(:penalty_points,             parent: MOTORING),
   ].flatten.freeze
 
   # :nocov:
