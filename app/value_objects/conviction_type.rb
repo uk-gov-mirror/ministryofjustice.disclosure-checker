@@ -12,10 +12,8 @@ class ConvictionType < ValueObject
       CUSTODIAL_SENTENCE = new(:custodial_sentence),
       DISCHARGE          = new(:discharge),
       FINANCIAL          = new(:financial),
-      HOSPITAL_ORDER     = new(:hospital_order),
-      MILITARY           = new(:military),
       MOTORING           = new(:motoring),
-      REHAB_PREV_ORDER   = new(:rehab_prev_order),
+      HOSPITAL_ORDER     = new(:hospital_order),
     ].freeze,
 
     ALCOHOL_ABSTINENCE         = new(:alcohol_abstinence,         parent: COMMUNITY_ORDER),
