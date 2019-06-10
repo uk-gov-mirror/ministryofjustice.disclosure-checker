@@ -66,5 +66,16 @@ RSpec.describe ConvictionType do
         ))
       end
     end
+
+    context 'Financial penalty' do
+      let(:conviction_type) { :financial }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+          penalty_fine
+          compensation_to_a_victim
+        ))
+      end
+    end
   end
 end
