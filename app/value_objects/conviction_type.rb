@@ -31,6 +31,10 @@ class ConvictionType < ValueObject
     REHAB_ACTIVITY_REQUIREMENT = new(:rehab_activity_requirement, parent: COMMUNITY_ORDER),
     RESIDENCE_REQUIREMENT      = new(:residence_requirement,      parent: COMMUNITY_ORDER),
     UNPAID_WORK                = new(:unpaid_work,                parent: COMMUNITY_ORDER),
+
+    DETENTION_TRAINING_ORDER   = new(:detention_training_order,   parent: CUSTODIAL_SENTENCE),
+    PRISON_SENTENCE            = new(:prison_sentence,            parent: CUSTODIAL_SENTENCE),
+    SUSPENDED_PRISON_SENTENCE  = new(:suspended_prison_sentence,  parent: CUSTODIAL_SENTENCE),
   ].flatten.freeze
 
   # :nocov:

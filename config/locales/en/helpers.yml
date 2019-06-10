@@ -25,10 +25,9 @@ en:
       steps_conviction_known_date_form:
         known_date: When did you get convicted?
       steps_conviction_conviction_type_form:
-        conviction_type: Which type of conviction were you given?
+        conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
-        community_order: What was your community order
-      steps_conviction_custodial_sentence_form:
+        community_order: What was your community order?
         custodial_sentence: What was your custodial sentence?
       steps_conviction_discharge_form:
         discharge: Which discharge were you given?
@@ -55,7 +54,7 @@ en:
         known_date: For example, 12 11 2017
       radio_buttons:
         conviction_type:
-          community_order: For example, a curfew or unpaid work
+          community_order: For example, curfew or unpaid work
           custodial_sentence: For example, a prison sentence, suspended sentence or detention
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation
@@ -64,6 +63,7 @@ en:
           motoring: For example, penalty points or disqualification
           rehab_prev_order: For example, an attendance centre order or supervision order
         conviction_subtype:
+          # community_order
           alcohol_abstinence: You were ordered not to drink for a certain period of time
           alcohol_treatment: You were given treatment to help you stop drinking
           behavioural_change_prog: You were helped to change any dangerous or unwanted behaviour
@@ -77,10 +77,10 @@ en:
           rehab_activity_requirement: You were given appointments and activities to help support your rehabilitation
           residence_requirement: You were ordered to live in a specific place for a certain length of time
           unpaid_work: You were ordered to do community work without being paid
-        custodial_sentence:
-          detention_and_training_order: Detention and training order (DTO)
-          prision_sentence: Prision sentence
-          suspended_prision_sentence: Suspended prision sentence
+          # custodial_sentence
+          detention_training_order: ""
+          prison_sentence: ""
+          suspended_prison_sentence: ""
         discharge:
           absolute_discharge: You were found guilty of a crime but you did not given get a conviction
           bind_over: Your sentence was postponed as long as you kept to certain
@@ -130,8 +130,8 @@ en:
         year: Year
       steps_conviction_conviction_type_form:
         conviction_type:
-          community_order: Community Sentence
-          custodial_sentence: Custodial Sentence
+          community_order: Community order
+          custodial_sentence: Custodial sentence
           discharge: Discharge
           financial: Financial
           hospital_order: Hospital Order
@@ -140,6 +140,7 @@ en:
           rehab_prev_order: Rehabilitation or Prevention
       steps_conviction_conviction_subtype_form:
         conviction_subtype:
+          # community_order
           alcohol_abstinence: Alcohol abstinence
           alcohol_treatment: Alcohol treatment
           behavioural_change_prog: Behavioural change programme
@@ -153,6 +154,10 @@ en:
           rehab_activity_requirement: Rehabilitation activity requirement
           residence_requirement: Residence requirement
           unpaid_work: Unpaid work
+          # custodial_sentence
+          detention_training_order: Detention and training order
+          prison_sentence: Prison sentence
+          suspended_prison_sentence: Suspended prison sentence
       steps_conviction_discharge_form:
         discharge:
           absolute_discharge: Absolute discharge
