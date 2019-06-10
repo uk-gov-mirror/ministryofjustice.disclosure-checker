@@ -31,10 +31,9 @@ en:
         custodial_sentence: What was your custodial sentence?
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
+        motoring: What was your motoring conviction?
       steps_conviction_military_form:
         military: What was your military conviction?
-      steps_conviction_motoring_form:
-        motoring: What was your motoring conviction?
       steps_conviction_rehabilitation_prevention_order_form:
         rehabilitation_prevention_order: Which order were you given?
       steps_conviction_conviction_end_date_form:
@@ -57,7 +56,7 @@ en:
           financial: For example, paying a fine or compensation
           hospital_order: For example, to treat a mental health problem
           military: For example, removal from Her Majesty’s services
-          motoring: For example, penalty points or disqualification
+          motoring: For example you were given penalty points or a disqualification at court
           rehab_prev_order: For example, an attendance centre order or supervision order
         conviction_subtype:
           # community_order
@@ -85,7 +84,7 @@ en:
           # financial
           penalty_fine: ""
           compensation_to_a_victim: ""
-        motoring:
+          # motoring
           disqualification: You were banned from driving for a certain period of time
           endorsement: You were found guilty of a motoring offence, which is now included on your driver record
           penalty_points: You were given number of penalty points for a driving offence
@@ -136,7 +135,7 @@ en:
           financial: Financial
           hospital_order: Hospital Order
           military: Military
-          motoring: Motoring
+          motoring: Motoring endorsement
           rehab_prev_order: Rehabilitation or Prevention
       steps_conviction_conviction_subtype_form:
         conviction_subtype:
@@ -165,16 +164,15 @@ en:
           # financial
           penalty_fine: A fine
           compensation_to_a_victim: Compensation to a victim
+          # motoring
+          disqualification: Disqualification
+          endorsement: Endorsement
+          penalty_points: Penalty points
       steps_conviction_military_form:
         military:
           military_disposal: Military disposal
           removal_from_hms: Removal from her majesty’s services
           service_detention: Service Detention
-      steps_conviction_motoring_form:
-        motoring:
-          disqualification: Disqualification
-          endorsement: Endorsement
-          penalty_points: Penalty points
       steps_conviction_rehabilitation_prevention_order_form:
         rehabilitation_prevention_order:
           attendance_centre_order: Attendance centre order
