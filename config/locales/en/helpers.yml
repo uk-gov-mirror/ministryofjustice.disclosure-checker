@@ -29,8 +29,7 @@ en:
       steps_conviction_conviction_subtype_form:
         community_order: What was your community order?
         custodial_sentence: What was your custodial sentence?
-      steps_conviction_discharge_form:
-        discharge: Which discharge were you given?
+        discharge: What discharge were you given?
       steps_conviction_financial_form:
         financial: What were you ordered to pay?
       steps_conviction_military_form:
@@ -41,7 +40,6 @@ en:
         rehabilitation_prevention_order: Which order were you given?
       steps_conviction_conviction_end_date_form:
         conviction_end_date: When did the conviction end?
-
 
     hint:
       steps_check_kind_form:
@@ -81,10 +79,10 @@ en:
           detention_training_order: ""
           prison_sentence: ""
           suspended_prison_sentence: ""
-        discharge:
-          absolute_discharge: You were found guilty of a crime but you did not given get a conviction
-          bind_over: Your sentence was postponed as long as you kept to certain
-          conditional_discharge_order: You were not sentenced for a crime, as long as you did not commit another crim within a certain period of time.
+          # discharge
+          absolute_discharge: You were found guilty of a crime but did not get sentenced
+          bind_over: Your sentence was postponed as long as you stuck to certain conditions
+          conditional_discharge: You were not sentenced, as long as you didn't commit another crime
         motoring:
           disqualification: You were banned from driving for a certain period of time
           endorsement: You were found guilty of a motoring offence, which is now included on your driver record
@@ -158,11 +156,10 @@ en:
           detention_training_order: Detention and training order
           prison_sentence: Prison sentence
           suspended_prison_sentence: Suspended prison sentence
-      steps_conviction_discharge_form:
-        discharge:
+          # discharge
           absolute_discharge: Absolute discharge
           bind_over: Bind over
-          conditional_discharge_order: Conditional discharge order
+          conditional_discharge: Conditional discharge
       steps_conviction_financial_form:
         financial:
           fine: A fine

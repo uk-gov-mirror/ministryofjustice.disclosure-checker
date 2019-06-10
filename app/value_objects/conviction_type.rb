@@ -35,6 +35,10 @@ class ConvictionType < ValueObject
     DETENTION_TRAINING_ORDER   = new(:detention_training_order,   parent: CUSTODIAL_SENTENCE),
     PRISON_SENTENCE            = new(:prison_sentence,            parent: CUSTODIAL_SENTENCE),
     SUSPENDED_PRISON_SENTENCE  = new(:suspended_prison_sentence,  parent: CUSTODIAL_SENTENCE),
+
+    ABSOLUTE_DISCHARGE         = new(:absolute_discharge,         parent: DISCHARGE),
+    BIND_OVER                  = new(:bind_over,                  parent: DISCHARGE),
+    CONDITIONAL_DISCHARGE      = new(:conditional_discharge,      parent: DISCHARGE),
   ].flatten.freeze
 
   # :nocov:

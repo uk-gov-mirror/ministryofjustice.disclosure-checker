@@ -54,5 +54,17 @@ RSpec.describe ConvictionType do
         ))
       end
     end
+
+    context 'Discharge' do
+      let(:conviction_type) { :discharge }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+          absolute_discharge
+          bind_over
+          conditional_discharge
+        ))
+      end
+    end
   end
 end
