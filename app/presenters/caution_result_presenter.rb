@@ -13,7 +13,7 @@ class CautionResultPresenter
   end
 
   def expiry_date
-    ExpiryDateCalculator.new(disclosure_check: disclosure_check).expiry_date
+    CautionExpiryCalculator.new(disclosure_check: disclosure_check).expiry_date
   end
 
   def caution_questions
