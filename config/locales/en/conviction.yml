@@ -25,11 +25,6 @@ en:
       conviction_subtype:
         edit:
           page_title: conviction subtype
-      conviction_end_date:
-        edit:
-          page_title: conviction date
-          heading:  When did the conviction end?
-          lead_text: Date of conviction
       conviction_length:
         edit:
           page_title: conviction length
