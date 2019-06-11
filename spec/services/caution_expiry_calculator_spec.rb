@@ -12,6 +12,14 @@ RSpec.describe CautionExpiryCalculator do
       it 'returns `known_date` (end date is the date of the caution)' do
         expect(expiry_date).to eq(disclosure_check.known_date)
       end
+
+      context 'unknown caution date' do
+        let(:disclosure_check) { build(:disclosure_check, known_date: nil) }
+
+        it 'return a string' do
+          expect(expiry_date).to eql(I18n.t('caution_result'))
+        end
+      end
     end
 
     context 'for a conditional caution' do
