@@ -30,3 +30,6 @@ en:
           page_title: conviction date
           heading:  When did the conviction end?
           lead_text: Date of conviction
+      conviction_length:
+        edit:
+          page_title: conviction length

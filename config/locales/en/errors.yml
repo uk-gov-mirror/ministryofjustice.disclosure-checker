@@ -39,6 +39,13 @@ en:
           attributes:
             conviction_subtype:
               inclusion: Select an option from the list
+        steps/conviction/conviction_length_form:
+          attributes:
+            conviction_length_type:
+              inclusion: Select weeks or months
+            conviction_length:
+              greater_than: Conviction length value must be 1 or more
+              not_a_number: Conviction length must be a number, like 3
 
   errors:
     format: "%{message}"
