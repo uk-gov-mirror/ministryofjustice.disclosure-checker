@@ -31,6 +31,8 @@ ActiveRecord::Schema.define(version: 2019_06_10_130654) do
     t.date "conviction_end_date"
     t.date "known_date"
     t.string "conviction_subtype"
+    t.string "conviction_length_type"
+    t.integer "conviction_length"
     t.index ["status"], name: "index_disclosure_checks_on_status"
   end
 

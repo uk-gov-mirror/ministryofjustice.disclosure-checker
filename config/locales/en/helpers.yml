@@ -34,6 +34,8 @@ en:
         motoring: What was your motoring conviction?
       steps_conviction_conviction_end_date_form:
         conviction_end_date: When did the conviction end?
+      steps_conviction_conviction_length_form:
+        conviction_length_type: Was the length of conviction given in weeks or months?
 
     hint:
       steps_check_kind_form:
@@ -82,6 +84,9 @@ en:
           disqualification: You were banned from driving for a certain period of time
           endorsement: You were found guilty of a motoring offence, which is now included on your driver record
           penalty_points: You were given number of penalty points for a driving offence
+        conviction_length:
+          weeks: ""
+          months: ""
 
     label:
       steps_check_kind_form:
@@ -157,3 +162,8 @@ en:
         day: Day
         month: Month
         year: Year
+      steps_conviction_conviction_length_form:
+        conviction_length: Length (number of weeks or months)
+        conviction_length_type:
+          weeks: Weeks
+          months: Months
