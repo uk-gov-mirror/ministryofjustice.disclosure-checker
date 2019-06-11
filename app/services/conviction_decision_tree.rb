@@ -11,9 +11,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :conviction_subtype
       edit(:conviction_end_date)
     when :conviction_end_date
-      show(:exit)
-    when :exit
-      show(:exit)
+      show('/steps/check/results')
     else
       raise InvalidStep, "Invalid step '#{as || step_params}'"
     end

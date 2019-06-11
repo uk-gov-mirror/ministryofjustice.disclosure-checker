@@ -41,6 +41,6 @@ class CautionDecisionTree < BaseDecisionTree
   end
 
   def result
-    show(:result)
+    show('/steps/check/results')
   end
 end

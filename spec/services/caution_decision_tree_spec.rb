@@ -23,9 +23,9 @@ RSpec.describe CautionDecisionTree do
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step is `caution_date`' do
+  context 'when the step is `known_date`' do
     let(:step_params) { { known_date: 'anything' } }
-    it { is_expected.to have_destination(:result, :show) }
+    it { is_expected.to have_destination('/steps/check/results', :show) }
   end
 
   context 'when the step is `under_age` is equal to yes' do
@@ -57,13 +57,13 @@ RSpec.describe CautionDecisionTree do
     it { is_expected.to have_destination(:condition_complied, :edit) }
   end
 
-  context 'when the step is `condtion_complied` is equal to `yes`' do
+  context 'when the step is `condition_complied` is equal to `yes`' do
     let(:condition_complied) { GenericYesNo::YES }
     let(:step_params) { { condition_complied: condition_complied} }
-    it { is_expected.to have_destination(:result, :show) }
+    it { is_expected.to have_destination('/steps/check/results', :show) }
   end
 
-  context 'when the step is `condtion_complied` is equal to `no`' do
+  context 'when the step is `condition_complied` is equal to `no`' do
     let(:condition_complied) { GenericYesNo::NO }
     let(:step_params) { { condition_complied: condition_complied} }
     it { is_expected.to have_destination(:condition_exit, :show) }

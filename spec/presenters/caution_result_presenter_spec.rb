@@ -3,8 +3,16 @@ RSpec.describe CautionResultPresenter do
 
   let(:disclosure_check) { build(:disclosure_check) }
 
-  describe '#caution_questions' do
-    it { expect(subject.caution_questions).to eq( [:kind, :is_date_known, :known_date, :under_age, :caution_type]) }
+  describe '#calculator_class' do
+    it { expect(subject.calculator_class).to eq(CautionExpiryCalculator) }
+  end
+
+  describe '#to_partial_path' do
+    it { expect(subject.to_partial_path).to eq('steps/check/results/caution') }
+  end
+
+  describe '#question_attributes' do
+    it { expect(subject.question_attributes).to eq( [:kind, :is_date_known, :known_date, :under_age, :caution_type]) }
   end
 
   describe '#summary' do
@@ -19,18 +27,12 @@ RSpec.describe CautionResultPresenter do
   end
 
   describe '#expiry_date' do
-    let(:expiry_date) { subject.expiry_date }
-    context 'know caution date' do
-      it 'return formatted expiry_date' do
-        expect(expiry_date).to eql(disclosure_check.known_date )
-      end
+    before do
+      allow_any_instance_of(CautionExpiryCalculator).to receive(:expiry_date).and_return('foobar')
     end
 
-    context 'unknow caution date' do
-      let(:disclosure_check) { build(:disclosure_check, known_date: nil) }
-      it 'return a string' do
-        expect(expiry_date).to eql(I18n.t('caution_result'))
-      end
+    it 'delegates the method to the calculator' do
+      expect(subject.expiry_date).to eq('foobar')
     end
   end
 end

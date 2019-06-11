@@ -1,22 +1,13 @@
-class CautionResultPresenter
-  attr_reader :disclosure_check
-  QuestionAnswerRow = Struct.new(:question, :value)
-
-  def initialize(disclosure_check)
-    @disclosure_check = disclosure_check
+class CautionResultPresenter < ResultsPresenter
+  def calculator_class
+    CautionExpiryCalculator
   end
 
-  def summary
-    caution_questions.map do |item|
-      QuestionAnswerRow.new(item, disclosure_check[item])
-    end.compact
+  def to_partial_path
+    'steps/check/results/caution'
   end
 
-  def expiry_date
-    CautionExpiryCalculator.new(disclosure_check: disclosure_check).expiry_date
-  end
-
-  def caution_questions
+  def question_attributes
     [:kind, :is_date_known, :known_date, :under_age, :caution_type].freeze
   end
 end

@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :steps do
     namespace :check do
       edit_step :kind
+      show_step :results
     end
 
     namespace :caution do
@@ -40,7 +41,6 @@ Rails.application.routes.draw do
       edit_step :conditional_end_date
       edit_step :condition_complied
       show_step :condition_exit
-      show_step :result
     end
 
     namespace :conviction do
