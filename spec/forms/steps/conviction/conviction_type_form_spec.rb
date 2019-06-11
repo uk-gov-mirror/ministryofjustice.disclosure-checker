@@ -19,10 +19,8 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
         custodial_sentence
         discharge
         financial
-        hospital_order
-        military
         motoring
-        rehab_prev_order
+        hospital_order
       ))
     end
   end

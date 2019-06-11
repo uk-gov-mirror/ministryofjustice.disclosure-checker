@@ -10,10 +10,8 @@ RSpec.describe ConvictionType do
         custodial_sentence
         discharge
         financial
-        hospital_order
-        military
         motoring
-        rehab_prev_order
+        hospital_order
       ))
     end
   end
@@ -87,6 +85,15 @@ RSpec.describe ConvictionType do
           endorsement
           penalty_points
         ))
+      end
+    end
+
+    # TODO: To be decided if we have this in the top-level list or not
+    context 'Hospital order' do
+      let(:conviction_type) { :hospital_order }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq([])
       end
     end
   end
