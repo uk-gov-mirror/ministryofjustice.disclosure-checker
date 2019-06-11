@@ -1,23 +1,20 @@
-class ExpiryDateCalculator
-  attr_reader :disclosure_check, :record
+class CautionExpiryCalculator
+  attr_reader :disclosure_check
 
   def initialize(disclosure_check:)
     @disclosure_check = disclosure_check
   end
 
   def expiry_date
-    disclosure_check.caution? ? caution : conviction
+    return conditional_date if caution_type.conditional?
+
+    caution_result
   end
 
   private
 
-  def caution
-    disclosure_check.conditional_caution_type? ? conditional_date : caution_result
-  end
-
-  def conviction
-    # TODO: update when we implement the conviction journey
-    raise NotImplementedError
+  def caution_type
+    @_caution_type ||= CautionType.new(disclosure_check.caution_type)
   end
 
   def caution_result
