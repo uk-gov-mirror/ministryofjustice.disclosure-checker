@@ -30,6 +30,7 @@ Rails.application.routes.draw do
   namespace :steps do
     namespace :check do
       edit_step :kind
+      show_step :results
     end
 
     namespace :caution do

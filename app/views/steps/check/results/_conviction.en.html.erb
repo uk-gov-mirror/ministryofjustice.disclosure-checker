@@ -1,0 +1,34 @@
+<div class="govuk-panel govuk-panel--confirmation">
+  <h1 class="govuk-panel__title">
+    Your conviction expired on [TBD]
+  </h1>
+  <div class="govuk-panel__body">
+    You do not need to tell anyone about this conviction unless you're applying for a job that needs a full
+    <a class="govuk-link" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal
+      record check</a>.
+  </div>
+</div>
+
+<h2 class="govuk-heading-m">How this date has been worked out</h2>
+
+<p class="govuk-body">The expiry date of your caution is based on:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>the information you’ve provided</li>
+  <li>the current law on when cautions and convictions expire</li>
+</ul>
+
+<p class="govuk-body">
+  This table shows the information you provided, which was used to work out the expiry date. If you entered any
+  incorrect information, the expiry date will be incorrect.
+</p>
+
+<dl class="govuk-summary-list">
+  <%= render partial: 'steps/check/results/shared/row',
+             collection: @presenter.summary, as: :row %>
+</dl>
+
+<p class="govuk-body">
+  If you need to change any information, or if you have another caution or conviction you’d like to
+  check, <%= link_to 'use the service again', root_path, {:class => "govuk-link"} %>.
+</p>
