@@ -1,13 +1,23 @@
 class ConvictionResultPresenter < ResultsPresenter
-  def calculator_class
-    ConvictionExpiryCalculator
-  end
-
   def to_partial_path
-    'steps/check/results/conviction'
+    'results/conviction'
   end
 
   def question_attributes
-    [].freeze
+    [
+      :kind,
+      :conviction_type,
+      :conviction_subtype,
+      :under_age,
+      :known_date,
+      :conviction_length,
+      :conviction_length_type,
+    ].freeze
+  end
+
+  private
+
+  def calculator_class
+    ConvictionExpiryCalculator
   end
 end

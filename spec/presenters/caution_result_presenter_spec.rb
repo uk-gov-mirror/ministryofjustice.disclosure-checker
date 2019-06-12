@@ -3,18 +3,15 @@ RSpec.describe CautionResultPresenter do
 
   let(:disclosure_check) { build(:disclosure_check) }
 
-  describe '#calculator_class' do
-    it { expect(subject.calculator_class).to eq(CautionExpiryCalculator) }
-  end
-
   describe '#to_partial_path' do
-    it { expect(subject.to_partial_path).to eq('steps/check/results/caution') }
+    it { expect(subject.to_partial_path).to eq('results/caution') }
   end
 
   describe '#question_attributes' do
     it { expect(subject.question_attributes).to eq( [:kind, :is_date_known, :known_date, :under_age, :caution_type]) }
   end
 
+  # TODO: this needs more tests
   describe '#summary' do
     let(:summary) { subject.summary }
 
@@ -22,7 +19,7 @@ RSpec.describe CautionResultPresenter do
       expect(summary.size).to eq(5)
 
       expect(summary[0].question).to eql(:kind)
-      expect(summary[0].value).to eql(disclosure_check.kind)
+      expect(summary[0].answer).to eql('caution')
     end
   end
 
