@@ -33,7 +33,7 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `known_date` ' do
     let(:step_params) { { known_date: 'anything' } }
-    it { is_expected.to have_destination(:conviction_length, :edit) }
+    it { is_expected.to have_destination(:conviction_length_type, :edit) }
   end
 
   context 'when the step is `conviction_type`' do
@@ -53,6 +53,11 @@ RSpec.describe ConvictionDecisionTree do
   context 'when the step is `conviction_subtype`' do
     let(:step_params) { { conviction_subtype: 'anything' } }
     it { is_expected.to have_destination(:known_date, :edit) }
+  end
+
+  context 'when the step is `conviction_length_type` ' do
+    let(:step_params) { { conviction_length_type: 'weeks' } }
+    it { is_expected.to have_destination(:conviction_length, :edit) }
   end
 
   context 'when the step is `conviction_length`' do

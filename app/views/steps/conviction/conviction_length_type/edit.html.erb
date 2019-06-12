@@ -8,9 +8,10 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <%= error_summary %>
-        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <!-- The header is part of the radios legend by default, but can be configured -->
         <%= step_form @form_object do |f| %>
-          <%= f.text_field :conviction_length, class: 'govuk-input govuk-input--width-3', label_options: { class: 'govuk-label' } %>
+          <%= f.radio_button_fieldset :conviction_length_type, inline: true, choices: Steps::Conviction::ConvictionLengthTypeForm.choices %>
           <%= f.continue_button %>
         <% end %>
       </div>

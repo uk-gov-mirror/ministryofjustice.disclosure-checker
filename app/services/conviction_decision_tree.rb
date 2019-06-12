@@ -11,6 +11,8 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :conviction_subtype
       edit(:known_date)
     when :known_date
+      edit(:conviction_length_type)
+    when :conviction_length_type
       edit(:conviction_length)
     when :conviction_length
       show('/steps/check/results')

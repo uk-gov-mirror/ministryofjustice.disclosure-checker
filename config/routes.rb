@@ -51,6 +51,7 @@ Rails.application.routes.draw do
       edit_step :conviction_type
       edit_step :conviction_subtype
       edit_step :conviction_length
+      edit_step :conviction_length_type
     end
   end
 
