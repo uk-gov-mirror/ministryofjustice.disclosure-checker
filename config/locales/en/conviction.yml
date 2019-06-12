@@ -25,6 +25,10 @@ en:
       conviction_subtype:
         edit:
           page_title: conviction subtype
+      conviction_length_type:
+        edit:
+          page_title: conviction length type
       conviction_length:
         edit:
           page_title: conviction length
+          heading: Enter length of conviction given in weeks or months?
