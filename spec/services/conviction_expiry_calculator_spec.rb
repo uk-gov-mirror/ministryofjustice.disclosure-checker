@@ -7,8 +7,8 @@ RSpec.describe ConvictionExpiryCalculator do
     let(:disclosure_check) { build(:disclosure_check, :conviction) }
     let(:expiry_date) { subject.expiry_date }
 
-    it 'returns error' do
-      expect { expiry_date }.to raise_error(NotImplementedError)
+    it 'is not yet implemented' do
+      expect(expiry_date).to eq('TBD')
     end
   end
 end

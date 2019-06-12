@@ -6,6 +6,6 @@ class ConvictionExpiryCalculator
   end
 
   def expiry_date
-    raise NotImplementedError
+    'TBD'
   end
 end

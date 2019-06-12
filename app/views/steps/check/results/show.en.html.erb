@@ -6,7 +6,7 @@
   <main class="govuk-main-wrapper" id="main-content">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-full">
-        <%= render partial: @presenter %>
+        <%= render partial: @presenter, locals: { expiry_date: @presenter.expiry_date } %>
 
         <h2 class="govuk-heading-m govuk-!-margin-top-5">How this date has been worked out</h2>
 
@@ -23,8 +23,7 @@
         </p>
 
         <dl class="govuk-summary-list">
-          <%= render partial: 'steps/check/results/shared/row',
-                     collection: @presenter.summary, as: :row %>
+          <%= render @presenter.summary %>
         </dl>
 
         <p class="govuk-body">
