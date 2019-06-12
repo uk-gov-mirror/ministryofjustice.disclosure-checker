@@ -1,8 +1,6 @@
 class ResultsPresenter
   attr_reader :disclosure_check
 
-  QuestionAnswerRow = Struct.new(:question, :value)
-
   def self.build(disclosure_check)
     case CheckKind.new(disclosure_check.kind)
     when CheckKind::CAUTION
@@ -20,8 +18,8 @@ class ResultsPresenter
 
   def summary
     question_attributes.map do |item|
-      QuestionAnswerRow.new(item, disclosure_check[item])
-    end.compact
+      QuestionAnswerRow.new(item, disclosure_check[item], scope: to_partial_path)
+    end.select(&:show?)
   end
 
   def expiry_date
