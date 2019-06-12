@@ -13,7 +13,6 @@ RSpec.describe ConvictionDecisionTree do
   let(:next_step)        { nil }
   let(:under_age)        { nil }
   let(:as)               { nil }
-  let(:is_date_known)    { nil }
   let(:conviction_type)  { nil }
 
   subject { described_class.new(disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step) }
@@ -32,8 +31,8 @@ RSpec.describe ConvictionDecisionTree do
     it { is_expected.to have_destination(:exit, :show) }
   end
 
-  context 'when the step is `conviction_date` ' do
-    let(:step_params) { { conviction_end_date: 'anything' } }
+  context 'when the step is `known_date` ' do
+    let(:step_params) { { known_date: 'anything' } }
     it { is_expected.to have_destination(:conviction_length, :edit) }
   end
 
@@ -47,13 +46,13 @@ RSpec.describe ConvictionDecisionTree do
 
     context 'and type has no children subtypes' do
       let(:type) { 'hospital_order' }
-      it { is_expected.to have_destination(:conviction_end_date, :edit) }
+      it { is_expected.to have_destination(:known_date, :edit) }
     end
   end
 
   context 'when the step is `conviction_subtype`' do
     let(:step_params) { { conviction_subtype: 'anything' } }
-    it { is_expected.to have_destination(:conviction_end_date, :edit) }
+    it { is_expected.to have_destination(:known_date, :edit) }
   end
 
   context 'when the step is `conviction_length`' do

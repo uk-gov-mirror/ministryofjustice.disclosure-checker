@@ -9,8 +9,8 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :conviction_type
       after_conviction_type
     when :conviction_subtype
-      edit(:conviction_end_date)
-    when :conviction_end_date
+      edit(:known_date)
+    when :known_date
       edit(:conviction_length)
     when :conviction_length
       show('/steps/check/results')
@@ -33,7 +33,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   def after_conviction_type
     return edit(:conviction_subtype) if conviction.children.any?
 
-    edit(:conviction_end_date)
+    edit(:known_date)
   end
 
   def conviction

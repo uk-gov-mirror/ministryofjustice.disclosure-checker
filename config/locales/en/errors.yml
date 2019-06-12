@@ -65,10 +65,6 @@ en:
         inclusion: Select caution type
       condition_complied:
         inclusion: Select yes if you stuck with the conditions of the caution
-      conviction_end_date:
-        blank: Enter the date of the conviction
-        invalid: The conviction date is not valid
-        future: The conviction date can’t be in the future
 
     check_completed:
       page_title: Check completed
