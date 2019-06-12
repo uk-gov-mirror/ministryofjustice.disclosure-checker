@@ -1,25 +1,29 @@
 RSpec.describe ConvictionResultPresenter do
   subject { described_class.new(disclosure_check) }
 
-  let(:disclosure_check) { build(:disclosure_check, :conviction) }
-
-  describe '#calculator_class' do
-    it { expect(subject.calculator_class).to eq(ConvictionExpiryCalculator) }
-  end
+  let(:disclosure_check) { build(:disclosure_check, :dto_conviction) }
 
   describe '#to_partial_path' do
-    it { expect(subject.to_partial_path).to eq('steps/check/results/conviction') }
+    it { expect(subject.to_partial_path).to eq('results/conviction') }
   end
 
   describe '#question_attributes' do
-    it { expect(subject.question_attributes).to eq([]) }
+    it {
+      expect(
+        subject.question_attributes
+      ).to eq([:kind, :conviction_type, :conviction_subtype, :under_age, :known_date, :conviction_length, :conviction_length_type])
+    }
   end
 
+  # TODO: this needs more tests
   describe '#summary' do
     let(:summary) { subject.summary }
 
     it 'return array of objects' do
-      expect(summary.size).to eq(0)
+      expect(summary.size).to eq(7)
+
+      expect(summary[0].question).to eql(:kind)
+      expect(summary[0].answer).to eql('conviction')
     end
   end
 

@@ -1,0 +1,87 @@
+---
+en:
+  results/caution:
+    kind:
+      question: Criminal record type
+      answers:
+        caution: Caution
+    is_date_known:
+      question: Known caution date
+      answers:
+        'yes': 'Yes'
+        'no': 'No'
+    known_date:
+      question: Date caution given
+    under_age:
+      question: Age at time of caution
+      answers:
+        'yes': Under 18
+        'no': 18 or over
+    caution_type:
+      question: Type of caution
+      answers:
+        simple_caution: Simple caution
+        conditional_caution: Conditional caution
+        youth_simple_caution: Youth Simple caution
+        youth_conditional_caution: Youth Conditional caution
+
+  results/conviction:
+    kind:
+      question: Criminal record type
+      answers:
+        conviction: Conviction
+    conviction_type:
+      question: Type of conviction
+      answers:
+        community_order: Community order
+        custodial_sentence: Custodial sentence
+        discharge: Discharge
+        financial: Financial penalty
+        hospital_order: Hospital Order
+        motoring: Motoring endorsement
+    conviction_subtype:
+      question: Name of conviction
+      answers:
+        # community_order
+        alcohol_abstinence: Alcohol abstinence
+        alcohol_treatment: Alcohol treatment
+        behavioural_change_prog: Behavioural change programme
+        curfew: Curfew
+        drug_rehabilitation: Drug rehabilitation
+        exclusion_requirement: Exclusion requirement
+        foreign_travel_prohibition: Foreign travel prohibition
+        mental_health_treatment: Mental health treatment
+        prohibition: Prohibition
+        referral_order: Referral order
+        rehab_activity_requirement: Rehabilitation activity requirement
+        residence_requirement: Residence requirement
+        unpaid_work: Unpaid work
+        # custodial_sentence
+        detention_training_order: Detention and training order
+        prison_sentence: Prison sentence
+        suspended_prison_sentence: Suspended prison sentence
+        # discharge
+        absolute_discharge: Absolute discharge
+        bind_over: Bind over
+        conditional_discharge: Conditional discharge
+        # financial
+        penalty_fine: A fine
+        compensation_to_a_victim: Compensation to a victim
+        # motoring
+        disqualification: Disqualification
+        endorsement: Endorsement
+        penalty_points: Penalty points
+    under_age:
+      question: Age at time of conviction
+      answers:
+        'yes': Under 18
+        'no': 18 or over
+    known_date:
+      question: Date of conviction
+    conviction_length:
+      question: Length of conviction
+    conviction_length_type:
+      question: Conviction length given in
+      answers:
+        weeks: Weeks
+        months: Months

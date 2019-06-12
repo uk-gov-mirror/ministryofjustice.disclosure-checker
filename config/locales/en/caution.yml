@@ -40,30 +40,5 @@ en:
           inset_text_paragraph_one: Breaking the conditions of a caution usually leads to prosecution.
           inset_text_paragraph_two: If you were convicted of an offence after breaking the conditions of your caution, you’ll need to start again and select conviction instead of caution.
 
+  # TODO: refactor this
   caution_result: "the day you were given it"
-
-  caution_results_html:
-    kind:
-      question: Criminal record type
-      answers:
-        caution: Caution
-        conviction: Conviction
-    is_date_known:
-      question: Known caution date
-      answers:
-        'yes': 'Yes'
-        'no': 'No'
-    known_date:
-      question: 'Date caution given:'
-    under_age:
-      question: 'Age at time of caution:'
-      answers:
-       'yes': Under 18
-       'no': 18 or over
-    caution_type:
-      question: 'Type of caution:'
-      answers:
-        simple_caution: Simple caution
-        conditional_caution: Conditional caution
-        youth_simple_caution: Youth Simple caution
-        youth_conditional_caution: Youth Conditional caution
