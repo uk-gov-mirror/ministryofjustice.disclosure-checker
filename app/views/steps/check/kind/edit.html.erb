@@ -10,8 +10,7 @@
         <%= error_summary %>
 
         <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices %>
-
+          <%= f.radio_button_fieldset :kind, choices: Steps::Check::KindForm.choices, radio_hint: true %>
           <%= f.continue_button %>
         <% end %>
       </div>

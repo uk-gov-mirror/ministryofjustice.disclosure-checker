@@ -119,11 +119,14 @@ module GovukComponents
       content_tag(:span, text, class: 'govuk-hint govuk-radios__hint', id: id_for("#{attribute}_#{value}", 'hint'))
     end
 
+    # :nocov:
+    # TODO: add spec for hint text
     def hint(attribute)
       return unless hint_text(attribute)
 
       content_tag(:span, hint_text(attribute), class: 'govuk-hint', id: id_for(attribute, 'hint'))
     end
+    # :nocov:
 
     def error(attribute)
       return unless error_for?(attribute)
