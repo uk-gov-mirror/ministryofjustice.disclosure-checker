@@ -49,18 +49,18 @@ RSpec.describe CautionDecisionTree do
   context 'when the step is `caution_type` is equal to conditional' do
     let(:caution_type)  { CautionType::CONDITIONAL_CAUTION }
     let(:step_params) { { caution_type: caution_type } }
-    it { is_expected.to have_destination(:conditional_end_date, :edit) }
+    it { is_expected.to have_destination(:condition_complied, :edit) }
   end
 
   context 'when the step is `conditional_end_date`' do
     let(:step_params) { { conditional_end_date: 'conditional' } }
-    it { is_expected.to have_destination(:condition_complied, :edit) }
+    it { is_expected.to have_destination('/steps/check/results', :show) }
   end
 
   context 'when the step is `condition_complied` is equal to `yes`' do
     let(:condition_complied) { GenericYesNo::YES }
     let(:step_params) { { condition_complied: condition_complied} }
-    it { is_expected.to have_destination('/steps/check/results', :show) }
+    it { is_expected.to have_destination(:conditional_end_date, :edit) }
   end
 
   context 'when the step is `condition_complied` is equal to `no`' do

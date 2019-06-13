@@ -11,7 +11,7 @@ class CautionDecisionTree < BaseDecisionTree
     when :known_date
       result
     when :conditional_end_date
-      edit(:condition_complied)
+      result
     when :condition_complied
       after_condition_complied
     else
@@ -29,13 +29,13 @@ class CautionDecisionTree < BaseDecisionTree
   end
 
   def after_caution_type
-    return edit(:conditional_end_date) if CautionType.new(disclosure_check.caution_type).conditional?
+    return edit(:condition_complied) if CautionType.new(disclosure_check.caution_type).conditional?
 
     edit(:known_date)
   end
 
   def after_condition_complied
-    return result if GenericYesNo.new(disclosure_check.condition_complied).yes?
+    return edit(:conditional_end_date) if GenericYesNo.new(disclosure_check.condition_complied).yes?
 
     show(:condition_exit)
   end

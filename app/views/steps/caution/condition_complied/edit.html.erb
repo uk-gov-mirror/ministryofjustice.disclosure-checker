@@ -12,12 +12,7 @@
         <!-- The header is part of the radios legend by default, but can be configured -->
 
         <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :condition_complied, inline: false, choices: GenericYesNo.values %>
-          <p class="govuk-body govuk-!-font-weight-bold"><%= t('.inset_text_heading') %></h2>
-          <div class="govuk-inset-text">
-            <p class="govuk-body"><%= t('.inset_text_paragraph_one') %></p>
-            <p class="govuk-body"><%= t('.inset_text_paragraph_two') %></p>
-          </div>
+          <%= f.radio_button_fieldset :condition_complied, inline: true, choices: GenericYesNo.values %>
           <%= f.continue_button %>
         <% end %>
 
