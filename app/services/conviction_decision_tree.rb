@@ -16,8 +16,6 @@ class ConvictionDecisionTree < BaseDecisionTree
       edit(:conviction_length)
     when :conviction_length
       show('/steps/check/results')
-    when :exit
-      show(:exit)
     else
       raise InvalidStep, "Invalid step '#{as || step_params}'"
     end
@@ -29,7 +27,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   def after_under_age
     return edit(:conviction_type) if GenericYesNo.new(disclosure_check.under_age).yes?
 
-    show(:exit)
+    show('/steps/check/exit_over18')
   end
 
   def after_conviction_type

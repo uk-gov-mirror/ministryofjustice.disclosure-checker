@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     namespace :check do
       edit_step :kind
       show_step :results
+      show_step :exit_over18
     end
 
     namespace :caution do
@@ -41,11 +42,11 @@ Rails.application.routes.draw do
       edit_step :conditional_end_date
       edit_step :condition_complied
       show_step :condition_exit
+
     end
 
     namespace :conviction do
       edit_step :is_date_known
-      show_step :exit
       edit_step :under_age
       edit_step :known_date
       edit_step :conviction_type
