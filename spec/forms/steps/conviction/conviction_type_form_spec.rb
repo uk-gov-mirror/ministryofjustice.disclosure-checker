@@ -7,7 +7,9 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
       conviction_type: conviction_type
     }
   end
-  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type) }
+
+  let(:under_age) { true }
+  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type, under_age: under_age) }
   let(:conviction_type) { nil }
 
   subject { described_class.new(arguments) }
@@ -19,8 +21,7 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
         custodial_sentence
         discharge
         financial
-        motoring
-        hospital_order
+        hospital_guard_order
       ))
     end
   end
