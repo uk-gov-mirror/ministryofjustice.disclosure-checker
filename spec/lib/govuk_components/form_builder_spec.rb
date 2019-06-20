@@ -4,6 +4,7 @@ class TestHelper < ActionView::Base
 end
 
 RSpec.describe GovukComponents::FormBuilder do
+  let(:disclosure_check) { DisclosureCheck.new }
   let(:helper) { TestHelper.new }
 
   def strip_text(text)
@@ -28,7 +29,6 @@ RSpec.describe GovukComponents::FormBuilder do
   # then the HTML fixture will need to also be updated.
   #
   describe '#radio_button_fieldset' do
-    let(:disclosure_check) { DisclosureCheck.new }
     let(:form) { 'steps_check_kind_form' }
     let(:builder) { described_class.new form.to_sym, disclosure_check, helper, {} }
     let(:legend_options) { { page_heading: true} }
@@ -118,6 +118,79 @@ RSpec.describe GovukComponents::FormBuilder do
         ).to eq(
           strip_text(html_fixture)
         )
+      end
+    end
+  end
+
+  # Note: This is just a very broad and `happy path` test.
+  # It is also coupled to current i18n so, if the strings change,
+  # then the HTML fixture will need to also be updated.
+  #
+  describe '#text_field' do
+    let(:builder) { described_class.new form.to_sym, disclosure_check, helper, {} }
+
+    let(:form) { 'steps_conviction_conviction_length_form' }
+    let(:attribute) { :conviction_length }
+
+    let(:options) do
+      { input_options: { class: 'govuk-input--width-4' } }
+    end
+
+    let(:html_output) { builder.text_field attribute, options }
+
+    context 'no errors' do
+      let(:html_fixture) { file_fixture('text_field.html').read }
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to eq(
+          strip_text(html_fixture)
+        )
+      end
+    end
+
+    context 'with errors' do
+      let(:html_fixture) { file_fixture('text_field_error.html').read }
+
+      before do
+        disclosure_check.errors.add(:conviction_length, :not_a_number)
+      end
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to eq(
+          strip_text(html_fixture)
+        )
+      end
+    end
+
+    context 'page_heading set to false' do
+      let(:html_fixture) { file_fixture('text_field_no_page_heading.html').read }
+
+      let(:options) do
+        { label_options: { page_heading: false } }
+      end
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to eq(
+          strip_text(html_fixture)
+        )
+      end
+    end
+
+    context 'with a custom hint' do
+      let(:options) do
+        { hint_options: { virtual_attribute: 'months' } }
+      end
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to match(/<span class="govuk-hint" id="steps_conviction_conviction_length_form_months_hint">Number of months<\/span>/)
       end
     end
   end
