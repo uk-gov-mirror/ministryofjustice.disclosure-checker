@@ -5,10 +5,17 @@ RSpec.describe Steps::Conviction::ConvictionLengthForm do
     disclosure_check: disclosure_check,
     conviction_length: conviction_length
   } }
-  let(:disclosure_check) { instance_double(DisclosureCheck) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_length_type: 'months') }
   let(:conviction_length) { 3 }
 
   subject { described_class.new(arguments) }
+
+  describe '#conviction_length_type' do
+    it 'delegates to `disclosure_checker`' do
+      expect(disclosure_check).to receive(:conviction_length_type)
+      expect(subject.conviction_length_type).to eq('months')
+    end
+  end
 
   describe '#save' do
     context 'when form is valid' do
