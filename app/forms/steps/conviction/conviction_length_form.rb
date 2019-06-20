@@ -2,6 +2,7 @@ module Steps
   module Conviction
     class ConvictionLengthForm < BaseForm
       attribute :conviction_length, Integer
+      delegate :conviction_length_type, to: :disclosure_check
 
       validates_numericality_of :conviction_length, greater_than: 0, only_integer: true
 

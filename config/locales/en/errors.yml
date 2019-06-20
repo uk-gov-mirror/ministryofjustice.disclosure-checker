@@ -46,8 +46,8 @@ en:
         steps/conviction/conviction_length_form:
           attributes:
             conviction_length:
-              greater_than: Conviction length value must be 1 or more
-              not_a_number: Conviction length must be a number, like 3
+              greater_than: The length of conviction must be 1 or more
+              not_a_number: The length of conviction must be a number, like 3
         steps/conviction/compensation_payment_date_form:
           attributes:
             compensation_payment_date:

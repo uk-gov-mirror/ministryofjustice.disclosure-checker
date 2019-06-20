@@ -52,6 +52,10 @@ en:
         under_age: This is your age when you were given the conviction, not when you committed the offence
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: For example, 23 9 2018
+      steps_conviction_conviction_length_form:
+        weeks: Number of weeks
+        months: Number of months
+        years: Number of years
       radio_buttons:
         kind:
           caution: You were given an official warning by the police
@@ -188,7 +192,7 @@ en:
           months: Months
           years: Years
       steps_conviction_conviction_length_form:
-        conviction_length: Length of conviction
+        conviction_length: What was the length of the order?
       steps_conviction_compensation_payment_date_form:
         day: Day
         month: Month
