@@ -67,3 +67,4 @@ When(/^I enter a valid date$/) do
   step %[I fill in "Year" with "1999"]
   step %[I click the "Continue" button]
 end
+
