@@ -5,7 +5,7 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction Financial penalty - Fine
     When I choose "A fine"
-    Then I should see "When did you get convicted?"
+    Then I should see "When were you given the order?"
     When I enter a valid date
     Then I should be on "/steps/check/results"
 

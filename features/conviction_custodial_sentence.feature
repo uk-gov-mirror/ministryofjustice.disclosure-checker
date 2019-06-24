@@ -6,7 +6,7 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction Custodial sentence - Detention and training order
     And I choose "Detention and training order"
-    Then I should see "When did you get convicted?"
+    Then I should see "When were you given the detention and training order (DTO)?"
 
     When I enter a valid date
 
@@ -19,7 +19,7 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction Custodial sentence - Detention
     And I choose "Detention"
-    Then I should see "When did you get convicted?"
+    Then I should see "When were you given the detention?"
 
     When I enter a valid date
 

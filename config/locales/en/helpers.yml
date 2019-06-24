@@ -23,7 +23,16 @@ en:
       steps_conviction_under_age_form:
         under_age: How old were you when you got convicted?
       steps_conviction_known_date_form:
-        known_date: When did you get convicted?
+        known_date: When were you given the order?
+        detention_training_order: When were you given the detention and training order (DTO)?
+        detention: When were you given the detention?
+        absolute_discharge: When were you given the discharge?
+        conditional_discharge: When were you given the discharge?
+        behavioural_change_prog: When were you given the programme?
+        curfew: When were you given the curfew?
+        exclusion_requirement: When were you given the exclusion requirement?
+        intoxicating_substance_treatment: When were you given the treatment?
+        mental_health_treatment: When were you given the treatment?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
@@ -140,7 +149,7 @@ en:
         under_age:
           'yes': Under 18
           'no': 18 or over
-      steps_conviction_conviction_date_form:
+      steps_conviction_known_date_form:
         day: Day
         month: Month
         year: Year
