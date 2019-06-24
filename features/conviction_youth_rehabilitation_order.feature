@@ -2,7 +2,9 @@ Feature: Conviction
   Scenario Outline: Community or youth rehabilitation order (YRO)
   Given I am completing a basic under 18 "Community or youth rehabilitation order (YRO)" conviction
   Then I should see "What was your community order?"
-  And I choose <subtype>
+
+  When I choose <subtype>
+  Then I should see <header>
 
   When I enter a valid date
   Then I should see "Was the length of conviction given in weeks, months or years?"
@@ -13,20 +15,20 @@ Feature: Conviction
   Then I should be on <result>
 
   Examples:
-    | subtype                                                          | result                 |
-    | "Alcohol abstinence or treatment"                                | "/steps/check/results" |
-    | "Attendance centre order"                                        | "/steps/check/results" |
-    | "Behavioural change programme"                                   | "/steps/check/results" |
-    | "Curfew"                                                         | "/steps/check/results" |
-    | "Drug rehabilitation, treatment or testing"                      | "/steps/check/results" |
-    | "Exclusion requirement"                                          | "/steps/check/results" |
-    | "Intoxicating substance treatment requirement"                   | "/steps/check/results" |
-    | "Mental health treatment"                                        | "/steps/check/results" |
-    | "Prohibition"                                                    | "/steps/check/results" |
-    | "Referral order"                                                 | "/steps/check/results" |
-    | "Rehabilitation activity requirement (RAR)"                      | "/steps/check/results" |
-    | "Reparation order"                                               | "/steps/check/results" |
-    | "Residence requirement"                                          | "/steps/check/results" |
-    | "Sexual harm prevention order (sexual offence prevention order)" | "/steps/check/results" |
-    | "Supervision order on breach of a civil injunction"              | "/steps/check/results" |
-    | "Unpaid work"                                                    | "/steps/check/results" |
+    | subtype                                                          | header                                           | result                 |
+    | "Alcohol abstinence or treatment"                                | "When were you given the order?"                 | "/steps/check/results" |
+    | "Attendance centre order"                                        | "When were you given the order?"                 | "/steps/check/results" |
+    | "Behavioural change programme"                                   | "When were you given the programme?"             | "/steps/check/results" |
+    | "Curfew"                                                         | "When were you given the curfew?"                | "/steps/check/results" |
+    | "Drug rehabilitation, treatment or testing"                      | "When were you given the order?"                 | "/steps/check/results" |
+    | "Exclusion requirement"                                          | "When were you given the exclusion requirement?" | "/steps/check/results" |
+    | "Intoxicating substance treatment requirement"                   | "When were you given the treatment?"             | "/steps/check/results" |
+    | "Mental health treatment"                                        | "When were you given the treatment?"             | "/steps/check/results" |
+    | "Prohibition"                                                    | "When were you given the order?"                 | "/steps/check/results" |
+    | "Referral order"                                                 | "When were you given the order?"                 | "/steps/check/results" |
+    | "Rehabilitation activity requirement (RAR)"                      | "When were you given the order?"                 | "/steps/check/results" |
+    | "Reparation order"                                               | "When were you given the order?"                 | "/steps/check/results" |
+    | "Residence requirement"                                          | "When were you given the order?"                 | "/steps/check/results" |
+    | "Sexual harm prevention order (sexual offence prevention order)" | "When were you given the order?"                 | "/steps/check/results" |
+    | "Supervision order on breach of a civil injunction"              | "When were you given the order?"                 | "/steps/check/results" |
+    | "Unpaid work"                                                    | "When were you given the order?"                 | "/steps/check/results" |

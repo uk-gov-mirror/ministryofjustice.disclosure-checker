@@ -41,6 +41,7 @@ class ConvictionType < ValueObject
     SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: COMMUNITY_ORDER),
     SUPER_ORD_BREACH_CIVIL_INJUC       = new(:super_ord_breach_civil_injuc,     parent: COMMUNITY_ORDER),
     UNPAID_WORK                        = new(:unpaid_work,                      parent: COMMUNITY_ORDER),
+
     DETENTION_TRAINING_ORDER           = new(:detention_training_order,         parent: CUSTODIAL_SENTENCE),
     DETENTION                          = new(:detention,                        parent: CUSTODIAL_SENTENCE),
 
