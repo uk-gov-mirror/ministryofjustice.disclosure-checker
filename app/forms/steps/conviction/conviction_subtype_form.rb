@@ -2,7 +2,6 @@ module Steps
   module Conviction
     class ConvictionSubtypeForm < BaseForm
       attribute :conviction_subtype, String
-      delegate :conviction_type, to: :disclosure_check
 
       validates_inclusion_of :conviction_subtype, in: :choices, if: :disclosure_check
 

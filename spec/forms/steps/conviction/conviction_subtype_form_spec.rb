@@ -17,13 +17,6 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
 
   subject { described_class.new(arguments) }
 
-  describe '#conviction_type' do
-    it 'delegates to `disclosure_checker`' do
-      expect(disclosure_check).to receive(:conviction_type)
-      expect(subject.conviction_type).to eq('community_order')
-    end
-  end
-
   describe '#choices' do
     it 'returns the relevant choices (children of the conviction type)' do
       expect(subject.choices).to eq(%w(

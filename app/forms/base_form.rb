@@ -9,6 +9,8 @@ class BaseForm
   attr_accessor :disclosure_check
   attr_accessor :record
 
+  delegate :conviction_type, :conviction_subtype, to: :disclosure_check
+
   # This will allow subclasses to define after_initialize callbacks
   # and is needed for some functionality to work, i.e. acts_as_gov_uk_date
   define_model_callbacks :initialize

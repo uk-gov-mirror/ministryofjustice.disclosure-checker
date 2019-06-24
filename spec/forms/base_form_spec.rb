@@ -41,4 +41,30 @@ RSpec.describe BaseForm do
       expect(subject.disclosure_check).to eq(disclosure_check)
     end
   end
+
+  describe 'delegate some frequently used methods to `disclosure_check`' do
+    let(:disclosure_check) {
+      instance_double(
+        DisclosureCheck, conviction_type: 'conviction_type', conviction_subtype: 'conviction_subtype'
+      )
+    }
+
+    before do
+      allow(subject).to receive(:disclosure_check).and_return(disclosure_check)
+    end
+
+    describe '#conviction_type' do
+      it 'delegates to `disclosure_checker`' do
+        expect(subject.conviction_type).to eq('conviction_type')
+        expect(disclosure_check).to have_received(:conviction_type)
+      end
+    end
+
+    describe '#conviction_subtype' do
+      it 'delegates to `disclosure_checker`' do
+        expect(subject.conviction_subtype).to eq('conviction_subtype')
+        expect(disclosure_check).to have_received(:conviction_subtype)
+      end
+    end
+  end
 end
