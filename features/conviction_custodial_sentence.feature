@@ -10,7 +10,7 @@ Feature: Conviction
 
     When I enter a valid date
 
-    Then I should see "Was the length of conviction given in weeks, months or years?"
+    Then I should see "Was the length of the detention and training order (DTO) given in weeks, months or years?"
     And I choose "Weeks"
 
     Then I should see "What was the length of the order?"
@@ -23,7 +23,7 @@ Feature: Conviction
 
     When I enter a valid date
 
-    Then I should see "Was the length of conviction given in weeks, months or years?"
+    Then I should see "Was the length of the detention given in weeks, months or years?"
     And I choose "Weeks"
 
     Then I should see "What was the length of the order?"

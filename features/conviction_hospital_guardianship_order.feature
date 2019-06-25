@@ -5,7 +5,7 @@ Feature: Conviction
   And I choose <subtype>
 
   When I enter a valid date
-  Then I should see "Was the length of conviction given in weeks, months or years?"
+  Then I should see "Was the length of the order given in weeks, months or years?"
   And  I choose "Weeks"
   Then I should see "What was the length of the order?"
   And I fill in "What was the length of the order?" with "10"
