@@ -13,8 +13,11 @@ Feature: Conviction
     Then I should see "Was the length of the detention and training order (DTO) given in weeks, months or years?"
     And I choose "Weeks"
 
-    Then I should see "What was the length of the order?"
-    And I fill in "What was the length of the order?" with "10"
+    Then I should see "What was the length of the detention and training order (DTO)?"
+    And I fill in "Number of weeks" with "10"
+
+    Then I click the "Continue" button
+    And I should be on "/steps/check/results"
 
   @happy_path
   Scenario: Conviction Custodial sentence - Detention
@@ -24,7 +27,10 @@ Feature: Conviction
     When I enter a valid date
 
     Then I should see "Was the length of the detention given in weeks, months or years?"
-    And I choose "Weeks"
+    And I choose "Months"
 
-    Then I should see "What was the length of the order?"
-    And I fill in "What was the length of the order?" with "10"
+    Then I should see "What was the length of the detention?"
+    And I fill in "Number of months" with "3"
+
+    Then I click the "Continue" button
+    And I should be on "/steps/check/results"

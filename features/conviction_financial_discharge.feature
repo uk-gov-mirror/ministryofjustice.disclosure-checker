@@ -17,7 +17,10 @@ Feature: Conviction
     When I enter a valid date
 
     Then I should see "Was the length of the conditions given in weeks, months or years?"
-    And I choose "Weeks"
-    Then I enter a conviction length in "weeks"
-    Then I should be on "/steps/check/results"
+    And I choose "Years"
 
+    Then I should see "What was the length of the discharge?"
+    And I fill in "Number of years" with "2"
+
+    Then I click the "Continue" button
+    And I should be on "/steps/check/results"

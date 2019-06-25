@@ -67,12 +67,3 @@ When(/^I enter a valid date$/) do
   step %[I fill in "Year" with "1999"]
   step %[I click the "Continue" button]
 end
-
-# TODO: waiting to implement the text field i18n attribute
-# for this to work again.
-When(/^I enter a conviction length in "([^"]*)"$/) do |_value|
-  step %[I should see "What was the length of the order?"]
-  #step %[I should see "Number of #{value}"]
-  step %[I fill in "What was the length of the order?" with "10"]
-  step %[I click the "Continue" button]
-end
