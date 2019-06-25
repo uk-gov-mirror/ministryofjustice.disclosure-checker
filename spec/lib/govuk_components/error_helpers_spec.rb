@@ -18,7 +18,6 @@ RSpec.describe GovukElementsErrorsHelper do
       let(:html_output) { GovukElementsErrorsHelper.error_summary(disclosure_check, 'There is an error') }
       let(:html_fixture) { file_fixture('error_summary.html').read }
 
-
       it 'outputs the expected markup' do
         disclosure_check.errors.add(:kind, :inclusion)
 
@@ -31,36 +30,28 @@ RSpec.describe GovukElementsErrorsHelper do
     end
 
     context 'choice question' do
-      let(:html_output) { GovukElementsErrorsHelper.error_summary(kind_form, 'Select caution or conviction') }
-      let(:html_fixture) { file_fixture('error_summary_choice.html').read }
+      let(:html_output) { GovukElementsErrorsHelper.error_summary(kind_form, 'There is an error') }
       let(:kind_form) { Steps::Check::KindForm.build(disclosure_check) }
 
-
-      it 'choice outputs the expected markup' do
+      it 'links to the expected radio option' do
         kind_form.errors.add(:kind, :inclusion)
 
         expect(
           strip_text(html_output)
-        ).to eq(
-          strip_text(html_fixture)
-        )
+        ).to match(/<a href="#steps_check_kind_form_kind_caution">/)
       end
     end
 
-
     context 'text box' do
-      let(:html_output) { GovukElementsErrorsHelper.error_summary(conviction_length_form, 'The length of conviction must be a number, like 3') }
-      let(:html_fixture) { file_fixture('error_summary_text_box.html').read }
+      let(:html_output) { GovukElementsErrorsHelper.error_summary(conviction_length_form, 'There is an error') }
       let(:conviction_length_form) { Steps::Conviction::ConvictionLengthForm.build(disclosure_check) }
 
-
-      it 'choice outputs the expected markup' do
+      it 'links to the expected text field' do
         conviction_length_form.errors.add(:conviction_length, :not_a_number)
+
         expect(
           strip_text(html_output)
-        ).to eq(
-          strip_text(html_fixture)
-        )
+        ).to match(/<a href="#steps_conviction_conviction_length_form_conviction_length">/)
       end
     end
   end
