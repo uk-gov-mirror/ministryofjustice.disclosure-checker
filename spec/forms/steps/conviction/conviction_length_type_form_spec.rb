@@ -10,9 +10,9 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
 
   subject { described_class.new(arguments) }
 
-  describe '.choices' do
+  describe '#choices' do
     it 'returns the relevant choices' do
-      expect(described_class.choices).to eq(%w(
+      expect(subject.choices).to eq(%w(
         weeks
         months
         years

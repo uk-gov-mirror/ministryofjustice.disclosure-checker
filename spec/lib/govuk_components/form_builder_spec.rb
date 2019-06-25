@@ -64,6 +64,17 @@ RSpec.describe GovukComponents::FormBuilder do
       end
     end
 
+    context 'fieldset with a hint' do
+      let(:form) { 'steps_conviction_under_age_form' }
+      let(:attribute) { 'under_age' }
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to match(/<span class="govuk-hint" id="steps_conviction_under_age_form_under_age_hint">/)
+      end
+    end
+
     context 'radio with hints' do
       let(:attribute) { 'under_age' }
       let(:form) { 'my_form' }
@@ -82,12 +93,12 @@ RSpec.describe GovukComponents::FormBuilder do
     end
 
     context 'page_heading with a virtual attribute' do
-      let(:legend_options) { { virtual_attribute: 'example_attribute' } }
+      let(:options) { super().merge(i18n_attribute: :example_attribute) }
 
       it 'outputs the expected markup' do
         expect(
           strip_text(html_output)
-        ).to match(/<h1 class="govuk-fieldset__heading">Example attribute<\/h1>/)
+        ).to match(/<h1 class="govuk-fieldset__heading">Were you cautioned or convicted\?<\/h1>/)
       end
     end
 
@@ -179,18 +190,6 @@ RSpec.describe GovukComponents::FormBuilder do
         ).to eq(
           strip_text(html_fixture)
         )
-      end
-    end
-
-    context 'with a custom hint' do
-      let(:options) do
-        { hint_options: { virtual_attribute: 'months' } }
-      end
-
-      it 'outputs the expected markup' do
-        expect(
-          strip_text(html_output)
-        ).to match(/<span class="govuk-hint" id="steps_conviction_conviction_length_form_months_hint">Number of months<\/span>/)
       end
     end
   end
