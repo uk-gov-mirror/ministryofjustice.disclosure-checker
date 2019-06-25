@@ -15,7 +15,7 @@ module GovukComponents
     def text_field(attribute, options = {})
       content_tag(:div, class: form_group_classes(attribute)) do
         concat input_label(attribute, options)
-        concat hint(attribute, options)
+        concat hint(attribute)
         concat error(attribute)
         concat @template.text_field(@object_name, attribute, input_options(attribute, options))
       end
@@ -32,7 +32,7 @@ module GovukComponents
       content_tag(:div, class: form_group_classes(attribute)) do
         content_tag(:fieldset, fieldset_options(attribute, options)) do
           concat fieldset_legend(attribute, options)
-          concat hint(attribute, options)
+          concat hint(attribute)
           concat error(attribute)
           concat radios
         end
@@ -80,7 +80,7 @@ module GovukComponents
     def fieldset_legend(attribute, options)
       default_attrs = { class: 'govuk-fieldset__legend' }.freeze
       default_opts  = {
-        visually_hidden: false, page_heading: true, size: 'xl', virtual_attribute: nil
+        visually_hidden: false, page_heading: true, size: 'xl'
       }.freeze
 
       legend_options = merge_attributes(
@@ -95,11 +95,11 @@ module GovukComponents
       legend_options[:class] << " govuk-fieldset__legend--#{opts[:size]}"
       legend_options[:class] << ' govuk-visually-hidden' if opts[:visually_hidden]
 
-      # If a form view is reused but the attribute doesn't change (for example in
-      # partials) a `virtual_attribute` can be passed to the `legend_options` to
-      # lookup the legend locales based on this, instead of the original attribute
-      #
-      attribute = opts[:virtual_attribute] || attribute
+      text = localized_text(
+        'helpers.fieldset', attribute,
+        i18n_attribute: options[:i18n_attribute],
+        default: default_label(attribute)
+      )
 
       # The `page_heading` option can be false to disable "Legends as page headings"
       # https://design-system.service.gov.uk/get-started/labels-legends-headings/
@@ -107,10 +107,10 @@ module GovukComponents
 
       if opts[:page_heading]
         content_tag(:legend, legend_options) do
-          content_tag(:h1, fieldset_text(attribute), class: 'govuk-fieldset__heading')
+          content_tag(:h1, text, class: 'govuk-fieldset__heading')
         end
       else
-        content_tag(:legend, fieldset_text(attribute), legend_options)
+        content_tag(:legend, text, legend_options)
       end
     end
     # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
@@ -184,12 +184,7 @@ module GovukComponents
       content_tag(:span, text, class: 'govuk-hint govuk-radios__hint', id: id_for("#{attribute}_#{value}", 'hint'))
     end
 
-    def hint(attribute, options = {})
-      # If a form view is reused but the attribute doesn't change (for example in
-      # partials) a `virtual_attribute` can be passed to the `hint_options` to
-      # lookup the hint locale based on this, instead of the original attribute.
-      #
-      attribute = options.dig(:hint_options, :virtual_attribute) || attribute
+    def hint(attribute)
       return unless hint_text(attribute)
 
       content_tag(:span, hint_text(attribute), class: 'govuk-hint', id: id_for(attribute, 'hint'))
@@ -204,6 +199,30 @@ module GovukComponents
 
     def id_for(attribute, suffix)
       [attribute_prefix, attribute, suffix].join('_')
+    end
+
+    # If a form view is reused but the attribute doesn't change (for example in
+    # partials) an `i18n_attribute` can be used to lookup the legend or hint locales
+    # based on this, instead of the original attribute.
+    #
+    # We prioritise the `i18n_attribute` if provided, and if no locale is found,
+    # we try the 'real' attribute as a fallback and finally the default value.
+    #
+    def localized_text(scope, attribute, i18n_attribute: nil, default:)
+      found = if i18n_attribute
+                key = "#{@object_name}.#{i18n_attribute}"
+
+                I18n.translate(key, default: '', scope: scope).presence ||
+                  I18n.translate("#{key}_html", default: '', scope: scope).html_safe.presence
+              end
+
+      return found if found
+
+      key = "#{@object_name}.#{attribute}"
+
+      # Passes blank String as default because nil is interpreted as no default
+      I18n.translate(key, default: '', scope: scope).presence ||
+        I18n.translate("#{key}_html", default: default, scope: scope).html_safe.presence
     end
   end
 end

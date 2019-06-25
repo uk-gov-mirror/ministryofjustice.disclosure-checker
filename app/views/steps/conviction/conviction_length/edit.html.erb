@@ -13,9 +13,8 @@
 
         <%= step_form @form_object do |f| %>
           <%= f.text_field :conviction_length,
-                           input_options: { class: 'govuk-input--width-4' },
-                           hint_options: { virtual_attribute: @form_object.conviction_length_type }
-          %>
+                           i18n_attribute: @form_object.conviction_length_type,
+                           input_options: { class: 'govuk-input--width-4' } %>
 
           <%= f.continue_button %>
         <% end %>

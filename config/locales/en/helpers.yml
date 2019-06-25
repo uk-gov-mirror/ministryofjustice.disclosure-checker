@@ -23,7 +23,9 @@ en:
       steps_conviction_under_age_form:
         under_age: How old were you when you got convicted?
       steps_conviction_known_date_form:
+        # default key
         known_date: When were you given the order?
+        # alternative keys defined with `i18_attribute`
         detention_training_order: When were you given the detention and training order (DTO)?
         detention: When were you given the detention?
         absolute_discharge: When were you given the discharge?
@@ -36,14 +38,25 @@ en:
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
-        community_order: What was your community order?
+        # default key
+        conviction_subtype: What type of order were you given?
+        # alternative keys defined with `i18_attribute`
+        community_order: What was your community or youth rehabilitation order (YRO)?
         custodial_sentence: What was your custodial sentence?
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
-        motoring: What was your motoring conviction?
-        hospital_guard_order: What type of order were you given?
       steps_conviction_conviction_length_type_form:
-        conviction_length_type: Was the length of conviction given in weeks, months or years?
+        # default key
+        conviction_length_type: Was the length of the order given in weeks, months or years?
+        # alternative keys defined with `i18_attribute`
+        detention_training_order: Was the length of the detention and training order (DTO) given in weeks, months or years?
+        detention: Was the length of the detention given in weeks, months or years?
+        conditional_discharge: Was the length of the conditions given in weeks, months or years?
+        behavioural_change_prog: Was the length of the programme given in weeks, months or years?
+        curfew: Was the length of the curfew given in weeks, months or years?
+        exclusion_requirement: Was the length of the exclusion requirement given in weeks, months or years?
+        intoxicating_substance_treatment: Was the length of the treatment given in weeks, months or years?
+        mental_health_treatment: Was the length of the treatment given in weeks, months or years?
       steps_conviction_compensation_paid_form:
         compensation_paid: Did you pay the compensation in full?
       steps_conviction_compensation_payment_date_form:
