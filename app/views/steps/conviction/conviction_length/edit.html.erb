@@ -9,12 +9,23 @@
       <div class="govuk-grid-column-two-thirds">
         <%= error_summary %>
 
-        <!-- The header is part of the text_field label -->
+        <h1 class="govuk-heading-xl">
+          <%=t ".heading.#{@form_object.conviction_subtype}", default: t('.heading.default') %>
+        </h1>
+
+        <p class="govuk-body-m">
+          <%=t '.lead_text' %>
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <%=t '.release_list_html' %>
+        </ul>
 
         <%= step_form @form_object do |f| %>
           <%= f.text_field :conviction_length,
                            i18n_attribute: @form_object.conviction_length_type,
-                           input_options: { class: 'govuk-input--width-4' } %>
+                           input_options: { class: 'govuk-input--width-3' },
+                           label_options: { page_heading: false, size: 's' } %>
 
           <%= f.continue_button %>
         <% end %>

@@ -216,7 +216,9 @@ en:
           months: Months
           years: Years
       steps_conviction_conviction_length_form:
-        conviction_length: What was the length of the order?
+        weeks: Number of weeks
+        months: Number of months
+        years: Number of years
       steps_conviction_compensation_payment_date_form:
         day: Day
         month: Month

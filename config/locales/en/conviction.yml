@@ -24,7 +24,22 @@ en:
       conviction_length:
         edit:
           page_title: conviction length
-          heading: Enter length of conviction given in weeks or months?
+          lead_text: "Enter the whole length you were given in court, even if you were released:"
+          release_list_html: |
+            <li>early</li>
+            <li>on temporary license</li>
+            <li>on parole</li>
+            <li>under supervision</li>
+          heading:
+            default: What was the length of the order?
+            detention_training_order: What was the length of the detention and training order (DTO)?
+            detention: What was the length of the detention?
+            conditional_discharge: What was the length of the discharge?
+            behavioural_change_prog: What was the length of the programme?
+            curfew: What was the length of the curfew?
+            exclusion_requirement: What was the length of the exclusion requirement?
+            intoxicating_substance_treatment: What was the length of the treatment?
+            mental_health_treatment: What was the length of the treatment?
       compensation_paid:
         edit:
           page_title: compensation paid
