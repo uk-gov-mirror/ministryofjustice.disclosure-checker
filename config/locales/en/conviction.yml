@@ -24,12 +24,6 @@ en:
       conviction_length:
         edit:
           page_title: conviction length
-          lead_text: "Enter the whole length you were given in court, even if you were released:"
-          release_list_html: |
-            <li>early</li>
-            <li>on temporary license</li>
-            <li>on parole</li>
-            <li>under supervision</li>
           heading:
             default: What was the length of the order?
             detention_training_order: What was the length of the detention and training order (DTO)?
@@ -40,6 +34,27 @@ en:
             exclusion_requirement: What was the length of the exclusion requirement?
             intoxicating_substance_treatment: What was the length of the treatment?
             mental_health_treatment: What was the length of the treatment?
+          explanation:
+            detention_html: |
+              <p class="govuk-body-m">
+                Enter the whole length of the sentence you were given in court, even if you were released:
+              </p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>early</li>
+                <li>on temporary license</li>
+                <li>on parole</li>
+                <li>under supervision</li>
+              </ul>
+            detention_training_order_html: |
+              <p class="govuk-body-m">
+                Enter the whole length of the sentence you were given in court, even if you were released:
+              </p>
+              <ul class="govuk-list govuk-list--bullet">
+                <li>early</li>
+                <li>on temporary license</li>
+                <li>on parole</li>
+                <li>under supervision</li>
+              </ul>
       compensation_paid:
         edit:
           page_title: compensation paid

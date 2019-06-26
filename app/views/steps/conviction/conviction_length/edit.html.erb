@@ -13,13 +13,7 @@
           <%=t ".heading.#{@form_object.conviction_subtype}", default: t('.heading.default') %>
         </h1>
 
-        <p class="govuk-body-m">
-          <%=t '.lead_text' %>
-        </p>
-
-        <ul class="govuk-list govuk-list--bullet">
-          <%=t '.release_list_html' %>
-        </ul>
+        <%=t ".explanation.#{@form_object.conviction_subtype}_html", default: '' %>
 
         <%= step_form @form_object do |f| %>
           <%= f.text_field :conviction_length,
