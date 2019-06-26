@@ -14,6 +14,10 @@ Then(/^I should not see "([^"]*)"$/) do |text|
   expect(page).not_to have_text(text)
 end
 
+And(/^I should see subsection "([^"]*)"$/) do |text|
+  expect(page).to have_css('span.govuk-caption-l', exact_text: text)
+end
+
 Then(/^I should see a "([^"]*)" link to "([^"]*)"$/) do |text, href|
   expect(page).to have_link(text, href: href)
 end

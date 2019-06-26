@@ -25,6 +25,14 @@ module ApplicationHelper
     end
   end
 
+  def step_subsection(form_object = @form_object)
+    capture do
+      render partial: 'step_subsection', locals: {
+        subsection: form_object.conviction_subtype
+      }
+    end
+  end
+
   def error_summary(form_object = @form_object)
     return unless GovukElementsErrorsHelper.errors_exist?(form_object)
 

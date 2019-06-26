@@ -6,16 +6,19 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction Discharge - Absolute discharge
     And I choose "Absolute discharge"
-    Then I should see "When were you given the discharge?"
+    Then I should see subsection "Absolute discharge"
+    And I should see "When were you given the discharge?"
+
     When I enter a valid date
     Then I should be on "/steps/check/results"
 
   @happy_path
   Scenario: Conviction Discharge - Conditional discharge
     And I choose "Conditional discharge"
-    Then I should see "When were you given the discharge?"
-    When I enter a valid date
+    Then I should see subsection "Conditional discharge"
+    And I should see "When were you given the discharge?"
 
+    When I enter a valid date
     Then I should see "Was the length of the conditions given in weeks, months or years?"
     And I choose "Years"
 
