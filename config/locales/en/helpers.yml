@@ -1,5 +1,49 @@
 ---
 en:
+  dictionary:
+    CONVICTION_TYPES: &CONVICTION_TYPES
+      community_order: Community or youth rehabilitation order (YRO)
+      custodial_sentence: Custodial sentence
+      discharge: Discharge
+      financial: Financial penalty
+      hospital_guard_order: Hospital or guardianship order
+    CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
+      # community_order
+      alcohol_abstinence_treatment: Alcohol abstinence or treatment
+      attendance_centre_order: Attendance centre order
+      behavioural_change_prog: Behavioural change programme
+      curfew: Curfew
+      drug_rehabilitation: Drug rehabilitation, treatment or testing
+      exclusion_requirement: Exclusion requirement
+      foreign_travel_prohibition: Foreign travel prohibition
+      intoxicating_substance_treatment: Intoxicating substance treatment requirement
+      mental_health_treatment: Mental health treatment
+      prohibition: Prohibition
+      referral_order: Referral order
+      rehab_activity_requirement: Rehabilitation activity requirement (RAR)
+      reparation_order: Reparation order
+      residence_requirement: Residence requirement
+      sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
+      super_ord_breach_civil_injuc: Supervision order on breach of a civil injunction
+      unpaid_work: Unpaid work
+      # custodial_sentence
+      detention_training_order: Detention and training order
+      detention: Detention
+      # discharge
+      absolute_discharge: Absolute discharge
+      conditional_discharge: Conditional discharge
+      # financial
+      fine: A fine
+      compensation_to_a_victim: Compensation to a victim
+      # hospital_guard_order
+      hospital_order: Hospital order
+      guardianship_order: Guardianship order
+
+  shared:
+    back_link: Back
+    subsection:
+      <<: *CONVICTION_SUBTYPES
+
   helpers:
     submit:
       continue: Continue
@@ -94,7 +138,6 @@ en:
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation
           hospital_guard_order: For example, if there were mental health concerns
-          motoring: For example you were given penalty points or a disqualification at court
         conviction_subtype:
           # community_order
           alcohol_abstinence_treatment: You were ordered not to drink, or were given help to stop you drinking
@@ -122,10 +165,6 @@ en:
           # financial
           fine: ""
           compensation_to_a_victim: ""
-          # motoring
-          disqualification: You were banned from driving for a certain period of time
-          endorsement: You were found guilty of a motoring offence, which is now included on your driver record
-          penalty_points: You were given number of penalty points for a driving offence
           # hospital_guard_order
           hospital_order: ""
           guardianship_order: ""
@@ -168,48 +207,10 @@ en:
         year: Year
       steps_conviction_conviction_type_form:
         conviction_type:
-          community_order: Community or youth rehabilitation order (YRO)
-          custodial_sentence: Custodial sentence
-          discharge: Discharge
-          financial: Financial penalty
-          hospital_guard_order: Hospital or guardianship order
-          motoring: Motoring endorsement
+          <<: *CONVICTION_TYPES
       steps_conviction_conviction_subtype_form:
         conviction_subtype:
-          # community_order
-          alcohol_abstinence_treatment: Alcohol abstinence or treatment
-          attendance_centre_order: Attendance centre order
-          behavioural_change_prog: Behavioural change programme
-          curfew: Curfew
-          drug_rehabilitation: Drug rehabilitation, treatment or testing
-          exclusion_requirement: Exclusion requirement
-          foreign_travel_prohibition: Foreign travel prohibition
-          intoxicating_substance_treatment: Intoxicating substance treatment requirement
-          mental_health_treatment: Mental health treatment
-          prohibition: Prohibition
-          referral_order: Referral order
-          rehab_activity_requirement: Rehabilitation activity requirement (RAR)
-          reparation_order: Reparation order
-          residence_requirement: Residence requirement
-          sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
-          super_ord_breach_civil_injuc: Supervision order on breach of a civil injunction
-          unpaid_work: Unpaid work
-          # custodial_sentence
-          detention_training_order: Detention and training order
-          detention: Detention
-          # discharge
-          absolute_discharge: Absolute discharge
-          conditional_discharge: Conditional discharge
-          # financial
-          fine: A fine
-          compensation_to_a_victim: Compensation to a victim
-          # motoring
-          disqualification: Disqualification
-          endorsement: Endorsement
-          penalty_points: Penalty points
-          # hospital_guard_order
-          hospital_order: Hospital order
-          guardianship_order: Guardianship order
+          <<: *CONVICTION_SUBTYPES
       steps_conviction_conviction_length_type_form:
         conviction_length_type:
           weeks: Weeks

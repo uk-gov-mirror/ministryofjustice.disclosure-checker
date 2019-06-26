@@ -1,5 +1,48 @@
 ---
 en:
+  dictionary:
+    CONVICTION_TYPES: &CONVICTION_TYPES
+      community_order: Community or youth rehabilitation order (YRO)
+      custodial_sentence: Custodial sentence
+      discharge: Discharge
+      financial: Financial penalty
+      hospital_guard_order: Hospital or guardianship order
+    CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
+      # community_order
+      alcohol_abstinence_treatment: Alcohol abstinence or treatment
+      attendance_centre_order: Attendance centre order
+      behavioural_change_prog: Behavioural change programme
+      curfew: Curfew
+      drug_rehabilitation: Drug rehabilitation, treatment or testing
+      exclusion_requirement: Exclusion requirement
+      foreign_travel_prohibition: Foreign travel prohibition
+      intoxicating_substance_treatment: Intoxicating substance treatment requirement
+      mental_health_treatment: Mental health treatment
+      prohibition: Prohibition
+      referral_order: Referral order
+      rehab_activity_requirement: Rehabilitation activity requirement (RAR)
+      reparation_order: Reparation order
+      residence_requirement: Residence requirement
+      sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
+      super_ord_breach_civil_injuc: Supervision order on breach of a civil injunction
+      unpaid_work: Unpaid work
+      # custodial_sentence
+      detention_training_order: Detention and training order
+      detention: Detention
+      # discharge
+      absolute_discharge: Absolute discharge
+      conditional_discharge: Conditional discharge
+      # financial
+      fine: A fine
+      compensation_to_a_victim: Compensation to a victim
+      # motoring
+      disqualification: Disqualification
+      endorsement: Endorsement
+      penalty_points: Penalty points
+      # hospital_guard_order
+      hospital_order: Hospital order
+      guardianship_order: Guardianship order
+
   results/caution:
     kind:
       question: Criminal record type
@@ -33,45 +76,11 @@ en:
     conviction_type:
       question: Type of conviction
       answers:
-        community_order: Community order
-        custodial_sentence: Custodial sentence
-        discharge: Discharge
-        financial: Financial penalty
-        hospital_order: Hospital Order
-        motoring: Motoring endorsement
+        <<: *CONVICTION_TYPES
     conviction_subtype:
       question: Name of conviction
       answers:
-        # community_order
-        alcohol_abstinence: Alcohol abstinence
-        alcohol_treatment: Alcohol treatment
-        behavioural_change_prog: Behavioural change programme
-        curfew: Curfew
-        drug_rehabilitation: Drug rehabilitation
-        exclusion_requirement: Exclusion requirement
-        foreign_travel_prohibition: Foreign travel prohibition
-        mental_health_treatment: Mental health treatment
-        prohibition: Prohibition
-        referral_order: Referral order
-        rehab_activity_requirement: Rehabilitation activity requirement
-        reparation_order: Reparation order
-        residence_requirement: Residence requirement
-        sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
-        super_ord_breach_civil_injuc: Supervision order on breach of a civil injunction
-        unpaid_work: Unpaid work
-        # custodial_sentence
-        detention_training_order: Detention and training order
-        detention: Detention (4 years or over)
-        # discharge
-        absolute_discharge: Absolute discharge
-        conditional_discharge: Conditional discharge
-        # financial
-        fine: A fine
-        compensation_to_a_victim: Compensation to a victim
-        # motoring
-        disqualification: Disqualification
-        endorsement: Endorsement
-        penalty_points: Penalty points
+        <<: *CONVICTION_SUBTYPES
     under_age:
       question: Age at time of conviction
       answers:
