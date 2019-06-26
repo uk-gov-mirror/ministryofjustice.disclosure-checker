@@ -8,6 +8,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
         <%= error_summary %>
+        <%= step_subsection %>
 
         <%= step_form @form_object do |f| %>
           <%= f.radio_button_fieldset :conviction_length_type,
