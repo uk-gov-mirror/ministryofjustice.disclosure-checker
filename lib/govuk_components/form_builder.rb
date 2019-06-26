@@ -137,8 +137,14 @@ module GovukComponents
       label_options[:class] << " govuk-label--#{opts[:size]}"
       label_options[:class] << ' govuk-visually-hidden' if opts[:visually_hidden]
 
+      text = localized_text(
+        'helpers.label', attribute,
+        i18n_attribute: options[:i18n_attribute],
+        default: default_label(attribute)
+      )
+
       html = Nokogiri::HTML.fragment(
-        label(attribute, label_options)
+        label(attribute, text, label_options)
       )
 
       # Remove the error span Rails introduce, as we are handling errors

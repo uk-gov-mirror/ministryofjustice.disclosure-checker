@@ -192,5 +192,15 @@ RSpec.describe GovukComponents::FormBuilder do
         )
       end
     end
+
+    context 'label with a virtual attribute' do
+      let(:options) { super().merge(i18n_attribute: :months) }
+
+      it 'outputs the expected markup' do
+        expect(
+          strip_text(html_output)
+        ).to match(/<label class="govuk-label govuk-label--xl" for="steps_conviction_conviction_length_form_conviction_length">Number of months<\/label>/)
+      end
+    end
   end
 end
