@@ -42,7 +42,7 @@ en:
         steps/conviction/conviction_length_type_form:
           attributes:
             conviction_length_type:
-              inclusion: Select weeks or months
+              inclusion: Select how was the length given
         steps/conviction/conviction_length_form:
           attributes:
             conviction_length:

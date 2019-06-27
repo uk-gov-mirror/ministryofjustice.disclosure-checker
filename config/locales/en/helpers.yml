@@ -169,11 +169,6 @@ en:
           hospital_order: ""
           guardianship_order: ""
 
-        conviction_length:
-          weeks: ""
-          months: ""
-          years: ""
-
     label:
       steps_check_kind_form:
         kind:
@@ -216,6 +211,7 @@ en:
           weeks: Weeks
           months: Months
           years: Years
+          no_length: No length was given
       steps_conviction_conviction_length_form:
         weeks: Number of weeks
         months: Number of months

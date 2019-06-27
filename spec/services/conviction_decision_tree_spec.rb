@@ -51,17 +51,9 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `conviction_type`' do
-    let(:step_params) { { conviction_type: type } }
-
-    context 'and type has children subtypes' do
-      let(:type) { 'community_order' }
-      it { is_expected.to have_destination(:conviction_subtype, :edit) }
-    end
-
-    context 'and type has no children subtypes' do
-      let(:type) { 'hospital_order' }
-      it { is_expected.to have_destination(:known_date, :edit) }
-    end
+    let(:step_params) { { conviction_type: conviction_type } }
+    let(:conviction_type) { 'community_order' }
+    it { is_expected.to have_destination(:conviction_subtype, :edit) }
   end
 
   context 'when the step is `conviction_subtype`' do
@@ -79,8 +71,17 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `conviction_length_type` ' do
-    let(:step_params) { { conviction_length_type: 'weeks' } }
-    it { is_expected.to have_destination(:conviction_length, :edit) }
+    let(:step_params) { { conviction_length_type: conviction_length_type } }
+
+    context 'and the answer is `no_length`' do
+      let(:conviction_length_type) { ConvictionLengthType::NO_LENGTH.to_s }
+      it { is_expected.to have_destination('/steps/check/results', :show) }
+    end
+
+    context 'and the answer is other than `no_length`' do
+      let(:conviction_length_type) { ConvictionLengthType::MONTHS.to_s }
+      it { is_expected.to have_destination(:conviction_length, :edit) }
+    end
   end
 
   context 'when the step is `conviction_length`' do

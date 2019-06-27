@@ -1,4 +1,6 @@
 class ConvictionDecisionTree < BaseDecisionTree
+  include ValueObjectMethods
+
   # rubocop:disable Metrics/CyclomaticComplexity
   def destination
     return next_step if next_step
@@ -7,13 +9,13 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :under_age
       after_under_age
     when :conviction_type
-      after_conviction_type
+      edit(:conviction_subtype)
     when :conviction_subtype
       after_conviction_subtype
     when :known_date
       after_known_date
     when :conviction_length_type
-      edit(:conviction_length)
+      after_conviction_length_type
     when :compensation_paid
       after_compensation_paid
     when :conviction_length, :compensation_payment_date
@@ -32,12 +34,6 @@ class ConvictionDecisionTree < BaseDecisionTree
     show('/steps/check/exit_over18')
   end
 
-  def after_conviction_type
-    return edit(:conviction_subtype) if conviction.children.any?
-
-    edit(:known_date)
-  end
-
   def after_conviction_subtype
     return edit(:compensation_paid) if conviction_subtype.compensation?
 
@@ -50,6 +46,12 @@ class ConvictionDecisionTree < BaseDecisionTree
     edit(:conviction_length_type)
   end
 
+  def after_conviction_length_type
+    return results if step_value(:conviction_length_type).inquiry.no_length?
+
+    edit(:conviction_length)
+  end
+
   def after_compensation_paid
     return edit(:compensation_payment_date) if GenericYesNo.new(disclosure_check.compensation_paid).yes?
 
@@ -59,13 +61,5 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   def results
     show('/steps/check/results')
-  end
-
-  def conviction
-    ConvictionType.find_constant(step_value(:conviction_type))
-  end
-
-  def conviction_subtype
-    ConvictionType.find_constant(disclosure_check.conviction_subtype)
   end
 end
