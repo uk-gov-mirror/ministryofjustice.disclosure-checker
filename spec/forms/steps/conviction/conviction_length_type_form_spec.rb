@@ -44,7 +44,8 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
 
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
-          conviction_length_type: conviction_length_type
+          conviction_length_type: conviction_length_type,
+          conviction_length: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)

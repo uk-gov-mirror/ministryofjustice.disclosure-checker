@@ -7,7 +7,6 @@ module Calculators
     SPENT_DURATION_WITH_NO_LENGTH = { months: 24 }.freeze
 
     def expiry_date
-      # TODO: Update when no length option is added
       return conviction_start_date.advance(SPENT_DURATION_WITH_NO_LENGTH) if no_length?
 
       conviction_end_date.advance(SPENT_DURATION_WITH_LENGTH)

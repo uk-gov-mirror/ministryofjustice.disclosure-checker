@@ -19,7 +19,8 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          conviction_length_type: conviction_length_type
+          conviction_length_type: conviction_length_type,
+          conviction_length: nil
         )
       end
     end
