@@ -13,7 +13,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :known_date
       after_known_date
     when :conviction_length_type
-      edit(:conviction_length)
+      after_conviction_length_type
     when :compensation_paid
       after_compensation_paid
     when :conviction_length, :compensation_payment_date
@@ -48,6 +48,12 @@ class ConvictionDecisionTree < BaseDecisionTree
     return results if conviction_subtype.skip_length?
 
     edit(:conviction_length_type)
+  end
+
+  def after_conviction_length_type
+    return results if step_value(:conviction_length_type).inquiry.no_length?
+
+    edit(:conviction_length)
   end
 
   def after_compensation_paid

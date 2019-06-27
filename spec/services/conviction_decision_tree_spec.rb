@@ -79,8 +79,17 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `conviction_length_type` ' do
-    let(:step_params) { { conviction_length_type: 'weeks' } }
-    it { is_expected.to have_destination(:conviction_length, :edit) }
+    let(:step_params) { { conviction_length_type: conviction_length_type } }
+
+    context 'and the answer is `no_length`' do
+      let(:conviction_length_type) { ConvictionLengthType::NO_LENGTH.to_s }
+      it { is_expected.to have_destination('/steps/check/results', :show) }
+    end
+
+    context 'and the answer is other than `no_length`' do
+      let(:conviction_length_type) { ConvictionLengthType::MONTHS.to_s }
+      it { is_expected.to have_destination(:conviction_length, :edit) }
+    end
   end
 
   context 'when the step is `conviction_length`' do

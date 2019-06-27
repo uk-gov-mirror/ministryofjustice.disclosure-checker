@@ -16,6 +16,7 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
         weeks
         months
         years
+        no_length
       ))
     end
   end
