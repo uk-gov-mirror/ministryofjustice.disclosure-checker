@@ -5,19 +5,35 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
     disclosure_check: disclosure_check,
     conviction_length_type: conviction_length_type
   } }
-  let(:disclosure_check) { instance_double(DisclosureCheck) }
+
+  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type) }
+  let(:conviction_type) { ConvictionType::COMMUNITY_ORDER.to_s }
   let(:conviction_length_type) { 'weeks' }
 
   subject { described_class.new(arguments) }
 
   describe '#choices' do
-    it 'returns the relevant choices' do
-      expect(subject.choices).to eq(%w(
-        weeks
-        months
-        years
-        no_length
-      ))
+    context 'for a community order' do
+      it 'the choices include `no_length`' do
+        expect(subject.choices).to eq(%w(
+          weeks
+          months
+          years
+          no_length
+        ))
+      end
+    end
+
+    context 'for an order, other than community order' do
+      let(:conviction_type) { ConvictionType::DISCHARGE.to_s }
+
+      it 'the choices does not include `no_length`' do
+        expect(subject.choices).to eq(%w(
+          weeks
+          months
+          years
+        ))
+      end
     end
   end
 

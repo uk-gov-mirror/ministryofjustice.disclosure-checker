@@ -3,10 +3,14 @@ module Steps
     class ConvictionLengthTypeForm < BaseForm
       attribute :conviction_length_type, String
 
-      validates_inclusion_of :conviction_length_type, in: :choices
+      validates_inclusion_of :conviction_length_type, in: :choices, if: :disclosure_check
 
       def choices
-        ConvictionLengthType.string_values
+        if conviction_type.eql?(ConvictionType::COMMUNITY_ORDER)
+          ConvictionLengthType.values
+        else
+          ConvictionLengthType.values - [ConvictionLengthType::NO_LENGTH]
+        end.map(&:to_s)
       end
 
       private
