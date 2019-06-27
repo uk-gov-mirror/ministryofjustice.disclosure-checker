@@ -51,17 +51,9 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `conviction_type`' do
-    let(:step_params) { { conviction_type: type } }
-
-    context 'and type has children subtypes' do
-      let(:type) { 'community_order' }
-      it { is_expected.to have_destination(:conviction_subtype, :edit) }
-    end
-
-    context 'and type has no children subtypes' do
-      let(:type) { 'hospital_order' }
-      it { is_expected.to have_destination(:known_date, :edit) }
-    end
+    let(:step_params) { { conviction_type: conviction_type } }
+    let(:conviction_type) { 'community_order' }
+    it { is_expected.to have_destination(:conviction_subtype, :edit) }
   end
 
   context 'when the step is `conviction_subtype`' do

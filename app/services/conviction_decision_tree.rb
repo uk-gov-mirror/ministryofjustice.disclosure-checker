@@ -1,4 +1,6 @@
 class ConvictionDecisionTree < BaseDecisionTree
+  include ValueObjectMethods
+
   # rubocop:disable Metrics/CyclomaticComplexity
   def destination
     return next_step if next_step
@@ -7,7 +9,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     when :under_age
       after_under_age
     when :conviction_type
-      after_conviction_type
+      edit(:conviction_subtype)
     when :conviction_subtype
       after_conviction_subtype
     when :known_date
@@ -30,12 +32,6 @@ class ConvictionDecisionTree < BaseDecisionTree
     return edit(:conviction_type) if GenericYesNo.new(disclosure_check.under_age).yes?
 
     show('/steps/check/exit_over18')
-  end
-
-  def after_conviction_type
-    return edit(:conviction_subtype) if conviction.children.any?
-
-    edit(:known_date)
   end
 
   def after_conviction_subtype
@@ -65,13 +61,5 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   def results
     show('/steps/check/results')
-  end
-
-  def conviction
-    ConvictionType.find_constant(step_value(:conviction_type))
-  end
-
-  def conviction_subtype
-    ConvictionType.find_constant(disclosure_check.conviction_subtype)
   end
 end
