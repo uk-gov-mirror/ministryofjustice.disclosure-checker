@@ -9,6 +9,7 @@ Feature: Caution
   Scenario: Over 18
     When I choose "Cautioned"
     Then I should see "How old were you when you got cautioned?"
+
     And I choose "18 or over"
     Then I should see "Sorry, you cannot use this service yet"
 
@@ -22,30 +23,25 @@ Feature: Caution
 
     And I choose "Youth Conditional caution"
 
-    Then I should see "Did you stick to the conditions of the caution?"
-
-    And I choose "Yes"
+    Then I should see "When did you get the caution?"
+    When I enter a valid date
 
     Then I should see "When did the conditions end?"
-
     When I enter a valid date
 
     Then I should see "Your caution expired on 01 January 1999"
-
 
   @happy_path
   Scenario: Caution happy path - under 18, simple caution
     When I choose "Cautioned"
     Then I should see "How old were you when you got cautioned?"
+
     And I choose "Under 18"
     Then I should see "What type of caution did you get?"
 
     And I choose "Youth caution"
 
     Then I should see "When did you get the caution?"
-
     When I enter a valid date
 
     Then I should see "Your caution expired on 01 January 1999"
-
-    # TODO: to be continued...
