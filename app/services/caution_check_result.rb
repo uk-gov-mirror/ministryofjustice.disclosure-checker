@@ -1,4 +1,4 @@
-class CautionExpiryCalculator
+class CautionCheckResult
   attr_reader :disclosure_check
 
   def initialize(disclosure_check:)

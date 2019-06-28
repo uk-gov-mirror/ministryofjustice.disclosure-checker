@@ -1,4 +1,4 @@
-class ConvictionExpiryCalculator
+class ConvictionCheckResult
   include ValueObjectMethods
   attr_reader :disclosure_check
 

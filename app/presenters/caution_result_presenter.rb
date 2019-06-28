@@ -9,7 +9,7 @@ class CautionResultPresenter < ResultsPresenter
 
   private
 
-  def calculator_class
-    CautionExpiryCalculator
+  def result_class
+    CautionCheckResult
   end
 end

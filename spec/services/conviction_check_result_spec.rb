@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe ConvictionExpiryCalculator do
+RSpec.describe ConvictionCheckResult do
   subject { described_class.new(disclosure_check: disclosure_check, ) }
 
 
