@@ -35,7 +35,6 @@ Rails.application.routes.draw do
     end
 
     namespace :caution do
-      edit_step :is_date_known
       edit_step :known_date
       edit_step :under_age
       edit_step :caution_type
@@ -43,7 +42,6 @@ Rails.application.routes.draw do
     end
 
     namespace :conviction do
-      edit_step :is_date_known
       edit_step :under_age
       edit_step :known_date
       edit_step :conviction_type

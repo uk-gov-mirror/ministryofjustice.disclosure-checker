@@ -8,7 +8,7 @@ RSpec.describe CautionResultPresenter do
   end
 
   describe '#question_attributes' do
-    it { expect(subject.question_attributes).to eq( [:kind, :is_date_known, :known_date, :under_age, :caution_type]) }
+    it { expect(subject.question_attributes).to eq( [:kind, :known_date, :under_age, :caution_type]) }
   end
 
   # TODO: this needs more tests
@@ -16,7 +16,7 @@ RSpec.describe CautionResultPresenter do
     let(:summary) { subject.summary }
 
     it 'return array of objects' do
-      expect(summary.size).to eq(5)
+      expect(summary.size).to eq(4)
 
       expect(summary[0].question).to eql(:kind)
       expect(summary[0].answer).to eql('caution')

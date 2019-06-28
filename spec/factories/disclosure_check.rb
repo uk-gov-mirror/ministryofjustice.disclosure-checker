@@ -4,7 +4,6 @@ FactoryBot.define do
     known_date { Faker::Date.backward(14).strftime('%Y-%m-%d') }
     under_age { 'yes' }
     caution_type { CautionType::SIMPLE_CAUTION }
-    is_date_known { 'yes' }
 
     trait :conviction do
       kind { CheckKind::CONVICTION }
