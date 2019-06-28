@@ -23,19 +23,19 @@ class ResultsPresenter
   end
 
   def expiry_date
-    calculator.expiry_date
+    result_service.expiry_date
   end
 
   private
 
-  def calculator
-    @_calculator ||= calculator_class.new(
+  def result_service
+    @_result_service ||= result_class.new(
       disclosure_check: disclosure_check
     )
   end
 
   # :nocov:
-  def calculator_class
+  def result_class
     raise NotImplementedError, 'implement in subclasses'
   end
 

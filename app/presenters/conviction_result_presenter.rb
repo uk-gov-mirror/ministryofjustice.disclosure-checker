@@ -17,7 +17,7 @@ class ConvictionResultPresenter < ResultsPresenter
 
   private
 
-  def calculator_class
-    ConvictionExpiryCalculator
+  def result_class
+    ConvictionCheckResult
   end
 end

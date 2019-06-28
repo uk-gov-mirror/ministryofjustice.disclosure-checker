@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe CautionExpiryCalculator do
+RSpec.describe CautionCheckResult do
   subject { described_class.new(disclosure_check: disclosure_check) }
 
   context '#expiry_date' do
