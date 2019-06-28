@@ -60,8 +60,6 @@ en:
         under_age: How old were you when you got cautioned?
       steps_caution_caution_type_form:
         caution_type: What type of caution did you get?
-      steps_caution_condition_complied_form:
-        condition_complied: Did you stick to the conditions of the caution?
       steps_conviction_is_date_known_form:
         is_date_known: Do you know the date you were convicted?
       steps_conviction_under_age_form:

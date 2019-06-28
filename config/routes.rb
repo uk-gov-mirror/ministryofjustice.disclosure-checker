@@ -40,9 +40,6 @@ Rails.application.routes.draw do
       edit_step :under_age
       edit_step :caution_type
       edit_step :conditional_end_date
-      edit_step :condition_complied
-      show_step :condition_exit
-
     end
 
     namespace :conviction do

@@ -24,9 +24,5 @@ en:
       caution_type:
         edit:
           page_title: Caution types
-      condition_complied:
-        edit:
-          page_title: Conditions complied
-          heading: Did you stick to the conditions of the caution?
   # TODO: refactor this
   caution_result: "the day you were given it"

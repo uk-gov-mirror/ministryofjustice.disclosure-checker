@@ -7,13 +7,11 @@ class CautionDecisionTree < BaseDecisionTree
     when :under_age
       after_under_age
     when :caution_type
-      after_caution_type
+      edit(:known_date)
     when :known_date
-      result
+      after_known_date
     when :conditional_end_date
       result
-    when :condition_complied
-      after_condition_complied
     else
       raise InvalidStep, "Invalid step '#{as || step_params}'"
     end
@@ -23,21 +21,15 @@ class CautionDecisionTree < BaseDecisionTree
   private
 
   def after_under_age
-    return edit(:caution_type) if GenericYesNo.new(disclosure_check.under_age).yes?
+    return edit(:caution_type) if GenericYesNo.new(step_value(:under_age)).yes?
 
     show('/steps/check/exit_over18')
   end
 
-  def after_caution_type
-    return edit(:condition_complied) if CautionType.new(disclosure_check.caution_type).conditional?
+  def after_known_date
+    return edit(:conditional_end_date) if CautionType.new(disclosure_check.caution_type).conditional?
 
-    edit(:known_date)
-  end
-
-  def after_condition_complied
-    return edit(:conditional_end_date) if GenericYesNo.new(disclosure_check.condition_complied).yes?
-
-    show(:condition_exit)
+    result
   end
 
   def result
