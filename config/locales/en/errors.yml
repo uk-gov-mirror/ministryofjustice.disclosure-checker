@@ -3,10 +3,6 @@ en:
   activemodel:
     errors:
       models:
-        steps/caution/is_date_known_form:
-          attributes:
-            is_date_known:
-              inclusion: Select if you know the date you were given the caution
         steps/caution/known_date_form:
           attributes:
             known_date:
@@ -17,10 +13,6 @@ en:
           attributes:
             under_age:
               inclusion: Select under 18 or over 18
-        steps/conviction/is_date_known_form:
-          attributes:
-            is_date_known:
-              inclusion: Select if you know the date you were given the conviction
         steps/conviction/known_date_form:
           attributes:
             known_date:

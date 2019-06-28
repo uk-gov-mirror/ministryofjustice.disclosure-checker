@@ -48,11 +48,6 @@ en:
       question: Criminal record type
       answers:
         caution: Caution
-    is_date_known:
-      question: Known caution date
-      answers:
-        'yes': 'Yes'
-        'no': 'No'
     known_date:
       question: Date caution given
     under_age:

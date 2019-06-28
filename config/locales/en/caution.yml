@@ -2,10 +2,6 @@
 en:
   steps:
     caution:
-      is_date_known:
-        edit:
-          page_title: Know caution date
-          heading: Do you know the date you were given the caution?
       known_date:
         edit:
           page_title: Caution date

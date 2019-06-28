@@ -2,10 +2,6 @@
 en:
   steps:
     conviction:
-      is_date_known:
-        edit:
-          page_title: Know convicted date
-          heading: Do you know the date you were convicted?
       known_date:
         edit:
           page_title: conviction date

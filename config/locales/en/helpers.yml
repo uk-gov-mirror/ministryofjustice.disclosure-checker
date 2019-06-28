@@ -50,8 +50,6 @@ en:
     fieldset:
       steps_check_kind_form:
         kind: Were you cautioned or convicted?
-      steps_caution_is_date_known_form:
-        is_date_known: Do you know the date you were given the caution?
       steps_caution_known_date_form:
         known_date: When did you get the caution?
       steps_caution_conditional_end_date_form:
@@ -60,8 +58,6 @@ en:
         under_age: How old were you when you got cautioned?
       steps_caution_caution_type_form:
         caution_type: What type of caution did you get?
-      steps_conviction_is_date_known_form:
-        is_date_known: Do you know the date you were convicted?
       steps_conviction_under_age_form:
         under_age: How old were you when you got convicted?
       steps_conviction_known_date_form:
