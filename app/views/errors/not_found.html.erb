@@ -1,1 +1,20 @@
-Placeholder
+<% title t('.page_title') %>
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <p class="govuk-body"><%=t '.lead_text' %></p>
+
+        <div class="form-submit">
+          <%= link_to t('.start_again'), root_path, class: 'govuk-button' %>
+        </div>
+
+      </div>
+    </div>
+
+  </main>
+</div>
