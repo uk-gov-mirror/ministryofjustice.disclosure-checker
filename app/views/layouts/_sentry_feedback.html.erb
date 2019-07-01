@@ -1,0 +1,13 @@
+<% content_for(:head) do %>
+  <script src="https://cdn.ravenjs.com/3.24.0/raven.min.js"></script>
+<% end %>
+
+<% content_for(:body_end) do %>
+  <script>
+    Raven.showReportDialog({
+      eventId: '<%= Raven.last_event_id %>',
+      // Use only the public DSN here!
+      dsn: '<%= "https://#{Raven.configuration.public_key}@sentry.service.dsd.io/#{Raven.configuration.project_id}" %>'
+    });
+  </script>
+<% end %>
