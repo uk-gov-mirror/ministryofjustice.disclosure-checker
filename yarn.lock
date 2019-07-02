@@ -2,6 +2,6 @@
 # yarn lockfile v1
 
 
-govuk-frontend@^2.7.0:
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-2.7.0.tgz#6a12baf514426653220dd3cdef55b1e1d97f52a6"
+govuk-frontend@^2.13.0:
+  version "2.13.0"
+  resolved "https://registry.yarnpkg.com/govuk-frontend/-/govuk-frontend-2.13.0.tgz#0273f7c92070abd6450c73a006ebb3ddc793463a"
