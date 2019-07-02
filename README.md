@@ -1,4 +1,4 @@
-# Check if you need to disclose your criminal record MVP
+# Check when a caution or conviction is spent (MVP)
 
 [![CircleCI](https://circleci.com/gh/ministryofjustice/disclosure-checker.svg?style=svg)](https://circleci.com/gh/ministryofjustice/disclosure-checker)
 

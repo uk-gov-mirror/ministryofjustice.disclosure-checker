@@ -55,7 +55,6 @@ end
 
 When(/^I am completing a basic under 18 "([^"]*)" conviction$/) do |value|
   step %[I visit "/"]
-  step %[I should see "Check if you need to disclose your criminal record"]
   step %[I click the "Start now" link]
   step %[I should see "Were you cautioned or convicted?"]
   step %[I choose "Convicted"]
