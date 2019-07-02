@@ -1,0 +1,15 @@
+en:
+  service:
+    name: Check when a caution or conviction is spent
+
+  date:
+    formats:
+      default: '%d %B %Y'
+      long: '%d %B %y'
+
+  warning:
+    reset_session:
+      page_title: Check in progress
+      heading: It looks like you already have a check in progress
+      resume_link: Resume check
+      restart_link: Start a new check
