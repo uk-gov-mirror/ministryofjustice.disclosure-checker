@@ -164,16 +164,35 @@ RSpec.shared_examples 'a date question form' do |options|
         end
       end
 
-      context 'when date is in the future' do
-        let(:date_value) { Date.tomorrow }
+      if options[:allow_future].nil?
+        context 'when date is in the future' do
+          let(:date_value) { Date.tomorrow }
 
-        it 'returns false' do
-          expect(subject.save).to be(false)
+          it 'returns false' do
+            expect(subject.save).to be(false)
+          end
+
+          it 'has a validation error on the field' do
+            expect(subject).to_not be_valid
+            expect(subject.errors.added?(question_attribute, :future)).to eq(true)
+          end
         end
+      else
+        context 'when date in the future is allowed' do
+          let(:date_value) { Date.tomorrow }
 
-        it 'has a validation error on the field' do
-          expect(subject).to_not be_valid
-          expect(subject.errors.added?(question_attribute, :future)).to eq(true)
+          it 'has no validation errors on the field' do
+            expect(subject).to be_valid
+            expect(subject.errors.added?(question_attribute, :future)).to eq(false)
+          end
+
+          it 'returns true' do
+              expect(disclosure_check).to receive(:update).with(
+                question_attribute => date_value
+              ).and_return(true)
+
+              expect(subject.save).to be(true)
+            end
         end
       end
     end
