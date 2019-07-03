@@ -39,8 +39,8 @@ RSpec.describe ConvictionCheckResult do
         it { expect(subject.calculator).to be_a klass  }
       end
 
-      context 'super_ord_breach_civil_injuc' do
-        let(:conviction_subtype) { 'super_ord_breach_civil_injuc' }
+      context 'supervision_order' do
+        let(:conviction_subtype) { 'supervision_order' }
         it { expect(subject.calculator).to be_a klass  }
       end
 
