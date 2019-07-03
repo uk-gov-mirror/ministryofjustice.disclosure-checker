@@ -4,75 +4,54 @@
   <main class="govuk-main-wrapper" id="main-content">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
-        <section class="intro">
-          <h1 class="govuk-heading-xl">
-            <%= service_name %>
-          </h1>
+        <h1 class="govuk-heading-xl">
+          <%= service_name %>
+        </h1>
 
-          <p class="govuk-body">Use this service to check if you need to tell people about offences on your criminal record.</p>
+        <p class="govuk-body">
+          Use this service to check if you need to tell people (such as employers or colleges) about a caution or
+          conviction.
+        </p>
 
-          <p class="govuk-body">A criminal record includes:</p>
+        <p class="govuk-body">
+          Most cautions and convictions become spent after a certain length of time.
+        </p>
 
-          <ul class="govuk-list govuk-list--bullet">
-            <li>cautions (given by the police)</li>
-            <li>convictions (given at court)</li>
-          </ul>
+        <p class="govuk-body">
+          You do not normally need to tell anyone about them after they become spent, but
+          <a href="https://ex-offenders.glitch.me/guidance-draft.html#background-checks" class="govuk-link" target="_blank">some jobs</a> need
+          a full criminal background check.
+        </p>
 
-          <p class="govuk-body">You might be asked about your criminal record when you apply for:</p>
+        <div class="govuk-inset-text">
+          You will not be asked for any personal information (such as your name or address) when using the service.
+        </div>
 
-          <ul class="govuk-list govuk-list--bullet">
-            <li>a job</li>
-            <li>a place at college or university</li>
-            <li>insurance</li>
-          </ul>
+        <%= link_to 'Start now', edit_steps_check_kind_path, class: 'govuk-button govuk-button--start', role: 'button', draggable: false %>
 
-          <div class="govuk-inset-text">
-            You do not need to tell anyone about an expired caution or conviction unless <a class="govuk-link" href="#">an exception applies</a>
-          </div>
+        <h2 class="govuk-heading-m">Before you start</h2>
 
-          <%= link_to 'Start now', edit_steps_check_kind_path, class: 'govuk-button govuk-button--start', role: 'button', draggable: false %>
-        </section>
+        <p class="govuk-body">
+          To use this service you need to:
+        </p>
 
-        <section class="more">
-          <div id="before-you-start">
-            <h2 class="govuk-heading-l">Before you start</h2>
-            <p class="govuk-body">To use this service you need to know:</p>
-
-            <ul class="govuk-list govuk-list--bullet">
-              <li>the type of caution or conviction you were given</li>
-              <li>the date it was given to you</li>
-            </ul>
-
-            <p class="govuk-body">
-              You can get this information for free by asking the police for a <a class="govuk-link" href="https://www.gov.uk/copy-of-police-records">subject access request (SAR)</a>.
-            </p>
-
-            <p class="govuk-body">
-              This service can only be used to check the expiry date of a single caution or conviction in England and Wales. If you have more than one caution or conviction, you’ll need to work out the expiry date of each one separately.
-            </p>
-          </div>
-        </section>
-      </div>
-
-      <div class="govuk-grid-column-one-third">
-        <h3 class="govuk-heading-m">Related content</h3>
-        <ul class="govuk-list">
-          <li>
-            <a class="govuk-link" href="https://www.gov.uk/exoffenders-and-employment">Telling employers about cautions or convictions</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="https://www.gov.uk/caution-warning-penalty">Police cautions, warnings and penalty notices</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="https://www.gov.uk/copy-of-police-records">Get a copy of your police records</a>
-          </li>
-          <li>
-            <a class="govuk-link" href="https://www.gov.uk/dbs-check-applicant-criminal-record">Check someone’s criminal record as an employer</a>
-          </li>
+        <ul class="govuk-list govuk-list--bullet">
+          <li>live in England or Wales</li>
+          <li>know the type of caution or conviction you were given</li>
+          <li>know the date you were cautioned or convicted</li>
         </ul>
+
+        <p class="govuk-body">
+          If you don’t have this information you can read the
+          <a href="https://ex-offenders.glitch.me/guidance-draft.html" class="govuk-link" target="_blank">guidance on when cautions and
+            convictions become spent</a>.
+        </p>
+
+        <p class="govuk-body">
+          If you have more than one caution or conviction on your criminal record, you’ll need to work out the expiry
+          date of each one separately.
+        </p>
       </div>
-
-
     </div>
   </main>
 </div>
