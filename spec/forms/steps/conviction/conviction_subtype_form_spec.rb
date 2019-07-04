@@ -23,6 +23,7 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
         alcohol_abstinence_treatment
         attendance_centre_order
         behavioural_change_prog
+        bind_over
         curfew
         drug_rehabilitation
         exclusion_requirement
@@ -34,7 +35,7 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
         reparation_order
         residence_requirement
         sexual_harm_prevention_order
-        super_ord_breach_civil_injuc
+        supervision_order
         unpaid_work
       ));
     end

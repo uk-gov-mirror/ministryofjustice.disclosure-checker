@@ -35,6 +35,7 @@ class ConvictionType < ValueObject
     ALCOHOL_ABSTINENCE_TREATMENT       = new(:alcohol_abstinence_treatment,     parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
     ATTENDANCE_CENTRE_ORDER            = new(:attendance_centre_order,          parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
     BEHAVIOURAL_CHANGE_PROG            = new(:behavioural_change_prog,          parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
+    BIND_OVER                          = new(:bind_over,                        parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
     CURFEW                             = new(:curfew,                           parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
     DRUG_REHABILITATION                = new(:drug_rehabilitation,              parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
     EXCLUSION_REQUIREMENT              = new(:exclusion_requirement,            parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
@@ -46,7 +47,7 @@ class ConvictionType < ValueObject
     REPARATION_ORDER                   = new(:reparation_order,                 parent: COMMUNITY_ORDER, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
     RESIDENCE_REQUIREMENT              = new(:residence_requirement,            parent: COMMUNITY_ORDER, calculator_class: Calculators::ConvictionEndDateCalculator),
     SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
-    SUPER_ORD_BREACH_CIVIL_INJUC       = new(:super_ord_breach_civil_injuc,     parent: COMMUNITY_ORDER, calculator_class: Calculators::ConvictionEndDateCalculator),
+    SUPERVISION_ORDER                  = new(:supervision_order,                parent: COMMUNITY_ORDER, calculator_class: Calculators::ConvictionEndDateCalculator),
     UNPAID_WORK                        = new(:unpaid_work,                      parent: COMMUNITY_ORDER, calculator_class: Calculators::YouthRehabilitationOrderCalculator),
 
     DETENTION_TRAINING_ORDER           = new(:detention_training_order,         parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::DetentionCalculator),
