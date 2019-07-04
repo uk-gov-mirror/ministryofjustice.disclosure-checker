@@ -17,27 +17,11 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
 
   subject { described_class.new(arguments) }
 
+  # Note: no need to check for all the returned values, as we cover this extensively
+  # in the value-object spec `spec/value_objects/conviction_type_spec.rb`
   describe '#choices' do
     it 'returns the relevant choices (children of the conviction type)' do
-      expect(subject.choices).to eq(%w(
-        alcohol_abstinence_treatment
-        attendance_centre_order
-        behavioural_change_prog
-        bind_over
-        curfew
-        drug_rehabilitation
-        exclusion_requirement
-        intoxicating_substance_treatment
-        mental_health_treatment
-        prohibition
-        referral_order
-        rehab_activity_requirement
-        reparation_order
-        residence_requirement
-        sexual_harm_prevention_order
-        supervision_order
-        unpaid_work
-      ));
+      expect(subject.choices).to include('alcohol_abstinence_treatment', 'bind_over', 'curfew')
     end
   end
 
