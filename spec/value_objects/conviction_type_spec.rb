@@ -51,6 +51,7 @@ RSpec.describe ConvictionType do
           rehab_activity_requirement
           reparation_order
           residence_requirement
+          restraining_order
           sexual_harm_prevention_order
           supervision_order
           unpaid_work
@@ -263,6 +264,14 @@ RSpec.describe ConvictionType do
 
     context 'RESIDENCE_REQUIREMENT' do
       let(:subtype) { 'residence_requirement' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
+    end
+
+    context 'RESTRAINING_ORDER' do
+      let(:subtype) { 'restraining_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
