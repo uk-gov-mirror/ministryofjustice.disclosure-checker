@@ -7,7 +7,7 @@ RSpec.describe Steps::Caution::CautionTypeForm do
       caution_type: caution_type
     }
   end
-  let(:disclosure_check) { instance_double(DisclosureCheck, caution_type: caution_type, under_age: under_age) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, caution_type: nil, under_age: under_age) }
   let(:caution_type) { nil }
   let(:under_age) { 'yes' }
 
@@ -45,10 +45,25 @@ RSpec.describe Steps::Caution::CautionTypeForm do
 
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
-          caution_type: caution_type
+          caution_type: caution_type,
+          # Dependent attributes to be reset
+          known_date: nil,
+          conditional_end_date: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)
+      end
+
+      context 'when caution_type is already the same on the model' do
+        let(:disclosure_check) {
+          instance_double(DisclosureCheck, caution_type: 'youth_simple_caution', under_age: 'yes')
+        }
+        let(:caution_type) { 'youth_simple_caution' }
+
+        it 'does not save the record but returns true' do
+          expect(disclosure_check).to_not receive(:update)
+          expect(subject.save).to be(true)
+        end
       end
     end
   end
