@@ -16,19 +16,19 @@ RSpec.describe Calculators::DetentionCalculator do
       let(:result) { false }
       context 'conviction length in weeks' do
         let(:conviction_length_type) { 'weeks' }
-        let(:conviction_length) { 208 }
+        let(:conviction_length) { 212 }
         it { expect(subject.expiry_date).to eq(result) }
       end
 
       context 'conviction length in months' do
         let(:conviction_length_type) { 'months' }
-        let(:conviction_length) { 48 }
+        let(:conviction_length) { 49 }
         it { expect(subject.expiry_date).to eq(result) }
       end
 
       context 'conviction length in years' do
         let(:conviction_length_type) { 'years' }
-        let(:conviction_length) { 4 }
+        let(:conviction_length) { 5 }
         it { expect(subject.expiry_date).to eq(result) }
       end
     end
@@ -73,7 +73,7 @@ RSpec.describe Calculators::DetentionCalculator do
       end
     end
 
-    context 'Spent duration for conviction length of over 30 months and less than 4 years' do
+    context 'Spent duration for conviction length of over 30 months and up to 4 years' do
       context 'conviction length in weeks' do
         let(:conviction_length_type) { 'weeks' }
         let(:conviction_length) { 190 }
@@ -82,14 +82,14 @@ RSpec.describe Calculators::DetentionCalculator do
 
       context 'conviction length in months' do
         let(:conviction_length_type) { 'months' }
-        let(:conviction_length) { 47 }
-        it { expect(subject.expiry_date.to_s).to eq('2024-03-20') }
+        let(:conviction_length) { 48 }
+        it { expect(subject.expiry_date.to_s).to eq('2024-04-20') }
       end
 
       context 'conviction length in years' do
         let(:conviction_length_type) { 'years' }
-        let(:conviction_length) { 3 }
-        it { expect(subject.expiry_date.to_s).to eq('2023-04-20') }
+        let(:conviction_length) { 4 }
+        it { expect(subject.expiry_date.to_s).to eq('2024-04-20') }
       end
     end
   end
