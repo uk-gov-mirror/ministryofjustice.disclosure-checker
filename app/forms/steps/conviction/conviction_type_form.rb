@@ -10,11 +10,18 @@ module Steps
 
       private
 
+      def changed?
+        disclosure_check.conviction_type != conviction_type
+      end
+
       def persist!
         raise DisclosureCheckNotFound unless disclosure_check
+        return true unless changed?
 
         disclosure_check.update(
-          conviction_type: conviction_type
+          conviction_type: conviction_type,
+          # The following are dependent attributes that need to be reset if form changes
+          conviction_subtype: nil
         )
       end
     end
