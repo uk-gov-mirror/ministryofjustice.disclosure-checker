@@ -8,8 +8,7 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
     }
   end
 
-  let(:under_age) { true }
-  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type, under_age: under_age) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: nil) }
   let(:conviction_type) { nil }
 
   subject { described_class.new(arguments) }
@@ -35,10 +34,22 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
 
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
-          conviction_type: 'discharge'
+          conviction_type: 'discharge',
+          # Dependent attributes to be reset
+          conviction_subtype: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)
+      end
+
+      context 'when conviction_type is already the same on the model' do
+        let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type) }
+        let(:conviction_type)  { 'community_order' }
+
+        it 'does not save the record but returns true' do
+          expect(disclosure_check).to_not receive(:update)
+          expect(subject.save).to be(true)
+        end
       end
     end
   end

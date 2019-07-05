@@ -78,8 +78,8 @@ en:
       answers:
         simple_caution: Simple caution
         conditional_caution: Conditional caution
-        youth_simple_caution: Youth Simple caution
-        youth_conditional_caution: Youth Conditional caution
+        youth_simple_caution: Youth caution
+        youth_conditional_caution: Youth conditional caution
 
 
   results/conviction:

@@ -20,7 +20,7 @@ Feature: Caution
     And I choose "Under 18"
     Then I should see "What type of caution did you get?"
 
-    And I choose "Youth Conditional caution"
+    And I choose "Youth conditional caution"
 
     Then I should see "When did you get the caution?"
     When I enter a valid date
