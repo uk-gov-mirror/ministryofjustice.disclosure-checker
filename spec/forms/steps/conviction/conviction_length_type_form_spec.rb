@@ -6,7 +6,7 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
     conviction_length_type: conviction_length_type
   } }
 
-  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_length_type: nil) }
   let(:conviction_type) { ConvictionType::COMMUNITY_ORDER.to_s }
   let(:conviction_length_type) { 'weeks' }
 
@@ -45,10 +45,23 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
           conviction_length_type: conviction_length_type,
+          # Dependent attributes to be reset
           conviction_length: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)
+      end
+
+      context 'when conviction_subtype is already the same on the model' do
+        let(:disclosure_check) {
+          instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_length_type: conviction_length_type)
+        }
+        let(:conviction_length_type) { 'months' }
+
+        it 'does not save the record but returns true' do
+          expect(disclosure_check).to_not receive(:update)
+          expect(subject.save).to be(true)
+        end
       end
     end
 

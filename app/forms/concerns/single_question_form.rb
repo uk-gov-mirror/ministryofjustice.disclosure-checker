@@ -16,14 +16,11 @@ module SingleQuestionForm
       }
     end
 
-    # :nocov:
-    # TODO: This will be removed once we use non generic yes or no answers
     def expand_attributes(attributes)
       attributes.map do |obj|
         obj.is_a?(Symbol) ? obj : obj.attribute_names
       end.flatten.uniq
     end
-    # :nocov:
   end
 
   private

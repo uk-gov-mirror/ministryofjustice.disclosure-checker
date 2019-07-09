@@ -9,7 +9,7 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
   end
 
   let(:disclosure_check) {
-    instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: conviction_subtype)
+    instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: nil)
   }
 
   let(:conviction_type) { 'community_order' } # any conviction with children will do
@@ -33,10 +33,27 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
 
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
-          conviction_subtype: conviction_subtype
+          conviction_subtype: conviction_subtype,
+          # Dependent attributes to be reset
+          conviction_length: nil,
+          conviction_length_type: nil,
+          compensation_paid: nil,
+          compensation_payment_date: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)
+      end
+
+      context 'when conviction_subtype is already the same on the model' do
+        let(:disclosure_check) {
+          instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: conviction_subtype)
+        }
+        let(:conviction_subtype) { 'alcohol_abstinence_treatment' }
+
+        it 'does not save the record but returns true' do
+          expect(disclosure_check).to_not receive(:update)
+          expect(subject.save).to be(true)
+        end
       end
     end
   end
