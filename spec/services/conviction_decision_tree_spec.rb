@@ -99,7 +99,7 @@ RSpec.describe ConvictionDecisionTree do
     context 'when the step is `compensation_paid` equal no' do
       let(:compensation_paid)  { GenericYesNo::NO }
       let(:step_params) { { compensation_paid: compensation_paid } }
-      it { is_expected.to have_destination('/steps/check/exit_over18', :show) }
+      it { is_expected.to have_destination(:compensation_not_paid, :show) }
     end
   end
 

@@ -25,4 +25,4 @@ Feature: Conviction
     When I choose "Compensation to a victim"
     Then I should see "Did you pay the compensation in full?"
     And I choose "No"
-    Then I should be on "/steps/check/exit_over18"
+    Then I should be on "/steps/conviction/compensation_not_paid"
