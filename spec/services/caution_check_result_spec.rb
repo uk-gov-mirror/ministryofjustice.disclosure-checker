@@ -23,7 +23,7 @@ RSpec.describe CautionCheckResult do
     end
 
     context 'for a conditional caution' do
-      let(:disclosure_check) { build(:disclosure_check, :conditional_caution) }
+      let(:disclosure_check) { build(:disclosure_check, :youth_conditional_caution) }
 
       it 'returns `conditional_end_date` (end date is the conditional date)' do
         expect(expiry_date).to eq(disclosure_check.conditional_end_date)

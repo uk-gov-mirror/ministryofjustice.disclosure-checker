@@ -4,7 +4,13 @@ class CautionResultPresenter < ResultsPresenter
   end
 
   def question_attributes
-    [:kind, :known_date, :under_age, :caution_type].freeze
+    [
+      :kind,
+      :caution_type,
+      :under_age,
+      :known_date,
+      :conditional_end_date,
+    ].freeze
   end
 
   private

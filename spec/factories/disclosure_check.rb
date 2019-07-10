@@ -3,7 +3,7 @@ FactoryBot.define do
     kind { CheckKind::CAUTION }
     known_date { Faker::Date.backward(14).strftime('%Y-%m-%d') }
     under_age { 'yes' }
-    caution_type { CautionType::SIMPLE_CAUTION }
+    caution_type { CautionType::YOUTH_SIMPLE_CAUTION }
 
     trait :conviction do
       kind { CheckKind::CONVICTION }
@@ -20,17 +20,9 @@ FactoryBot.define do
       conviction_length_type { ConvictionLengthType::WEEKS }
     end
 
-    trait :conditional_caution do
-      caution_type { CautionType::CONDITIONAL_CAUTION }
-      conditional_end_date { Faker::Date.backward(8).strftime('%Y-%m-%d') }
-    end
-
-    trait :youth_simple_caution do
-      caution_type { CautionType::YOUTH_SIMPLE_CAUTION }
-    end
-
     trait :youth_conditional_caution do
       caution_type { CautionType::YOUTH_CONDITIONAL_CAUTION }
+      conditional_end_date { Faker::Date.backward(8).strftime('%Y-%m-%d') }
     end
   end
 end

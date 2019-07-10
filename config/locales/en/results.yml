@@ -67,7 +67,9 @@ en:
       answers:
         caution: Caution
     known_date:
-      question: Date caution given
+      question: Date caution was given
+    conditional_end_date:
+      question: Date conditions ended
     under_age:
       question: Age at time of caution
       answers:
