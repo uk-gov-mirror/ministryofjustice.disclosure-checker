@@ -55,8 +55,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   def after_compensation_paid
     return edit(:compensation_payment_date) if GenericYesNo.new(disclosure_check.compensation_paid).yes?
 
-    # TODO: waiting on new exit page
-    show('/steps/check/exit_over18')
+    show(:compensation_not_paid)
   end
 
   def results
