@@ -5,7 +5,7 @@ en:
   date:
     formats:
       default: '%d %B %Y'
-      long: '%d %B %y'
+      short: '%d/%m/%Y'
 
   warning:
     reset_session:
