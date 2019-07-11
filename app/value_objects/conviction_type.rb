@@ -19,12 +19,18 @@ class ConvictionType < ValueObject
 
   VALUES = [
     PARENT_TYPES = [
-      ARMED_FORCES          = new(:armed_forces),
       COMMUNITY_ORDER       = new(:community_order),
       CUSTODIAL_SENTENCE    = new(:custodial_sentence),
       DISCHARGE             = new(:discharge),
       FINANCIAL             = new(:financial),
       HOSPITAL_GUARD_ORDER  = new(:hospital_guard_order),
+    ].freeze,
+
+    # Quick way of enabling/disabling convictions. These will not show in the interface to users.
+    # If there are cucumber test, tag the affected scenarios with `@skip`.
+    #
+    PARENT_TYPES_DISABLED_FOR_MVP = [
+      ARMED_FORCES = new(:armed_forces),
     ].freeze,
 
     DISMISSAL                          = new(:dismissal,                        parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
