@@ -6,12 +6,21 @@ RSpec.describe ConvictionType do
 
     it 'returns top level conviction' do
       expect(values).to eq(%w(
-        armed_forces
         community_order
         custodial_sentence
         discharge
         financial
         hospital_guard_order
+      ))
+    end
+  end
+
+  describe 'PARENT_TYPES_DISABLED_FOR_MVP' do
+    let(:values) { described_class::PARENT_TYPES_DISABLED_FOR_MVP.map(&:to_s) }
+
+    it 'returns top level conviction' do
+      expect(values).to eq(%w(
+        armed_forces
       ))
     end
   end

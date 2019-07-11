@@ -14,15 +14,8 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
   subject { described_class.new(arguments) }
 
   describe '.choices' do
-    it 'returns the relevant choices' do
-      expect(described_class.choices).to eq(%w(
-        armed_forces
-        community_order
-        custodial_sentence
-        discharge
-        financial
-        hospital_guard_order
-      ))
+    it 'returns the parent types' do
+      expect(described_class.choices).to eq(ConvictionType::PARENT_TYPES.map(&:to_s))
     end
   end
 
