@@ -28,7 +28,7 @@ RSpec.describe CautionResultPresenter do
         expect(summary[2].answer).to eql('yes')
 
         expect(summary[3].question).to eql(:known_date)
-        expect(summary[3].answer).to be_kind_of(Date)
+        expect(summary[3].answer).to eq('31/10/2018')
       end
     end
 
@@ -48,10 +48,10 @@ RSpec.describe CautionResultPresenter do
         expect(summary[2].answer).to eql('yes')
 
         expect(summary[3].question).to eql(:known_date)
-        expect(summary[3].answer).to be_kind_of(Date)
+        expect(summary[3].answer).to eq('31/10/2018')
 
         expect(summary[4].question).to eql(:conditional_end_date)
-        expect(summary[4].answer).to be_kind_of(Date)
+        expect(summary[4].answer).to eq('25/12/2018')
       end
     end
   end
