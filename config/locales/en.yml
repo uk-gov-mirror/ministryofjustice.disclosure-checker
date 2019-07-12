@@ -4,8 +4,8 @@ en:
 
   date:
     formats:
-      default: '%d %B %Y'
-      short: '%d/%m/%Y'
+      default: '%-d %B %Y'  # 3 January 2019
+      short: '%d/%m/%Y'     # 03/01/2019
 
   warning:
     reset_session:
