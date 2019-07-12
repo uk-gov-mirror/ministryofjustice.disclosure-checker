@@ -52,16 +52,16 @@ en:
 
   results/caution:
     title:
-      past: Your caution was spent on %{date}
-      present: Your caution will be spent on %{date}
-      no_date: The caution date was not provided
+      past_html: Your caution was spent on <span class="nowrap">%{date}</span>
+      present_html: Your caution will be spent on <span class="nowrap">%{date}</span>
+      no_date_html: The caution date was not provided
     statement:
       past_html: |
-       You do not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+       You do not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
       present_html: |
-       After this date you will not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+       After this date you will not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
       no_date_html: |
-       You do not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+       You do not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
     kind:
       question: Criminal record type
       answers:
@@ -83,17 +83,16 @@ en:
         youth_simple_caution: Youth caution
         youth_conditional_caution: Youth conditional caution
 
-
   results/conviction:
     title:
-      past: Your conviction was spent on %{date}
-      present: Your conviction will be spent on %{date}
-      no_date: Your conviction will never be spent
+      past_html: Your conviction was spent on <span class="nowrap">%{date}</span>
+      present_html: Your conviction will be spent on <span class="nowrap">%{date}</span>
+      no_date_html: Your conviction will never be spent
     statement:
       past_html: |
-       You do not need to tell anyone about this conviction unless you're applying for a job that needs a full <a class="govuk-link" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+       You do not need to tell anyone about this conviction unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
       present_html: |
-        After this date you will not need to tell anyone about this conviction unless you're applying for a job that needs a <a class="govuk-link" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+        After this date you will not need to tell anyone about this conviction unless you're applying for a job that needs a <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
       no_date_html: If asked, you will always have to tell people about this conviction.
     kind:
       question: Criminal record type
