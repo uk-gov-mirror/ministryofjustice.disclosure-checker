@@ -28,8 +28,6 @@ en:
             behavioural_change_prog: What was the length of the programme?
             curfew: What was the length of the curfew?
             exclusion_requirement: What was the length of the exclusion requirement?
-            intoxicating_substance_treatment: What was the length of the treatment?
-            mental_health_treatment: What was the length of the treatment?
           explanation:
             detention_html: |
               <p class="govuk-body-m">

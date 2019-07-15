@@ -80,8 +80,6 @@ en:
         behavioural_change_prog: When were you given the programme?
         curfew: When were you given the curfew?
         exclusion_requirement: When were you given the exclusion requirement?
-        intoxicating_substance_treatment: When were you given the treatment?
-        mental_health_treatment: When were you given the treatment?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
@@ -102,8 +100,6 @@ en:
         behavioural_change_prog: Was the length of the programme given in weeks, months or years?
         curfew: Was the length of the curfew given in weeks, months or years?
         exclusion_requirement: Was the length of the exclusion requirement given in weeks, months or years?
-        intoxicating_substance_treatment: Was the length of the treatment given in weeks, months or years?
-        mental_health_treatment: Was the length of the treatment given in weeks, months or years?
       steps_conviction_compensation_paid_form:
         compensation_paid: Did you pay the compensation in full?
       steps_conviction_compensation_payment_date_form:
