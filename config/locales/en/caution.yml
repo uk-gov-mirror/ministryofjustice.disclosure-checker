@@ -6,14 +6,10 @@ en:
         edit:
           page_title: Caution date
           heading: When did you get the caution?
-          date_legend: Enter the date
-          date_hint: For example, 23 9 2018
       conditional_end_date:
         edit:
           page_title: Caution date
           heading: When did the conditions end?
-          date_legend: Enter the date
-          date_hint: For example, 29 1 2018
       under_age:
         edit:
           page_title: How old were you when you got the caution?
