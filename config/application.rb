@@ -36,5 +36,11 @@ module Disclosure
     config.generators.system_tests = nil
 
     config.x.session.expires_in_minutes = ENV.fetch('SESSION_EXPIRES_IN_MINUTES', 60).to_i
+
+    # Maintain `in_progress` checks for this number of days
+    config.x.checks.incomplete_purge_after_days = 7
+
+    # Maintain `completed` checks for this number of days
+    config.x.checks.complete_purge_after_days = 60
   end
 end
