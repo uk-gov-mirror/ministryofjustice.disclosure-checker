@@ -17,8 +17,12 @@ class ResultsPresenter
   end
 
   def summary
-    question_attributes.map do |item|
-      QuestionAnswerRow.new(item, disclosure_check[item], scope: to_partial_path)
+    question_attributes.map do |item, value|
+      QuestionAnswerRow.new(
+        item,
+        value || disclosure_check[item],
+        scope: to_partial_path
+      )
     end.select(&:show?)
   end
 

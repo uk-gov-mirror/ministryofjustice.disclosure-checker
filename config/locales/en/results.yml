@@ -115,13 +115,10 @@ en:
       question: Date of conviction
     conviction_length:
       question: Length of conviction
-    conviction_length_type:
-      question: Conviction length given in
       answers:
-        weeks: Weeks
-        months: Months
-        years: Years
+        weeks: '%{length} weeks'
+        months: '%{length} months'
+        years: '%{length} years'
         no_length: No length was given
     compensation_payment_date:
       question: Compensation payment date
-
