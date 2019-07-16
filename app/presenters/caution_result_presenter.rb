@@ -3,6 +3,8 @@ class CautionResultPresenter < ResultsPresenter
     'results/caution'
   end
 
+  private
+
   def question_attributes
     [
       :kind,
@@ -12,8 +14,6 @@ class CautionResultPresenter < ResultsPresenter
       :conditional_end_date,
     ].freeze
   end
-
-  private
 
   def result_class
     CautionCheckResult

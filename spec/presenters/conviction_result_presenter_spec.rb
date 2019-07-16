@@ -7,19 +7,11 @@ RSpec.describe ConvictionResultPresenter do
     it { expect(subject.to_partial_path).to eq('results/conviction') }
   end
 
-  describe '#question_attributes' do
-    it {
-      expect(
-        subject.question_attributes
-      ).to eq([:kind, :conviction_type, :conviction_subtype, :under_age, :known_date, :conviction_length, :conviction_length_type, :compensation_payment_date])
-    }
-  end
-
   describe '#summary' do
     let(:summary) { subject.summary }
 
-    it 'return array of objects' do
-      expect(summary.size).to eq(7)
+    it 'returns the correct question-answer pairs' do
+      expect(summary.size).to eq(6)
 
       expect(summary[0].question).to eql(:kind)
       expect(summary[0].answer).to eql('conviction')
@@ -37,16 +29,26 @@ RSpec.describe ConvictionResultPresenter do
       expect(summary[4].answer).to eq('31/10/2018')
 
       expect(summary[5].question).to eql(:conviction_length)
-      expect(summary[5].answer).to eq(9)
+      expect(summary[5].answer).to eq('9 weeks')
+    end
 
-      expect(summary[6].question).to eql(:conviction_length_type)
-      expect(summary[6].answer).to eq('weeks')
+    context 'when no length given' do
+      let(:disclosure_check) {
+        build(:disclosure_check, :dto_conviction, conviction_length_type: ConvictionLengthType::NO_LENGTH)
+      }
+
+      it 'returns the correct question-answer pairs' do
+        expect(summary.size).to eq(6)
+
+        expect(summary[5].question).to eql(:conviction_length)
+        expect(summary[5].answer).to eq('No length was given')
+      end
     end
 
     context 'pay a victim compensation' do
       let(:disclosure_check) { build(:disclosure_check, :compensation) }
 
-      it 'return array of objects' do
+      it 'returns the correct question-answer pairs' do
         expect(summary.size).to eq(6)
 
         expect(summary[0].question).to eql(:kind)
