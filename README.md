@@ -56,13 +56,9 @@ The features can be run manually (these are not part of the default rake task) i
 
 * `bundle exec cucumber features`
 * `bundle exec cucumber features/caution.feature`
-* `bundle exec cucumber features/conviction.feature`
-* `bundle exec cucumber features/conviction_custodial_sentence.feature`
-* `bundle exec cucumber features/conviction_discharge.feature`
-* `bundle exec cucumber features/conviction_financial.feature`
-* `bundle exec cucumber features/conviction_hospital_guardianship_order.feature`
-* `bundle exec cucumber features/conviction_youth_rehabilitation_order.feature`
 * `bundle exec cucumber features/caution.feature -t @happy_path`
+
+Any of the files in the [features](features) directory can be run individually.
 
 By default cucumber will start a local server on a random port, run features against that server, and kill the server once the features have finished.
 
