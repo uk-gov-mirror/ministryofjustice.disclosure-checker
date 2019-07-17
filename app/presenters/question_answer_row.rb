@@ -18,6 +18,6 @@ class QuestionAnswerRow
   private
 
   def format_answer(value)
-    value.is_a?(Date) ? I18n.l(value, format: :short) : value
+    value.is_a?(Date) ? I18n.l(value) : value
   end
 end

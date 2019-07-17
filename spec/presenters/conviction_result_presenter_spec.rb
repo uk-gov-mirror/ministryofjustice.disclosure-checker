@@ -26,7 +26,7 @@ RSpec.describe ConvictionResultPresenter do
       expect(summary[3].answer).to eql('yes')
 
       expect(summary[4].question).to eql(:known_date)
-      expect(summary[4].answer).to eq('31/10/2018')
+      expect(summary[4].answer).to eq('31 October 2018')
 
       expect(summary[5].question).to eql(:conviction_length)
       expect(summary[5].answer).to eq('9 weeks')
@@ -64,10 +64,10 @@ RSpec.describe ConvictionResultPresenter do
         expect(summary[3].answer).to eql('yes')
 
         expect(summary[4].question).to eql(:known_date)
-        expect(summary[4].answer).to eq('31/10/2018')
+        expect(summary[4].answer).to eq('31 October 2018')
 
         expect(summary[5].question).to eql(:compensation_payment_date)
-        expect(summary[5].answer).to eq('31/10/2019')
+        expect(summary[5].answer).to eq('31 October 2019')
       end
     end
   end
