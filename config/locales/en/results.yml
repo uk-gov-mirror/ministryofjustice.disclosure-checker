@@ -54,11 +54,11 @@ en:
       no_date_html: The caution date was not provided
     statement:
       past_html: |
-       You do not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+        You do not need to tell anyone about this caution unless you're applying for a job where a <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard</a> or <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#enhanced-dbs">enhanced</a> criminal record check is needed.
       present_html: |
-       After this date you will not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+        After this date you will not need to tell anyone about this caution unless you're applying for a job where a <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard</a> or <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#enhanced-dbs">enhanced</a> criminal record check is needed.
       no_date_html: |
-       You do not need to tell anyone about this caution unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+        You do not need to tell anyone about this caution unless you're applying for a job where a <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard</a> or <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#enhanced-dbs">enhanced</a> criminal record check is needed.
     kind:
       question: Criminal record type
       answers:
@@ -87,10 +87,11 @@ en:
       no_date_html: Your conviction will never be spent
     statement:
       past_html: |
-       You do not need to tell anyone about this conviction unless you're applying for a job that needs a full <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
+        You do not need to tell anyone about this conviction unless you're applying for a job where a <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard</a> or <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#enhanced-dbs">enhanced</a> criminal record check is needed.
       present_html: |
-        After this date you will not need to tell anyone about this conviction unless you're applying for a job that needs a <a class="govuk-link nowrap" href="http://hub.unlock.org.uk/knowledgebase/eligibility-criminal-record-checks/">criminal record check</a>.
-      no_date_html: If asked, you will always have to tell people about this conviction.
+        After this date you will not need to tell anyone about this conviction unless you're applying for a job where a <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard</a> or <a class="govuk-link" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#enhanced-dbs">enhanced</a> criminal record check is needed.
+      no_date_html: |
+        If asked, you will always have to tell people about this conviction.
     kind:
       question: Criminal record type
       answers:
