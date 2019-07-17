@@ -1,4 +1,4 @@
-FROM ministryofjustice/ruby:2.6.2-webapp-onbuild
+FROM ministryofjustice/ruby:2.6.3-webapp-onbuild
 
 # The following ENV variables need to be present by the time the assets precompile run
 ENV SECRET_KEY_BASE needed_for_assets_precompile

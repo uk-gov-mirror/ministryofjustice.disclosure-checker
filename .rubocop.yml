@@ -30,9 +30,6 @@ MethodCalledOnDoEndBlock:
 SpaceInsideHashLiteralBraces:
   Enabled: false
 
-Performance/RedundantMerge:
-  Enabled: false
-
 Naming/MemoizedInstanceVariableName:
   Enabled: false
 
