@@ -52,6 +52,8 @@ Or you can run specific tests as follows (refer to *lib/tasks/all_tests.rake* fo
 
 ## Cucumber features
 
+ChromeDriver is needed for the integration tests. It can be installed on Mac using Homebrew: `brew cask install chromedriver`
+
 The features can be run manually (these are not part of the default rake task) in any of these forms:
 
 * `bundle exec cucumber features`
@@ -62,9 +64,9 @@ Any of the files in the [features](features) directory can be run individually.
 
 By default cucumber will start a local server on a random port, run features against that server, and kill the server once the features have finished.
 
-If you want to point the features at another server (WARNING: NEVER PRODUCTION!), pass the environment variable CUCUMBER_URL (or set the value in your local `.env` file) when calling cucumber:
+If you want to show the browser (useful to debug issues) prefix the commands like this:
 
-* `CUCUMBER_URL=http://server.com bundle exec cucumber features`
+* `SHOW_BROWSER=1 bundle exec cucumber features/caution.feature`
 
 ## K8s cluster staging environment
 

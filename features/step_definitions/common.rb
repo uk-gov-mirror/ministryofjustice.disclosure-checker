@@ -27,11 +27,7 @@ When(/^I click the "([^"]*)" link$/) do |text|
 end
 
 When(/^I click the "([^"]*)" button$/) do |text|
-  begin
-    find("input[value='#{text}']").click
-  rescue Capybara::Poltergeist::MouseEventFailed
-    find("input[value='#{text}']").trigger('click')
-  end
+  find("input[value='#{text}']").click
 end
 
 When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |field, value|

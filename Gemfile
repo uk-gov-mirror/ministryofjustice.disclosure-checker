@@ -1,16 +1,16 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.2'
+ruby '2.6.3'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'govuk_elements_form_builder', '~> 1.3.0'
 gem 'gov_uk_date_fields', '~> 4.0.1'
 gem 'jquery-rails'
-gem 'pg', '~> 1.0.0'
+gem 'pg', '~> 1.1.0'
 gem 'puma', '~> 3.0'
-gem 'rails', '~> 5.2.2'
+gem 'rails', '~> 5.2.3'
 gem 'responders'
 gem 'sass-rails'
 gem 'sentry-raven'
@@ -47,12 +47,11 @@ group :test do
   gem 'capybara'
   gem 'cucumber'
   gem 'cucumber-rails', require: false
-  gem 'poltergeist'
-  gem 'phantomjs'
   gem 'rails-controller-testing'
   gem 'rspec_junit_formatter'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
+  gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'simplecov-rcov'
   gem 'webmock'

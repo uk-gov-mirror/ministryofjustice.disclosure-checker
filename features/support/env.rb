@@ -1,19 +1,17 @@
-require 'phantomjs'
+require 'selenium-webdriver'
 require 'capybara'
 require 'capybara/dsl'
 require 'capybara/cucumber'
-require 'capybara/poltergeist'
 require 'cucumber/rails'
 require 'dotenv/load'
 
-Capybara.default_driver = :poltergeist
-Capybara.javascript_driver = :poltergeist
+Capybara.register_driver(:chrome_headless) do |app|
+  args = %w[disable-gpu no-sandbox]
+  args << 'headless' unless ENV['SHOW_BROWSER']
 
-options = {
-  js_errors: false,
-  phantomjs: Phantomjs.path
-}
+  options = Selenium::WebDriver::Chrome::Options.new(args: args)
 
-Capybara.register_driver :poltergeist do |app|
-  Capybara::Poltergeist::Driver.new(app, options)
+  Capybara::Selenium::Driver.new(app, browser: :chrome, options: options)
 end
+
+Capybara.default_driver = :chrome_headless
