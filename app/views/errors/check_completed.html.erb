@@ -8,7 +8,7 @@
         <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
 
         <p class="govuk-body"><%=t '.lead_text' %></p>
-        <p class="govuk-body"><%= link_to t('.results_page'), steps_check_results_path %></p>
+        <p class="govuk-body"><%= link_to t('.results_page'), steps_check_results_path, class: 'govuk-link' %></p>
 
         <div class="form-submit">
           <%= link_to t('.start_again'), root_path, class: 'govuk-button' %>
