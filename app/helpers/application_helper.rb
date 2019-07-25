@@ -50,6 +50,25 @@ module ApplicationHelper
     ENV['GA_TRACKING_ID']
   end
 
+  def track_transaction(attributes)
+    return unless current_disclosure_check.present?
+
+    content_for :transaction_data, {
+      id: current_disclosure_check.id,
+      sku: transaction_sku,
+      quantity: 1,
+    }.merge(attributes).to_json.html_safe
+  end
+
+  # We try to be as accurate as possible, but some transactions might
+  # trigger before having reached the subtype step.
+  def transaction_sku
+    current_disclosure_check.conviction_subtype ||
+      current_disclosure_check.conviction_type ||
+      current_disclosure_check.caution_type ||
+      current_disclosure_check.kind
+  end
+
   def service_name
     t('service.name')
   end
