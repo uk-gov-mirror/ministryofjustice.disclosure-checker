@@ -98,56 +98,6 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe '#analytics_tracking_id' do
-    it 'retrieves the environment variable' do
-      expect(ENV).to receive(:[]).with('GA_TRACKING_ID')
-      helper.analytics_tracking_id
-    end
-  end
-
-  describe '#track_transaction' do
-    before do
-      allow(record).to receive(:id).and_return('12345')
-      allow(record).to receive(:kind).and_return('caution')
-      allow(helper).to receive(:current_disclosure_check).and_return(record)
-    end
-
-    it 'sets the transaction attributes to track' do
-      helper.track_transaction(name: 'whatever')
-
-      expect(
-        helper.content_for(:transaction_data)
-      ).to eq("{\"id\":\"12345\",\"sku\":\"caution\",\"quantity\":1,\"name\":\"whatever\"}")
-    end
-  end
-
-  describe '#transaction_sku' do
-    before do
-      allow(record).to receive(attr_name).and_return(attr_name)
-      allow(helper).to receive(:current_disclosure_check).and_return(record)
-    end
-
-    context 'conviction_subtype is present' do
-      let(:attr_name) { 'conviction_subtype' }
-      it { expect(helper.transaction_sku).to eq(attr_name) }
-    end
-
-    context 'conviction_type is present' do
-      let(:attr_name) { 'conviction_type' }
-      it { expect(helper.transaction_sku).to eq(attr_name) }
-    end
-
-    context 'caution_type is present' do
-      let(:attr_name) { 'caution_type' }
-      it { expect(helper.transaction_sku).to eq(attr_name) }
-    end
-
-    context 'kind is present' do
-      let(:attr_name) { 'kind' }
-      it { expect(helper.transaction_sku).to eq(attr_name) }
-    end
-  end
-
   describe 'capture missing translations' do
     before do
       ActionView::Base.raise_on_missing_translations = false
@@ -201,24 +151,6 @@ RSpec.describe ApplicationHelper, type: :helper do
     it 'should call #title with a blank value' do
       expect(helper).to receive(:title).with('')
       helper.fallback_title
-    end
-  end
-
-  describe '#display_result' do
-    let(:display_result) { helper.display_result(value) }
-
-    context 'is a date' do
-      let(:value) { Date.new(2019, 1, 1) }
-      it 'returns a formatted date' do
-        expect(display_result).to eq(I18n.l(value))
-      end
-    end
-
-    context 'is not a date' do
-      let(:value) { Faker::TvShows::SiliconValley.quote }
-      it 'returns a string' do
-        expect(display_result).to eq(value)
-      end
     end
   end
 end

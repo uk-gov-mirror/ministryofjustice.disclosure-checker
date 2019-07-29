@@ -1,4 +1,4 @@
-<% track_transaction name: 'Conviction check completed', category: 'Completed checks' %>
+<% track_transaction name: 'Conviction check completed', category: 'Completed checks', dimensions: { spent: ga_spent?(expiry_date) } %>
 
 <div class="govuk-panel govuk-panel--confirmation">
   <h1 class="govuk-panel__title">
