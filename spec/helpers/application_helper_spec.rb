@@ -153,4 +153,20 @@ RSpec.describe ApplicationHelper, type: :helper do
       helper.fallback_title
     end
   end
+
+  describe '#link_to_feedback' do
+    before do
+      allow(helper).to receive(:transaction_sku).and_return('conviction')
+      allow(controller.request).to receive(:path).and_return('/steps/foo/bar')
+    end
+
+    it 'builds the link markup including tracking params' do
+      expect(
+        helper.link_to_feedback('click here')
+      ).to eq(
+        '<a class="govuk-link" rel="external" target="_blank"' + \
+        ' href="https://example.com?check=conviction&amp;page=%2Fsteps%2Ffoo%2Fbar">click here</a>'
+      )
+    end
+  end
 end

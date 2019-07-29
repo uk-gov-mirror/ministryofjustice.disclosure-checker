@@ -28,6 +28,8 @@ module AnalyticsHelper
   # We try to be as accurate as possible, but some transactions might
   # trigger before having reached the subtype step.
   def transaction_sku
+    return 'unknown' if current_disclosure_check.nil?
+
     current_disclosure_check.conviction_subtype ||
       current_disclosure_check.conviction_type ||
       current_disclosure_check.caution_type ||
