@@ -2,9 +2,10 @@
 
 moj.Modules.gaEvents = {
     radioFormClass: '.govuk-radios__item input[type="radio"]',
+    dateFormClass: '.govuk-date-input input[type="number"]',
     linkClass: '.ga-pageLink',
     clickActionClass: '.ga-clickAction',
-    revealingLinkClass: 'govuk-details__summary span.govuk-details__summary-text',
+    revealingLinkClass: '.govuk-details__summary span.govuk-details__summary-text',
     submitFormClass: '.ga-submitForm',
     submitButtons: 'button[type="submit"], input[type="submit"]',
 
@@ -24,6 +25,10 @@ moj.Modules.gaEvents = {
 
             if ($(self.radioFormClass).length) {
                 self.trackRadioForms();
+            }
+
+            if ($(self.dateFormClass).length) {
+                self.trackDateForms();
             }
 
             if ($(self.linkClass).length) {
@@ -71,6 +76,37 @@ moj.Modules.gaEvents = {
 
             if (eventDataArray.length) {
                 // there could be multiple radios that are checked and need a GA event firing,
+                // but we only want to submit the form after sending the last one
+                eventDataArray.forEach(function (eventData, n) {
+                    if (n === eventDataArray.length - 1) {
+                        options = {
+                            actionType: 'form',
+                            actionValue: $form // [2]
+                        };
+                    }
+
+                    self.sendAnalyticsEvent(eventData, options);
+                });
+            } else {
+                $form.unbind('submit').trigger('submit');
+            }
+        });
+    },
+
+    trackDateForms: function () {
+        var self = this,
+            $form = $(self.dateFormClass).closest('form');
+
+        $form.on('submit', function (e) {
+            var eventDataArray,
+                options;
+
+            e.preventDefault(); // [1]
+
+            eventDataArray = self.getDateYearData($form);
+
+            if (eventDataArray.length) {
+                // there could be multiple dates that need a GA event firing,
                 // but we only want to submit the form after sending the last one
                 eventDataArray.forEach(function (eventData, n) {
                     if (n === eventDataArray.length - 1) {
@@ -217,22 +253,24 @@ moj.Modules.gaEvents = {
         return eventDataArray;
     },
 
-    getCheckboxFormData: function ($form) {
-        var checkedCheckboxes = $form.find('input[type="checkbox"]:checked'),
+    getDateYearData: function ($form) {
+        var $dateYears = $form.find('input[type="number"][id$="_yyyy"]'),
             eventDataArray = [];
 
-        checkedCheckboxes.each(function (n, checkbox) {
-            var $checkbox = $(checkbox),
+        $dateYears.each(function (n, year) {
+            var $year = $(year),
                 eventData;
 
             eventData = {
                 hitType: 'event',
-                eventCategory: $checkbox.attr('name'),
-                eventAction: 'checkbox',
-                eventLabel: $checkbox.data('ga-label')
+                eventCategory: $year.attr('name'),
+                eventAction: 'enter_date',
+                eventLabel: $year.val()
             };
 
-            eventDataArray.push(eventData);
+            if ($year.val()) {
+                eventDataArray.push(eventData);
+            }
         });
 
         return eventDataArray;
