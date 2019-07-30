@@ -47,6 +47,13 @@ en:
       endorsement: Endorsement
       penalty_points: Penalty points
 
+  steps:
+    check:
+      results:
+        show:
+          page_title: When your caution or conviction is spent
+
+
   results/caution:
     title:
       past_html: Your caution was spent on <span class="nowrap">%{date}</span>
