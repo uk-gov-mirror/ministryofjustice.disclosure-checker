@@ -5,10 +5,6 @@ RSpec.describe HomeController, type: :controller do
     DisclosureCheck.create(navigation_stack: navigation_stack)
   end
 
-  before do
-    allow(controller).to receive(:current_disclosure_check).and_return(existing_disclosure_check)
-  end
-
   describe '#index' do
     context 'when an existing disclosure check in progress exists' do
       let(:status) { :in_progress }
@@ -27,6 +23,16 @@ RSpec.describe HomeController, type: :controller do
             expect(session).to receive(:delete).with(:last_seen).ordered
             expect(session).to receive(:delete) # any other deletes
             get :index, session: { disclosure_check_id: existing_disclosure_check.id }, params: {new: 'y'}
+          end
+
+          it 'resets the memoized `current_disclosure_check`' do
+            # simulate memoization
+            controller.instance_variable_set(:@_current_disclosure_check, existing_disclosure_check)
+            expect(controller.current_disclosure_check).not_to be_nil
+
+            get :index, session: { disclosure_check_id: existing_disclosure_check.id }, params: {new: 'y'}
+
+            expect(controller.current_disclosure_check).to be_nil
           end
         end
 

@@ -38,8 +38,13 @@ RSpec.describe AnalyticsHelper, type: :helper do
 
   describe '#transaction_sku' do
     before do
-      allow(record).to receive(attr_name).and_return(attr_name)
+      allow(record).to receive(attr_name).and_return(attr_name) if record
       allow(helper).to receive(:current_disclosure_check).and_return(record)
+    end
+
+    context 'current_disclosure_check is not present' do
+      let(:record) { nil }
+      it { expect(helper.transaction_sku).to eq('unknown') }
     end
 
     context 'conviction_subtype is present' do

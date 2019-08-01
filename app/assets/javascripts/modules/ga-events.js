@@ -187,12 +187,16 @@ moj.Modules.gaEvents = {
         });
     },
 
+    // This function will not send to GA the query string, as frequently
+    // this may contain personal identification or secure tokens.
     trackExternalLinks: function() {
         $("a[rel^=external]").on('click', function(e) {
-            var url = $(this).attr('href');
+            var $el = this,
+                url = $el.href,
+                event_url = url.replace($el.search, '');
 
             window.open(url, '_blank');
-            ga('send', 'event', 'outbound', 'click', url, {});
+            ga('send', 'event', 'outbound', 'click', event_url, {});
 
             e.preventDefault();
         });

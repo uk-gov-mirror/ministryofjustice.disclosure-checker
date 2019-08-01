@@ -4,10 +4,10 @@ en:
     footer_links:
       header: Support links
       help: Help
-      contact: Contact
       cookies: Cookies
       privacy: Privacy
       terms_and_conditions: Terms and conditions
     phase_banner:
-      feedback_contact_html: This is a new service. <a class="govuk-link" href="/about/contact">Report a problem</a> and help improve it for others.
-
+      feedback:
+        banner_html: We’re testing this service before it launches - please %{link} if you have any feedback on this page.
+        link_text: tell us

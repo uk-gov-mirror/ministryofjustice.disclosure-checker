@@ -62,4 +62,15 @@ module ApplicationHelper
 
     title ''
   end
+
+  def link_to_feedback(text)
+    query = {
+      page: request.path,
+      check: transaction_sku,
+    }.to_query
+
+    url = [Rails.configuration.x.surveys.feedback, query].join('?')
+
+    link_to text, url, class: 'govuk-link', rel: 'external', target: '_blank'
+  end
 end
