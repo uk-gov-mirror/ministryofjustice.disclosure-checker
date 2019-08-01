@@ -28,6 +28,7 @@ class ApplicationController < ActionController::Base
     session.delete(:disclosure_check_id)
     session.delete(:last_seen)
 
+    # ensure we don't have a memoized record anymore
     @_current_disclosure_check = nil
   end
 
