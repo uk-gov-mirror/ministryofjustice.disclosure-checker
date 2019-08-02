@@ -26,6 +26,10 @@ Rails.application.routes.draw do
 
   get 'warning/reset_session'
 
+  # Temporary routes to test adults journey
+  get 'enable_adults',  controller: :experiments
+  get 'disable_adults', controller: :experiments
+
   namespace :steps do
     namespace :check do
       edit_step :kind
