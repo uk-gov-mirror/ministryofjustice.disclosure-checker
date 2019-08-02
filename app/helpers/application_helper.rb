@@ -73,4 +73,9 @@ module ApplicationHelper
 
     link_to text, url, class: 'govuk-link', rel: 'external', target: '_blank'
   end
+
+  # Use this to feature-flag code that should only run/show on test environments
+  def dev_tools_enabled?
+    Rails.env.development? || ENV.key?('DEV_TOOLS_ENABLED')
+  end
 end
