@@ -169,4 +169,32 @@ RSpec.describe ApplicationHelper, type: :helper do
       )
     end
   end
+
+  describe 'dev_tools_enabled?' do
+    before do
+      allow(Rails).to receive_message_chain(:env, :development?).and_return(development_env)
+      allow(ENV).to receive(:key?).with('DEV_TOOLS_ENABLED').and_return(dev_tools_enabled)
+    end
+
+    context 'for development envs' do
+      let(:development_env) { true }
+      let(:dev_tools_enabled) { nil }
+
+      it { expect(helper.dev_tools_enabled?).to eq(true) }
+    end
+
+    context 'for envs that declare the `DEV_TOOLS_ENABLED` env variable' do
+      let(:development_env) { false }
+      let(:dev_tools_enabled) { true }
+
+      it { expect(helper.dev_tools_enabled?).to eq(true) }
+    end
+
+    context 'for envs without `DEV_TOOLS_ENABLED` env variable' do
+      let(:development_env) { false }
+      let(:dev_tools_enabled) { false }
+
+      it { expect(helper.dev_tools_enabled?).to eq(false) }
+    end
+  end
 end
