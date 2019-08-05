@@ -24,16 +24,25 @@ RSpec.describe ConvictionDecisionTree do
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step is `under_age_conviction`' do
-    let(:under_age)  { GenericYesNo::YES }
+  describe 'when the step is `under_age`' do
     let(:step_params) { { under_age: under_age } }
-    it { is_expected.to have_destination(:conviction_type, :edit) }
-  end
 
-  context 'when the step is `under_age_conviction` equal no' do
-    let(:under_age)  { GenericYesNo::NO }
-    let(:step_params) { { under_age: under_age } }
-    it { is_expected.to have_destination('/steps/check/exit_over18', :show) }
+    context 'and answer is `yes`' do
+      let(:under_age) { GenericYesNo::YES }
+      it { is_expected.to have_destination(:conviction_type, :edit) }
+    end
+
+    context 'and answer is `no`' do
+      let(:under_age) { GenericYesNo::NO }
+      it { is_expected.to have_destination('/steps/check/exit_over18', :show) }
+    end
+
+    # TODO: temporary feature-flag, to be removed when no needed
+    context 'and answer is `no` but we are bypassing' do
+      let(:under_age) { GenericYesNo::NO }
+      let(:as) { :bypass_under_age }
+      it { is_expected.to have_destination(:conviction_type, :edit) }
+    end
   end
 
   context 'when the step is `known_date` ' do

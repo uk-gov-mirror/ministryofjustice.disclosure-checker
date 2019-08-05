@@ -4,7 +4,7 @@ class CautionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-    when :under_age
+    when :under_age, :bypass_under_age
       after_under_age
     when :caution_type
       edit(:known_date)
@@ -21,7 +21,7 @@ class CautionDecisionTree < BaseDecisionTree
   private
 
   def after_under_age
-    return edit(:caution_type) if GenericYesNo.new(step_value(:under_age)).yes?
+    return edit(:caution_type) if under_age_or_bypass?
 
     show('/steps/check/exit_over18')
   end
