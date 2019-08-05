@@ -3,12 +3,21 @@ module Steps
     class ConvictionTypeForm < BaseForm
       attribute :conviction_type, String
 
-      def self.choices
-        ConvictionType::PARENT_TYPES.map(&:to_s)
+      validates_inclusion_of :conviction_type, in: :choices, if: :disclosure_check
+
+      def choices
+        if under_age?
+          ConvictionType::YOUTH_PARENT_TYPES
+        else
+          ConvictionType::ADULT_PARENT_TYPES
+        end.map(&:to_s)
       end
-      validates_inclusion_of :conviction_type, in: choices
 
       private
+
+      def under_age?
+        disclosure_check.under_age.inquiry.yes?
+      end
 
       def changed?
         disclosure_check.conviction_type != conviction_type

@@ -16,7 +16,7 @@ module Steps
       private
 
       def under_age?
-        disclosure_check.under_age == 'yes'
+        disclosure_check.under_age.inquiry.yes?
       end
 
       def changed?

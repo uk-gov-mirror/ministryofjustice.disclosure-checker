@@ -8,14 +8,27 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
     }
   end
 
-  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: nil) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: nil, under_age: under_age) }
   let(:conviction_type) { nil }
+  let(:under_age) { 'yes' }
 
   subject { described_class.new(arguments) }
 
-  describe '.choices' do
-    it 'returns the parent types' do
-      expect(described_class.choices).to eq(ConvictionType::PARENT_TYPES.map(&:to_s))
+  describe '#choices' do
+    context 'when under 18' do
+      let(:under_age) { 'yes' }
+
+      it 'shows only the relevant choices' do
+        expect(subject.choices).to eq(ConvictionType::YOUTH_PARENT_TYPES.map(&:to_s))
+      end
+    end
+
+    context 'when over 18' do
+      let(:under_age) { 'no' }
+
+      it 'shows only the relevant choices' do
+        expect(subject.choices).to eq(ConvictionType::ADULT_PARENT_TYPES.map(&:to_s))
+      end
     end
   end
 
@@ -36,7 +49,9 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
       end
 
       context 'when conviction_type is already the same on the model' do
-        let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type) }
+        let(:disclosure_check) {
+          instance_double(DisclosureCheck, conviction_type: conviction_type, under_age: 'yes')
+        }
         let(:conviction_type)  { 'community_order' }
 
         it 'does not save the record but returns true' do
