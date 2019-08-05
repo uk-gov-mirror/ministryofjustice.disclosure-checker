@@ -2,11 +2,14 @@
 en:
   dictionary:
     CONVICTION_TYPES: &CONVICTION_TYPES
+      # youth
       armed_forces: Armed forces
       community_order: Community or youth rehabilitation order (YRO)
       custodial_sentence: Custodial sentence or hospital order
       discharge: Discharge
       financial: Financial penalty
+      # adults
+      adult_community_order: Community order
     CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
       # armed_forces
       dismissal: Dismissal

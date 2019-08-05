@@ -18,11 +18,15 @@ class ConvictionType < ValueObject
   alias compensation? compensation
 
   VALUES = [
-    PARENT_TYPES = [
+    YOUTH_PARENT_TYPES = [
       COMMUNITY_ORDER     = new(:community_order),
       CUSTODIAL_SENTENCE  = new(:custodial_sentence),
       DISCHARGE           = new(:discharge),
       FINANCIAL           = new(:financial),
+    ].freeze,
+
+    ADULT_PARENT_TYPES = [
+      ADULT_COMMUNITY_ORDER = new(:adult_community_order),
     ].freeze,
 
     # Quick way of enabling/disabling convictions. These will not show in the interface to users.
@@ -32,6 +36,10 @@ class ConvictionType < ValueObject
       ARMED_FORCES = new(:armed_forces),
     ].freeze,
 
+    #####################
+    # Youth convictions #
+    #####################
+    #
     DISMISSAL                          = new(:dismissal,                        parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     SERVICE_DETENTION                  = new(:service_detention,                parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
@@ -66,6 +74,10 @@ class ConvictionType < ValueObject
     FINE                               = new(:fine,                             parent: FINANCIAL, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, compensation: true, calculator_class: Calculators::CompensationCalculator),
 
+    ######################
+    # Adults convictions #
+    ######################
+    #
   ].flatten.freeze
 
   # :nocov:

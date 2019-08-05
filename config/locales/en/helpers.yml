@@ -2,11 +2,14 @@
 en:
   dictionary:
     CONVICTION_TYPES: &CONVICTION_TYPES
+      # youth
       armed_forces: Armed forces
       community_order: Community or youth rehabilitation order (YRO)
       custodial_sentence: Custodial sentence or hospital order
       discharge: Discharge
       financial: Financial penalty
+      # adults
+      adult_community_order: Community order
     CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
       # armed_forces
       dismissal: Dismissal
@@ -87,6 +90,7 @@ en:
         custodial_sentence: What type of sentence were you given?
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
+        adult_community_order: What was your community order?
       steps_conviction_conviction_length_type_form:
         # default key
         conviction_length_type: Was the length of the order given in weeks, months or years?
@@ -129,11 +133,14 @@ en:
           youth_simple_caution: You did not have to agree to any conditions
           youth_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
         conviction_type:
+          # youth
           armed_forces: ""
           community_order: For example, a curfew or referral order. You might have been asked to wear a tag as part of your order
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation
+          # adults
+          adult_community_order: For example, a curfew or referral order. You might have been asked to wear a tag as part of your order
         conviction_subtype:
           # armed_forces
           dismissal: ""

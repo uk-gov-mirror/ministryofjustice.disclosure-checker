@@ -1,15 +1,25 @@
 require 'rails_helper'
 
 RSpec.describe ConvictionType do
-  describe 'PARENT_TYPES' do
-    let(:values) { described_class::PARENT_TYPES.map(&:to_s) }
+  describe 'YOUTH_PARENT_TYPES' do
+    let(:values) { described_class::YOUTH_PARENT_TYPES.map(&:to_s) }
 
-    it 'returns top level conviction' do
+    it 'returns top level youth convictions' do
       expect(values).to eq(%w(
         community_order
         custodial_sentence
         discharge
         financial
+      ))
+    end
+  end
+
+  describe 'ADULT_PARENT_TYPES' do
+    let(:values) { described_class::ADULT_PARENT_TYPES.map(&:to_s) }
+
+    it 'returns top level adult convictions' do
+      expect(values).to eq(%w(
+        adult_community_order
       ))
     end
   end
