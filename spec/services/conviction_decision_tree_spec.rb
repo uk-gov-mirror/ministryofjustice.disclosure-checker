@@ -4,7 +4,6 @@ RSpec.describe ConvictionDecisionTree do
   let(:disclosure_check) do
     instance_double(
       DisclosureCheck,
-      under_age: under_age,
       conviction_type: conviction_type,
       conviction_subtype: conviction_subtype,
       compensation_paid: compensation_paid,
@@ -13,7 +12,6 @@ RSpec.describe ConvictionDecisionTree do
 
   let(:step_params)        { double('Step') }
   let(:next_step)          { nil }
-  let(:under_age)          { nil }
   let(:as)                 { nil }
   let(:conviction_type)    { nil }
   let(:conviction_subtype) { nil }
@@ -23,27 +21,6 @@ RSpec.describe ConvictionDecisionTree do
   subject { described_class.new(disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step) }
 
   it_behaves_like 'a decision tree'
-
-  describe 'when the step is `under_age`' do
-    let(:step_params) { { under_age: under_age } }
-
-    context 'and answer is `yes`' do
-      let(:under_age) { GenericYesNo::YES }
-      it { is_expected.to have_destination(:conviction_type, :edit) }
-    end
-
-    context 'and answer is `no`' do
-      let(:under_age) { GenericYesNo::NO }
-      it { is_expected.to have_destination('/steps/check/exit_over18', :show) }
-    end
-
-    # TODO: temporary feature-flag, to be removed when no needed
-    context 'and answer is `no` but we are bypassing' do
-      let(:under_age) { GenericYesNo::NO }
-      let(:as) { :bypass_under_age }
-      it { is_expected.to have_destination(:conviction_type, :edit) }
-    end
-  end
 
   context 'when the step is `known_date` ' do
     let(:step_params) { { known_date: 'anything' } }

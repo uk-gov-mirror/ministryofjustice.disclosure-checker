@@ -6,8 +6,6 @@ class ConvictionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-    when :under_age, :bypass_under_age
-      after_under_age
     when :conviction_type
       edit(:conviction_subtype)
     when :conviction_subtype
@@ -27,12 +25,6 @@ class ConvictionDecisionTree < BaseDecisionTree
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
-
-  def after_under_age
-    return edit(:conviction_type) if under_age_or_bypass?
-
-    show('/steps/check/exit_over18')
-  end
 
   def after_conviction_subtype
     return edit(:compensation_paid) if conviction_subtype.compensation?
@@ -56,9 +48,5 @@ class ConvictionDecisionTree < BaseDecisionTree
     return edit(:compensation_payment_date) if GenericYesNo.new(disclosure_check.compensation_paid).yes?
 
     show(:compensation_not_paid)
-  end
-
-  def results
-    show('/steps/check/results')
   end
 end
