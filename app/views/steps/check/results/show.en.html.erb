@@ -14,6 +14,8 @@
           If you need to change any information, or if you have another caution or conviction you’d like to
           check, <%= link_to 'use the service again', root_path, class: 'govuk-link ga-pageLink', data: { ga_category: 'results', ga_label: 'new check' } %>.
         </p>
+
+        <%= render partial: 'steps/check/results/shared/feedback' %>
       </div>
     </div>
   </main>
