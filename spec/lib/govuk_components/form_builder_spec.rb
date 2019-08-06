@@ -64,14 +64,15 @@ RSpec.describe GovukComponents::FormBuilder do
       end
     end
 
-    context 'fieldset with a hint' do
-      let(:form) { 'steps_conviction_under_age_form' }
+    context 'fieldset with a virtual attribute hint' do
+      let(:form) { 'steps_check_under_age_form' }
       let(:attribute) { 'under_age' }
+      let(:options) { super().merge(i18n_attribute: :caution) }
 
       it 'outputs the expected markup' do
         expect(
           strip_text(html_output)
-        ).to match(/<span class="govuk-hint" id="steps_conviction_under_age_form_under_age_hint">/)
+        ).to match(/<span class="govuk-hint" id="steps_check_under_age_form_under_age_hint">/)
       end
     end
 

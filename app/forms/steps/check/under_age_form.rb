@@ -1,5 +1,5 @@
 module Steps
-  module Caution
+  module Check
     class UnderAgeForm < BaseForm
       include SingleQuestionForm
 

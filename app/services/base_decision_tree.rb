@@ -33,8 +33,7 @@ class BaseDecisionTree
     { controller: step_controller, action: :edit }.merge(params)
   end
 
-  # TODO: temporary feature-flag, to be removed when no needed
-  def under_age_or_bypass?
-    GenericYesNo.new(disclosure_check.under_age).yes? || step_name.eql?(:bypass_under_age)
+  def results
+    show('/steps/check/results')
   end
 end

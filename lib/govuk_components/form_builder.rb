@@ -15,7 +15,7 @@ module GovukComponents
     def text_field(attribute, options = {})
       content_tag(:div, class: form_group_classes(attribute)) do
         concat input_label(attribute, options)
-        concat hint(attribute)
+        concat hint(attribute, options)
         concat error(attribute)
         concat @template.text_field(@object_name, attribute, input_options(attribute, options))
       end
@@ -32,7 +32,7 @@ module GovukComponents
       content_tag(:div, class: form_group_classes(attribute)) do
         content_tag(:fieldset, fieldset_options(attribute, options)) do
           concat fieldset_legend(attribute, options)
-          concat hint(attribute)
+          concat hint(attribute, options)
           concat error(attribute)
           concat radios
         end
@@ -47,9 +47,9 @@ module GovukComponents
       classes
     end
 
-    def aria_describes(attribute)
+    def aria_describes(attribute, options)
       aria_ids = []
-      aria_ids << id_for(attribute, 'hint')  if hint(attribute)
+      aria_ids << id_for(attribute, 'hint')  if hint(attribute, options)
       aria_ids << id_for(attribute, 'error') if error_for?(attribute)
 
       # If the array is empty, will return nil
@@ -58,7 +58,7 @@ module GovukComponents
 
     def input_options(attribute, options)
       defaults = { class: 'govuk-input' }
-      defaults['aria-describedby'] = aria_describes(attribute)
+      defaults['aria-describedby'] = aria_describes(attribute, options)
 
       merge_attributes(
         options[:input_options],
@@ -68,7 +68,7 @@ module GovukComponents
 
     def fieldset_options(attribute, options)
       defaults = { class: 'govuk-fieldset' }
-      defaults['aria-describedby'] = aria_describes(attribute)
+      defaults['aria-describedby'] = aria_describes(attribute, options)
 
       merge_attributes(
         options[:fieldset_options],
@@ -190,10 +190,16 @@ module GovukComponents
       content_tag(:span, text, class: 'govuk-hint govuk-radios__hint', id: id_for("#{attribute}_#{value}", 'hint'))
     end
 
-    def hint(attribute)
-      return unless hint_text(attribute)
+    def hint(attribute, options)
+      text = localized_text(
+        'helpers.hint', attribute,
+        i18n_attribute: options[:i18n_attribute],
+        default: ''
+      )
 
-      content_tag(:span, hint_text(attribute), class: 'govuk-hint', id: id_for(attribute, 'hint'))
+      return unless text.present?
+
+      content_tag(:span, text, class: 'govuk-hint', id: id_for(attribute, 'hint'))
     end
 
     def error(attribute)
