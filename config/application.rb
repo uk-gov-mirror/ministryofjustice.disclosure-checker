@@ -37,8 +37,7 @@ module Disclosure
 
     config.x.session.expires_in_minutes = ENV.fetch('SESSION_EXPIRES_IN_MINUTES', 60).to_i
 
-    # TODO: change when we have the survey ID
-    config.x.surveys.feedback = 'https://www.surveymonkey.com/r/survey'.freeze
+    config.x.surveys.feedback = 'https://www.research.net/r/QW7JCHL'.freeze
 
     # Maintain `in_progress` checks for this number of days
     config.x.checks.incomplete_purge_after_days = 7
