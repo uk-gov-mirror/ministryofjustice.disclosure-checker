@@ -20,6 +20,7 @@ RSpec.describe ConvictionType do
     it 'returns top level adult convictions' do
       expect(values).to eq(%w(
         adult_community_order
+        adult_financial
       ))
     end
   end
@@ -107,6 +108,18 @@ RSpec.describe ConvictionType do
         expect(values).to eq(%w(
           fine
           compensation_to_a_victim
+        ))
+      end
+    end
+
+
+    context 'Adult Financial penalty' do
+      let(:conviction_type) { :adult_financial }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+          adult_fine
+          adult_compensation_to_a_victim
         ))
       end
     end
@@ -360,6 +373,22 @@ RSpec.describe ConvictionType do
 
     context 'COMPENSATION_TO_A_VICTIM' do
       let(:subtype) { 'compensation_to_a_victim' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(true) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::CompensationCalculator) }
+    end
+
+    context 'ADULT_FINE' do
+      let(:subtype) { 'adult_fine' }
+
+      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusTwelveMonths) }
+    end
+
+    context 'ADULT_COMPENSATION_TO_A_VICTIM' do
+      let(:subtype) { 'adult_compensation_to_a_victim' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(true) }
