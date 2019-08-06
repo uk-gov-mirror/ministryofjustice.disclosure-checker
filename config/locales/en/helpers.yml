@@ -62,16 +62,15 @@ en:
     fieldset:
       steps_check_kind_form:
         kind: Were you cautioned or convicted?
+      steps_check_under_age_form:
+        caution: How old were you when you got cautioned?
+        conviction: How old were you when you got convicted?
       steps_caution_known_date_form:
         known_date: When did you get the caution?
       steps_caution_conditional_end_date_form:
         conditional_end_date: When did the conditions end?
-      steps_caution_under_age_form:
-        under_age: How old were you when you got cautioned?
       steps_caution_caution_type_form:
         caution_type: What type of caution did you get?
-      steps_conviction_under_age_form:
-        under_age: How old were you when you got convicted?
       steps_conviction_known_date_form:
         # default key
         known_date: When were you given the order?
@@ -114,14 +113,13 @@ en:
     hint:
       steps_caution_known_date_form:
         known_date: For example, 23 9 2018
-      steps_caution_under_age_form:
-        under_age: Select your age when you got the caution, not when you committed the offence
+      steps_check_under_age_form:
+        caution: Select your age when you got the caution, not when you committed the offence
+        conviction: Select your age when you got convicted, not when you committed the offence
       steps_caution_conditional_end_date_form:
         conditional_end_date: Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. For example, 23 9 2018
       steps_conviction_known_date_form:
         known_date: Enter the date you were convicted by a court. For example, 23 9 2018
-      steps_conviction_under_age_form:
-        under_age: Select your age when you got convicted, not when you committed the offence
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: For example, 23 9 2018
       steps_conviction_conviction_length_form:
@@ -193,6 +191,10 @@ en:
         kind:
           caution: Cautioned
           conviction: Convicted
+      steps_check_under_age_form:
+        under_age:
+          'yes': Under 18
+          'no': 18 or over
       steps_caution_known_date_form:
         day: Day
         month: Month
@@ -201,20 +203,12 @@ en:
         day: Day
         month: Month
         year: Year
-      steps_caution_under_age_form:
-        under_age:
-          'yes': Under 18
-          'no': 18 or over
       steps_caution_caution_type_form:
         caution_type:
           simple_caution: Simple caution
           conditional_caution: Conditional caution
           youth_simple_caution: Youth caution
           youth_conditional_caution: Youth conditional caution
-      steps_conviction_under_age_form:
-        under_age:
-          'yes': Under 18
-          'no': 18 or over
       steps_conviction_known_date_form:
         day: Day
         month: Month

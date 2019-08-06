@@ -1,6 +1,6 @@
 module Steps
-  module Caution
-    class UnderAgeController < Steps::CautionStepController
+  module Check
+    class UnderAgeController < Steps::CheckStepController
       include BypassUnderAge
 
       def edit

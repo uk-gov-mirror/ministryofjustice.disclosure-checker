@@ -5,9 +5,6 @@ en:
       known_date:
         edit:
           page_title: Conviction date
-      under_age:
-        edit:
-          page_title: Age when convicted
       conviction_type:
         edit:
           page_title: Conviction type
