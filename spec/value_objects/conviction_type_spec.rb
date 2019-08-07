@@ -61,7 +61,6 @@ RSpec.describe ConvictionType do
           alcohol_abstinence_treatment
           attendance_centre_order
           behavioural_change_prog
-          bind_over
           curfew
           drug_rehabilitation
           exclusion_requirement
@@ -97,6 +96,7 @@ RSpec.describe ConvictionType do
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(
+          bind_over
           absolute_discharge
           conditional_discharge
         ))
@@ -259,14 +259,6 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusSixMonths) }
     end
 
-    context 'BIND_OVER' do
-      let(:subtype) { 'bind_over' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
-    end
-
     context 'CURFEW' do
       let(:subtype) { 'curfew' }
 
@@ -389,6 +381,14 @@ RSpec.describe ConvictionType do
 
     context 'HOSPITAL_ORDER' do
       let(:subtype) { 'hospital_order' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
+    end
+
+    context 'BIND_OVER' do
+      let(:subtype) { 'bind_over' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }

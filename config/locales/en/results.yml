@@ -23,7 +23,6 @@ en:
       alcohol_abstinence_treatment: Alcohol abstinence or treatment
       attendance_centre_order: Attendance centre order
       behavioural_change_prog: Behavioural change programme
-      bind_over: Bind over
       curfew: Curfew
       drug_rehabilitation: Drug rehabilitation, treatment or testing
       exclusion_requirement: Exclusion requirement
@@ -43,6 +42,7 @@ en:
       detention: Detention
       hospital_order: Hospital order
       # discharge
+      bind_over: Bind over
       absolute_discharge: Absolute discharge
       conditional_discharge: Conditional discharge
       # financial

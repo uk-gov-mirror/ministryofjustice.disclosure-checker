@@ -24,7 +24,6 @@ en:
       alcohol_abstinence_treatment: Alcohol abstinence or treatment
       attendance_centre_order: Attendance centre order
       behavioural_change_prog: Behavioural change programme
-      bind_over: Bind over
       curfew: Curfew
       drug_rehabilitation: Drug rehabilitation, treatment or testing
       exclusion_requirement: Exclusion requirement
@@ -44,6 +43,7 @@ en:
       detention: Detention
       hospital_order: Hospital order
       # discharge
+      bind_over: Bind over
       absolute_discharge: Absolute discharge
       conditional_discharge: Conditional discharge
       # financial
@@ -194,7 +194,6 @@ en:
           alcohol_abstinence_treatment: You were ordered not to drink, or were given help to stop you drinking
           attendance_centre_order: You were ordered to go to an attendance centre for a set number of hours
           behavioural_change_prog: You were helped to change any dangerous or unwanted behaviour
-          bind_over: Your sentence was postponed as long as you kept to certain conditions
           curfew: You were ordered to stay indoors at certain times
           drug_rehabilitation: You were given help to stop taking drugs, or asked to give samples for drug tests
           exclusion_requirement: You were ordered to stay away from a certain place
@@ -214,6 +213,7 @@ en:
           detention: "You were sentenced to custody in a young offender institution or secure training centre"
           hospital_order: "You were given a hospital order instead of a prison sentence because of mental health concerns"
           # discharge
+          bind_over: Your sentence was postponed as long as you kept to certain conditions
           absolute_discharge: You were found guilty of a crime but did not get sentenced
           conditional_discharge: You were not sentenced, as long as you didn't commit another crime
           # financial
