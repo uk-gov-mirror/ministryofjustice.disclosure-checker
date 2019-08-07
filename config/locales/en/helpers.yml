@@ -158,8 +158,8 @@ en:
           caution: You were given an official warning by the police
           conviction: You were found guilty of a crime in court
         caution_type:
-          simple_caution: You did not have to agree to any conditions
-          conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
+          adult_simple_caution: You did not have to agree to any conditions
+          adult_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
           youth_simple_caution: You did not have to agree to any conditions
           youth_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
         conviction_type:
@@ -251,8 +251,8 @@ en:
         year: Year
       steps_caution_caution_type_form:
         caution_type:
-          simple_caution: Simple caution
-          conditional_caution: Conditional caution
+          adult_simple_caution: Simple caution
+          adult_conditional_caution: Conditional caution
           youth_simple_caution: Youth caution
           youth_conditional_caution: Youth conditional caution
       steps_conviction_known_date_form:
