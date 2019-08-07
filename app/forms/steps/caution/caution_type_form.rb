@@ -7,9 +7,9 @@ module Steps
 
       def choices
         if under_age?
-          CautionType::YOUTH_VALUES
+          CautionType::YOUTH_TYPES
         else
-          CautionType::NON_YOUTH_VALUES
+          CautionType::ADULT_TYPES
         end.map(&:to_s)
       end
 

@@ -28,12 +28,12 @@ RSpec.describe CautionDecisionTree do
     let(:step_params) { { known_date: 'anything' } }
 
     context 'and type is `simple caution`' do
-      let(:caution_type) { CautionType::SIMPLE_CAUTION }
+      let(:caution_type) { CautionType::ADULT_SIMPLE_CAUTION }
       it { is_expected.to have_destination('/steps/check/results', :show) }
     end
 
     context 'and type is `conditional caution`' do
-      let(:caution_type)  { CautionType::CONDITIONAL_CAUTION }
+      let(:caution_type)  { CautionType::ADULT_CONDITIONAL_CAUTION }
       it { is_expected.to have_destination(:conditional_end_date, :edit) }
     end
   end

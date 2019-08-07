@@ -108,8 +108,8 @@ en:
     caution_type:
       question: Type of caution
       answers:
-        simple_caution: Simple caution
-        conditional_caution: Conditional caution
+        adult_simple_caution: Simple caution
+        adult_conditional_caution: Conditional caution
         youth_simple_caution: Youth caution
         youth_conditional_caution: Youth conditional caution
 

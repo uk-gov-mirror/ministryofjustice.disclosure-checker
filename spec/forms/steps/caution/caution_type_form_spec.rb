@@ -30,15 +30,15 @@ RSpec.describe Steps::Caution::CautionTypeForm do
 
       it 'shows only the relevant choices' do
         expect(subject.choices).to eq(%w(
-          simple_caution
-          conditional_caution
+          adult_simple_caution
+          adult_conditional_caution
         ))
       end
     end
   end
 
   describe '#save' do
-    it_behaves_like 'a value object form', attribute_name: :caution_type, example_value: 'simple_caution'
+    it_behaves_like 'a value object form', attribute_name: :caution_type, example_value: 'youth_simple_caution'
 
     context 'when form is valid' do
       let(:caution_type) { 'youth_simple_caution' }
