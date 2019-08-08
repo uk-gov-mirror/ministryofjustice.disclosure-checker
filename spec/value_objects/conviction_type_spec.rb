@@ -20,8 +20,9 @@ RSpec.describe ConvictionType do
     it 'returns top level adult convictions' do
       expect(values).to eq(%w(
         adult_community_order
-        adult_financial
         adult_discharge
+        adult_financial
+        adult_military
         adult_prevention_and_reparation_order
         adult_custodial_sentence
       ))
@@ -142,6 +143,19 @@ RSpec.describe ConvictionType do
         expect(values).to eq(%w(
           adult_fine
           adult_compensation_to_a_victim
+        ))
+      end
+    end
+
+    context 'Adult military convictions' do
+      let(:conviction_type) { :adult_military }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+          adult_dismissal
+          adult_overseas_community_order
+          adult_service_community_order
+          adult_service_detention
         ))
       end
     end
@@ -428,7 +442,7 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.calculator_class).to eq(Calculators::CompensationCalculator) }
     end
 
-        context 'ADULT_ALCOHOL_ABSTINENCE_TREATMENT' do
+    context 'ADULT_ALCOHOL_ABSTINENCE_TREATMENT' do
       let(:subtype) { 'adult_alcohol_abstinence_treatment' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
@@ -508,7 +522,7 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
     end
 
-    context 'UADULT_NPAID_WORK' do
+    context 'ADULT_UNPAID_WORK' do
       let(:subtype) { 'adult_unpaid_work' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
@@ -530,6 +544,40 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::CompensationCalculator) }
+    end
+
+    # ADULT_MILITARY
+    #
+    context 'ADULT_DISMISSAL' do
+      let(:subtype) { 'adult_dismissal' }
+
+      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusTwelveMonths) }
+    end
+
+    context 'ADULT_OVERSEAS_COMMUNITY_ORDER' do
+      let(:subtype) { 'adult_overseas_community_order' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
+    end
+
+    context 'ADULT_SERVICE_COMMUNITY_ORDER' do
+      let(:subtype) { 'adult_service_community_order' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
+    end
+
+    context 'ADULT_SERVICE_DETENTION' do
+      let(:subtype) { 'adult_service_detention' }
+
+      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusTwelveMonths) }
     end
 
     context 'ADULT_ATTENDANCE_CENTRE_ORDER' do

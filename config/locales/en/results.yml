@@ -12,8 +12,10 @@ en:
       adult_community_order: Community order
       adult_discharge: Discharge
       adult_financial: Financial penalty
+      adult_military: Military convictions
       adult_prevention_and_reparation_order: Prevention and reparation orders
       adult_custodial_sentence: Prison sentence or hospital order
+
     CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
       # armed_forces
       dismissal: Dismissal
@@ -49,11 +51,7 @@ en:
       # financial
       fine: A fine
       compensation_to_a_victim: Compensation to a victim
-      # motoring
-      disqualification: Disqualification
-      endorsement: Endorsement
-      penalty_points: Penalty points
-       # adult_prevention_and_reparation_order
+      # adult_prevention_and_reparation_order
       adult_alcohol_abstinence_treatment: Alcohol abstinence or treatment
       adult_behavioural_change_prog: Behavioural change programme
       adult_curfew: Curfew
@@ -74,6 +72,11 @@ en:
       # adult_financial
       adult_fine: A fine
       adult_compensation_to_a_victim: Compensation to a victim
+      # adult_military
+      adult_dismissal: Dismissal
+      adult_overseas_community_order: Overseas community order
+      adult_service_community_order: Service community order
+      adult_service_detention: Service detention
       # adult_discharge
       adult_bind_over: Bind over
       adult_absolute_discharge: Absolute discharge
