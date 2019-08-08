@@ -12,6 +12,7 @@ en:
       adult_community_order: Community order
       adult_discharge: Discharge
       adult_financial: Financial penalty
+      adult_military: Military convictions
       adult_prevention_and_reparation_order: Prevention and reparation orders
       adult_custodial_sentence: Prison sentence or hospital order
 
@@ -71,6 +72,11 @@ en:
       # adult_financial
       adult_fine: A fine
       adult_compensation_to_a_victim: Compensation to a victim
+      # adult_military
+      adult_dismissal: Dismissal
+      adult_overseas_community_order: Overseas community order
+      adult_service_community_order: Service community order
+      adult_service_detention: Service detention
       # adult_discharge
       adult_bind_over: Bind over
       adult_absolute_discharge: Absolute discharge
@@ -120,6 +126,8 @@ en:
         adult_conditional_discharge: When were you given the discharge?
         adult_suspended_prison_sentence: When were you given the sentence?
         adult_prison_sentence: When were you given the sentence?
+        adult_dismissal: When were you given the dismissal?
+        adult_service_detention: When were you given the detention?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
@@ -130,6 +138,7 @@ en:
         custodial_sentence: What type of sentence were you given?
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
+        adult_military: What was your military conviction?
         adult_community_order: What was your community order?
         adult_discharge: What discharge were you given?
         adult_custodial_sentence: What sentence were you given?
@@ -183,12 +192,12 @@ en:
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation
           # adults
-          adult_community_order: For example, a curfew or referral order. You might have been asked to wear a tag as part of your order
-          adult_financial: For example, paying a fine or compensation
-          adult_prevention_and_reparation_order: ""
+          adult_community_order: For example, a curfew or unpaid work. You might have been asked to wear a tag as part of your order
           adult_discharge: For example, a conditional discharge order or bind over
-          adult_custodial_sentence: ""
-
+          adult_financial: For example, paying a fine or compensation
+          adult_military: (placeholder hint text)
+          adult_prevention_and_reparation_order: (placeholder hint text)
+          adult_custodial_sentence: (placeholder hint text)
         conviction_subtype:
           # armed_forces
           dismissal: ""
@@ -245,6 +254,11 @@ en:
           # adult_financial
           adult_fine: ""
           adult_compensation_to_a_victim: ""
+          # adult_military
+          adult_dismissal: (placeholder hint text)
+          adult_overseas_community_order: (placeholder hint text)
+          adult_service_community_order: (placeholder hint text)
+          adult_service_detention: (placeholder hint text)
           # adult_discharge
           adult_bind_over: Your sentence was postponed as long as you kept to certain conditions
           adult_absolute_discharge: You were found guilty of a crime but did not get sentenced
