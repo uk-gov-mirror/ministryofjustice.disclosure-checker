@@ -21,7 +21,7 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
   # in the value-object spec `spec/value_objects/conviction_type_spec.rb`
   describe '#choices' do
     it 'returns the relevant choices (children of the conviction type)' do
-      expect(subject.choices).to include('alcohol_abstinence_treatment', 'bind_over', 'curfew')
+      expect(subject.choices).to include('alcohol_abstinence_treatment', 'curfew', 'unpaid_work')
     end
   end
 

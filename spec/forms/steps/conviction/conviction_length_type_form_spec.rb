@@ -8,44 +8,26 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
 
   let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: conviction_subtype, conviction_length_type: nil) }
   let(:conviction_type) { ConvictionType::COMMUNITY_ORDER.to_s }
-  let(:conviction_subtype) { ConvictionType::CONDITIONAL_DISCHARGE.to_s }
+  let(:conviction_subtype) { ConvictionType::UNPAID_WORK.to_s }
   let(:conviction_length_type) { 'weeks' }
 
   subject { described_class.new(arguments) }
 
+  # Note: no need to test all combinations here, we do that already in
+  # the spec `spec/services/conviction_length_choices_spec.rb`
+  #
   describe '#choices' do
-    context 'for a community order' do
-      it 'the choices include `no_length`' do
+    context 'for a community order conviction (`unpaid_work`)' do
+      it 'includes `no_length` in the choices' do
+        expect(ConvictionLengthChoices).to receive(:choices).with(
+          conviction_subtype: ConvictionType::UNPAID_WORK
+        ).and_call_original
+
         expect(subject.choices).to eq(%w(
           weeks
           months
           years
           no_length
-        ))
-      end
-    end
-
-    context 'for a hospital order' do
-      let(:conviction_type) { ConvictionType::CUSTODIAL_SENTENCE.to_s }
-      let(:conviction_subtype) { ConvictionType::HOSPITAL_ORDER.to_s }
-      it 'the choices include `no_length`' do
-        expect(subject.choices).to eq(%w(
-          weeks
-          months
-          years
-          no_length
-        ))
-      end
-    end
-
-    context 'for an order, other than community order' do
-      let(:conviction_type) { ConvictionType::DISCHARGE.to_s }
-
-      it 'the choices does not include `no_length`' do
-        expect(subject.choices).to eq(%w(
-          weeks
-          months
-          years
         ))
       end
     end
@@ -66,9 +48,14 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
         expect(subject.save).to be(true)
       end
 
-      context 'when conviction_subtype is already the same on the model' do
+      context 'when conviction_length_type is already the same on the model' do
         let(:disclosure_check) {
-          instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_length_type: conviction_length_type)
+          instance_double(
+            DisclosureCheck,
+            conviction_type: conviction_type,
+            conviction_subtype: conviction_subtype,
+            conviction_length_type: conviction_length_type
+          )
         }
         let(:conviction_length_type) { 'months' }
 
