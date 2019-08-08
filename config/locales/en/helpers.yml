@@ -158,10 +158,6 @@ en:
         known_date: Enter the date you were convicted by a court. For example, 23 9 2018
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: For example, 23 9 2018
-      steps_conviction_conviction_length_form:
-        weeks: Number of weeks
-        months: Number of months
-        years: Number of years
       radio_buttons:
         kind:
           caution: You were given an official warning by the police
