@@ -8,6 +8,7 @@ en:
       custodial_sentence: Custodial sentence or hospital order
       discharge: Discharge
       financial: Financial penalty
+      prevention_and_reparation_order: Prevention and reparation orders
       # adults
       adult_community_order: Community order
       adult_discharge: Discharge
@@ -191,6 +192,7 @@ en:
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation
+          prevention_and_reparation_order: (placeholder hint text)
           # adults
           adult_community_order: For example, a curfew or unpaid work. You might have been asked to wear a tag as part of your order
           adult_discharge: For example, a conditional discharge order or bind over

@@ -10,6 +10,7 @@ RSpec.describe ConvictionType do
         custodial_sentence
         discharge
         financial
+        prevention_and_reparation_order
       ))
     end
   end
@@ -116,6 +117,15 @@ RSpec.describe ConvictionType do
       end
     end
 
+    context 'Prevention and reparation orders' do
+      let(:conviction_type) { :prevention_and_reparation_order }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+        ))
+      end
+    end
+
     context 'Adult Community order' do
       let(:conviction_type) { :adult_community_order }
 
@@ -160,7 +170,7 @@ RSpec.describe ConvictionType do
       end
     end
 
-    context 'Prevention and reparation orders' do
+    context 'Adult prevention and reparation orders' do
       let(:conviction_type) { :adult_prevention_and_reparation_order }
 
       it 'returns subtypes of this conviction type' do

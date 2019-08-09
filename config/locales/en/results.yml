@@ -8,6 +8,7 @@ en:
       custodial_sentence: Custodial sentence or hospital order
       discharge: Discharge
       financial: Financial penalty
+      prevention_and_reparation_order: Prevention and reparation orders
       # adults
       adult_community_order: Community order
       adult_discharge: Discharge
