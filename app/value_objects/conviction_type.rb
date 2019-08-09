@@ -19,10 +19,11 @@ class ConvictionType < ValueObject
 
   VALUES = [
     YOUTH_PARENT_TYPES = [
-      COMMUNITY_ORDER     = new(:community_order),
-      CUSTODIAL_SENTENCE  = new(:custodial_sentence),
-      DISCHARGE           = new(:discharge),
-      FINANCIAL           = new(:financial),
+      COMMUNITY_ORDER                 = new(:community_order),
+      CUSTODIAL_SENTENCE              = new(:custodial_sentence),
+      DISCHARGE                       = new(:discharge),
+      FINANCIAL                       = new(:financial),
+      PREVENTION_AND_REPARATION_ORDER = new(:prevention_and_reparation_order),
     ].freeze,
 
     ADULT_PARENT_TYPES = [
