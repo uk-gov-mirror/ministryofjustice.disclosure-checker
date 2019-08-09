@@ -8,7 +8,7 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
 
   let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: conviction_subtype, conviction_length_type: nil) }
   let(:conviction_type) { ConvictionType::COMMUNITY_ORDER.to_s }
-  let(:conviction_subtype) { ConvictionType::UNPAID_WORK.to_s }
+  let(:conviction_subtype) { ConvictionType::YOUTH_REHABILITATION_ORDER.to_s }
   let(:conviction_length_type) { 'weeks' }
 
   subject { described_class.new(arguments) }
@@ -17,10 +17,10 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
   # the spec `spec/services/conviction_length_choices_spec.rb`
   #
   describe '#choices' do
-    context 'for a community order conviction (`unpaid_work`)' do
+    context 'for a `Youth rehabilitation order`' do
       it 'includes `no_length` in the choices' do
         expect(ConvictionLengthChoices).to receive(:choices).with(
-          conviction_subtype: ConvictionType::UNPAID_WORK
+          conviction_subtype: ConvictionType::YOUTH_REHABILITATION_ORDER
         ).and_call_original
 
         expect(subject.choices).to eq(%w(

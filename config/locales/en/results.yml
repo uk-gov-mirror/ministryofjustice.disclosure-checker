@@ -23,13 +23,13 @@ en:
       service_detention: Service detention
       service_community_order: Service community order
       overseas_community_order: Overseas community order
-    # community_order
+      # community_order
       referral_order: Referral order
       reparation_order: Reparation order
       restraining_order: Restraining order
       sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
       supervision_order: Supervision order
-      unpaid_work: Unpaid work
+      youth_rehabilitation_order: Youth rehabilitation order
       # custodial_sentence
       detention_training_order: Detention and training order (DTO)
       detention: Detention

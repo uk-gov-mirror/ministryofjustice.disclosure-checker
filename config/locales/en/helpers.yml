@@ -29,7 +29,7 @@ en:
       restraining_order: Restraining order
       sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
       supervision_order: Supervision order
-      unpaid_work: Unpaid work
+      youth_rehabilitation_order: Youth rehabilitation order
       # custodial_sentence
       detention_training_order: Detention and training order (DTO)
       detention: Detention
@@ -195,7 +195,7 @@ en:
           restraining_order: You were ordered not to do something, such as approach or contact a certain person
           sexual_harm_prevention_order: A court ruled that you pose a risk of causing sexual harm
           supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction'
-          unpaid_work: You were ordered to do community work without being paid
+          youth_rehabilitation_order: This may have included one or more requirements, such as electronic monitoring, education, attendance centres, activity or programme requirements
           # custodial_sentence
           detention_training_order: "The first half of your sentence was spent in custody and the second half was spent in the community, supervised by the Youth Offending Team"
           detention: "You were sentenced to custody in a young offender institution or secure training centre"
