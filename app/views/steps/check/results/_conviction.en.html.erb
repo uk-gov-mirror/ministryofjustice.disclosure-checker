@@ -1,13 +1,14 @@
-<% track_transaction name: 'Conviction check completed', category: 'Completed checks', dimensions: { spent: ga_spent?(expiry_date) } %>
+<% track_transaction name: 'Conviction check completed', category: 'Completed checks',
+                     dimensions: { spent: ga_spent?(result.expiry_date) } %>
 
-<div class="govuk-panel govuk-panel--confirmation">
-  <h1 class="govuk-panel__title">
-    <%= title_string(expiry_date, 'conviction') %>
-  </h1>
-  <div class="govuk-panel__body">
-    <%= statement_string(expiry_date, 'conviction') %>
+<%= render partial: 'steps/check/results/shared/panel', locals: { result: result } %>
+
+<% if result.custodial_sentence? %>
+  <div class="govuk-inset-text">
+    This result is correct if you followed all the conditions you were given when you were released from custody. If you
+    broke the rules of your conditions or licence period, your conviction may not be spent.
   </div>
-</div>
+<% end %>
 
 <h2 class="govuk-heading-m govuk-!-margin-top-5">How this date has been worked out</h2>
 

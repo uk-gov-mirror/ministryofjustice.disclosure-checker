@@ -1,13 +1,7 @@
-<% track_transaction name: 'Caution check completed', category: 'Completed checks', dimensions: { spent: ga_spent?(expiry_date) } %>
+<% track_transaction name: 'Caution check completed', category: 'Completed checks',
+                     dimensions: { spent: ga_spent?(result.expiry_date) } %>
 
-<div class="govuk-panel govuk-panel--confirmation">
-  <h1 class="govuk-panel__title">
-    <%= title_string(expiry_date, 'caution') %>
-  </h1>
-  <div class="govuk-panel__body">
-    <%= statement_string(expiry_date, 'caution') %>
-  </div>
-</div>
+<%= render partial: 'steps/check/results/shared/panel', locals: { result: result } %>
 
 <h2 class="govuk-heading-m govuk-!-margin-top-5">How this date has been worked out</h2>
 
