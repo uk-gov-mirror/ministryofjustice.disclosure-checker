@@ -193,7 +193,7 @@ en:
           # community_order
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
           supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction'
-          youth_rehabilitation_order: This may have included one or more requirements, such as electronic monitoring, education, attendance centres, activity or programme requirements
+          youth_rehabilitation_order: This may have included one or more requirements, such as a curfew, electronic monitoring, education, or programme requirements
           # custodial_sentence
           detention_training_order: "The first half of your sentence was spent in custody and the second half was spent in the community, supervised by the Youth Offending Team"
           detention: "You were sentenced to custody in a young offender institution or secure training centre"
