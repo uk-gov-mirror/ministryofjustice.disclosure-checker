@@ -18,6 +18,8 @@ Feature: Conviction
 
     Then I click the "Continue" button
     And I should be on "/steps/check/results"
+    # Following step just as a smoke test. No need to add it to all the scenarios.
+    And I should see "This result is correct if you followed all the conditions"
 
   @happy_path
   Scenario: Custodial sentence or hospital order - Detention

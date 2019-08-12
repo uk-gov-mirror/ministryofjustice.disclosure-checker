@@ -7,6 +7,10 @@ RSpec.describe CautionResultPresenter do
     it { expect(subject.to_partial_path).to eq('results/caution') }
   end
 
+  describe '#check_kind' do
+    it { expect(subject.check_kind).to eq('caution') }
+  end
+
   describe '#summary' do
     let(:summary) { subject.summary }
 

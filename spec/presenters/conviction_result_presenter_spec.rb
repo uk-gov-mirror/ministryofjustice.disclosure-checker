@@ -7,6 +7,29 @@ RSpec.describe ConvictionResultPresenter do
     it { expect(subject.to_partial_path).to eq('results/conviction') }
   end
 
+  describe '#check_kind' do
+    it { expect(subject.check_kind).to eq('conviction') }
+  end
+
+  describe '#custodial_sentence?' do
+    let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type) }
+
+    context 'for a youth `CUSTODIAL_SENTENCE` conviction type' do
+      let(:conviction_type) { ConvictionType::CUSTODIAL_SENTENCE.to_s }
+      it { expect(subject.custodial_sentence?).to eq(true) }
+    end
+
+    context 'for an adult `ADULT_CUSTODIAL_SENTENCE` conviction type' do
+      let(:conviction_type) { ConvictionType::ADULT_CUSTODIAL_SENTENCE.to_s }
+      it { expect(subject.custodial_sentence?).to eq(true) }
+    end
+
+    context 'for a `DISCHARGE` conviction type' do
+      let(:conviction_type) { ConvictionType::DISCHARGE.to_s }
+      it { expect(subject.custodial_sentence?).to eq(false) }
+    end
+  end
+
   describe '#summary' do
     let(:summary) { subject.summary }
 

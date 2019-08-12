@@ -30,6 +30,10 @@ class ResultsPresenter
     result_service.expiry_date
   end
 
+  def check_kind
+    disclosure_check.kind
+  end
+
   private
 
   def result_service
