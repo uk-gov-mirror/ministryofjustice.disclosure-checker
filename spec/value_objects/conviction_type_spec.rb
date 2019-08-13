@@ -24,6 +24,7 @@ RSpec.describe ConvictionType do
         adult_discharge
         adult_financial
         adult_military
+        adult_motoring
         adult_prevention_and_reparation_order
         adult_custodial_sentence
       ))
@@ -155,6 +156,18 @@ RSpec.describe ConvictionType do
           adult_overseas_community_order
           adult_service_community_order
           adult_service_detention
+        ))
+      end
+    end
+
+    context 'Adult motoring convictions' do
+      let(:conviction_type) { :adult_motoring }
+
+      it 'returns subtypes of this conviction type' do
+        expect(values).to eq(%w(
+          adult_disqualification
+          adult_endorsement
+          adult_penalty_points
         ))
       end
     end
@@ -499,6 +512,34 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusTwelveMonths) }
     end
 
+    # ADULT_MOTORING
+    #
+    context 'ADULT_DISQUALIFICATION' do
+      let(:subtype) { 'adult_disqualification' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
+    end
+
+    context 'ADULT_ENDORSEMENT' do
+      let(:subtype) { 'adult_endorsement' }
+
+      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(nil) }
+    end
+
+    context 'ADULT_PENALTY_POINTS' do
+      let(:subtype) { 'adult_penalty_points' }
+
+      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(nil) }
+    end
+
+    # ADULT_PREVENTION_AND_REPARATION_ORDER
+    #
     context 'ADULT_ATTENDANCE_CENTRE_ORDER' do
       let(:subtype) { 'adult_attendance_centre_order' }
 
