@@ -1,5 +1,5 @@
 Feature: Conviction
-  Scenario Outline: Discharge
+  Scenario Outline: Prison sentence or hospital order
   When I am completing a basic 18 or over "Prison sentence or hospital order" conviction
   Then I should see "What sentence were you given?"
 
@@ -21,4 +21,3 @@ Feature: Conviction
     | Prison sentence           | When were you given the sentence?   | Was the length of the sentence given in weeks, months or years?      | What was the length of the sentence?   | /steps/check/results |
     | Suspended prison sentence | When were you given the sentence?   | Was the length of the sentence given in weeks, months or years?      | What was the length of the sentence?   | /steps/check/results |
     | Hospital order            | When were you given the order?      | Was the length of the order given in weeks, months or years?         | What was the length of the order?      | /steps/check/results |
-

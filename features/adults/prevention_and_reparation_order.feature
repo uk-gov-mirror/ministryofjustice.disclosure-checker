@@ -1,5 +1,5 @@
 Feature: Conviction
-  Scenario Outline: CPrevention and reparation orders
+  Scenario Outline: Prevention and reparation orders
   Given I am completing a basic 18 or over "Prevention and reparation orders" conviction
   Then I should see "What type of order were you given?"
 
