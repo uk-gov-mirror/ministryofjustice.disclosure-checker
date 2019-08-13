@@ -14,6 +14,7 @@ en:
       adult_discharge: Discharge
       adult_financial: Financial penalty
       adult_military: Military convictions
+      adult_motoring: Motoring
       adult_prevention_and_reparation_order: Prevention and reparation orders
       adult_custodial_sentence: Prison sentence or hospital order
 
@@ -68,6 +69,10 @@ en:
       adult_overseas_community_order: Overseas community order
       adult_service_community_order: Service community order
       adult_service_detention: Service detention
+      # adult_motoring
+      adult_disqualification: Disqualification
+      adult_endorsement: Endorsement
+      adult_penalty_points: Penalty points
       # adult_discharge
       adult_bind_over: Bind over
       adult_absolute_discharge: Absolute discharge
@@ -116,6 +121,9 @@ en:
         adult_prison_sentence: When were you given the sentence?
         adult_dismissal: When were you given the dismissal?
         adult_service_detention: When were you given the detention?
+        adult_disqualification: When were you given the disqualification?
+        adult_endorsement: When were you given the endorsement?
+        adult_penalty_points: When were you given the penalty points?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
@@ -127,6 +135,7 @@ en:
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
         adult_military: What was your military conviction?
+        adult_motoring: What was your motoring conviction?
         adult_community_order: What was your community order?
         adult_discharge: What discharge were you given?
         adult_custodial_sentence: What sentence were you given?
@@ -143,6 +152,7 @@ en:
         adult_conditional_discharge: Was the length of the conditions given in weeks, months or years?
         adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
+        adult_disqualification: Was the length of the disqualification given in weeks, months or years?
       steps_conviction_compensation_paid_form:
         compensation_paid: Did you pay the compensation in full?
       steps_conviction_compensation_payment_date_form:
@@ -182,6 +192,7 @@ en:
           adult_discharge: For example, a conditional discharge order or bind over
           adult_financial: For example, paying a fine or compensation
           adult_military: (placeholder hint text)
+          adult_motoring: (placeholder hint text)
           adult_prevention_and_reparation_order: For example, a reparation or restraining order
           adult_custodial_sentence: (placeholder hint text)
         conviction_subtype:
@@ -235,6 +246,10 @@ en:
           adult_overseas_community_order: (placeholder hint text)
           adult_service_community_order: (placeholder hint text)
           adult_service_detention: (placeholder hint text)
+          # adult_motoring
+          adult_disqualification: (placeholder hint text)
+          adult_endorsement: (placeholder hint text)
+          adult_penalty_points: (placeholder hint text)
           # adult_discharge
           adult_bind_over: Your sentence was postponed as long as you kept to certain conditions
           adult_absolute_discharge: You were found guilty of a crime but did not get sentenced
