@@ -72,5 +72,9 @@ module Calculators
     def conviction_length_in_months
       @_conviction_length_in_months ||= length_in_months(conviction_start_date, conviction_end_date)
     end
+
+    def conviction_end_date
+      super.advance(days: 1)
+    end
   end
 end
