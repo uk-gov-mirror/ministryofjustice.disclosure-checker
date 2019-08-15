@@ -1,4 +1,6 @@
 class BaseCalculator
+  class InvalidCalculation < RuntimeError; end
+
   attr_reader :disclosure_check
 
   def initialize(disclosure_check)
