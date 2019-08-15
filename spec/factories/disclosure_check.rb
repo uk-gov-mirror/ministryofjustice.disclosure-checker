@@ -34,5 +34,14 @@ FactoryBot.define do
       caution_type { CautionType::YOUTH_CONDITIONAL_CAUTION }
       conditional_end_date { Date.new(2018, 12, 25) }
     end
+
+    trait :suspended_prison_sentence do
+      under_age { GenericYesNo::NO }
+      kind { CheckKind::CONVICTION }
+      conviction_type { ConvictionType::ADULT_CUSTODIAL_SENTENCE }
+      conviction_subtype { ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE }
+      conviction_length_type { ConvictionLengthType::MONTHS }
+      conviction_length { 15 }
+    end
   end
 end

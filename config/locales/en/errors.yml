@@ -43,6 +43,7 @@ en:
               greater_than: The length must be 1 or more
               not_a_number: The length must be a number, like 3
               not_an_integer: The length must be a whole number, like 4
+              invalid_sentence: The length of the sentence is invalid for this conviction
         steps/conviction/compensation_payment_date_form:
           attributes:
             compensation_payment_date:
