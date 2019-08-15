@@ -291,7 +291,7 @@ RSpec.describe ConvictionType do
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::DetentionCalculator) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::SentenceCalculator::Detention) }
     end
 
     context 'DETENTION' do
@@ -299,7 +299,7 @@ RSpec.describe ConvictionType do
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::DetentionCalculator) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::SentenceCalculator::Detention) }
     end
 
     context 'HOSPITAL_ORDER' do
@@ -617,7 +617,7 @@ RSpec.describe ConvictionType do
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::PrisonSentenceCalculator) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::SentenceCalculator::SuspendedPrison) }
     end
 
     context 'ADULT_PRISON_SENTENCE' do
@@ -625,7 +625,7 @@ RSpec.describe ConvictionType do
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::PrisonSentenceCalculator) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::SentenceCalculator::Prison) }
     end
   end
 end

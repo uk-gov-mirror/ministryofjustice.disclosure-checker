@@ -11,7 +11,7 @@ Feature: Conviction
 
   And  I choose "Years"
   Then I should see "<length_header>"
-  And I fill in "Number of years" with "10"
+  And I fill in "Number of years" with "2"
 
   Then I click the "Continue" button
   And I should be on "<result>"
