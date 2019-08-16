@@ -5,6 +5,7 @@ module Steps
       delegate :conviction_length_type, to: :disclosure_check
 
       validates_numericality_of :conviction_length, greater_than: 0, only_integer: true
+      validates :conviction_length, sentence_length: true, if: :disclosure_check
 
       private
 

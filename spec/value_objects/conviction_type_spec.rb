@@ -291,7 +291,7 @@ RSpec.describe ConvictionType do
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::SentenceCalculator::Detention) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::SentenceCalculator::DetentionTraining) }
     end
 
     context 'DETENTION' do

@@ -15,6 +15,17 @@ module Calculators
       REHABILITATION_3 = { months: 42 }.freeze
     end
 
+    # If conviction length is 6 months or less: start date + length + 18 months
+    # If conviction length is over 6 months and less than or equal to 24 months: start date + length + 2 years
+    # If conviction length is over 24 months, it is considered invalid
+    #
+    class DetentionTraining < SentenceCalculator
+      UPPER_LIMIT = 24
+
+      REHABILITATION_1 = { months: 18 }.freeze
+      REHABILITATION_2 = { months: 24 }.freeze
+    end
+
     # If conviction length is 6 months or less: start date + length + 2 years
     # If conviction length is over 6 months and less than or equal to 30 months: start date + length + 4 years
     # If conviction length is over 30 months and less than or equal to 4 years: start date + length + 7 years
