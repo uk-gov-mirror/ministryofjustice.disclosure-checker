@@ -9,7 +9,7 @@ Feature: Conviction
     When I enter a valid date
     Then I should be on "/steps/check/results"
     # Following step just as a smoke test. No need to add it to all the scenarios.
-    And I should not see "This result is correct if you followed all the conditions"
+    And I should not see "This date is correct if you served your sentence in full"
 
   @happy_path
   Scenario: Conviction Financial penalty - Compensation paid in full
