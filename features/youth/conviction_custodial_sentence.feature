@@ -6,7 +6,7 @@ Feature: Conviction
   @happy_path
   Scenario: Custodial sentence or hospital order - Detention and training order (DTO)
     And I choose "Detention and training order (DTO)"
-    Then I should see "When were you given the detention and training order (DTO)?"
+    Then I should see "When did the DTO start?"
 
     When I enter a valid date
 
@@ -24,7 +24,7 @@ Feature: Conviction
   @happy_path
   Scenario: Custodial sentence or hospital order - Detention
     And I choose "Detention"
-    Then I should see "When were you given the detention?"
+    Then I should see "When did the detention start?"
 
     When I enter a valid date
 
@@ -40,7 +40,7 @@ Feature: Conviction
   @happy_path
   Scenario: Custodial sentence or hospital order - hospital order
     And I choose "Hospital order"
-    Then I should see "When were you given the order?"
+    Then I should see "When did the order start?"
 
     When I enter a valid date
 
@@ -56,7 +56,7 @@ Feature: Conviction
   @happy_path
   Scenario: Custodial sentence or hospital order - hospital order with no length
     And I choose "Hospital order"
-    Then I should see "When were you given the order?"
+    Then I should see "When did the order start?"
 
     When I enter a valid date
 
