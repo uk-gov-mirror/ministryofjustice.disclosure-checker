@@ -5,8 +5,8 @@
 
 <% if result.custodial_sentence? %>
   <div class="govuk-inset-text">
-    This result is correct if you followed all the conditions you were given when you were released from custody. If you
-    broke the rules of your conditions or licence period, your conviction may not be spent.
+    This date is correct if you served your sentence in full as the court ordered you to. The conviction might not be
+    spent if you did not stick to the terms of your sentence.
   </div>
 <% end %>
 
@@ -22,3 +22,22 @@
 <p class="govuk-body">
   This table shows the information you provided, which was used to work out the date your conviction becomes spent. If you entered any incorrect information, the date it becomes spent will be incorrect.
 </p>
+
+<%= render partial: 'steps/check/results/shared/summary', locals: { result: result } %>
+
+<h2 class="govuk-heading-m govuk-!-margin-top-5">
+  If you have more than one conviction
+</h2>
+
+<p class="govuk-body">The date this conviction becomes spent might be incorrect if you have more than one conviction.</p>
+
+<p class="govuk-body">You should get professional or legal advice if you:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>got another conviction during your
+    <a href="https://www.gov.uk/guidance/rehabilitation-periods" class="govuk-link" rel="external" target="_blank">rehabilitation period</a>
+  </li>
+  <li>
+    are applying for certain sensitive jobs
+  </li>
+</ul>

@@ -96,11 +96,11 @@ en:
       no_date_html: The caution date was not provided
     statement:
       past_html: |
-        You do not need to tell anyone about this caution unless you’re applying for a job where a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a> is needed.
+        You do not need to tell anyone about this caution, or the offence that led to it, unless they’re doing a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a>.
       present_html: |
-        After this date you will not need to tell anyone about this caution unless you’re applying for a job where a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or criminal record check</a> is needed.
+        After this date you will not need to tell anyone about this caution, or the offence that led to it, unless they’ll be doing a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or criminal record check</a>.
       no_date_html: |
-        You do not need to tell anyone about this caution unless you’re applying for a job where a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a> is needed.
+        You do not need to tell anyone about this caution, or the offence that led to it, unless they’re doing a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a>.
     kind:
       question: Criminal record type
       answers:
@@ -129,9 +129,9 @@ en:
       no_date_html: Your conviction will never be spent
     statement:
       past_html: |
-        You do not need to tell anyone about this conviction unless you’re applying for a job where a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a> is needed.
+        You do not need to tell anyone about this conviction, or the offence that led to it, unless they’re doing a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a>.
       present_html: |
-        After this date you will not need to tell anyone about this conviction unless you’re applying for a job where a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a> is needed.
+        After this date you will not need to tell anyone about this conviction, or the offence that led to it, unless they’ll be doing a <a class="govuk-link" rel="external" href="https://www.gov.uk/guidance/telling-people-about-your-criminal-record#standard-dbs">standard or enhanced criminal record check</a>.
       no_date_html: |
         If asked, you will always have to tell people about this conviction.
     kind:
