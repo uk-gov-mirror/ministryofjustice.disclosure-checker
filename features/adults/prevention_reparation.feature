@@ -1,6 +1,6 @@
 Feature: Conviction
-  Scenario Outline: Prevention and reparation orders
-  Given I am completing a basic under 18 "Prevention or reparation order" conviction
+  Scenario Outline: Prevention or reparation order
+  Given I am completing a basic 18 or over "Prevention or reparation order" conviction
   Then I should see "What type of order were you given?"
 
   When I choose "<subtype>"
@@ -18,12 +18,14 @@ Feature: Conviction
 
   Examples:
     | subtype                                                        | known_date_header                              | length_type_header                                                           | length_header                                     | result               |
+    | Attendance centre order                                        | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
     | Restraining order                                              | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
     | Sexual harm prevention order (sexual offence prevention order) | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
+    | Supervision order                                              | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
 
 
-  Scenario: Prevention and reparation orders - Reparation order
-  Given I am completing a basic under 18 "Prevention or reparation order" conviction
+  Scenario: Prevention or reparation order - Reparation order
+  Given I am completing a basic 18 or over "Prevention or reparation order" conviction
   Then I should see "What type of order were you given?"
 
   When I choose "Reparation order"
