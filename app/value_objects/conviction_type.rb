@@ -19,21 +19,21 @@ class ConvictionType < ValueObject
 
   VALUES = [
     YOUTH_PARENT_TYPES = [
-      COMMUNITY_ORDER                 = new(:community_order),
-      CUSTODIAL_SENTENCE              = new(:custodial_sentence),
-      DISCHARGE                       = new(:discharge),
-      FINANCIAL                       = new(:financial),
-      PREVENTION_AND_REPARATION_ORDER = new(:prevention_and_reparation_order),
+      COMMUNITY_ORDER       = new(:community_order),
+      CUSTODIAL_SENTENCE    = new(:custodial_sentence),
+      DISCHARGE             = new(:discharge),
+      FINANCIAL             = new(:financial),
+      PREVENTION_REPARATION = new(:prevention_reparation),
     ].freeze,
 
     ADULT_PARENT_TYPES = [
-      ADULT_COMMUNITY_ORDER                  = new(:adult_community_order),
-      ADULT_DISCHARGE                        = new(:adult_discharge),
-      ADULT_FINANCIAL                        = new(:adult_financial),
-      ADULT_MILITARY                         = new(:adult_military),
-      ADULT_MOTORING                         = new(:adult_motoring),
-      ADULT_PREVENTION_AND_REPARATION_ORDER  = new(:adult_prevention_and_reparation_order),
-      ADULT_CUSTODIAL_SENTENCE               = new(:adult_custodial_sentence),
+      ADULT_COMMUNITY_ORDER       = new(:adult_community_order),
+      ADULT_DISCHARGE             = new(:adult_discharge),
+      ADULT_FINANCIAL             = new(:adult_financial),
+      ADULT_MILITARY              = new(:adult_military),
+      ADULT_MOTORING              = new(:adult_motoring),
+      ADULT_PREVENTION_REPARATION = new(:adult_prevention_reparation),
+      ADULT_CUSTODIAL_SENTENCE    = new(:adult_custodial_sentence),
     ].freeze,
 
     # Quick way of enabling/disabling convictions. These will not show in the interface to users.
@@ -67,9 +67,9 @@ class ConvictionType < ValueObject
     FINE                               = new(:fine,                             parent: FINANCIAL, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, compensation: true, calculator_class: Calculators::CompensationCalculator),
 
-    REPARATION_ORDER                   = new(:reparation_order,                 parent: PREVENTION_AND_REPARATION_ORDER, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
-    RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_AND_REPARATION_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: PREVENTION_AND_REPARATION_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    REPARATION_ORDER                   = new(:reparation_order,                 parent: PREVENTION_REPARATION, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
+    RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     ######################
     # Adults convictions #
@@ -103,11 +103,11 @@ class ConvictionType < ValueObject
     ADULT_ENDORSEMENT                   = new(:adult_endorsement,                  parent: ADULT_MOTORING, skip_length: true, calculator_class: Calculators::MotoringCalculator::StartPlusFiveYears),
     ADULT_PENALTY_POINTS                = new(:adult_penalty_points,               parent: ADULT_MOTORING, skip_length: true, calculator_class: Calculators::MotoringCalculator::StartPlusThreeYears),
 
-    ADULT_ATTENDANCE_CENTRE_ORDER       = new(:adult_attendance_centre_order,      parent: ADULT_PREVENTION_AND_REPARATION_ORDER, calculator_class: Calculators::AdditionCalculator::PlusTwelveMonths),
-    ADULT_REPARATION_ORDER              = new(:adult_reparation_order,             parent: ADULT_PREVENTION_AND_REPARATION_ORDER, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
-    ADULT_RESTRAINING_ORDER             = new(:adult_restraining_order,            parent: ADULT_PREVENTION_AND_REPARATION_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    ADULT_SEXUAL_HARM_PREVENTION_ORDER  = new(:adult_sexual_harm_prevention_order, parent: ADULT_PREVENTION_AND_REPARATION_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    ADULT_SUPERVISION_ORDER             = new(:adult_supervision_order,            parent: ADULT_PREVENTION_AND_REPARATION_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    ADULT_ATTENDANCE_CENTRE_ORDER       = new(:adult_attendance_centre_order,      parent: ADULT_PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusTwelveMonths),
+    ADULT_REPARATION_ORDER              = new(:adult_reparation_order,             parent: ADULT_PREVENTION_REPARATION, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
+    ADULT_RESTRAINING_ORDER             = new(:adult_restraining_order,            parent: ADULT_PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    ADULT_SEXUAL_HARM_PREVENTION_ORDER  = new(:adult_sexual_harm_prevention_order, parent: ADULT_PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    ADULT_SUPERVISION_ORDER             = new(:adult_supervision_order,            parent: ADULT_PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     ADULT_HOSPITAL_ORDER                = new(:adult_hospital_order,               parent: ADULT_CUSTODIAL_SENTENCE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_SUSPENDED_PRISON_SENTENCE     = new(:adult_suspended_prison_sentence,    parent: ADULT_CUSTODIAL_SENTENCE, calculator_class: Calculators::SentenceCalculator::SuspendedPrison),

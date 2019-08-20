@@ -10,7 +10,7 @@ RSpec.describe ConvictionType do
         custodial_sentence
         discharge
         financial
-        prevention_and_reparation_order
+        prevention_reparation
       ))
     end
   end
@@ -25,7 +25,7 @@ RSpec.describe ConvictionType do
         adult_financial
         adult_military
         adult_motoring
-        adult_prevention_and_reparation_order
+        adult_prevention_reparation
         adult_custodial_sentence
       ))
     end
@@ -105,7 +105,7 @@ RSpec.describe ConvictionType do
     end
 
     context 'Prevention and reparation orders' do
-      let(:conviction_type) { :prevention_and_reparation_order }
+      let(:conviction_type) { :prevention_reparation }
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(
@@ -173,7 +173,7 @@ RSpec.describe ConvictionType do
     end
 
     context 'Adult prevention and reparation orders' do
-      let(:conviction_type) { :adult_prevention_and_reparation_order }
+      let(:conviction_type) { :adult_prevention_reparation }
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(
@@ -538,7 +538,7 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.calculator_class).to eq(Calculators::MotoringCalculator::StartPlusThreeYears) }
     end
 
-    # ADULT_PREVENTION_AND_REPARATION_ORDER
+    # ADULT_PREVENTION_REPARATION
     #
     context 'ADULT_ATTENDANCE_CENTRE_ORDER' do
       let(:subtype) { 'adult_attendance_centre_order' }
