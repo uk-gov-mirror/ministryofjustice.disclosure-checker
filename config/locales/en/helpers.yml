@@ -1,6 +1,12 @@
 ---
 en:
   dictionary:
+    CAUTION_TYPES: &CAUTION_TYPES
+      youth_simple_caution: Youth caution
+      youth_conditional_caution: Youth conditional caution
+      adult_simple_caution: Simple caution
+      adult_conditional_caution: Conditional caution
+
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
       armed_forces: Armed forces
@@ -279,10 +285,7 @@ en:
         year: Year
       steps_caution_caution_type_form:
         caution_type:
-          adult_simple_caution: Simple caution
-          adult_conditional_caution: Conditional caution
-          youth_simple_caution: Youth caution
-          youth_conditional_caution: Youth conditional caution
+          <<: *CAUTION_TYPES
       steps_conviction_known_date_form:
         day: Day
         month: Month
