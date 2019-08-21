@@ -1,6 +1,12 @@
 ---
 en:
   dictionary:
+    CAUTION_TYPES: &CAUTION_TYPES
+      youth_simple_caution: Youth caution
+      youth_conditional_caution: Youth conditional caution
+      adult_simple_caution: Simple caution
+      adult_conditional_caution: Conditional caution
+
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
       armed_forces: Armed forces
@@ -116,10 +122,7 @@ en:
     caution_type:
       question: Type of caution
       answers:
-        adult_simple_caution: Simple caution
-        adult_conditional_caution: Conditional caution
-        youth_simple_caution: Youth caution
-        youth_conditional_caution: Youth conditional caution
+        <<: *CAUTION_TYPES
 
   results/conviction:
     title:
