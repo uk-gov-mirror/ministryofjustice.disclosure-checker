@@ -25,10 +25,6 @@ RSpec.configure do |config|
   end
 
   config.include FactoryBot::Syntax::Methods
-
-  config.before(:suite) do
-    Faker::Config.locale = 'en-GB'
-  end
 end
 
 RSpec::Matchers.define_negated_matcher :not_change, :change

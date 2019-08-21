@@ -31,7 +31,6 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'faker', '>=1.9.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry-byebug'
   gem 'pry-rails'
