@@ -12,7 +12,7 @@ gem 'pg', '~> 1.1.0'
 gem 'puma', '~> 3.0'
 gem 'rails', '~> 5.2.3'
 gem 'responders'
-gem 'sass-rails'
+gem 'sass-rails', '< 6.0.0'
 gem 'sentry-raven'
 gem 'uglifier'
 gem 'virtus'
@@ -31,7 +31,6 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'faker', '>=1.9.1'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'pry-byebug'
   gem 'pry-rails'
@@ -54,5 +53,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'simplecov', require: false
   gem 'simplecov-rcov'
-  gem 'webmock'
 end

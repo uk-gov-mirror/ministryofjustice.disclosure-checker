@@ -1,19 +1,15 @@
-# :nocov:
 def edit_step(name)
   resource name,
            only: [:edit, :update],
            controller: name,
            path_names: {edit: ''}
 end
-# :nocov:
 
-# :nocov:
 def show_step(name)
   resource name,
            only:       [:show],
            controller: name
 end
-# :nocov:
 
 Rails.application.routes.draw do
   root 'home#index'
@@ -71,8 +67,6 @@ Rails.application.routes.draw do
   end
 
   # catch-all route
-  # :nocov:
   match '*path', to: 'errors#not_found', via: :all, constraints:
     lambda { |_request| !Rails.application.config.consider_all_requests_local }
-  # :nocov:
 end

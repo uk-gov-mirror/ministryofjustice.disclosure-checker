@@ -1,17 +1,13 @@
-require 'webmock/rspec'
-
 ENV['RAILS_ENV'] ||= 'test'
 
 require 'simplecov'
 SimpleCov.minimum_coverage 100
-# SimpleCov conflicts with mutant. This lets us turn it off, when necessary.
-unless ENV['NOCOVERAGE']
-  SimpleCov.start do
-    add_filter '.bundle'
-    add_filter 'spec/support'
-    add_filter 'spec/rails_helper.rb'
-    add_filter 'config/initializers'
-  end
+
+SimpleCov.start do
+  add_filter 'spec/support'
+  add_filter 'spec/rails_helper.rb'
+  add_filter 'config/initializers'
+  add_filter 'config/routes.rb'
 end
 
 Dir['./spec/support/**/*.rb'].each {|f| require f}
