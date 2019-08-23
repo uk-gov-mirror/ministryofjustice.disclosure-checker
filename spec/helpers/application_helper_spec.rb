@@ -164,9 +164,17 @@ RSpec.describe ApplicationHelper, type: :helper do
       expect(
         helper.link_to_feedback('click here')
       ).to eq(
-        '<a class="govuk-link" rel="external" target="_blank"' + \
+        '<a class="govuk-link govuk-link--no-visited-state" rel="external" target="_blank"' + \
         ' href="https://example.com?check=conviction&amp;page=%2Fsteps%2Ffoo%2Fbar">click here</a>'
       )
+    end
+  end
+
+  describe '#link_button' do
+    it 'builds the link markup styled as a button' do
+      expect(
+        helper.link_button(:start_again, root_path)
+      ).to eq('<a class="govuk-button" data-module="govuk-button" href="/">New check</a>')
     end
   end
 

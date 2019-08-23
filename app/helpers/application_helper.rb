@@ -71,7 +71,14 @@ module ApplicationHelper
 
     url = [Rails.configuration.x.surveys.feedback, query].join('?')
 
-    link_to text, url, class: 'govuk-link', rel: 'external', target: '_blank'
+    link_to text, url, class: 'govuk-link govuk-link--no-visited-state', rel: 'external', target: '_blank'
+  end
+
+  def link_button(text, href, attributes = {})
+    link_to t("helpers.buttons.#{text}"), href, {
+      class: 'govuk-button',
+      data: { module: 'govuk-button' },
+    }.merge(attributes)
   end
 
   # Use this to feature-flag code that should only run/show on test environments
