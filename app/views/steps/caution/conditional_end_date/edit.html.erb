@@ -12,16 +12,10 @@
         <%= step_form @form_object do |f| %>
           <%= f.gov_uk_date_field :conditional_end_date %>
 
-          <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text" data-ga-category="explanations" data-ga-label="conditions not ended">
-                <%= t ".conditions_not_ended_title" %>
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              <%= t ".conditions_not_ended_html" %>
-            </div>
-          </details>
+          <%= render partial: 'steps/shared/unknown_date_details', locals: {
+              i18n_scope: :conditional_caution,
+              ga_label: 'conditions not ended'
+          } %>
 
           <%= f.continue_button %>
         <% end %>

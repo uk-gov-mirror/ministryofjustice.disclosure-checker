@@ -11,6 +11,9 @@
 
         <%= step_form @form_object do |f| %>
           <%= f.gov_uk_date_field :known_date %>
+
+          <%= render partial: 'steps/shared/unknown_date_details', locals: { ga_label: 'caution unknown date' } %>
+
           <%= f.continue_button %>
         <% end %>
       </div>
