@@ -12,7 +12,7 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction Financial penalty - Compensation paid in full
     When I choose "Compensation to a victim"
-    Then I should see "Did you pay the compensation in full?"
+    Then I should see "Have you paid the compensation in full?"
     And I choose "Yes"
 
     Then I should see "When did you pay the compensation in full?"
@@ -23,6 +23,6 @@ Feature: Conviction
   @happy_path
   Scenario: Conviction Financial penalty - Compensation not paid in full
     When I choose "Compensation to a victim"
-    Then I should see "Did you pay the compensation in full?"
+    Then I should see "Have you paid the compensation in full?"
     And I choose "No"
     Then I should be on "/steps/conviction/compensation_not_paid"
