@@ -195,7 +195,7 @@ en:
           community_order: For example, a curfew or referral order. You might have been asked to wear a tag as part of your order
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
-          financial: For example, paying a fine or compensation
+          financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
           prevention_reparation: For example, a restraining order or sexual harm prevention order
           # adults
           adult_community_order: For example, a curfew or unpaid work. You might have been asked to wear a tag as part of your order
@@ -213,7 +213,7 @@ en:
           overseas_community_order: ""
           # community_order
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
-          supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction'
+          supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction' (previously called an ASBO)
           youth_rehabilitation_order: You were given one or more orders, such as a curfew, wearing a tag, education or programme requirements
           # custodial_sentence
           detention_training_order: "The first half of your sentence was spent in custody and the second half was spent in the community, supervised by the Youth Offending Team"
