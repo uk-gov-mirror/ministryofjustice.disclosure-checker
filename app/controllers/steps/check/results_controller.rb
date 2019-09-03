@@ -5,6 +5,7 @@ module Steps
 
       def show
         @presenter = ResultsPresenter.build(current_disclosure_check)
+        render variants: @presenter.variant
       end
     end
   end
