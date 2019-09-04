@@ -8,8 +8,6 @@ Feature: Conviction
     Then I should see "When were you given the order?"
     When I enter a valid date
     Then I should be on "/steps/check/results"
-    # Following step just as a smoke test. No need to add it to all the scenarios.
-    And I should not see "This date is correct if you served your sentence in full"
 
   @happy_path
   Scenario: Conviction Financial penalty - Compensation paid in full

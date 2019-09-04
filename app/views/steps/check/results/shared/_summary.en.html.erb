@@ -1,8 +1,24 @@
+<h2 class="govuk-heading-m">
+  How this result has been worked out
+</h2>
+
+<p class="govuk-body">The result you’ve been given is based on:</p>
+
+<ul class="govuk-list govuk-list--bullet">
+  <li>the information you’ve provided</li>
+  <li>the current law on <a class="govuk-link" rel="external" target="_blank" href="https://www.gov.uk/guidance/rehabilitation-periods">rehabilitation periods</a></li>
+</ul>
+
+<p class="govuk-body">
+  This table shows the information you’ve given, which has been used to work out when the caution or conviction
+  becomes spent. If you entered any incorrect information, the result you’ve been given will be incorrect.
+</p>
+
 <dl class="govuk-summary-list">
   <%= render result.summary %>
 </dl>
 
 <p class="govuk-body">
-  If you need to change any information, you
-  can <%= link_to 'use the service again', root_path, class: 'govuk-link govuk-link--no-visited-state ga-pageLink', data: { ga_category: 'results', ga_label: 'new check' } %>.
+  If you need to change any information, or if you have another caution or conviction you’d like to
+  check, <%= link_to 'use the service again', root_path, class: 'govuk-link govuk-link--no-visited-state ga-pageLink', data: { ga_category: 'results', ga_label: 'new check' } %>.
 </p>
