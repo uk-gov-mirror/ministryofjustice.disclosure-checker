@@ -7,8 +7,20 @@ RSpec.describe CautionResultPresenter do
     it { expect(subject.to_partial_path).to eq('results/caution') }
   end
 
-  describe '#check_kind' do
-    it { expect(subject.check_kind).to eq('caution') }
+  describe '#variant' do
+    before do
+      allow(subject).to receive(:expiry_date).and_return(expiry_date)
+    end
+
+    context 'spent caution' do
+      let(:expiry_date) { Date.yesterday }
+      it { expect(subject.variant).to eq('caution_spent') }
+    end
+
+    context 'not spent caution' do
+      let(:expiry_date) { Date.tomorrow }
+      it { expect(subject.variant).to eq('caution_not_spent') }
+    end
   end
 
   describe '#summary' do

@@ -36,13 +36,6 @@ module AnalyticsHelper
       current_disclosure_check.kind
   end
 
-  # This value is used in a GA custom dimension (`spent - dimension1`)
-  def ga_spent?(date)
-    return 'no_date' unless date.instance_of?(Date)
-
-    date.past? ? 'yes' : 'no'
-  end
-
   private
 
   # Custom dimensions on Google Analytics are named `dimensionX` where X

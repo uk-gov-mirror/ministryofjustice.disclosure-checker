@@ -77,26 +77,4 @@ RSpec.describe AnalyticsHelper, type: :helper do
       it { expect(helper.transaction_sku).to eq('unknown') }
     end
   end
-
-  describe '#ga_spent?' do
-    context 'for a date in the past' do
-      let(:date) { 1.year.ago.to_date }
-      it { expect(helper.ga_spent?(date)).to eq('yes') }
-    end
-
-    context 'for a date in the present' do
-      let(:date) { Date.current }
-      it { expect(helper.ga_spent?(date)).to eq('no') }
-    end
-
-    context 'for a date in the future' do
-      let(:date) { 1.year.from_now.to_date }
-      it { expect(helper.ga_spent?(date)).to eq('no') }
-    end
-
-    context 'when the argument is not a date' do
-      let(:date) { 'foobar' }
-      it { expect(helper.ga_spent?(date)).to eq('no_date') }
-    end
-  end
 end

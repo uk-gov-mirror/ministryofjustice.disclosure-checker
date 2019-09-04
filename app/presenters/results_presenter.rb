@@ -30,8 +30,14 @@ class ResultsPresenter
     result_service.expiry_date
   end
 
-  def check_kind
-    disclosure_check.kind
+  def variant
+    tense = if expiry_date.instance_of?(Date)
+              expiry_date.past? ? :spent : :not_spent
+            else
+              :never_spent
+            end
+
+    [disclosure_check.kind, tense].join('_')
   end
 
   private

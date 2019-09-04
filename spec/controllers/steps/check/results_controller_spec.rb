@@ -24,6 +24,14 @@ RSpec.describe Steps::Check::ResultsController, type: :controller do
     context 'for a conviction' do
       let(:kind) { 'conviction' }
 
+      # We are not testing the view variants here, as we've already tested
+      # the method `#variant` in the presenters.
+      before do
+        allow_any_instance_of(
+          ConvictionResultPresenter
+        ).to receive(:expiry_date).and_return(Date.yesterday)
+      end
+
       it 'assigns the correct presenter' do
         get :show
 
