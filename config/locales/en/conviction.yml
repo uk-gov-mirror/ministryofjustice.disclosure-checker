@@ -47,9 +47,6 @@ en:
             detention_training_order: What was the length of the DTO?
             detention: What was the length of the detention?
             conditional_discharge: What was the length of the discharge?
-            adult_behavioural_change_prog: What was the length of the programme?
-            adult_curfew: What was the length of the curfew?
-            adult_exclusion_requirement: What was the length of the exclusion requirement?
             adult_conditional_discharge: What was the length of the discharge?
             adult_prison_sentence: What was the length of the sentence?
             adult_suspended_prison_sentence: What was the length of the sentence?
