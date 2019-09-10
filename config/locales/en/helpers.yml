@@ -16,12 +16,11 @@ en:
       financial: Financial penalty
       prevention_reparation: Prevention or reparation order
       # adults
-      adult_community_order: Community order
+      adult_community_reparation: Community, prevention or reparation order
       adult_discharge: Discharge
       adult_financial: Financial penalty
       adult_military: Military
       adult_motoring: Motoring
-      adult_prevention_reparation: Prevention or reparation order
       adult_custodial_sentence: Custody or hospital order
 
     CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
@@ -48,24 +47,15 @@ en:
       # prevention_reparation
       reparation_order: Reparation order
       restraining_order: Restraining order
-      sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
-      # adult_prevention_reparation
-      adult_alcohol_abstinence_treatment: Alcohol abstinence or treatment
-      adult_behavioural_change_prog: Behavioural change programme
-      adult_curfew: Curfew
-      adult_drug_rehabilitation: Drug rehabilitation, treatment or testing
-      adult_electronic_monitoring_req: Electronic monitoring requirement
-      adult_exclusion_requirement: Exclusion requirement
-      adult_mental_health_treatment: Mental health treatment
-      adult_prohibition: Prohibition
-      adult_rehab_activity_requirement: Rehabilitation activity requirement (RAR)
-      adult_residence_requirement: Residence requirement
-      adult_unpaid_work: Unpaid work
-      # adult_prevention_reparation
+      sexual_harm_prevention_order: Sexual prevention order
+      # adult community, prevention and reparation orders
       adult_attendance_centre_order: Attendance centre order
+      adult_community_order: Community order
+      adult_criminal_behaviour: Criminal behaviour order
       adult_reparation_order: Reparation order
       adult_restraining_order: Restraining order
-      adult_sexual_harm_prevention_order: Sexual harm prevention order (sexual offence prevention order)
+      adult_serious_crime_prevention: Serious crime prevention order
+      adult_sexual_harm_prevention_order: Sexual prevention order
       adult_supervision_order: Supervision order
       # adult_financial
       adult_fine: A fine
@@ -122,9 +112,6 @@ en:
         hospital_order: When did the order start?
         absolute_discharge: When were you given the discharge?
         conditional_discharge: When were you given the discharge?
-        adult_behavioural_change_prog: When were you given the programme?
-        adult_curfew: When were you given the curfew?
-        adult_exclusion_requirement: When were you given the exclusion requirement?
         adult_absolute_discharge: When were you given the discharge?
         adult_conditional_discharge: When were you given the discharge?
         adult_suspended_prison_sentence: When did the sentence start?
@@ -146,7 +133,7 @@ en:
         financial: What were you ordered to pay?
         adult_military: What was your military conviction?
         adult_motoring: What was your motoring conviction?
-        adult_community_order: What was your community order?
+        adult_community_reparation: What was your community, prevention or reparation order?
         adult_discharge: What discharge were you given?
         adult_custodial_sentence: What sentence were you given?
       steps_conviction_conviction_length_type_form:
@@ -156,9 +143,6 @@ en:
         detention_training_order: Was the length of the DTO given in weeks, months or years?
         detention: Was the length of the detention given in weeks, months or years?
         conditional_discharge: Was the length of the conditions given in weeks, months or years?
-        adult_behavioural_change_prog: Was the length of the programme given in weeks, months or years?
-        adult_curfew: Was the length of the curfew given in weeks, months or years?
-        adult_exclusion_requirement: Was the length of the exclusion requirement given in weeks, months or years?
         adult_conditional_discharge: Was the length of the conditions given in weeks, months or years?
         adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
@@ -198,13 +182,12 @@ en:
           financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
           prevention_reparation: For example, a restraining order or sexual harm prevention order
           # adults
-          adult_community_order: For example, a curfew or unpaid work. You might have been asked to wear a tag as part of your order
+          adult_community_reparation: For example, a curfew, unpaid work or a restraining order. You might have been asked to wear a tag as part of your order
           adult_discharge: For example, a conditional discharge order or bind over
           adult_financial: For example, paying a fine or compensation
           adult_military: For example, a dismissal or service detention
           adult_motoring: For example, penalty points or a driving ban
-          adult_prevention_reparation: For example, a restraining order or sexual harm prevention order
-          adult_custodial_sentence: For example, a prison sentence or a hospital order given under the Mental Health Act
+          adult_custodial_sentence: For example, a prison sentence, suspended sentence or hospital order given under the Mental Health Act
         conviction_subtype:
           # armed_forces
           dismissal: ""
@@ -230,24 +213,15 @@ en:
           reparation_order: You were given help understanding the effect your crime had on someone
           restraining_order: You were ordered not to do something, such as approach or contact a certain person
           sexual_harm_prevention_order: A court ruled that you pose a risk of causing sexual harm
-          # adult_prevention_reparation
-          adult_alcohol_abstinence_treatment: You were ordered not to drink, or were given help to stop you drinking
-          adult_behavioural_change_prog: You were helped to change any dangerous or unwanted behaviour
-          adult_curfew: You were ordered to stay indoors at certain times
-          adult_drug_rehabilitation: You were given help to stop taking drugs, or asked to give samples for drug tests
-          adult_electronic_monitoring_req: ""
-          adult_exclusion_requirement: You were ordered to stay away from a certain place
-          adult_mental_health_treatment: You were given treatment for a mental health issue
-          adult_prohibition: You were banned from doing something, such as going to football matches or travelling abroad
-          adult_rehab_activity_requirement: You were given activities to help with your rehabilitation
-          adult_residence_requirement: You were ordered to live somewhere for a certain length of time
-          adult_unpaid_work: You were ordered to do community work without being paid
-          # adult_prevention_reparation
+          # adult community, prevention and reparation orders
           adult_attendance_centre_order: You were ordered to go to an attendance centre for a set number of hours
+          adult_community_order: You were ordered to serve your sentence or receive treatment in the community
+          adult_criminal_behaviour: You had to stick to certain conditions that stopped you committing crimes or behaving antisocially
           adult_reparation_order: You were given help understanding the effect your crime had on someone
           adult_restraining_order: You were ordered not to do something, such as approach or contact a certain person
-          adult_sexual_harm_prevention_order: A court ruled that you pose a risk of causing sexual harm
-          adult_supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction'
+          adult_serious_crime_prevention: A court ruled that you had been involved in a serious crime, such as money laundering, drug trafficking or armed robbery
+          adult_sexual_harm_prevention_order: A court ruled that you pose a risk of causing a sexual offence or sexual harm
+          adult_supervision_order: You were ordered to be supervised after loitering, soliciting or 'breaching a civil injunction' (previously called an ASBO)
           # adult_financial
           adult_fine: ""
           adult_compensation_to_a_victim: ""

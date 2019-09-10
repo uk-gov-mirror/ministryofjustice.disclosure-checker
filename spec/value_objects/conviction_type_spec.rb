@@ -20,13 +20,12 @@ RSpec.describe ConvictionType do
 
     it 'returns top level adult convictions' do
       expect(values).to eq(%w(
-        adult_community_order
+        adult_community_reparation
         adult_custodial_sentence
         adult_discharge
         adult_financial
         adult_military
         adult_motoring
-        adult_prevention_reparation
       ))
     end
   end
@@ -116,22 +115,19 @@ RSpec.describe ConvictionType do
       end
     end
 
-    context 'Adult Community order' do
-      let(:conviction_type) { :adult_community_order }
+    context 'Adult community, prevention and reparation orders' do
+      let(:conviction_type) { :adult_community_reparation }
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(
-          adult_alcohol_abstinence_treatment
-          adult_behavioural_change_prog
-          adult_curfew
-          adult_drug_rehabilitation
-          adult_electronic_monitoring_req
-          adult_exclusion_requirement
-          adult_mental_health_treatment
-          adult_prohibition
-          adult_rehab_activity_requirement
-          adult_residence_requirement
-          adult_unpaid_work
+          adult_attendance_centre_order
+          adult_community_order
+          adult_criminal_behaviour
+          adult_reparation_order
+          adult_restraining_order
+          adult_serious_crime_prevention
+          adult_sexual_harm_prevention_order
+          adult_supervision_order
         ))
       end
     end
@@ -171,21 +167,6 @@ RSpec.describe ConvictionType do
         ))
       end
     end
-
-    context 'Adult prevention and reparation orders' do
-      let(:conviction_type) { :adult_prevention_reparation }
-
-      it 'returns subtypes of this conviction type' do
-        expect(values).to eq(%w(
-          adult_attendance_centre_order
-          adult_reparation_order
-          adult_restraining_order
-          adult_sexual_harm_prevention_order
-          adult_supervision_order
-        ))
-      end
-    end
-
 
     context 'Adult Discharge' do
       let(:conviction_type) { :adult_discharge }
@@ -374,94 +355,74 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
-    context 'ADULT_ALCOHOL_ABSTINENCE_TREATMENT' do
-      let(:subtype) { 'adult_alcohol_abstinence_treatment' }
+    # ADULT COMMUNITY REPARATION
+    #
+    context 'ADULT_ATTENDANCE_CENTRE_ORDER' do
+      let(:subtype) { 'adult_attendance_centre_order' }
+
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
+    end
+
+    context 'ADULT_COMMUNITY_ORDER' do
+      let(:subtype) { 'adult_community_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
     end
 
-    context 'ADULT_BEHAVIOURAL_CHANGE_PROG' do
-      let(:subtype) { 'adult_behavioural_change_prog' }
+    context 'ADULT_CRIMINAL_BEHAVIOUR' do
+      let(:subtype) { 'adult_criminal_behaviour' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
     end
 
-    context 'ADULT_CURFEW' do
-      let(:subtype) { 'adult_curfew' }
+    context 'ADULT_REPARATION_ORDER' do
+      let(:subtype) { 'adult_reparation_order' }
+
+      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.compensation?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::ImmediatelyCalculator) }
+    end
+
+    context 'ADULT_RESTRAINING_ORDER' do
+      let(:subtype) { 'adult_restraining_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
-    context 'ADULT_DRUG_REHABILITATION' do
-      let(:subtype) { 'adult_drug_rehabilitation' }
+    context 'ADULT_SERIOUS_CRIME_PREVENTION' do
+      let(:subtype) { 'adult_serious_crime_prevention' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
-    context 'ADULT_ELECTRONIC_MONITORING_REQ' do
-      let(:subtype) { 'adult_electronic_monitoring_req' }
+    context 'ADULT_SEXUAL_HARM_PREVENTION_ORDER' do
+      let(:subtype) { 'adult_sexual_harm_prevention_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
-    context 'ADULT_EXCLUSION_REQUIREMENT' do
-      let(:subtype) { 'adult_exclusion_requirement' }
+    context 'ADULT_SUPERVISION_ORDER' do
+      let(:subtype) { 'adult_supervision_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
-    context 'ADULT_MENTAL_HEALTH_TREATMENT' do
-      let(:subtype) { 'adult_mental_health_treatment' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
-    end
-
-    context 'ADULT_PROHIBITION' do
-      let(:subtype) { 'adult_prohibition' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
-    end
-
-    context 'ADULT_REHAB_ACTIVITY_REQUIREMENT' do
-      let(:subtype) { 'adult_rehab_activity_requirement' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
-    end
-
-    context 'ADULT_RESIDENCE_REQUIREMENT' do
-      let(:subtype) { 'adult_residence_requirement' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
-    end
-
-    context 'ADULT_UNPAID_WORK' do
-      let(:subtype) { 'adult_unpaid_work' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
-    end
-
+    # ADULT FINANCIAL
+    #
     context 'ADULT_FINE' do
       let(:subtype) { 'adult_fine' }
 
@@ -536,48 +497,6 @@ RSpec.describe ConvictionType do
       it { expect(conviction_type.skip_length?).to eq(true) }
       it { expect(conviction_type.compensation?).to eq(false) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::MotoringCalculator::StartPlusThreeYears) }
-    end
-
-    # ADULT_PREVENTION_REPARATION
-    #
-    context 'ADULT_ATTENDANCE_CENTRE_ORDER' do
-      let(:subtype) { 'adult_attendance_centre_order' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
-    end
-
-    context 'ADULT_REPARATION_ORDER' do
-      let(:subtype) { 'adult_reparation_order' }
-
-      it { expect(conviction_type.skip_length?).to eq(true) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::ImmediatelyCalculator) }
-    end
-
-    context 'ADULT_RESTRAINING_ORDER' do
-      let(:subtype) { 'adult_restraining_order' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
-    end
-
-    context 'ADULT_SEXUAL_HARM_PREVENTION_ORDER' do
-      let(:subtype) { 'adult_sexual_harm_prevention_order' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
-    end
-
-    context 'ADULT_SUPERVISION_ORDER' do
-      let(:subtype) { 'adult_supervision_order' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.compensation?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
     context 'ADULT_BIND_OVER' do
