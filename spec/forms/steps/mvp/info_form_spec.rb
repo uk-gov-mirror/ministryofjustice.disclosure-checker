@@ -12,6 +12,15 @@ RSpec.describe Steps::Mvp::InfoForm do
 
   subject { described_class.new(arguments) }
 
+  describe '#choices' do
+    it 'returns the relevant choices' do
+      expect(subject.choices).to eq([
+        GenericYesNo::YES,
+        GenericYesNo::NO
+      ])
+    end
+  end
+
   describe '#save' do
     context 'when form is valid' do
       it 'saves the record' do
