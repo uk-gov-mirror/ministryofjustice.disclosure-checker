@@ -5,15 +5,16 @@ RSpec.describe Steps::Mvp::InfoController, type: :controller do
   let(:decision_tree_class) { MvpDecisionTree }
 
   let(:participant) { Participant.new }
+  let(:reference) { 'test' }
 
   # Avoid saving to the database
   before do
-    allow(Participant).to receive(:find_or_create_by).with(reference: 'reference').and_return(participant)
+    allow(Participant).to receive(:find_or_create_by).with(reference: reference).and_return(participant)
     allow(participant).to receive(:save).and_return(true)
   end
 
   describe '#edit' do
-    let(:expected_params) { { id: 'reference' } }
+    let(:expected_params) { { id: reference } }
 
     it 'responds with HTTP success' do
       get :edit, params: expected_params
@@ -36,7 +37,7 @@ RSpec.describe Steps::Mvp::InfoController, type: :controller do
   describe '#update' do
     let(:form_object) { instance_double(form_class, attributes: { foo: double }) }
     let(:form_class_params_name) { form_class.name.underscore }
-    let(:expected_params) { { form_class_params_name => { foo: 'bar' }, id: 'reference' } }
+    let(:expected_params) { { form_class_params_name => { foo: 'bar' }, id: reference } }
 
     before do
       allow(form_class).to receive(:new).and_return(form_object)
