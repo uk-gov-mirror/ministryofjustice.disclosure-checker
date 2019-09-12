@@ -1,8 +1,8 @@
-def edit_step(name)
+def edit_step(name, &block)
   resource name,
            only: [:edit, :update],
            controller: name,
-           path_names: {edit: ''}
+           path_names: {edit: ''} do; block.call if block_given?; end
 end
 
 def show_step(name)
@@ -27,6 +27,11 @@ Rails.application.routes.draw do
   get 'disable_adults', controller: :experiments
 
   namespace :steps do
+    namespace :mvp do
+      edit_step :info do
+        resources only: [:edit, :update], controller: :info
+      end
+    end
     namespace :check do
       edit_step :kind
       edit_step :under_age
