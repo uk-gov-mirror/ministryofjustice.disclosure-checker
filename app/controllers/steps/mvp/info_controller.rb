@@ -18,12 +18,13 @@ module Steps
       private
 
       def reference
-        params[:id]
+        params[:id].to_s
       end
 
-      # TODO: whitelist / validate reference (params[:id])
       def validate_reference
-        reference.present? || (raise 'Participant reference not found')
+        Rails.configuration.participants.include?(
+          Digest::SHA256.hexdigest(reference)
+        ) || (raise 'Participant reference not found')
       end
 
       # Using `+= 1` instead of `#increment` so the `updated_at` column
