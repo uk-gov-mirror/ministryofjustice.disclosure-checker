@@ -91,7 +91,7 @@ en:
       restart_check: Start a new check
     fieldset:
       steps_mvp_info_form:
-        opted_in: Do you want to participate in this service trial?
+        opted_in: Would you like to help?
       steps_check_kind_form:
         kind: Were you cautioned or convicted?
       steps_check_under_age_form:

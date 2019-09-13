@@ -7,33 +7,124 @@
       <div class="govuk-grid-column-two-thirds">
         <%= error_summary %>
 
-        <h1 class="govuk-heading-xl">About this trial</h1>
+        <h1 class="govuk-heading-xl">
+          Help us test a new service for young ex-offenders
+        </h1>
 
-        <p class="govuk-body-l">
-          The Ministry of Justice’s digital team is looking at ways to improve the justice experience for ex-offenders.
+        <p class="govuk-body">
+          Over the past few months, the User-Centred Policy Design (UCPD) team at the Ministry of Justice has been
+          looking at ways to improve the information and guidance available to young offenders.
+        </p>
+
+        <p class="govuk-body">
+          Our research has shown that young offenders often don’t understand:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>what convictions they’ve been given</li>
+          <li>when convictions will become spent</li>
+          <li>if and when they need to disclose convictions to people</li>
+        </ul>
+
+        <p class="govuk-body">
+          To help young offenders understand their criminal records, we’ve started working on an online service that
+          helps people check when their cautions or convictions become spent.
+        </p>
+
+        <p class="govuk-body">
+          The aim is to help people find out whether they need to disclose cautions or convictions to organisations such
+          as employers, colleges or insurance companies.
+        </p>
+
+        <p class="govuk-body">
+          Some YOTs have already contributed towards this service and we’re really grateful for all the feedback and
+          advice we’ve been given. Much of it has already been used to make improvements.
         </p>
 
         <h2 class="govuk-heading-m">
-          What we’ve been doing
+          About the service
         </h2>
 
         <p class="govuk-body">
-          We’ve started building an online service that helps young people work out when their convictions become spent,
-          and whether they need to tell people (such as employers or colleges) about their past convictions.
+          '<%= service_name -%>' asks people what type of caution or conviction they were given and when they were given
+          it. It then gives the user the date on which it becomes spent.
         </p>
 
         <p class="govuk-body">
-          <strong><%= service_name -%></strong> gives people the exact date on which their caution or conviction becomes
-          spent, along with guidance on whether or not they need to disclose it.
+          Benefits of the service include it being:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>free to use</li>
+          <li>written in plain English</li>
+          <li>run by the Ministry of Justice</li>
+          <li>compliant with government’s online accessibility standards</li>
+          <li>completely anonymous (we don’t ask for any personal details that could identify an ex-offender)</li>
+        </ul>
+
+        <div class="govuk-inset-text">
+          The service currently calculates only one caution or conviction at a time. We’re planning to add the ability
+          to calculate multiple convictions later.
+        </div>
+
+        <h2 class="govuk-heading-m">
+          How you can help
+        </h2>
+
+        <p class="govuk-body">
+          We’re now at the stage where we’d like young people across the country to start interacting with the service,
+          with the support of their YOT worker.
         </p>
 
         <p class="govuk-body">
-          More copy TBD...
+          <strong>
+            We’d like to ask if you could take a few minutes to walk as many young people as possible through the
+            service to find out when their cautions or convictions become spent.
+          </strong>
         </p>
 
-        <%= step_form @form_object, html: { class: 'govuk-!-margin-top-8' } do |f| %>
+        <p class="govuk-body">
+          This could be used as part of your existing process for when a young person is coming to the end of their time
+          with the YOT.
+        </p>
+
+        <p class="govuk-body">
+          The service can be used to help you explain:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>what type of caution or conviction someone was given</li>
+          <li>when the caution or conviction becomes spent</li>
+          <li>who is entitled to know this information once it becomes spent</li>
+        </ul>
+
+        <p class="govuk-body">
+          The fact that it’s run by MOJ should help people trust the information they’re given, and means that it will
+          be instantly updated whenever there are any changes in policy or law.
+        </p>
+
+        <h2 class="govuk-heading-m">
+          What we’d like to know
+        </h2>
+
+        <p class="govuk-body">
+          We’re really interested in finding out if young people understand:
+        </p>
+
+        <ul class="govuk-list govuk-list--bullet">
+          <li>what the service is for</li>
+          <li>the questions we’re asking</li>
+          <li>what they can do with the information they’re given at the end</li>
+        </ul>
+
+        <p class="govuk-body">
+          We’re also really keen to get your feedback as a YOT worker with a lot of expertise in this field. We
+          especially need to know if the result given at the end of the service is incorrect.
+        </p>
+
+        <%= step_form @form_object, html: {class: 'govuk-!-margin-top-8'} do |f| %>
           <%= f.radio_button_fieldset :opted_in, choices: GenericYesNo.values,
-                                      legend_options: { page_heading: false, visually_hidden: false, size: 'm' } %>
+                                      legend_options: {page_heading: false, visually_hidden: false, size: 'm'} %>
           <%= f.continue_button %>
         <% end %>
       </div>
