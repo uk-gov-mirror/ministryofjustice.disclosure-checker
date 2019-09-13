@@ -22,9 +22,8 @@ module Steps
       end
 
       def validate_reference
-        Rails.configuration.participants.include?(
-          Digest::SHA256.hexdigest(reference)
-        ) || (raise 'Participant reference not found')
+        Participant.valid_reference?(reference) ||
+          (raise "Participant reference not found: '#{reference}'")
       end
 
       # Using `+= 1` instead of `#increment` so the `updated_at` column

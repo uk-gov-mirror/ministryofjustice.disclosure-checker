@@ -24,7 +24,13 @@ RSpec.describe Steps::Mvp::InfoController, type: :controller do
     it 'raises an error if the reference is not present' do
       expect {
         get :edit
-      }.to raise_error(RuntimeError)
+      }.to raise_error(RuntimeError, "Participant reference not found: ''")
+    end
+
+    it 'raises an error if the reference is invalid' do
+      expect {
+        get :edit, params: { id: 'foobar' }
+      }.to raise_error(RuntimeError, "Participant reference not found: 'foobar'")
     end
 
     it 'increments the access counter' do

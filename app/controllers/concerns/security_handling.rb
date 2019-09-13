@@ -4,7 +4,7 @@ module SecurityHandling
   included do
     protect_from_forgery with: :exception, prepend: true
 
-    before_action :check_http_authenticate?,
+    before_action :check_http_credentials,
                   :drop_dangerous_headers!,
                   :ensure_session_validity
 
@@ -48,12 +48,16 @@ module SecurityHandling
     }
   end
 
-  def check_http_authenticate?
+  def check_http_credentials
     # :nocov:
     return unless ENV.fetch('HTTP_AUTH_ENABLED', false)
 
     authenticate_or_request_with_http_basic do |username, password|
-      username == ENV.fetch('HTTP_AUTH_USER') && password == ENV.fetch('HTTP_AUTH_PASSWORD')
+      if username.eql?(password)
+        Participant.valid_reference?(username) # Access for MVP participants
+      else
+        username == ENV.fetch('HTTP_AUTH_USER') && password == ENV.fetch('HTTP_AUTH_PASSWORD')
+      end
     end
     # :nocov:
   end
