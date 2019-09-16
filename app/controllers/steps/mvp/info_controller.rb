@@ -2,7 +2,6 @@ module Steps
   module Mvp
     class InfoController < Steps::MvpStepController
       before_action :validate_reference
-      before_action :increment_access_count, only: [:edit]
 
       def edit
         @form_object = InfoForm.build(participant_record)
@@ -26,15 +25,8 @@ module Steps
           (raise "Participant reference not found: '#{reference}'")
       end
 
-      # Using `+= 1` instead of `#increment` so the `updated_at` column
-      # gets also updated as part of the record save.
-      def increment_access_count
-        participant_record.access_count += 1
-        participant_record.save
-      end
-
       def participant_record
-        @_participant_record ||= Participant.find_or_create_by(
+        @_participant_record ||= Participant.touch_or_create_by(
           reference: reference
         )
       end
