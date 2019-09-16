@@ -54,7 +54,8 @@ module SecurityHandling
 
     authenticate_or_request_with_http_basic do |username, password|
       if username.eql?(password)
-        Participant.valid_reference?(username) # Access for MVP participants
+        # Access for MVP participants
+        Participant.valid_reference?(username) && Participant.touch_or_create_by(reference: username)
       else
         username == ENV.fetch('HTTP_AUTH_USER') && password == ENV.fetch('HTTP_AUTH_PASSWORD')
       end
