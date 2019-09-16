@@ -3,16 +3,7 @@ module Steps
     class InfoController < Steps::MvpStepController
       before_action :validate_reference
 
-      def edit
-        @form_object = InfoForm.build(participant_record)
-      end
-
-      def update
-        update_and_advance(
-          InfoForm, as: :info,
-          record: participant_record
-        )
-      end
+      def edit; end
 
       private
 
@@ -23,12 +14,6 @@ module Steps
       def validate_reference
         Participant.valid_reference?(reference) ||
           (raise "Participant reference not found: '#{reference}'")
-      end
-
-      def participant_record
-        @_participant_record ||= Participant.touch_or_create_by(
-          reference: reference
-        )
       end
     end
   end
