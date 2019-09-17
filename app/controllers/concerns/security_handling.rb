@@ -48,18 +48,23 @@ module SecurityHandling
     }
   end
 
+  # :nocov:
+  def authenticate_participant(username)
+    return unless Participant.valid_reference?(username)
+
+    @_current_participant = Participant.touch_or_create_by(reference: username)
+  end
+
   def check_http_credentials
-    # :nocov:
     return unless ENV.fetch('HTTP_AUTH_ENABLED', false)
 
     authenticate_or_request_with_http_basic do |username, password|
       if username.eql?(password)
-        # Access for MVP participants
-        Participant.valid_reference?(username) && Participant.touch_or_create_by(reference: username)
+        authenticate_participant(username)
       else
         username == ENV.fetch('HTTP_AUTH_USER') && password == ENV.fetch('HTTP_AUTH_PASSWORD')
       end
     end
-    # :nocov:
   end
+  # :nocov:
 end
