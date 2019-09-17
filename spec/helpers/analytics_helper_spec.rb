@@ -77,4 +77,18 @@ RSpec.describe AnalyticsHelper, type: :helper do
       it { expect(helper.transaction_sku).to eq('unknown') }
     end
   end
+
+  describe '#current_participant' do
+    context 'we do not have a participant' do
+      it { expect(helper.current_participant).to eq(nil) }
+    end
+
+    context 'we have a participant' do
+      before do
+        helper.instance_variable_set(:@_current_participant, 'foobar')
+      end
+
+      it { expect(helper.current_participant).to eq('foobar') }
+    end
+  end
 end

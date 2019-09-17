@@ -6,6 +6,10 @@
 
   ga('create', '<%= analytics_tracking_id %>', 'auto');
 
+  <% if current_participant %>
+  ga('set', 'userId', '<%= current_participant.reference %>');
+  <% end %>
+
   ga('set', 'anonymizeIp', true);
   ga('send', 'pageview');
 
