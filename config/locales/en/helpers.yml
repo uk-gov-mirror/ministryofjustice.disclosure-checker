@@ -89,6 +89,7 @@ en:
       start_again: New check
       resume_check: Resume check
       restart_check: Start a new check
+      visit_pilot: Visit the pilot service
     fieldset:
       steps_check_kind_form:
         kind: Were you cautioned or convicted?

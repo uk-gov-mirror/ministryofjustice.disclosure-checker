@@ -3,6 +3,7 @@
 <div class="govuk-width-container">
   <main class="govuk-main-wrapper" id="main-content">
     <div class="govuk-grid-row">
+      <div class="govuk-grid-column-full">
       <h1 class="govuk-heading-xl">
         Opted in/out participants
       </h1>
@@ -44,6 +45,7 @@
           <%= render partial: 'participant_table', locals: {results: @opted_out_participants, table_type: "Opted out participants #{@opted_out_participants.count}"} %>
         </section>
       </div>
+    </div>
     </div>
   </main>
 </div>
