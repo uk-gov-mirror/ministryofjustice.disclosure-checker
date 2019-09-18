@@ -18,6 +18,12 @@ RSpec.describe PilotController, type: :controller do
       expect(response).to be_successful
     end
 
+    it 'increments the access counter' do
+      expect {
+        get :show, params: expected_params
+      }.to change { participant.access_count }.by(1)
+    end
+
     it 'raises an error if the reference is not present' do
       expect {
         get :show, params: { id: '' }
