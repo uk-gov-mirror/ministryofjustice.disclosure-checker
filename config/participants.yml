@@ -5,6 +5,9 @@
 # A 'test' reference is included, for testing purposes, with hash:
 #   9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
 #
+# To generate new references, use the rake task `generate_references`
+# Refer to `lib/tasks/tools.rake`
+#
 development:
   - 9f86d081884c7d659a2feaa0c55ad015a3bf4f1b2b0b822cd15d6c15b0f00a08
 

@@ -4,9 +4,10 @@ namespace :tools do
   # Removed letters and numbers that might cause confusion (like 1 and l).
   #
   # Run with: `bundle exec rake tools:generate_references[total]`
+  # Defaults to 1 generated reference if no total is provided.
   #
   task :generate_references, [:total] do |_task, args|
-    total = (args[:total] || 10).to_i
+    total = (args[:total] || 1).to_i
 
     alpha  = %w[a b c d e h k m n s u v w x z].freeze
     number = (2..9).to_a.freeze
@@ -28,6 +29,12 @@ namespace :tools do
       count = (total - result.size)
     end
 
-    puts result.join(',')
+    puts 'Reference | SHA'
+    puts '-' * 76
+    result.each { |r| puts [r.ljust(12, " "), Digest::SHA256.hexdigest(r)].join }
+
+    puts
+    puts 'Note: before adding the SHA to `participants.yml` ensure it is not already present.'
+    puts
   end
 end
