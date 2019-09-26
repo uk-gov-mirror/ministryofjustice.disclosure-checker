@@ -5,13 +5,6 @@ class ConvictionResultPresenter < ResultsPresenter
     'results/conviction'
   end
 
-  def custodial_sentence?
-    [
-      ConvictionType::CUSTODIAL_SENTENCE,
-      ConvictionType::ADULT_CUSTODIAL_SENTENCE,
-    ].include?(conviction_type)
-  end
-
   private
 
   def question_attributes

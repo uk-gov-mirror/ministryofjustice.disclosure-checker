@@ -22,6 +22,10 @@ class ValueObject
     [ValueObject, self.class, value].hash
   end
 
+  def inquiry
+    to_s.inquiry
+  end
+
   def to_s
     value.to_s
   end
