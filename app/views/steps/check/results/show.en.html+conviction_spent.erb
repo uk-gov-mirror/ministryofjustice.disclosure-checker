@@ -25,7 +25,7 @@
             period</a> is now spent.
         </p>
 
-        <% if @presenter.custodial_sentence? %>
+        <% if @presenter.conviction_type.custodial_sentence? %>
           <p class="govuk-body">
             This result is correct if you served your sentence in full as the court ordered you to. The conviction might not be
             spent if you did not stick to the terms of your sentence.

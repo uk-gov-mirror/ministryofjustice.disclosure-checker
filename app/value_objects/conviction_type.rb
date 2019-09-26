@@ -1,10 +1,11 @@
 class ConvictionType < ValueObject
-  attr_reader :parent, :skip_length, :compensation, :calculator_class
+  include ConvictionDecorator
+
+  attr_reader :parent, :skip_length, :calculator_class
 
   def initialize(raw_value, params = {})
     @parent = params.fetch(:parent, nil)
     @skip_length = params.fetch(:skip_length, false)
-    @compensation = params.fetch(:compensation, false)
     @calculator_class = params.fetch(:calculator_class, nil)
 
     super(raw_value)
@@ -15,7 +16,6 @@ class ConvictionType < ValueObject
   end
 
   alias skip_length? skip_length
-  alias compensation? compensation
 
   VALUES = [
     YOUTH_PARENT_TYPES = [
@@ -64,7 +64,7 @@ class ConvictionType < ValueObject
     CONDITIONAL_DISCHARGE              = new(:conditional_discharge,            parent: DISCHARGE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     FINE                               = new(:fine,                             parent: FINANCIAL, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
-    COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, compensation: true, calculator_class: Calculators::CompensationCalculator),
+    COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, calculator_class: Calculators::CompensationCalculator),
 
     REPARATION_ORDER                   = new(:reparation_order,                 parent: PREVENTION_REPARATION, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
     RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
@@ -88,7 +88,7 @@ class ConvictionType < ValueObject
     ADULT_CONDITIONAL_DISCHARGE         = new(:adult_conditional_discharge,        parent: ADULT_DISCHARGE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     ADULT_FINE                          = new(:adult_fine,                         parent: ADULT_FINANCIAL, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusTwelveMonths),
-    ADULT_COMPENSATION_TO_A_VICTIM      = new(:adult_compensation_to_a_victim,     parent: ADULT_FINANCIAL, compensation: true, calculator_class: Calculators::CompensationCalculator),
+    ADULT_COMPENSATION_TO_A_VICTIM      = new(:adult_compensation_to_a_victim,     parent: ADULT_FINANCIAL, calculator_class: Calculators::CompensationCalculator),
 
     ADULT_DISMISSAL                     = new(:adult_dismissal,                    parent: ADULT_MILITARY, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusTwelveMonths),
     ADULT_OVERSEAS_COMMUNITY_ORDER      = new(:adult_overseas_community_order,     parent: ADULT_MILITARY, calculator_class: Calculators::AdditionCalculator::PlusTwelveMonths),
