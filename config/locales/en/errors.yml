@@ -50,6 +50,11 @@ en:
               blank: Enter the date of the compensation payment
               invalid: The date of the compensation payment date is not valid
               future: The date of the compensation payment date can’t be in the future
+        steps/conviction/motoring_disqualification_end_date_form:
+          attributes:
+            motoring_disqualification_end_date:
+              blank: Enter the end date of the motoring disqualification
+              invalid: The end date of the motoring disqualification is not valid
 
   errors:
     format: "%{message}"
