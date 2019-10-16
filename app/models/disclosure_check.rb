@@ -1,4 +1,6 @@
 class DisclosureCheck < ApplicationRecord
+  belongs_to :check_group, default: -> { create_check_group }
+
   enum status: {
     in_progress: 0,
     completed: 10,
