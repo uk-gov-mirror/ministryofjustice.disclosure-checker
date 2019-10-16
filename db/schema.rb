@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_114935) do
+ActiveRecord::Schema.define(version: 2019_10_16_120112) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "check_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "disclosure_report_id"
+    t.index ["disclosure_report_id"], name: "index_check_groups_on_disclosure_report_id", unique: true
+  end
 
   create_table "disclosure_checks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -55,4 +62,5 @@ ActiveRecord::Schema.define(version: 2019_10_16_114935) do
     t.index ["reference"], name: "index_participants_on_reference", unique: true
   end
 
+  add_foreign_key "check_groups", "disclosure_reports"
 end
