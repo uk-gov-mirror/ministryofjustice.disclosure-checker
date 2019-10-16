@@ -10,11 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_094336) do
+ActiveRecord::Schema.define(version: 2019_10_16_121824) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
   enable_extension "plpgsql"
+
+  create_table "check_groups", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "disclosure_report_id"
+    t.index ["disclosure_report_id"], name: "index_check_groups_on_disclosure_report_id", unique: true
+  end
 
   create_table "disclosure_checks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -35,7 +42,16 @@ ActiveRecord::Schema.define(version: 2019_09_30_094336) do
     t.string "motoring_endorsement"
     t.date "motoring_disqualification_end_date"
     t.string "motoring_lifetime_ban"
+    t.uuid "check_group_id"
+    t.index ["check_group_id"], name: "index_disclosure_checks_on_check_group_id"
     t.index ["status"], name: "index_disclosure_checks_on_status"
+  end
+
+  create_table "disclosure_reports", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["status"], name: "index_disclosure_reports_on_status"
   end
 
   create_table "participants", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -48,4 +64,6 @@ ActiveRecord::Schema.define(version: 2019_09_30_094336) do
     t.index ["reference"], name: "index_participants_on_reference", unique: true
   end
 
+  add_foreign_key "check_groups", "disclosure_reports"
+  add_foreign_key "disclosure_checks", "check_groups"
 end

@@ -2,8 +2,6 @@ class Participant < ApplicationRecord
   scope :opted_in, -> { where(opted_out: ['no', nil]) }
   scope :opted_out, -> { where(opted_out: 'yes') }
 
-  default_scope { order(created_at: :asc) }
-
   class << self
     def valid_reference?(reference)
       Rails.configuration.participants.include?(
