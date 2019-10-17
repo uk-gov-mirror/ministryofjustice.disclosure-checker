@@ -16,11 +16,7 @@ module Steps
 
       # TODO: temporary feature-flag, to be removed when not needed
       def show_check_answers?
-        enable_multiples? && continue_to_check_your_answers?
-      end
-
-      def enable_multiples?
-        cookies[:multiples_enabled].present?
+        multiples_enabled? && continue_to_check_your_answers?
       end
 
       def continue_to_check_your_answers?

@@ -9,7 +9,7 @@ RSpec.describe Steps::Check::ResultsController, type: :controller do
 
     before do
       allow(controller).to receive(:current_disclosure_check).and_return(disclosure_check)
-      allow(controller).to receive(:enable_multiples?).and_return(enable_multiples)
+      allow(controller).to receive(:multiples_enabled?).and_return(enable_multiples)
     end
 
 
