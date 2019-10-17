@@ -1,8 +1,6 @@
 <% title t('.page_title') %>
 
 <div class="govuk-width-container">
-  <%= step_header %>
-
   <main class="govuk-main-wrapper">
 
     <div class="govuk-grid-row">
@@ -23,7 +21,13 @@
            <%= render @presenter.summary %>
         </dl>
 
-        <%= link_button :results_page, steps_check_results_path(show_results: true), class: 'govuk-button govuk-!-margin-top-2' %>
+        <h2 class="govuk-heading-m">Add a separate caution or conviction</h2>
+
+        <%= button_to 'Enter a new caution or conviction', checks_path,
+                      class: 'govuk-button govuk-button--secondary',
+                      data: { module: 'govuk-button', 'prevent-double-click': true } %>
+
+        <%= link_button :results_page, steps_check_results_path(show_results: true), class: 'govuk-button govuk-!-margin-top-5' %>
       </div>
     </div>
 
