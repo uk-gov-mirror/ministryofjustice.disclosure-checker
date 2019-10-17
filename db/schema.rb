@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_121824) do
+ActiveRecord::Schema.define(version: 2019_10_17_102652) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_10_16_121824) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.uuid "disclosure_report_id"
-    t.index ["disclosure_report_id"], name: "index_check_groups_on_disclosure_report_id", unique: true
+    t.index ["disclosure_report_id"], name: "index_check_groups_on_disclosure_report_id"
   end
 
   create_table "disclosure_checks", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|

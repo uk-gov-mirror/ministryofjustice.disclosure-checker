@@ -65,6 +65,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :checks, only: [:create], param: :group_id do
+    post '', action: :create, as: :group
+  end
+
   resources :pilot, only: [:show]
 
   resource :errors, only: [] do
