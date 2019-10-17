@@ -16,7 +16,7 @@ module Steps
 
       # TODO: temporary feature-flag, to be removed when no needed
       def as_name
-        cookies[:motoring_enabled].present? ? :conviction_type : :bypass_motoring_conviction_type
+        motoring_enabled? ? :conviction_type : :bypass_motoring_conviction_type
       end
     end
   end

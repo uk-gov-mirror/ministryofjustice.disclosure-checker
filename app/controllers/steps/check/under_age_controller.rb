@@ -13,7 +13,7 @@ module Steps
 
       # TODO: temporary feature-flag, to be removed when no needed
       def as_name
-        cookies[:adults_enabled].present? ? :bypass_under_age : :under_age
+        adults_enabled? ? :bypass_under_age : :under_age
       end
     end
   end
