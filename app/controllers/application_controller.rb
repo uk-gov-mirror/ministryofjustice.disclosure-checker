@@ -16,6 +16,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_disclosure_check
 
+  def current_disclosure_report
+    @_current_disclosure_report ||= current_disclosure_check&.disclosure_report
+  end
+  helper_method :current_disclosure_report
+
   def previous_step_path
     # Second to last element in the array, will be nil for arrays of size 0 or 1
     current_disclosure_check&.navigation_stack&.slice(-2) || root_path
