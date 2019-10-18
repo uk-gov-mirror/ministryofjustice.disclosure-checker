@@ -183,12 +183,13 @@ end
 
 RSpec.shared_examples 'a completion step controller' do
   describe '#show' do
-    let(:disclosure_disclosure_check) {
+    let(:current_disclosure_check) {
       build(:disclosure_check, status: status, navigation_stack: %w(/not /empty))
     }
+    let(:current_disclosure_report) { DisclosureReport.new(status: status) }
     let(:status) { :in_progress }
 
-    context 'when no case exists in the session' do
+    context 'when no disclosure check exists in the session' do
       before do
         # Needed because some specs that include these examples stub current_disclosure_check,
         # which is undesirable for this particular test
@@ -203,22 +204,22 @@ RSpec.shared_examples 'a completion step controller' do
 
     describe 'marking as completed' do
       before do
-        allow(controller).to receive(:current_disclosure_check).and_return(disclosure_disclosure_check)
+        allow(controller).to receive(:current_disclosure_check).and_return(current_disclosure_check)
+        allow(controller).to receive(:current_disclosure_report).and_return(current_disclosure_report)
       end
 
-      context 'when the check is not already marked as `completed`' do
-        it 'changes the status to `completed`' do
-          expect {
-            get :show, session: { disclosure_check_id: '123' }
-          }.to change { disclosure_disclosure_check.status }.from('in_progress').to('completed')
+      context 'when the report is not already marked as `completed`' do
+        it 'calls the `mark_report_completed` method' do
+          expect(controller).to receive(:mark_report_completed)
+          get :show, session: { disclosure_check_id: '123' }
         end
       end
 
-      context 'when the check is already marked as `completed`' do
+      context 'when the report is already marked as `completed`' do
         let(:status) { :completed }
 
-        it 'does not call the `mark_completed` method' do
-          expect(controller).not_to receive(:mark_completed)
+        it 'does not call the `mark_report_completed` method' do
+          expect(controller).not_to receive(:mark_report_completed)
           get :show, session: { disclosure_check_id: '123' }
         end
       end

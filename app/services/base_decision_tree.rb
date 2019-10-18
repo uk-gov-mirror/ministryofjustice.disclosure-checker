@@ -34,6 +34,8 @@ class BaseDecisionTree
   end
 
   def results
+    disclosure_check.completed!
+
     show('/steps/check/results')
   end
 end
