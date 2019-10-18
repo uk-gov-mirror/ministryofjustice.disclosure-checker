@@ -6,16 +6,16 @@ module CompletionStep
   extend ActiveSupport::Concern
 
   included do
-    before_action :mark_completed, unless: :completed?
+    before_action :mark_report_completed, unless: :report_completed?
   end
 
   private
 
-  def completed?
-    current_disclosure_check.completed?
+  def report_completed?
+    current_disclosure_report.completed?
   end
 
-  def mark_completed
-    current_disclosure_check.completed!
+  def mark_report_completed
+    current_disclosure_report.completed!
   end
 end

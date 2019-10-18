@@ -1,8 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe Steps::Check::CheckYourAnswersController, type: :controller do
-  it_behaves_like 'a completion step controller'
-
     describe '#show' do
       let(:disclosure_check) { build(:disclosure_check, kind: kind) }
 

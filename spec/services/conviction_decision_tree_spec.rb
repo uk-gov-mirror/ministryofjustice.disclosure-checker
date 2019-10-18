@@ -36,7 +36,7 @@ RSpec.describe ConvictionDecisionTree do
 
     context 'when subtype equal fine' do
       let(:conviction_subtype) { :fine }
-      it { is_expected.to have_destination('/steps/check/results', :show) }
+      it { is_expected.to complete_the_check_and_show_results }
     end
 
     context 'when subtype equal adult_disqualification' do
@@ -92,7 +92,7 @@ RSpec.describe ConvictionDecisionTree do
 
     context 'and the answer is `no_length`' do
       let(:conviction_length_type) { ConvictionLengthType::NO_LENGTH.to_s }
-      it { is_expected.to have_destination('/steps/check/results', :show) }
+      it { is_expected.to complete_the_check_and_show_results }
     end
 
     context 'and the answer is other than `no_length`' do
@@ -103,7 +103,7 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `conviction_length`' do
     let(:step_params) { { conviction_length: 'anything' } }
-    it { is_expected.to have_destination('/steps/check/results', :show) }
+    it { is_expected.to complete_the_check_and_show_results }
   end
 
   context 'when the step is `compensation_paid`' do
@@ -122,12 +122,12 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `compensation_payment_date`' do
     let(:step_params) { { compensation_payment_date: 'anything' } }
-    it { is_expected.to have_destination('/steps/check/results', :show) }
+    it { is_expected.to complete_the_check_and_show_results }
   end
 
   context 'when the step is `motoring_disqualification_end_date`' do
     let(:step_params) { { motoring_disqualification_end_date: 'anything' } }
-    it { is_expected.to have_destination('/steps/check/results', :show) }
+    it { is_expected.to complete_the_check_and_show_results }
   end
 
   context 'when the step is `motoring_endorsement`' do
@@ -142,7 +142,7 @@ RSpec.describe ConvictionDecisionTree do
 
       context ' without a endorsement' do
         let(:motoring_endorsement) {GenericYesNo::NO }
-        it { is_expected.to have_destination('/steps/check/results', :show) }
+        it { is_expected.to complete_the_check_and_show_results }
       end
     end
 
@@ -164,7 +164,7 @@ RSpec.describe ConvictionDecisionTree do
     context 'when the step is `motoring_lifetime_ban` equal yes' do
       let(:motoring_lifetime_ban)  { GenericYesNo::YES }
       let(:step_params) { { motoring_lifetime_ban: motoring_lifetime_ban } }
-      it { is_expected.to have_destination('/steps/check/results', :show) }
+      it { is_expected.to complete_the_check_and_show_results }
     end
 
     context 'when the step is `motoring_lifetime_ban` equal no' do
