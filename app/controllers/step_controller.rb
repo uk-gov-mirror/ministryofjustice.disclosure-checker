@@ -1,6 +1,9 @@
 class StepController < ApplicationController
   before_action :check_disclosure_check_presence
-  before_action :check_disclosure_check_not_completed, except: [:show]
+
+  before_action :check_disclosure_report_not_completed,
+                :check_disclosure_check_not_completed, except: [:show]
+
   before_action :update_navigation_stack, only: [:show, :edit]
 
   private

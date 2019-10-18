@@ -13,6 +13,10 @@ class ErrorsController < ApplicationController
     respond_with_status(:unprocessable_entity)
   end
 
+  def report_completed
+    respond_with_status(:unprocessable_entity)
+  end
+
   def unhandled
     respond_with_status(:internal_server_error)
   end

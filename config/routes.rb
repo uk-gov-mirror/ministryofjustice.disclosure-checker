@@ -79,6 +79,7 @@ Rails.application.routes.draw do
     get :unhandled
     get :not_found
     get :check_completed
+    get :report_completed
   end
 
   # Health and ping endpoints (`status` and `health` are alias)
