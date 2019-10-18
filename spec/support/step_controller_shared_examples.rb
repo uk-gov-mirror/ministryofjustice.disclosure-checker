@@ -19,7 +19,32 @@ RSpec.shared_examples 'a generic step controller' do |form_class, decision_tree_
       end
     end
 
-    context 'when a case in progress is in the session' do
+    context 'when the disclosure check is completed' do
+      let(:existing_case) { DisclosureCheck.create(status: :completed) }
+
+      it 'redirects to the check completed error page' do
+        put :update, params: expected_params, session: { disclosure_check_id: existing_case.id }
+        expect(response).to redirect_to(check_completed_errors_path)
+      end
+    end
+
+    context 'when the disclosure report is completed (and feature flag enabled)' do
+      let(:existing_case) { DisclosureCheck.create(status: :in_progress) }
+
+      before do
+        existing_case.disclosure_report.completed!
+
+        # feature flag
+        allow(controller).to receive(:multiples_enabled?).and_return(true)
+      end
+
+      it 'redirects to the report completed error page' do
+        put :update, params: expected_params, session: { disclosure_check_id: existing_case.id }
+        expect(response).to redirect_to(report_completed_errors_path)
+      end
+    end
+
+    context 'when the disclosure check is in progress' do
       let(:existing_case) { DisclosureCheck.create(status: :in_progress) }
 
       before do

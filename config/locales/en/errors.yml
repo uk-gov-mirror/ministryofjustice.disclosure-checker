@@ -80,6 +80,12 @@ en:
       heading: You have already completed this check
       lead_text: If you want to make changes you will need to start a new check.
       results_page: Go to results page
+      check_answers_page: Go to check your answers
+    report_completed:
+      page_title: Report completed
+      heading: You have already completed this report
+      lead_text: If you want to make changes you will need to start again.
+      results_page: Go to results page
     invalid_session:
       page_title: Sorry, you'll have to start again
       heading: Sorry, you'll have to start again
