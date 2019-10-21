@@ -178,6 +178,42 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#allow_to_cancel_check?' do
+    before do
+      allow(helper).to receive(:multiples_enabled?).and_return(multiples_enabled)
+    end
+
+    context 'multiples feature flag disabled' do
+      let(:multiples_enabled) { false }
+
+      it 'always returns false' do
+        expect(helper.allow_to_cancel_check?).to eq(false)
+      end
+    end
+
+    context 'multiples feature flag enabled' do
+      let(:multiples_enabled) { true }
+
+      let(:disclosure_report) { instance_double(DisclosureReport) }
+      let(:disclosure_checks) { double('result_set', completed: checks) }
+
+      before do
+        allow(disclosure_report).to receive(:disclosure_checks).and_return(disclosure_checks)
+        allow(helper).to receive(:current_disclosure_report).and_return(disclosure_report)
+      end
+
+      context 'for no checks completed' do
+        let(:checks) { [] }
+        it { expect(helper.allow_to_cancel_check?).to eq(false) }
+      end
+
+      context 'for at least one check completed' do
+        let(:checks) { [1] }
+        it { expect(helper.allow_to_cancel_check?).to eq(true) }
+      end
+    end
+  end
+
   describe 'dev_tools_enabled?' do
     before do
       allow(Rails).to receive_message_chain(:env, :development?).and_return(development_env)
