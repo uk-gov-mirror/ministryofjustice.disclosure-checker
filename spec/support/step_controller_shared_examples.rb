@@ -117,11 +117,11 @@ RSpec.shared_examples 'a starting point step controller' do
         expect(session[:disclosure_check_id]).to eq(existing_case.id)
       end
 
-      it 'clears the navigation stack in the session' do
+      it 'does not change any existing navigation' do
         get :edit, session: { disclosure_check_id: existing_case.id }
         existing_case.reload
 
-        expect(existing_case.navigation_stack).to eq([controller.request.fullpath])
+        expect(existing_case.navigation_stack).to eq(['/not', '/empty', controller.request.fullpath])
       end
     end
   end

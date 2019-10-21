@@ -24,6 +24,15 @@ RSpec.describe ChecksController, type: :controller do
           }.to change { disclosure_report.check_groups.count }.by(1)
         end
 
+        it 'defaults some attributes' do
+          post :create, params: { check_group_id: disclosure_check.check_group_id }
+
+          last_check = DisclosureCheck.last
+
+          # the back link should point to CYA page
+          expect(last_check.navigation_stack).to eq([steps_check_check_your_answers_path])
+        end
+
         it 'redirects to the caution or conviction question (kind)' do
           post :create
           expect(response).to redirect_to(edit_steps_check_kind_path)
@@ -44,9 +53,17 @@ RSpec.describe ChecksController, type: :controller do
             post :create, params: { check_group_id: disclosure_check.check_group_id }
           }.not_to change { disclosure_report.check_groups.count }
 
+        end
+
+        it 'defaults some attributes' do
+          post :create, params: { check_group_id: disclosure_check.check_group_id }
+
           # we default to `conviction` kind as only conviction can be added to existing proceedings
           last_check = DisclosureCheck.last
           expect(last_check.kind).to eq(CheckKind::CONVICTION.to_s)
+
+          # the back link should point to CYA page
+          expect(last_check.navigation_stack).to eq([steps_check_check_your_answers_path])
         end
 
         it 'redirects to the under age question' do
