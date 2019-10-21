@@ -81,6 +81,14 @@ module ApplicationHelper
     }.merge(attributes)
   end
 
+  # TODO: remove feature-flag condition once we finish the `multiples` work
+  # We allow to cancel the check in progress if there is at least one check completed
+  def allow_to_cancel_check?
+    return false unless multiples_enabled?
+
+    current_disclosure_report.disclosure_checks.completed.any?
+  end
+
   # Use this to feature-flag code that should only run/show on test environments
   def dev_tools_enabled?
     Rails.env.development? || ENV.key?('DEV_TOOLS_ENABLED')

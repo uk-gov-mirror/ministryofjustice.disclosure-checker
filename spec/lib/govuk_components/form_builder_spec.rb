@@ -1,6 +1,11 @@
 require 'rails_helper'
 
 class TestHelper < ActionView::Base
+  def allow_to_cancel_check?; end
+
+  def steps_check_check_your_answers_path
+    '/steps/check/answers'
+  end
 end
 
 RSpec.describe GovukComponents::FormBuilder do
@@ -17,10 +22,31 @@ RSpec.describe GovukComponents::FormBuilder do
     let(:builder) { described_class.new :whatever, Object.new, helper, {} }
     let(:html_output) { builder.continue_button }
 
-    it 'outputs the continue button' do
-      expect(
-        html_output
-      ).to eq('<button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>')
+    before do
+      allow(helper).to receive(:allow_to_cancel_check?).and_return(allow_to_cancel_check)
+    end
+
+    context 'it is not possible to cancel the current check' do
+      let(:allow_to_cancel_check) { false }
+
+      it 'outputs the continue button' do
+        expect(
+          html_output
+        ).to eq('<button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>')
+      end
+    end
+
+    context 'it is possible to cancel the current check' do
+      let(:allow_to_cancel_check) { true }
+
+      it 'outputs the continue button' do
+        expect(
+          html_output
+        ).to eq(
+          '<button type="submit" class="govuk-button" data-module="govuk-button" data-prevent-double-click="true">Continue</button>' + \
+          '<p class="govuk-body"><a href="/steps/check/answers" class="govuk-link govuk-link--no-visited-state ga-pageLink" data-ga-category="steps" data-ga-label="cancel check">Go back to check your answers</a></p>'
+        )
+      end
     end
   end
 

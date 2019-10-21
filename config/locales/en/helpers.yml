@@ -90,6 +90,7 @@ en:
       start_again: New check
       resume_check: Resume check
       restart_check: Start a new check
+      cancel_check: Go back to check your answers
       visit_pilot: Visit the pilot service
       results_page: Go to results page
     fieldset:

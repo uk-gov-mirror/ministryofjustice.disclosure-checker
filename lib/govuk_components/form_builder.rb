@@ -4,11 +4,28 @@ module GovukComponents
     delegate :t, :concat, to: :@template
 
     def continue_button(value: :continue, options: {})
-      button t("helpers.buttons.#{value}"), {
-        name: nil,
-        class: 'govuk-button',
-        data: { module: 'govuk-button', 'prevent-double-click': true },
-      }.merge(options)
+      capture do
+        concat button t("helpers.buttons.#{value}"), {
+          name: nil,
+          class: 'govuk-button',
+          data: { module: 'govuk-button', 'prevent-double-click': true },
+        }.merge(options)
+
+        concat(cancel_check_link) if @template.allow_to_cancel_check?
+      end
+    end
+
+    def cancel_check_link(value: :cancel_check)
+      content_tag(
+        :p,
+        content_tag(
+          :a, t("helpers.buttons.#{value}"),
+          href: @template.steps_check_check_your_answers_path,
+          class: 'govuk-link govuk-link--no-visited-state ga-pageLink',
+          data: { ga_category: 'steps', ga_label: 'cancel check' }
+        ),
+        class: 'govuk-body'
+      )
     end
 
     # Methods below overrides the one from the original gem, and reimplement them
