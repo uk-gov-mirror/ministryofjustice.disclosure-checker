@@ -30,7 +30,7 @@ RSpec.describe Calculators::SentenceCalculator do
 
       context 'never spent for conviction length over 4 years' do
         let(:conviction_months) { 49 }
-        it { expect(subject.expiry_date).to eq(false) }
+        it { expect(subject.expiry_date).to eq(:never_spent) }
       end
 
       context 'there is no upper limit' do
@@ -60,7 +60,7 @@ RSpec.describe Calculators::SentenceCalculator do
 
       context 'never spent for conviction length over 4 years' do
         let(:conviction_months) { 49 }
-        it { expect(subject.expiry_date).to eq(false) }
+        it { expect(subject.expiry_date).to eq(:never_spent) }
       end
 
       context 'there is no upper limit' do

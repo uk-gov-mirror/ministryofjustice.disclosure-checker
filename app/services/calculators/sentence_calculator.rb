@@ -54,7 +54,7 @@ module Calculators
       raise InvalidCalculation unless valid?
 
       if conviction_length_in_months > NEVER_SPENT_THRESHOLD
-        false
+        :never_spent
       else
         conviction_end_date.advance(spent_time)
       end
