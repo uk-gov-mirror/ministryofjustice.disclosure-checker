@@ -79,6 +79,12 @@ en:
       adult_suspended_prison_sentence: Suspended prison sentence
       adult_prison_sentence: Prison sentence
 
+
+  check_your_answers/check:
+    kind:
+      caution: Caution
+      conviction: Conviction
+
   steps:
     check:
       results:

@@ -2,7 +2,7 @@ module Steps
   module Check
     class CheckYourAnswersController < Steps::CheckStepController
       def show
-        @presenter = ResultsPresenter.build(current_disclosure_check)
+        @presenter = CheckAnswersPresenter.new(current_disclosure_report)
       end
     end
   end
