@@ -10,9 +10,9 @@
         <p class="govuk-body"><%=t '.lead_text' %></p>
         <p class="govuk-body">
           <% if multiples_enabled? %>
-            <%= link_to t('.check_answers_page'), steps_check_check_your_answers_path, class: 'govuk-link' %>
+            <%= link_to t('.check_answers_page'), steps_check_check_your_answers_path, class: 'govuk-link govuk-link--no-visited-state' %>
           <% else %>
-            <%= link_to t('.results_page'), steps_check_results_path, class: 'govuk-link' %>
+            <%= link_to t('.results_page'), steps_check_results_path, class: 'govuk-link govuk-link--no-visited-state' %>
           <% end %>
         </p>
 
