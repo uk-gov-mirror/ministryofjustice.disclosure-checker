@@ -12,6 +12,14 @@
 
         <p class="govuk-body">You've said that you have not paid the full compensation you were ordered to pay.</p>
         <p class="govuk-body">Your conviction will not become spent until the compensation has been paid in full.</p>
+
+        <% if allow_to_cancel_check? %>
+          <p class="govuk-body">
+            <%= link_to 'Go to check your answers', steps_check_check_your_answers_path, class: 'govuk-link govuk-link--no-visited-state' %>
+          </p>
+        <% end %>
+
+        <%= link_button :start_again, root_path(new: 'y') %>
       </div>
     </div>
 
