@@ -70,7 +70,7 @@ RSpec.describe CautionResultPresenter do
 
   describe '#expiry_date' do
     before do
-      allow_any_instance_of(CautionCheckResult).to receive(:expiry_date).and_return('foobar')
+      allow_any_instance_of(CheckResult).to receive(:expiry_date).and_return('foobar')
     end
 
     it 'delegates the method to the calculator' do

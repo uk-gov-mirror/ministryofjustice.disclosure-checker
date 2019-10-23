@@ -9,6 +9,8 @@ FactoryBot.define do
     under_age { GenericYesNo::YES }
     caution_type { CautionType::YOUTH_SIMPLE_CAUTION }
 
+    trait :caution
+
     trait :conviction do
       kind { CheckKind::CONVICTION }
       known_date { nil }

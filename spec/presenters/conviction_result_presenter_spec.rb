@@ -100,7 +100,7 @@ RSpec.describe ConvictionResultPresenter do
 
   describe '#expiry_date' do
     before do
-      allow_any_instance_of(ConvictionCheckResult).to receive(:expiry_date).and_return('foobar')
+      allow_any_instance_of(CheckResult).to receive(:expiry_date).and_return('foobar')
     end
 
     it 'delegates the method to the calculator' do

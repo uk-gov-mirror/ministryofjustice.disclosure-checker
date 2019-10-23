@@ -1,4 +1,5 @@
 class ResultsPresenter
+  include ValueObjectMethods
   attr_reader :disclosure_check
 
   def self.build(disclosure_check)
@@ -44,16 +45,12 @@ class ResultsPresenter
   private
 
   def result_service
-    @_result_service ||= result_class.new(
+    @_result_service ||= CheckResult.new(
       disclosure_check: disclosure_check
     )
   end
 
   # :nocov:
-  def result_class
-    raise NotImplementedError, 'implement in subclasses'
-  end
-
   def to_partial_path
     raise NotImplementedError, 'implement in subclasses'
   end
