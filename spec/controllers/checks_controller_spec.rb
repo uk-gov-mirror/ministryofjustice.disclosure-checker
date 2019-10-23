@@ -58,17 +58,22 @@ RSpec.describe ChecksController, type: :controller do
         it 'defaults some attributes' do
           post :create, params: { check_group_id: disclosure_check.check_group_id }
 
-          # we default to `conviction` kind as only conviction can be added to existing proceedings
           last_check = DisclosureCheck.last
+
+          # we default to `conviction` kind as only convictions can be added to existing proceedings
           expect(last_check.kind).to eq(CheckKind::CONVICTION.to_s)
+
+          # we default to the age of the first conviction in the group, as all convictions must
+          # have happened at the same age
+          expect(last_check.under_age).to eq(GenericYesNo::YES.to_s)
 
           # the back link should point to CYA page
           expect(last_check.navigation_stack).to eq([steps_check_check_your_answers_path])
         end
 
-        it 'redirects to the under age question' do
+        it 'redirects to the conviction type question' do
           post :create, params: { check_group_id: disclosure_check.check_group_id }
-          expect(response).to redirect_to(edit_steps_check_under_age_path)
+          expect(response).to redirect_to(edit_steps_conviction_conviction_type_path)
         end
       end
     end
