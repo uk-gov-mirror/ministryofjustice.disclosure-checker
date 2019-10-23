@@ -11,10 +11,6 @@ class ConvictionType < ValueObject
     super(raw_value)
   end
 
-  def self.find_constant(raw_value)
-    const_get(raw_value.upcase)
-  end
-
   alias skip_length? skip_length
 
   VALUES = [

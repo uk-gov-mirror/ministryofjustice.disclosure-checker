@@ -4,6 +4,7 @@ RSpec.describe CautionDecisionTree do
   let(:disclosure_check) do
     instance_double(
       DisclosureCheck,
+      kind: CheckKind::CAUTION,
       caution_type: caution_type,
       under_age: under_age,
     )
@@ -28,12 +29,12 @@ RSpec.describe CautionDecisionTree do
     let(:step_params) { { known_date: 'anything' } }
 
     context 'and type is `simple caution`' do
-      let(:caution_type) { CautionType::ADULT_SIMPLE_CAUTION }
+      let(:caution_type) { CautionType::ADULT_SIMPLE_CAUTION.value }
       it { is_expected.to complete_the_check_and_show_results }
     end
 
     context 'and type is `conditional caution`' do
-      let(:caution_type)  { CautionType::ADULT_CONDITIONAL_CAUTION }
+      let(:caution_type)  { CautionType::ADULT_CONDITIONAL_CAUTION.value }
       it { is_expected.to have_destination(:conditional_end_date, :edit) }
     end
   end

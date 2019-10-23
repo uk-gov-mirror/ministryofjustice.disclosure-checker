@@ -1,4 +1,6 @@
 class CautionDecisionTree < BaseDecisionTree
+  include ValueObjectMethods
+
   def destination
     return next_step if next_step
 
@@ -17,7 +19,7 @@ class CautionDecisionTree < BaseDecisionTree
   private
 
   def after_known_date
-    return edit(:conditional_end_date) if CautionType.new(disclosure_check.caution_type).conditional?
+    return edit(:conditional_end_date) if caution_type.conditional?
 
     results
   end
