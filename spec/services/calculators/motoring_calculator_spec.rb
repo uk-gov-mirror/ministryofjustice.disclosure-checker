@@ -18,7 +18,7 @@ RSpec.describe Calculators::MotoringCalculator do
     context '#expiry_date' do
       context 'with a motoring lifetime ban' do
         let(:motoring_lifetime_ban) { GenericYesNo::YES }
-        it { expect(subject.expiry_date).to eq(false) }
+        it { expect(subject.expiry_date).to eq(:never_spent) }
       end
 
       context 'without a motoring lifetime ban' do
@@ -93,7 +93,7 @@ RSpec.describe Calculators::MotoringCalculator do
       end
 
       context 'without a motoring endorsement ' do
-        it { expect(subject.expiry_date).to eq(true) }
+        it { expect(subject.expiry_date).to eq(:no_record) }
       end
     end
   end
