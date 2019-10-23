@@ -1,4 +1,4 @@
-class ConvictionCheckResult
+class CheckResult
   include ValueObjectMethods
   attr_reader :disclosure_check
 
@@ -11,6 +11,6 @@ class ConvictionCheckResult
   end
 
   def calculator
-    conviction_subtype.calculator_class.new(disclosure_check)
+    offence_type.calculator_class.new(disclosure_check)
   end
 end

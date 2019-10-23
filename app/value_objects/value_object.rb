@@ -14,6 +14,10 @@ class ValueObject
   alias === ==
   alias eql? ==
 
+  def self.find_constant(raw_value)
+    const_get(raw_value.upcase)
+  end
+
   def self.string_values
     values.map(&:to_s)
   end

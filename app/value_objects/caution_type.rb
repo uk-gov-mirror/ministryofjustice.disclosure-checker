@@ -18,6 +18,10 @@ class CautionType < ValueObject
     ].include?(self)
   end
 
+  def calculator_class
+    Calculators::CautionCalculator
+  end
+
   def self.values
     VALUES
   end

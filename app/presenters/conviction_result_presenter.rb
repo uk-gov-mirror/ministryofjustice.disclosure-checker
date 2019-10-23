@@ -1,6 +1,4 @@
 class ConvictionResultPresenter < ResultsPresenter
-  include ValueObjectMethods
-
   def to_partial_path
     'results/conviction'
   end
@@ -31,9 +29,5 @@ class ConvictionResultPresenter < ResultsPresenter
       length: disclosure_check.conviction_length,
       scope: to_partial_path
     )
-  end
-
-  def result_class
-    ConvictionCheckResult
   end
 end

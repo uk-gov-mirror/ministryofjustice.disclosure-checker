@@ -14,8 +14,4 @@ class CautionResultPresenter < ResultsPresenter
       :conditional_end_date,
     ].freeze
   end
-
-  def result_class
-    CautionCheckResult
-  end
 end
