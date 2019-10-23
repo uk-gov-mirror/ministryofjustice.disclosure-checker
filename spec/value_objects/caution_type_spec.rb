@@ -38,7 +38,7 @@ RSpec.describe CautionType do
     end
   end
 
-  describe '.conditional?' do
+  describe '#conditional?' do
     subject { described_class.new(value).conditional? }
 
     context 'youth_conditional_caution' do
@@ -59,6 +59,14 @@ RSpec.describe CautionType do
     context 'adult_simple_caution' do
       let(:value) { :adult_simple_caution }
       it { expect(subject).to eq(false) }
+    end
+  end
+
+  describe '#calculator_class' do
+    subject { described_class.new(:youth_conditional_caution) }
+
+    it 'returns the calculator class' do
+      expect(subject.calculator_class).to eq(Calculators::CautionCalculator)
     end
   end
 end
