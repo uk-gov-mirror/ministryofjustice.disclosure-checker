@@ -6,8 +6,8 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   let(:disclosure_report) { instance_double(DisclosureReport, check_groups: groups_result_set) }
   let(:groups_result_set) { double('groups_result_set', with_completed_checks: [check_group1, check_group2]) }
 
-  let(:check_group1) { instance_double(CheckGroup, disclosure_checks: %w(a b c)) }
-  let(:check_group2) { instance_double(CheckGroup, disclosure_checks: %w(a)) }
+  let(:check_group1) { instance_double(CheckGroup, id: '100', disclosure_checks: %w(a b c)) }
+  let(:check_group2) { instance_double(CheckGroup, id: '200', disclosure_checks: %w(a)) }
 
   before do
     subject.process!
@@ -15,11 +15,11 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
   context '#process!' do
     it 'adds to the results the check groups having more than one disclosure check' do
-      expect(subject.results).to include(kind_of(Calculators::Multiples::SameProceedings))
+      expect(subject.results['100']).to be_kind_of(Calculators::Multiples::SameProceedings)
     end
 
     it 'adds to the results the check groups having only one disclosure check' do
-      expect(subject.results).to include(kind_of(Calculators::Multiples::SeparateProceedings))
+      expect(subject.results['200']).to be_kind_of(Calculators::Multiples::SeparateProceedings)
     end
   end
 
