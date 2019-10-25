@@ -15,6 +15,10 @@ class CheckAnswersPresenter
     end
   end
 
+  def variant
+    :multiples
+  end
+
   def to_partial_path
     'check_your_answers/check'
   end

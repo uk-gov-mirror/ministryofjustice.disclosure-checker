@@ -8,6 +8,10 @@ RSpec.describe CheckAnswersPresenter do
     it { expect(subject.to_partial_path).to eq('check_your_answers/check') }
   end
 
+  describe '#variant' do
+    it { expect(subject.variant).to eq(:multiples) }
+  end
+
   describe '#summary' do
     let(:summary) { subject.summary }
     context 'for a single youth caution' do

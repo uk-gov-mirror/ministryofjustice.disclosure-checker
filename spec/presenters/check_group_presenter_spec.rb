@@ -1,6 +1,5 @@
 RSpec.describe CheckGroupPresenter do
   let!(:disclosure_check) { create(:disclosure_check, :completed) }
-  let!(:disclosure_report) { disclosure_check.disclosure_report }
   let(:number) { 1 }
 
   subject { described_class.new(number, disclosure_check.check_group, scope: 'some/path') }
@@ -31,16 +30,27 @@ RSpec.describe CheckGroupPresenter do
     end
   end
 
-
   describe '#add_another_sentence_button?' do
-    context 'caution' do
-      let!(:disclosure_check) { create(:disclosure_check, :caution, :completed) }
-      it { expect(subject.add_another_sentence_button?).to eq(false) }
+    context 'when the disclosure report is already completed' do
+      before do
+        disclosure_check.disclosure_report.completed!
+      end
+
+      it 'always returns false' do
+        expect(subject.add_another_sentence_button?).to eq(false)
+      end
     end
-    context 'conviction' do
-      let!(:disclosure_check) { create(:disclosure_check, :conviction,  :completed) }
-      it { expect(subject.add_another_sentence_button?).to eq(true) }
+
+    context 'when the disclosure report is still in progress' do
+      context 'caution' do
+        let!(:disclosure_check) { create(:disclosure_check, :caution, :completed) }
+        it { expect(subject.add_another_sentence_button?).to eq(false) }
+      end
+
+      context 'conviction' do
+        let!(:disclosure_check) { create(:disclosure_check, :conviction,  :completed) }
+        it { expect(subject.add_another_sentence_button?).to eq(true) }
+      end
     end
   end
-
 end
