@@ -18,7 +18,8 @@ class CheckGroupPresenter
   end
 
   def add_another_sentence_button?
-    first_check_kind.inquiry.conviction?
+    check_group.disclosure_report.in_progress? &&
+      first_check_kind.inquiry.conviction?
   end
 
   def check_group_name
@@ -28,7 +29,7 @@ class CheckGroupPresenter
   private
 
   def first_check_kind
-    completed_checks.first.kind
+    @_first_check_kind ||= completed_checks.first.kind
   end
 
   def completed_checks

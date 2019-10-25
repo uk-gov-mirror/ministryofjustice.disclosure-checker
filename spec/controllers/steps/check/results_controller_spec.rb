@@ -6,22 +6,15 @@ RSpec.describe Steps::Check::ResultsController, type: :controller do
   describe '#show' do
     let(:disclosure_check) { build(:disclosure_check, kind: kind) }
     let(:enable_multiples) { false }
+    let(:kind) { 'caution' }
 
     before do
       allow(controller).to receive(:current_disclosure_check).and_return(disclosure_check)
       allow(controller).to receive(:multiples_enabled?).and_return(enable_multiples)
     end
 
-
     context 'show check your answers' do
       let(:enable_multiples) { true }
-      let(:kind) { 'caution' }
-
-      it 'show result page' do
-        get :show, params: { show_results: true }
-
-        expect(response).to render_template(:show)
-      end
 
       it 'redirect to check your answer' do
         get :show
@@ -30,6 +23,29 @@ RSpec.describe Steps::Check::ResultsController, type: :controller do
       end
     end
 
+    context 'show results page' do
+      context 'when multiples is enabled' do
+        let(:enable_multiples) { true }
+
+        it 'show multiple result page' do
+          get :show, params: { show_results: true }
+
+          expect(response).to render_template(:show)
+          expect(assigns[:presenter]).to be_a_kind_of(CheckAnswersPresenter)
+        end
+      end
+
+      context 'when multiples is disabled' do
+        let(:enable_multiples) { false }
+
+        it 'show single result page' do
+          get :show, params: { show_results: true }
+
+          expect(response).to render_template(:show)
+          expect(assigns[:presenter]).to be_a_kind_of(ResultsPresenter)
+        end
+      end
+    end
 
     context 'for a caution' do
       let(:kind) { 'caution' }

@@ -1,0 +1,24 @@
+<% title 'When your cautions or convictions are spent' %>
+<% track_transaction name: 'Multiple check completed', category: 'Completed checks' %>
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper" id="main-content">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <!-- TODO: Make this header dynamic depending if we really have or not unspent offenses -->
+        <h1 class="govuk-heading-xl">
+          You have unspent cautions or convictions
+        </h1>
+
+        <div class="govuk-inset-text">
+          The result you’ve been given is for guidance only. Find out
+          <a class="govuk-link" href="#">how to use this information</a> before deciding whether or not to tell people
+          about your caution or conviction.
+        </div>
+
+        <%= render @presenter.summary %>
+      </div>
+    </div>
+  </main>
+</div>

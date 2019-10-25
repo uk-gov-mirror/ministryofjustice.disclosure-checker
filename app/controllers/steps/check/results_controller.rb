@@ -7,7 +7,12 @@ module Steps
       prepend_before_action :show_check_answers_if_enabled, only: [:show]
 
       def show
-        @presenter = ResultsPresenter.build(current_disclosure_check)
+        @presenter = if show_multiple_results?
+                       CheckAnswersPresenter.new(current_disclosure_report)
+                     else
+                       ResultsPresenter.build(current_disclosure_check)
+                     end
+
         render variants: @presenter.variant
       end
 
@@ -19,6 +24,10 @@ module Steps
 
       def show_check_answers?
         multiples_enabled? && continue_to_check_your_answers?
+      end
+
+      def show_multiple_results?
+        multiples_enabled? && !continue_to_check_your_answers?
       end
 
       def continue_to_check_your_answers?
