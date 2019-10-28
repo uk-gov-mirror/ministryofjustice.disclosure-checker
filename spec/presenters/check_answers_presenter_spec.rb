@@ -4,6 +4,26 @@ RSpec.describe CheckAnswersPresenter do
 
   subject { described_class.new(disclosure_report) }
 
+  describe '.initialize' do
+    context 'calculate the spent dates of the whole report' do
+      context 'when the report is still in progress' do
+        it 'does not process the offenses just yet' do
+          expect(subject.calculator.results).to be_empty
+        end
+      end
+
+      context 'when the report is completed' do
+        before do
+          allow(disclosure_report).to receive(:completed?).and_return(true)
+        end
+
+        it 'processes the offenses for later use' do
+          expect(subject.calculator.results).not_to be_empty
+        end
+      end
+    end
+  end
+
   describe '#to_partial_path' do
     it { expect(subject.to_partial_path).to eq('check_your_answers/check') }
   end
@@ -14,26 +34,6 @@ RSpec.describe CheckAnswersPresenter do
 
   describe '#summary' do
     let(:summary) { subject.summary }
-
-    context 'calculate the spent dates of the whole report' do
-      context 'when the report is still in progress' do
-        it 'does not process the offenses just yet' do
-          expect(subject.calculator).not_to receive(:process!)
-          summary
-        end
-      end
-
-      context 'when the report is completed' do
-        before do
-          allow(disclosure_report).to receive(:completed?).and_return(true)
-        end
-
-        it 'processes the offenses for later use' do
-          expect(subject.calculator).to receive(:process!)
-          summary
-        end
-      end
-    end
 
     context 'for a single youth caution' do
       it 'returns CheckGroupPresenter' do

@@ -40,4 +40,44 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       expect(subject.spent_date_for(group)).to be_nil
     end
   end
+
+  describe '#all_spent?' do
+    before do
+      BaseMultiplesCalculator.subclasses.each do |klass|
+        allow_any_instance_of(klass).to receive(:spent_date).and_return(*spent_dates)
+      end
+    end
+
+    context 'when there is an offence that will never be spent' do
+      let(:spent_dates) { [:never_spent, Date.yesterday] }
+
+      it 'returns false' do
+        expect(subject.all_spent?).to eq(false)
+      end
+    end
+
+    context 'when there is an offence with `no_record`' do
+      let(:spent_dates) { [:no_record, Date.tomorrow] }
+
+      it 'considers the no_record as spent, and check the other dates' do
+        expect(subject.all_spent?).to eq(false)
+      end
+    end
+
+    context 'when there are dates' do
+      let(:spent_dates) { [Date.yesterday, Date.tomorrow] }
+
+      it 'checks if all the dates are in the past' do
+        expect(subject.all_spent?).to eq(false)
+      end
+    end
+
+    context 'when there are dates' do
+      let(:spent_dates) { [Date.yesterday, Date.yesterday-3.days] }
+
+      it 'checks if all the dates are in the past' do
+        expect(subject.all_spent?).to eq(true)
+      end
+    end
+  end
 end

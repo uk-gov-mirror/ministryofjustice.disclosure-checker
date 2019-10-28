@@ -9,6 +9,13 @@ class BaseMultiplesCalculator
     CheckKind.find_constant(disclosure_checks.first.kind)
   end
 
+  def spent?
+    return false if spent_date == :never_spent
+    return true  if spent_date == :no_record
+
+    spent_date.past?
+  end
+
   # :nocov:
   def spent_date
     raise 'implement in subclasses'

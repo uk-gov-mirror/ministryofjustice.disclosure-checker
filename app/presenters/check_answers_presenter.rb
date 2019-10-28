@@ -3,11 +3,11 @@ class CheckAnswersPresenter
 
   def initialize(disclosure_report)
     @disclosure_report = disclosure_report
+
+    calculator.process! if disclosure_report.completed?
   end
 
   def summary
-    calculator.process! if disclosure_report.completed?
-
     disclosure_report.check_groups.with_completed_checks.map.with_index(1) do |check_group, i|
       CheckGroupPresenter.new(
         i,
