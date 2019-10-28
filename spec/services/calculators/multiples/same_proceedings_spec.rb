@@ -5,9 +5,9 @@ RSpec.describe Calculators::Multiples::SameProceedings do
 
   let(:check_group) { instance_double(CheckGroup, disclosure_checks: [disclosure_check1, disclosure_check2, disclosure_check3]) }
 
-  let(:disclosure_check1) { instance_double(DisclosureCheck) }
-  let(:disclosure_check2) { instance_double(DisclosureCheck) }
-  let(:disclosure_check3) { instance_double(DisclosureCheck) }
+  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction') }
+  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction') }
+  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'conviction') }
 
   let(:check_result1) { instance_double(CheckResult, expiry_date: Date.new(2015, 10, 31)) }
   let(:check_result2) { instance_double(CheckResult, expiry_date: Date.new(2018, 10, 31)) }
@@ -15,6 +15,12 @@ RSpec.describe Calculators::Multiples::SameProceedings do
 
   let(:check_never_spent) { instance_double(CheckResult, expiry_date: :never_spent) }
   let(:check_no_record) { instance_double(CheckResult, expiry_date: :no_record) }
+
+  describe '#kind' do
+    it 'is always conviction for same proceedings' do
+      expect(subject.kind).to eq(CheckKind::CONVICTION)
+    end
+  end
 
   context '#spent_date' do
     context 'when there is at least one `never_spent` date' do
