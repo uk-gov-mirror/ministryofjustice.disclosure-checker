@@ -6,7 +6,8 @@ module CompletionStep
   extend ActiveSupport::Concern
 
   included do
-    before_action :mark_report_completed, unless: :report_completed?
+    before_action :mark_report_completed,
+                  :purge_incomplete_checks, unless: :report_completed?
   end
 
   private
@@ -17,5 +18,10 @@ module CompletionStep
 
   def mark_report_completed
     current_disclosure_report.completed!
+  end
+
+  # remove any incomplete checks as they don't serve any purpose now
+  def purge_incomplete_checks
+    current_disclosure_report.disclosure_checks.in_progress.destroy_all
   end
 end

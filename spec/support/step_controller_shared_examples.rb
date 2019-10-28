@@ -238,6 +238,13 @@ RSpec.shared_examples 'a completion step controller' do
           expect(controller).to receive(:mark_report_completed)
           get :show, session: { disclosure_check_id: '123' }
         end
+
+        it 'calls the `purge_incomplete_checks` method' do
+          expect(controller).to receive(:mark_report_completed)
+
+          expect(controller).to receive(:purge_incomplete_checks)
+          get :show, session: { disclosure_check_id: '123' }
+        end
       end
 
       context 'when the report is already marked as `completed`' do
@@ -245,6 +252,11 @@ RSpec.shared_examples 'a completion step controller' do
 
         it 'does not call the `mark_report_completed` method' do
           expect(controller).not_to receive(:mark_report_completed)
+          get :show, session: { disclosure_check_id: '123' }
+        end
+
+        it 'does not call the `purge_incomplete_checks` method' do
+          expect(controller).not_to receive(:purge_incomplete_checks)
           get :show, session: { disclosure_check_id: '123' }
         end
       end

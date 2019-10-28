@@ -14,12 +14,44 @@ RSpec.describe CheckAnswersPresenter do
 
   describe '#summary' do
     let(:summary) { subject.summary }
+
+    context 'calculate the spent dates of the whole report' do
+      context 'when the report is still in progress' do
+        it 'does not process the offenses just yet' do
+          expect(subject.calculator).not_to receive(:process!)
+          summary
+        end
+      end
+
+      context 'when the report is completed' do
+        before do
+          allow(disclosure_report).to receive(:completed?).and_return(true)
+        end
+
+        it 'processes the offenses for later use' do
+          expect(subject.calculator).to receive(:process!)
+          summary
+        end
+      end
+    end
+
     context 'for a single youth caution' do
       it 'returns CheckGroupPresenter' do
         expect(summary.size).to eq(1)
         expect(summary[0]).to be_an_instance_of(CheckGroupPresenter)
         expect(summary[0].number).to eql(1)
         expect(summary[0].check_group).to eql(disclosure_check.check_group)
+        expect(summary[0].spent_date).to be_nil
+      end
+
+      context 'when there is a spent date for the group' do
+        before do
+          allow(subject.calculator).to receive(:spent_date_for).and_return('date')
+        end
+
+        it 'returns CheckGroupPresenter' do
+          expect(summary[0].spent_date).to eq('date')
+        end
       end
     end
   end

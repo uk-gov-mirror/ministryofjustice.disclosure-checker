@@ -34,5 +34,10 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       expect(subject.spent_date_for(check_group1)).to eq('date_Calculators::Multiples::SameProceedings')
       expect(subject.spent_date_for(check_group2)).to eq('date_Calculators::Multiples::SeparateProceedings')
     end
+
+    it 'returns nil if no date was found' do
+      group = double('group', id: 'foobar')
+      expect(subject.spent_date_for(group)).to be_nil
+    end
   end
 end

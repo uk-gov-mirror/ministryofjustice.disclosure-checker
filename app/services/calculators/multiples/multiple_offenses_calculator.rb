@@ -14,7 +14,7 @@ module Calculators
       end
 
       def spent_date_for(check_group)
-        results[check_group.id].spent_date
+        results[check_group.id]&.spent_date
       end
 
       private
