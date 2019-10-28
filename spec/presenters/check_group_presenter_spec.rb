@@ -1,8 +1,16 @@
 RSpec.describe CheckGroupPresenter do
   let!(:disclosure_check) { create(:disclosure_check, :completed) }
   let(:number) { 1 }
+  let(:spent_date) { nil }
 
-  subject { described_class.new(number, disclosure_check.check_group, scope: 'some/path') }
+  subject {
+    described_class.new(
+      number,
+      disclosure_check.check_group,
+      spent_date: spent_date,
+      scope: 'some/path'
+    )
+  }
 
   describe '#to_partial_path' do
     it { expect(subject.to_partial_path).to eq('check_your_answers/shared/check') }
@@ -16,6 +24,22 @@ RSpec.describe CheckGroupPresenter do
         expect(summary[0]).to be_an_instance_of(CheckPresenter)
         expect(summary[0].disclosure_check).to eql(disclosure_check)
       end
+    end
+  end
+
+  describe '#spent_date_panel' do
+    let(:spent_date) { 'date' }
+
+    before do
+      allow(subject).to receive(:first_check_kind).and_return('caution')
+    end
+
+    it 'builds a SpentDatePanel instance with the correct attributes' do
+      panel = subject.spent_date_panel
+
+      expect(panel).to be_an_instance_of(SpentDatePanel)
+      expect(panel.spent_date).to eq(spent_date)
+      expect(panel.kind).to eq('caution')
     end
   end
 

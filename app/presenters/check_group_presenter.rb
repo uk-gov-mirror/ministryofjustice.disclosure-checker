@@ -1,9 +1,10 @@
 class CheckGroupPresenter
-  attr_reader :number, :check_group, :scope
+  attr_reader :number, :check_group, :spent_date, :scope
 
-  def initialize(number, check_group, scope:)
+  def initialize(number, check_group, spent_date:, scope:)
     @number = number
     @check_group = check_group
+    @spent_date = spent_date
     @scope = scope
   end
 
@@ -11,6 +12,13 @@ class CheckGroupPresenter
     completed_checks.map do |disclosure_check|
       CheckPresenter.new(disclosure_check)
     end
+  end
+
+  def spent_date_panel
+    SpentDatePanel.new(
+      spent_date: spent_date,
+      kind: first_check_kind
+    )
   end
 
   def to_partial_path
