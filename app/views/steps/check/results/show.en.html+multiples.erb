@@ -6,9 +6,12 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        <!-- TODO: Make this header dynamic depending if we really have or not unspent offenses -->
         <h1 class="govuk-heading-xl">
-          You have unspent cautions or convictions
+          <% if @presenter.calculator.all_spent? %>
+            Your cautions or convictions are spent
+          <% else %>
+            You have unspent cautions or convictions
+          <% end %>
         </h1>
 
         <div class="govuk-inset-text">

@@ -17,6 +17,10 @@ module Calculators
         results[check_group.id]&.spent_date
       end
 
+      def all_spent?
+        results.values.all?(&:spent?)
+      end
+
       private
 
       def process_group(check_group)

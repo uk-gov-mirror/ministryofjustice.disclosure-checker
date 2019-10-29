@@ -16,7 +16,7 @@ module Calculators
       private
 
       def expiry_dates
-        @_expiry_dates ||= check_group.disclosure_checks.map(
+        @_expiry_dates ||= disclosure_checks.map(
           &method(:expiry_date_for)
         ) - excluded_dates
       end
