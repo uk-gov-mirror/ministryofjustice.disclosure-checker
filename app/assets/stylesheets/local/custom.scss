@@ -5,3 +5,7 @@
 .no-italic {
   font-style: normal;
 }
+
+dl.multiple-checks-summary:not(:only-child) {
+  &:not(:last-of-type) { padding-bottom: 1em; }
+}
