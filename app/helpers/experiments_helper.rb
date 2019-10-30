@@ -1,6 +1,6 @@
 module ExperimentsHelper
   def adults_enabled?
-    cookies[:adults_enabled].present?
+    cookies[:adults_enabled].present? || current_participant
   end
 
   def motoring_enabled?
