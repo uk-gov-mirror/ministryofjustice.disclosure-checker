@@ -36,10 +36,6 @@ module AnalyticsHelper
       current_disclosure_check.kind
   end
 
-  def current_participant
-    @_current_participant
-  end
-
   private
 
   # Custom dimensions on Google Analytics are named `dimensionX` where X
