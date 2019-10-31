@@ -36,6 +36,12 @@ module AnalyticsHelper
       current_disclosure_check.kind
   end
 
+  # Used for surveys, we return 'yes' or 'no' depending if we know
+  # the current check is for under 18s or over 18s.
+  def youth_check
+    current_disclosure_check&.under_age.presence || 'unknown'
+  end
+
   private
 
   # Custom dimensions on Google Analytics are named `dimensionX` where X

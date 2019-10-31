@@ -157,6 +157,7 @@ RSpec.describe ApplicationHelper, type: :helper do
   describe '#link_to_feedback' do
     before do
       allow(helper).to receive(:transaction_sku).and_return('conviction')
+      allow(helper).to receive(:youth_check).and_return('yes')
       allow(controller.request).to receive(:path).and_return('/steps/foo/bar')
     end
 
@@ -165,7 +166,7 @@ RSpec.describe ApplicationHelper, type: :helper do
         helper.link_to_feedback('click here')
       ).to eq(
         '<a class="govuk-link govuk-link--no-visited-state" rel="external" target="_blank"' + \
-        ' href="https://example.com?check=conviction&amp;page=%2Fsteps%2Ffoo%2Fbar">click here</a>'
+        ' href="https://example.com?check=conviction&amp;page=%2Fsteps%2Ffoo%2Fbar&amp;youth=yes">click here</a>'
       )
     end
   end

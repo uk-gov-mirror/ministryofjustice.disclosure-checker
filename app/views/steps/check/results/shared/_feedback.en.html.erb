@@ -8,6 +8,14 @@
   This will help us to improve the service.
 </p>
 
+<%
+  survey_file = if current_disclosure_check.under_age.inquiry.yes?
+                  'tRaiETqnLgj758hTBazgd_2Bo7LRXsbd1AcAFHQu4ukGzukG3bvIXELhbfUTio3i90'
+                else
+                  'tRaiETqnLgj758hTBazgd6NBO_2By7HeCVIjOSkE2u6sDH2S6srYblwb6DaI4Zc9w5'
+                end
+%>
+
 <!-- BEGIN survey monkey embedded satisfaction -->
 <style>
   div.smcx-embed { border: 1px solid #ffffff; height: 720px; overflow: hidden; }
@@ -15,7 +23,7 @@
 <script>
   (function (t, e, s, n) {
     var o, a, c;
-    t.SMCX = t.SMCX || [], e.getElementById(n) || (o = e.getElementsByTagName(s), a = o[o.length - 1], c = e.createElement(s), c.type = "text/javascript", c.async = !0, c.id = n, c.src = ["https:" === location.protocol ? "https://" : "http://", "widget.surveymonkey.com/collect/website/js/tRaiETqnLgj758hTBazgd_2Bo7LRXsbd1AcAFHQu4ukGzukG3bvIXELhbfUTio3i90.js"].join(""), a.parentNode.insertBefore(c, a))
+    t.SMCX = t.SMCX || [], e.getElementById(n) || (o = e.getElementsByTagName(s), a = o[o.length - 1], c = e.createElement(s), c.type = "text/javascript", c.async = !0, c.id = n, c.src = ["https:" === location.protocol ? "https://" : "http://", "widget.surveymonkey.com/collect/website/js/<%= survey_file -%>.js"].join(""), a.parentNode.insertBefore(c, a))
   })(window, document, "script", "smcx-sdk");
 </script>
 <!-- END survey monkey embedded satisfaction -->
