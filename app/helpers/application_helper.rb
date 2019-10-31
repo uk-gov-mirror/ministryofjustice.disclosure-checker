@@ -67,6 +67,7 @@ module ApplicationHelper
     query = {
       page: request.path,
       check: transaction_sku,
+      youth: youth_check,
     }.to_query
 
     url = [Rails.configuration.x.surveys.feedback, query].join('?')

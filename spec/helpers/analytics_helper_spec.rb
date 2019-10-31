@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe AnalyticsHelper, type: :helper do
-  let(:record) { DisclosureCheck.new(kind: kind) }
+  let(:record) { DisclosureCheck.new(kind: kind, under_age: under_age) }
   let(:kind) { CheckKind::CAUTION }
+  let(:under_age) { nil }
 
   before do
     allow(helper).to receive(:current_disclosure_check).and_return(record)
@@ -75,6 +76,23 @@ RSpec.describe AnalyticsHelper, type: :helper do
     context '`current_disclosure_check` is present, but `kind` is not present' do
       let(:kind) { nil }
       it { expect(helper.transaction_sku).to eq('unknown') }
+    end
+  end
+
+  describe '#youth_check' do
+    context '`current_disclosure_check` is not present' do
+      let(:record) { nil }
+      it { expect(helper.youth_check).to eq('unknown') }
+    end
+
+    context '`current_disclosure_check` is present, but `under_age` is not present' do
+      let(:under_age) { nil }
+      it { expect(helper.youth_check).to eq('unknown') }
+    end
+
+    context '`under_age` is present' do
+      let(:under_age) { 'yes' }
+      it { expect(helper.youth_check).to eq('yes') }
     end
   end
 end
