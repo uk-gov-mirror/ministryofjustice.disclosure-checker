@@ -102,10 +102,6 @@ en:
       title_html: This fixed penalty notice (FPN) was not a conviction
 
   results/caution:
-    kind:
-      question: Criminal record type
-      answers:
-        caution: Caution
     known_date:
       question: Date caution was given
     conditional_end_date:
@@ -121,16 +117,8 @@ en:
         <<: *CAUTION_TYPES
 
   results/conviction:
-    kind:
-      question: Criminal record type
-      answers:
-        conviction: Conviction
-    conviction_type:
-      question: Type of conviction
-      answers:
-        <<: *CONVICTION_TYPES
     conviction_subtype:
-      question: Name of conviction
+      question: Type of conviction
       answers:
         <<: *CONVICTION_SUBTYPES
     under_age:

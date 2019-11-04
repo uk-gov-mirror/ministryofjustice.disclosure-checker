@@ -7,8 +7,6 @@ class ConvictionResultPresenter < ResultsPresenter
 
   def question_attributes
     [
-      :kind,
-      :conviction_type,
       :conviction_subtype,
       :under_age,
       :known_date,
