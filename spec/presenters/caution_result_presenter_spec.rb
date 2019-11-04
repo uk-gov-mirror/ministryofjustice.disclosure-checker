@@ -28,19 +28,16 @@ RSpec.describe CautionResultPresenter do
 
     context 'for a youth caution' do
       it 'returns the correct question-answer pairs' do
-        expect(summary.size).to eq(4)
+        expect(summary.size).to eq(3)
 
-        expect(summary[0].question).to eql(:kind)
-        expect(summary[0].answer).to eql('caution')
+        expect(summary[0].question).to eql(:caution_type)
+        expect(summary[0].answer).to eql('youth_simple_caution')
 
-        expect(summary[1].question).to eql(:caution_type)
-        expect(summary[1].answer).to eql('youth_simple_caution')
+        expect(summary[1].question).to eql(:under_age)
+        expect(summary[1].answer).to eql('yes')
 
-        expect(summary[2].question).to eql(:under_age)
-        expect(summary[2].answer).to eql('yes')
-
-        expect(summary[3].question).to eql(:known_date)
-        expect(summary[3].answer).to eq('31 October 2018')
+        expect(summary[2].question).to eql(:known_date)
+        expect(summary[2].answer).to eq('31 October 2018')
       end
     end
 
@@ -48,22 +45,19 @@ RSpec.describe CautionResultPresenter do
       let(:disclosure_check) { build(:disclosure_check, :youth_conditional_caution) }
 
       it 'returns the correct question-answer pairs' do
-        expect(summary.size).to eq(5)
+        expect(summary.size).to eq(4)
 
-        expect(summary[0].question).to eql(:kind)
-        expect(summary[0].answer).to eql('caution')
+        expect(summary[0].question).to eql(:caution_type)
+        expect(summary[0].answer).to eql('youth_conditional_caution')
 
-        expect(summary[1].question).to eql(:caution_type)
-        expect(summary[1].answer).to eql('youth_conditional_caution')
+        expect(summary[1].question).to eql(:under_age)
+        expect(summary[1].answer).to eql('yes')
 
-        expect(summary[2].question).to eql(:under_age)
-        expect(summary[2].answer).to eql('yes')
+        expect(summary[2].question).to eql(:known_date)
+        expect(summary[2].answer).to eq('31 October 2018')
 
-        expect(summary[3].question).to eql(:known_date)
-        expect(summary[3].answer).to eq('31 October 2018')
-
-        expect(summary[4].question).to eql(:conditional_end_date)
-        expect(summary[4].answer).to eq('25 December 2018')
+        expect(summary[3].question).to eql(:conditional_end_date)
+        expect(summary[3].answer).to eq('25 December 2018')
       end
     end
   end
