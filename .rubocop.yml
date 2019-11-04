@@ -24,10 +24,10 @@ Style/FrozenStringLiteralComment:
 Style/SymbolArray:
   Enabled: false
 
-MethodCalledOnDoEndBlock:
+Style/MethodCalledOnDoEndBlock:
   Enabled: false
 
-SpaceInsideHashLiteralBraces:
+Layout/SpaceInsideHashLiteralBraces:
   Enabled: false
 
 Naming/MemoizedInstanceVariableName:
