@@ -63,18 +63,6 @@ module ApplicationHelper
     title ''
   end
 
-  def link_to_feedback(text)
-    query = {
-      page: request.path,
-      check: transaction_sku,
-      youth: youth_check,
-    }.to_query
-
-    url = [Rails.configuration.x.surveys.feedback, query].join('?')
-
-    link_to text, url, class: 'govuk-link govuk-link--no-visited-state', rel: 'external', target: '_blank'
-  end
-
   def link_button(text, href, attributes = {})
     link_to t("helpers.buttons.#{text}"), href, {
       class: 'govuk-button',

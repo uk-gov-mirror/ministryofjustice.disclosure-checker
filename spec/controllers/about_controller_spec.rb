@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 RSpec.describe AboutController do
+  describe '#contact' do
+    it 'renders the expected page' do
+      get :contact
+      expect(response).to render_template(:contact)
+    end
+  end
+
   describe '#cookies' do
     it 'renders the expected page' do
       get :cookies
@@ -19,6 +26,13 @@ RSpec.describe AboutController do
     it 'renders the expected page' do
       get :terms_and_conditions
       expect(response).to render_template(:terms_and_conditions)
+    end
+  end
+
+  describe '#accessibility' do
+    it 'renders the expected page' do
+      get :accessibility
+      expect(response).to render_template(:accessibility)
     end
   end
 end

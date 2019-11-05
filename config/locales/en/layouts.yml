@@ -10,5 +10,4 @@ en:
       accessibility: Accessibility
     phase_banner:
       feedback:
-        banner_html: We’re testing this service before it launches - please %{link} if you have any feedback on this page.
-        link_text: tell us
+        banner_html: We’re testing this service before it launches – please <a href="%{link}" class="govuk-link govuk-link--no-visited-state">share your feedback</a>
