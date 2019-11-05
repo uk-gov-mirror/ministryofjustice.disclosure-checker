@@ -1,7 +1,7 @@
 Feature: Conviction
-  Scenario Outline: Community or youth rehabilitation order (YRO)
-  Given I am completing a basic under 18 "Community or youth rehabilitation order (YRO)" conviction
-  Then I should see "What was your community or youth rehabilitation order (YRO)?"
+  Scenario Outline: Referral or youth rehabilitation order (YRO)
+  Given I am completing a basic under 18 "Referral or youth rehabilitation order (YRO)" conviction
+  Then I should see "What was your referral or youth rehabilitation order (YRO)?"
 
   When I choose "<subtype>"
   Then I should see "<known_date_header>"
@@ -18,6 +18,6 @@ Feature: Conviction
 
   Examples:
     | subtype                                                        | known_date_header                              | length_type_header                                                           | length_header                                     | result               |
-    | Referral order                                                 | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
+    | Referral order                                                 | What was the date of your first panel meeting? | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
     | Supervision order                                              | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
     | Youth rehabilitation order                                     | When were you given the order?                 | Was the length of the order given in weeks, months or years?                 | What was the length of the order?                 | /steps/check/results |
