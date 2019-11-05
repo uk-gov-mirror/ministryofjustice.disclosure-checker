@@ -10,7 +10,7 @@ en:
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
       armed_forces: Armed forces
-      community_order: Community or youth rehabilitation order (YRO)
+      community_order: Referral or youth rehabilitation order (YRO)
       custodial_sentence: Custody or hospital order
       discharge: Discharge
       financial: Financial penalty
@@ -109,6 +109,7 @@ en:
         # default key
         known_date: When were you given the order?
         # alternative keys defined with `i18_attribute`
+        referral_order: What was the date of your first panel meeting?
         dismissal: When were you given the dismissal?
         service_detention: When were you given the detention?
         detention_training_order: When did the DTO start?
@@ -132,7 +133,7 @@ en:
         # default key
         conviction_subtype: What type of order were you given?
         # alternative keys defined with `i18_attribute`
-        community_order: What was your community or youth rehabilitation order (YRO)?
+        community_order: What was your referral or youth rehabilitation order (YRO)?
         custodial_sentence: What type of sentence were you given?
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
@@ -172,7 +173,10 @@ en:
       steps_caution_conditional_end_date_form:
         conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. <span class='nowrap'>For example, 23 9 2018</span>"
       steps_conviction_known_date_form:
+        # default key
         known_date_html: "Enter the date your sentence or order started. This might be the day you were sentenced in court or the first day you were held on remand. <span class='nowrap'>For example, 23 9 2018</span>"
+        # alternative keys defined with `i18_attribute`
+        referral_order_html: Enter the date of your first youth offender panel meeting. <span class='nowrap'>For example, 23 9 2018</span>
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: For example, 23 9 2018
       steps_conviction_motoring_endorsement_form:
@@ -191,7 +195,7 @@ en:
         conviction_type:
           # youth
           armed_forces: ""
-          community_order: For example, a curfew or referral order. You might have been asked to wear a tag as part of your order
+          community_order: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
