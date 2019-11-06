@@ -15,7 +15,7 @@ class ConvictionType < ValueObject
 
   VALUES = [
     YOUTH_PARENT_TYPES = [
-      COMMUNITY_ORDER       = new(:community_order),
+      REFERRAL_SUPERVISION_YRO = new(:referral_supervision_yro),
       CUSTODIAL_SENTENCE    = new(:custodial_sentence),
       DISCHARGE             = new(:discharge),
       FINANCIAL             = new(:financial),
@@ -47,9 +47,9 @@ class ConvictionType < ValueObject
     SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     OVERSEAS_COMMUNITY_ORDER           = new(:overseas_community_order,         parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
 
-    REFERRAL_ORDER                     = new(:referral_order,                   parent: COMMUNITY_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    SUPERVISION_ORDER                  = new(:supervision_order,                parent: COMMUNITY_ORDER, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    YOUTH_REHABILITATION_ORDER         = new(:youth_rehabilitation_order,       parent: COMMUNITY_ORDER, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
+    REFERRAL_ORDER                     = new(:referral_order,                   parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    SUPERVISION_ORDER                  = new(:supervision_order,                parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    YOUTH_REHABILITATION_ORDER         = new(:youth_rehabilitation_order,       parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
 
     DETENTION_TRAINING_ORDER           = new(:detention_training_order,         parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::SentenceCalculator::DetentionTraining),
     DETENTION                          = new(:detention,                        parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::SentenceCalculator::Detention),

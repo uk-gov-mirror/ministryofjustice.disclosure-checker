@@ -10,7 +10,7 @@ en:
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
       armed_forces: Armed forces
-      community_order: Referral or youth rehabilitation order (YRO)
+      referral_supervision_yro: Referral or youth rehabilitation order (YRO)
       custodial_sentence: Custody or hospital order
       discharge: Discharge
       financial: Financial penalty
@@ -29,7 +29,7 @@ en:
       service_detention: Service detention
       service_community_order: Service community order
       overseas_community_order: Overseas community order
-      # community_order
+      # referral_supervision_yro
       referral_order: Referral order
       supervision_order: Supervision order
       youth_rehabilitation_order: Youth rehabilitation order

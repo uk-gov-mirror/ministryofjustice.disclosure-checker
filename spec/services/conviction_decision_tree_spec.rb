@@ -47,7 +47,7 @@ RSpec.describe ConvictionDecisionTree do
 
   context 'when the step is `conviction_type`' do
     let(:step_params) { { conviction_type: conviction_type } }
-    let(:conviction_type) { 'community_order' }
+    let(:conviction_type) { 'referral_supervision_yro' }
     it { is_expected.to have_destination(:conviction_subtype, :edit) }
   end
 

@@ -100,7 +100,7 @@ RSpec.describe ConvictionLengthChoices do
 
     # just a few, no need to test all of them
     #
-    context 'youth community order convictions' do
+    context 'youth prevention and reparation orders' do
       let(:conviction_subtype) { ConvictionType::SEXUAL_HARM_PREVENTION_ORDER }
 
       it 'includes `no_length` in the choices' do
