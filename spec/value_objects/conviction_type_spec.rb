@@ -6,7 +6,7 @@ RSpec.describe ConvictionType do
 
     it 'returns top level youth convictions' do
       expect(values).to eq(%w(
-        community_order
+        referral_supervision_yro
         custodial_sentence
         discharge
         financial
@@ -56,8 +56,8 @@ RSpec.describe ConvictionType do
       end
     end
 
-    context 'Community order' do
-      let(:conviction_type) { :community_order }
+    context 'Referral or youth rehabilitation order (YRO)' do
+      let(:conviction_type) { :referral_supervision_yro }
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(

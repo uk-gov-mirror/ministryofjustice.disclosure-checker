@@ -7,7 +7,7 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
   } }
 
   let(:disclosure_check) { instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: conviction_subtype, conviction_length_type: nil) }
-  let(:conviction_type) { ConvictionType::COMMUNITY_ORDER.to_s }
+  let(:conviction_type) { ConvictionType::REFERRAL_SUPERVISION_YRO.to_s }
   let(:conviction_subtype) { ConvictionType::YOUTH_REHABILITATION_ORDER.to_s }
   let(:conviction_length_type) { 'weeks' }
 

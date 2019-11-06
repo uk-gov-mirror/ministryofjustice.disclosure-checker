@@ -45,7 +45,7 @@ RSpec.describe BaseForm do
   describe 'conviction_type and conviction_subtype value objects' do
     let(:disclosure_check) {
       instance_double(
-        DisclosureCheck, conviction_type: 'community_order', conviction_subtype: 'detention_training_order'
+        DisclosureCheck, conviction_type: 'referral_supervision_yro', conviction_subtype: 'referral_order'
       )
     }
 
@@ -55,13 +55,13 @@ RSpec.describe BaseForm do
 
     describe '#conviction_type' do
       it 'returns the value object constant' do
-        expect(subject.conviction_type).to eq(ConvictionType::COMMUNITY_ORDER)
+        expect(subject.conviction_type).to eq(ConvictionType::REFERRAL_SUPERVISION_YRO)
       end
     end
 
     describe '#conviction_subtype' do
       it 'returns the value object constant' do
-        expect(subject.conviction_subtype).to eq(ConvictionType::DETENTION_TRAINING_ORDER)
+        expect(subject.conviction_subtype).to eq(ConvictionType::REFERRAL_ORDER)
       end
     end
   end

@@ -52,7 +52,7 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
         let(:disclosure_check) {
           instance_double(DisclosureCheck, conviction_type: conviction_type, under_age: 'yes')
         }
-        let(:conviction_type)  { 'community_order' }
+        let(:conviction_type)  { 'referral_supervision_yro' }
 
         it 'does not save the record but returns true' do
           expect(disclosure_check).to_not receive(:update)

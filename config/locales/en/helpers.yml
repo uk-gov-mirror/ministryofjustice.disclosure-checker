@@ -10,7 +10,7 @@ en:
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
       armed_forces: Armed forces
-      community_order: Referral or youth rehabilitation order (YRO)
+      referral_supervision_yro: Referral or youth rehabilitation order (YRO)
       custodial_sentence: Custody or hospital order
       discharge: Discharge
       financial: Financial penalty
@@ -29,7 +29,7 @@ en:
       service_detention: Service detention
       service_community_order: Service community order
       overseas_community_order: Overseas community order
-      # community_order
+      # referral_supervision_yro
       referral_order: Referral order
       supervision_order: Supervision order
       youth_rehabilitation_order: Youth rehabilitation order
@@ -133,7 +133,7 @@ en:
         # default key
         conviction_subtype: What type of order were you given?
         # alternative keys defined with `i18_attribute`
-        community_order: What was your referral or youth rehabilitation order (YRO)?
+        referral_supervision_yro: What was your referral or youth rehabilitation order (YRO)?
         custodial_sentence: What type of sentence were you given?
         discharge: What discharge were you given?
         financial: What were you ordered to pay?
@@ -195,7 +195,7 @@ en:
         conviction_type:
           # youth
           armed_forces: ""
-          community_order: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
+          referral_supervision_yro: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
@@ -213,7 +213,7 @@ en:
           service_detention: ""
           service_community_order: ""
           overseas_community_order: ""
-          # community_order
+          # referral_supervision_yro
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
           supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction' (previously called an ASBO)
           youth_rehabilitation_order: You were given one or more orders, such as a curfew, wearing a tag, education or programme requirements

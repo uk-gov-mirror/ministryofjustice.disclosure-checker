@@ -12,7 +12,7 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
     instance_double(DisclosureCheck, conviction_type: conviction_type, conviction_subtype: nil)
   }
 
-  let(:conviction_type) { 'community_order' } # any conviction with children will do
+  let(:conviction_type) { 'referral_supervision_yro' } # any conviction with children will do
   let(:conviction_subtype) { nil }
 
   subject { described_class.new(arguments) }
