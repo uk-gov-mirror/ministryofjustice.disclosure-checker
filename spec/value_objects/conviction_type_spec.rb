@@ -9,10 +9,10 @@ RSpec.describe ConvictionType do
     it 'returns top level youth convictions' do
       expect(values).to eq(%w(
         referral_supervision_yro
-        armed_forces
         custodial_sentence
         discharge
         financial
+        military
         prevention_reparation
       ))
     end
@@ -38,8 +38,8 @@ RSpec.describe ConvictionType do
   describe 'Conviction subtypes' do
     let(:values) { described_class.new(conviction_type).children.map(&:to_s) }
 
-    context 'Armed forces' do
-      let(:conviction_type) { :armed_forces }
+    context 'Military' do
+      let(:conviction_type) { :military }
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(

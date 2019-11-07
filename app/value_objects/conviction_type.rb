@@ -16,10 +16,10 @@ class ConvictionType < ValueObject
   VALUES = [
     YOUTH_PARENT_TYPES = [
       REFERRAL_SUPERVISION_YRO = new(:referral_supervision_yro),
-      ARMED_FORCES          = new(:armed_forces),
       CUSTODIAL_SENTENCE    = new(:custodial_sentence),
       DISCHARGE             = new(:discharge),
       FINANCIAL             = new(:financial),
+      MILITARY              = new(:military),
       PREVENTION_REPARATION = new(:prevention_reparation),
     ].freeze,
 
@@ -41,11 +41,6 @@ class ConvictionType < ValueObject
     # Youth convictions #
     #####################
     #
-    DISMISSAL                          = new(:dismissal,                        parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
-    OVERSEAS_COMMUNITY_ORDER           = new(:overseas_community_order,         parent: ARMED_FORCES, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
-    SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: ARMED_FORCES, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
-    SERVICE_DETENTION                  = new(:service_detention,                parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
-
     REFERRAL_ORDER                     = new(:referral_order,                   parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     SUPERVISION_ORDER                  = new(:supervision_order,                parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     YOUTH_REHABILITATION_ORDER         = new(:youth_rehabilitation_order,       parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
@@ -60,6 +55,11 @@ class ConvictionType < ValueObject
 
     FINE                               = new(:fine,                             parent: FINANCIAL, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, calculator_class: Calculators::CompensationCalculator),
+
+    DISMISSAL                          = new(:dismissal,                        parent: MILITARY, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
+    OVERSEAS_COMMUNITY_ORDER           = new(:overseas_community_order,         parent: MILITARY, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
+    SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: MILITARY, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
+    SERVICE_DETENTION                  = new(:service_detention,                parent: MILITARY, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
 
     REPARATION_ORDER                   = new(:reparation_order,                 parent: PREVENTION_REPARATION, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
     RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),

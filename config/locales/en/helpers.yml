@@ -9,11 +9,11 @@ en:
 
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
-      armed_forces: Armed forces
       referral_supervision_yro: Referral or youth rehabilitation order (YRO)
       custodial_sentence: Custody or hospital order
       discharge: Discharge
       financial: Financial penalty
+      military: Military
       prevention_reparation: Prevention or reparation order
       # adults
       adult_community_reparation: Community, prevention or reparation order
@@ -24,11 +24,6 @@ en:
       adult_custodial_sentence: Custody or hospital order
 
     CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
-      # armed_forces
-      dismissal: Dismissal
-      service_detention: Service detention
-      service_community_order: Service community order
-      overseas_community_order: Overseas community order
       # referral_supervision_yro
       referral_order: Referral order
       supervision_order: Supervision order
@@ -44,6 +39,11 @@ en:
       # financial
       fine: A fine
       compensation_to_a_victim: Compensation to a victim
+      # military
+      dismissal: Dismissal
+      service_detention: Service detention
+      service_community_order: Service community order
+      overseas_community_order: Overseas community order
       # prevention_reparation
       reparation_order: Reparation order
       restraining_order: Restraining order
@@ -194,11 +194,11 @@ en:
           youth_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
         conviction_type:
           # youth
-          armed_forces: For example, a dismissal or service detention
           referral_supervision_yro: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
           financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
+          military: For example, a dismissal or service detention
           prevention_reparation: For example, a restraining order or sexual harm prevention order
           # adults
           adult_community_reparation: For example, a curfew, unpaid work or a restraining order. You might have been asked to wear a tag as part of your order
@@ -208,11 +208,6 @@ en:
           adult_motoring: For example, penalty points or a driving ban
           adult_custodial_sentence: For example, a prison sentence, suspended sentence or hospital order given under the Mental Health Act
         conviction_subtype:
-          # armed_forces
-          dismissal: ""
-          service_detention: ""
-          service_community_order: ""
-          overseas_community_order: ""
           # referral_supervision_yro
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
           supervision_order: You were ordered to be supervised by a youth offending team after loitering, soliciting or 'breaching a civil injunction' (previously called an ASBO)
@@ -228,6 +223,11 @@ en:
           # financial
           fine: ""
           compensation_to_a_victim: ""
+          # military
+          dismissal: ""
+          service_detention: ""
+          service_community_order: ""
+          overseas_community_order: ""
           # prevention_reparation
           reparation_order: You were given help understanding the effect your crime had on someone
           restraining_order: You were ordered not to do something, such as approach or contact a certain person

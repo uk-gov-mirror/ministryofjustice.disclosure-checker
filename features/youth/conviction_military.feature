@@ -1,8 +1,8 @@
 Feature: Conviction
 
   @happy_path
-  Scenario Outline: Armed forces convictions with length
-    Given I am completing a basic under 18 "Armed forces" conviction
+  Scenario Outline: Military convictions with length
+    Given I am completing a basic under 18 "Military" conviction
     Then I should see "What type of order were you given?"
 
     When I choose "<subtype>"
@@ -24,8 +24,8 @@ Feature: Conviction
       | Service community order  | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? | /steps/check/results |
 
   @happy_path
-  Scenario Outline: Armed forces convictions without length
-    Given I am completing a basic under 18 "Armed forces" conviction
+  Scenario Outline: Military convictions without length
+    Given I am completing a basic under 18 "Military" conviction
     Then I should see "What type of order were you given?"
 
     When I choose "<subtype>"

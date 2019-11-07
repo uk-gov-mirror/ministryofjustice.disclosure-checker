@@ -50,7 +50,7 @@ RSpec.describe ConvictionLengthChoices do
   end
 
   describe '.choices' do
-    context 'youth armed forces dismissal' do
+    context 'youth military dismissal' do
       let(:conviction_subtype) { ConvictionType::DISMISSAL }
 
       it 'excludes `no_length` in the choices' do
@@ -58,7 +58,7 @@ RSpec.describe ConvictionLengthChoices do
       end
     end
 
-    context 'youth armed forces service detention' do
+    context 'youth military service detention' do
       let(:conviction_subtype) { ConvictionType::SERVICE_DETENTION }
 
       it 'excludes `no_length` in the choices' do

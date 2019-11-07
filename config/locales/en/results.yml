@@ -9,11 +9,11 @@ en:
 
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
-      armed_forces: Armed forces
       referral_supervision_yro: Referral or youth rehabilitation order (YRO)
       custodial_sentence: Custody or hospital order
       discharge: Discharge
       financial: Financial penalty
+      military: Military
       prevention_reparation: Prevention or reparation order
       # adults
       adult_community_reparation: Community, prevention or reparation order
@@ -24,11 +24,6 @@ en:
       adult_motoring: Motoring
 
     CONVICTION_SUBTYPES: &CONVICTION_SUBTYPES
-      # armed_forces
-      dismissal: Dismissal
-      service_detention: Service detention
-      service_community_order: Service community order
-      overseas_community_order: Overseas community order
       # referral_supervision_yro
       referral_order: Referral order
       supervision_order: Supervision order
@@ -44,6 +39,11 @@ en:
       # financial
       fine: A fine
       compensation_to_a_victim: Compensation to a victim
+      # military
+      dismissal: Dismissal
+      service_detention: Service detention
+      service_community_order: Service community order
+      overseas_community_order: Overseas community order
       # prevention_reparation
       reparation_order: Reparation order
       restraining_order: Restraining order
