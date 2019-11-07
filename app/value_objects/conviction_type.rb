@@ -16,6 +16,7 @@ class ConvictionType < ValueObject
   VALUES = [
     YOUTH_PARENT_TYPES = [
       REFERRAL_SUPERVISION_YRO = new(:referral_supervision_yro),
+      ARMED_FORCES          = new(:armed_forces),
       CUSTODIAL_SENTENCE    = new(:custodial_sentence),
       DISCHARGE             = new(:discharge),
       FINANCIAL             = new(:financial),
@@ -34,18 +35,16 @@ class ConvictionType < ValueObject
     # Quick way of enabling/disabling convictions. These will not show in the interface to users.
     # If there are cucumber test, tag the affected scenarios with `@skip`.
     #
-    PARENT_TYPES_DISABLED_FOR_MVP = [
-      ARMED_FORCES = new(:armed_forces),
-    ].freeze,
+    DISABLED_PARENT_TYPES = [].freeze,
 
     #####################
     # Youth convictions #
     #####################
     #
     DISMISSAL                          = new(:dismissal,                        parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
+    OVERSEAS_COMMUNITY_ORDER           = new(:overseas_community_order,         parent: ARMED_FORCES, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
+    SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: ARMED_FORCES, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
     SERVICE_DETENTION                  = new(:service_detention,                parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
-    SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
-    OVERSEAS_COMMUNITY_ORDER           = new(:overseas_community_order,         parent: ARMED_FORCES, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
 
     REFERRAL_ORDER                     = new(:referral_order,                   parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     SUPERVISION_ORDER                  = new(:supervision_order,                parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),

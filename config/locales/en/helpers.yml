@@ -194,7 +194,7 @@ en:
           youth_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
         conviction_type:
           # youth
-          armed_forces: ""
+          armed_forces: For example, a dismissal or service detention
           referral_supervision_yro: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
           custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
           discharge: For example, a conditional discharge order or bind over
