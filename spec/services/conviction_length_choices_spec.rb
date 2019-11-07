@@ -25,8 +25,6 @@ RSpec.describe ConvictionLengthChoices do
       expect(
         described_class::SUBTYPES_HIDE_NO_LENGTH_CHOICE
       ).to eq([
-        ConvictionType::DISMISSAL,
-        ConvictionType::SERVICE_DETENTION,
         ConvictionType::DETENTION,
         ConvictionType::DETENTION_TRAINING_ORDER,
         ConvictionType::ADULT_PRISON_SENTENCE,
@@ -46,26 +44,10 @@ RSpec.describe ConvictionLengthChoices do
       ConvictionType.values.size - described_class::SUBTYPES_HIDE_NO_LENGTH_CHOICE.size
     }
 
-    it { expect(total).to eq(46) }
+    it { expect(total).to eq(48) }
   end
 
   describe '.choices' do
-    context 'youth armed forces dismissal' do
-      let(:conviction_subtype) { ConvictionType::DISMISSAL }
-
-      it 'excludes `no_length` in the choices' do
-        expect(subject).to eq(all_choices_except_no_length)
-      end
-    end
-
-    context 'youth armed forces service detention' do
-      let(:conviction_subtype) { ConvictionType::SERVICE_DETENTION }
-
-      it 'excludes `no_length` in the choices' do
-        expect(subject).to eq(all_choices_except_no_length)
-      end
-    end
-
     context 'youth custodial sentence detention' do
       let(:conviction_subtype) { ConvictionType::DETENTION }
 

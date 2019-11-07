@@ -2,7 +2,9 @@ require 'rails_helper'
 
 RSpec.describe ConvictionType do
   describe 'YOUTH_PARENT_TYPES' do
-    let(:values) { described_class::YOUTH_PARENT_TYPES.map(&:to_s) }
+    let(:values) {
+      (described_class::YOUTH_PARENT_TYPES - described_class::DISABLED_PARENT_TYPES).map(&:to_s)
+    }
 
     it 'returns top level youth convictions' do
       expect(values).to eq(%w(
@@ -10,13 +12,16 @@ RSpec.describe ConvictionType do
         custodial_sentence
         discharge
         financial
+        military
         prevention_reparation
       ))
     end
   end
 
   describe 'ADULT_PARENT_TYPES' do
-    let(:values) { described_class::ADULT_PARENT_TYPES.map(&:to_s) }
+    let(:values) {
+      (described_class::ADULT_PARENT_TYPES.map(&:to_s) - described_class::DISABLED_PARENT_TYPES).map(&:to_s)
+    }
 
     it 'returns top level adult convictions' do
       expect(values).to eq(%w(
@@ -30,28 +35,18 @@ RSpec.describe ConvictionType do
     end
   end
 
-  describe 'PARENT_TYPES_DISABLED_FOR_MVP' do
-    let(:values) { described_class::PARENT_TYPES_DISABLED_FOR_MVP.map(&:to_s) }
-
-    it 'returns top level conviction' do
-      expect(values).to eq(%w(
-        armed_forces
-      ))
-    end
-  end
-
   describe 'Conviction subtypes' do
     let(:values) { described_class.new(conviction_type).children.map(&:to_s) }
 
-    context 'Armed forces' do
-      let(:conviction_type) { :armed_forces }
+    context 'Military' do
+      let(:conviction_type) { :military }
 
       it 'returns subtypes of this conviction type' do
         expect(values).to eq(%w(
           dismissal
-          service_detention
-          service_community_order
           overseas_community_order
+          service_community_order
+          service_detention
         ))
       end
     end
@@ -218,15 +213,15 @@ RSpec.describe ConvictionType do
     context 'SERVICE_COMMUNITY_ORDER' do
       let(:subtype) { 'service_community_order' }
 
-      it { expect(conviction_type.skip_length?).to eq(true) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusSixMonths) }
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusSixMonths) }
     end
 
     context 'OVERSEAS_COMMUNITY_ORDER' do
       let(:subtype) { 'overseas_community_order' }
 
-      it { expect(conviction_type.skip_length?).to eq(true) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusSixMonths) }
+      it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusSixMonths) }
     end
 
     context 'REFERRAL_ORDER' do
