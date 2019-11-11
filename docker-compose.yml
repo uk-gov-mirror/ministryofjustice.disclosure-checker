@@ -18,7 +18,8 @@ services:
       - DATABASE_URL=postgresql://postgres@db/disclosure-checker
       - EXTERNAL_URL=http://localhost:8080
       - SECRET_KEY_BASE=c263472f8aa91f4a277002e9652f86f330e636358e2090d86ab4a4f0684cefe2
-      - DISABLE_SSL=1
+      - DATABASE_SSLMODE=disable
+      - DISABLE_HTTPS=1
     depends_on:
       - db
     expose:
