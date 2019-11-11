@@ -1,7 +1,8 @@
-# This file is only present to fix a Jenkins
-# build error that started to occur after
-# adding devise, but which we could not
-# reproduce on our local machines
+# Note: in production we are forcing SSL and certificate verification.
+# The RDS certificates bundle is downloaded in the Dockerfile.
+#
+# Refer to https://www.postgresql.org/docs/current/libpq-ssl.html for more information.
+#
 default: &default
   adapter: postgresql
 
@@ -11,3 +12,5 @@ test:
   <<: *default
 production:
   <<: *default
+  sslmode: <%= ENV.fetch('DATABASE_SSLMODE', 'verify-full') %>
+  sslrootcert: <%= ENV['RDS_COMBINED_CA_BUNDLE'] %>
