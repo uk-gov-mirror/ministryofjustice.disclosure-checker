@@ -77,3 +77,7 @@ en:
       conviction_bail:
         edit:
           page_title: Did you spend any time on bail?
+      conviction_bail_days:
+        edit:
+          page_title: Days spent with an electronic tag
+          heading: How many days spent with an electronic tag counted towards your sentence?

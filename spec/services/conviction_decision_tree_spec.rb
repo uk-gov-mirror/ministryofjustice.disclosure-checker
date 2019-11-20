@@ -179,4 +179,23 @@ RSpec.describe ConvictionDecisionTree do
     let(:step_params) { { bypass_motoring_conviction_type: conviction_type } }
     it { is_expected.to have_destination(:exit_motoring, :show) }
   end
+
+  context 'when the step is `conviction_bail`' do
+    let(:step_params) { { conviction_bail: answer } }
+
+    context 'and the answer is yes' do
+      let(:answer) { GenericYesNo::YES }
+      it { is_expected.to have_destination(:conviction_bail_days, :edit) }
+    end
+
+    context 'and the answer is no' do
+      let(:answer) { GenericYesNo::NO }
+      it { is_expected.to have_destination(:known_date, :edit) }
+    end
+  end
+
+  context 'when the step is `conviction_bail_days`' do
+    let(:step_params) { { conviction_bail_days: 'whatever' } }
+    it { is_expected.to have_destination(:known_date, :edit) }
+  end
 end

@@ -187,6 +187,8 @@ en:
         motoring_disqualification_end_date_html: "Leave this blank if your ban had no end date. <p>For example, 23 9 2018</p>"
       steps_conviction_conviction_bail_form:
         conviction_bail: Time spent on bail with an electronic tag affects the spent date of your conviction. Time spent on bail without a tag does not.
+      steps_conviction_conviction_bail_days_form:
+        conviction_bail_days: This is decided by the court. If you do not know the exact number of days you can enter an approximate number or leave this blank, but it might affect the accuracy of your result.
       radio_buttons:
         kind:
           caution: You were given an official warning by the police
@@ -311,3 +313,5 @@ en:
         day: Day
         month: Month
         year: Year
+      steps_conviction_conviction_bail_days_form:
+        conviction_bail_days: Enter the number of days

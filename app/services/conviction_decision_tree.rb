@@ -22,6 +22,10 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_compensation_paid
     when :motoring_lifetime_ban
       after_motoring_lifetime_ban
+    when :conviction_bail
+      after_conviction_bail
+    when :conviction_bail_days
+      edit(:known_date)
     when :conviction_length, :compensation_payment_date, :motoring_disqualification_end_date
       results
     else
@@ -79,6 +83,12 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   def after_motoring_endorsement
     return results if penalty_notice_without_endorsement?
+
+    edit(:known_date)
+  end
+
+  def after_conviction_bail
+    return edit(:conviction_bail_days) if step_value(:conviction_bail).inquiry.yes?
 
     edit(:known_date)
   end
