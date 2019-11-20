@@ -163,6 +163,8 @@ en:
         motoring_disqualification_end_date: When did the ban end?
       steps_conviction_motoring_lifetime_ban_form:
         motoring_lifetime_ban: Were you given a lifetime ban?
+      steps_conviction_conviction_bail_form:
+        conviction_bail: Did you spend any time on bail with an electronic tag?
 
     hint:
       steps_caution_known_date_form:
@@ -183,6 +185,8 @@ en:
         motoring_endorsement: An endorsement means that your conviction is recorded on your driving licence. Endorsements are usually given by courts.
       steps_conviction_motoring_disqualification_end_date_form:
         motoring_disqualification_end_date_html: "Leave this blank if your ban had no end date. <p>For example, 23 9 2018</p>"
+      steps_conviction_conviction_bail_form:
+        conviction_bail: Time spent on bail with an electronic tag affects the spent date of your conviction. Time spent on bail without a tag does not.
       radio_buttons:
         kind:
           caution: You were given an official warning by the police

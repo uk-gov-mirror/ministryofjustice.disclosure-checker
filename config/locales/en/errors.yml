@@ -55,6 +55,10 @@ en:
             motoring_disqualification_end_date:
               blank: Enter the end date of the motoring disqualification in the format dd/mm/yyyy
               invalid: The end date of the motoring disqualification is not valid
+        steps/conviction/conviction_bail_form:
+          attributes:
+            conviction_bail:
+              inclusion: Select yes if you spent any time on bail with an electronic tag
 
   errors:
     format: "%{message}"
