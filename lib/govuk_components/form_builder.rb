@@ -34,11 +34,13 @@ module GovukComponents
     # by side with the old gem.
     #
     def text_field(attribute, options = {})
+      value = object.public_send(attribute)
+
       content_tag(:div, class: form_group_classes(attribute)) do
         concat input_label(attribute, options)
         concat hint(attribute, options)
         concat error(attribute)
-        concat @template.text_field(@object_name, attribute, input_options(attribute, options))
+        concat @template.text_field(@object_name, attribute, input_options(attribute, options).merge(value: value))
       end
     end
 
