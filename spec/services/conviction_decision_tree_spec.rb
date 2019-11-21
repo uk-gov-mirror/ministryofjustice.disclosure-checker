@@ -52,7 +52,7 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `conviction_subtype`' do
-    let(:conviction_subtype) { :detention_training_order }
+    let(:conviction_subtype) { :youth_rehabilitation_order }
     let(:step_params) { { conviction_subtype: conviction_subtype } }
 
     context 'when subtype equal compensation_to_a_victim' do
@@ -82,7 +82,12 @@ RSpec.describe ConvictionDecisionTree do
       end
     end
 
-    context 'when subtype is not equal to compensation_to_a_victim or any motoring sub types' do
+    context 'when subtype is a bailable offence' do
+      let(:conviction_subtype) { :detention_training_order }
+      it { is_expected.to have_destination(:conviction_bail, :edit) }
+    end
+
+    context 'for any other conviction subtypes' do
       it { is_expected.to have_destination(:known_date, :edit) }
     end
   end
