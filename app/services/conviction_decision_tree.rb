@@ -7,13 +7,16 @@ class ConvictionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-
     when :conviction_type, :bypass_motoring_conviction_type
       after_conviction_type
     when :conviction_subtype
       after_conviction_subtype
     when :motoring_endorsement
       after_motoring_endorsement
+    when :conviction_bail
+      after_conviction_bail
+    when :conviction_bail_days
+      known_date_question
     when :known_date
       after_known_date
     when :conviction_length_type
@@ -22,10 +25,6 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_compensation_paid
     when :motoring_lifetime_ban
       after_motoring_lifetime_ban
-    when :conviction_bail
-      after_conviction_bail
-    when :conviction_bail_days
-      edit(:known_date)
     when :conviction_length, :compensation_payment_date, :motoring_disqualification_end_date
       results
     else
@@ -44,10 +43,11 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_conviction_subtype
+    return edit(:conviction_bail)   if conviction_subtype.bailable_offense?
     return edit(:compensation_paid) if conviction_subtype.compensation?
-    return after_adult_motoring if conviction_subtype.parent.inquiry.adult_motoring?
+    return after_adult_motoring     if conviction_subtype.parent.inquiry.adult_motoring?
 
-    edit(:known_date)
+    known_date_question
   end
 
   def after_adult_motoring
@@ -84,16 +84,20 @@ class ConvictionDecisionTree < BaseDecisionTree
   def after_motoring_endorsement
     return results if penalty_notice_without_endorsement?
 
-    edit(:known_date)
+    known_date_question
   end
 
   def after_conviction_bail
     return edit(:conviction_bail_days) if step_value(:conviction_bail).inquiry.yes?
 
-    edit(:known_date)
+    known_date_question
   end
 
   def penalty_notice_without_endorsement?
     conviction_subtype.inquiry.adult_penalty_notice? && GenericYesNo.new(disclosure_check.motoring_endorsement).no?
+  end
+
+  def known_date_question
+    edit(:known_date)
   end
 end

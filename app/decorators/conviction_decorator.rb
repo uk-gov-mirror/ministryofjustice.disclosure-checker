@@ -16,4 +16,13 @@ module ConvictionDecorator
   def motoring?
     ConvictionType::ADULT_MOTORING.eql?(self)
   end
+
+  def bailable_offense?
+    [
+      ConvictionType::DETENTION,
+      ConvictionType::DETENTION_TRAINING_ORDER,
+      ConvictionType::ADULT_PRISON_SENTENCE,
+      ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE,
+    ].include?(self)
+  end
 end

@@ -41,4 +41,36 @@ RSpec.describe ConvictionDecorator do
       it { expect(subject.motoring?).to eq(true) }
     end
   end
+
+  describe '#bailable_offense?' do
+    context 'for a youth `DETENTION` conviction type' do
+      subject { ConvictionType::DETENTION }
+      it { expect(subject.bailable_offense?).to eq(true) }
+    end
+
+    context 'for a youth `DETENTION_TRAINING_ORDER` conviction type' do
+      subject { ConvictionType::DETENTION_TRAINING_ORDER }
+      it { expect(subject.bailable_offense?).to eq(true) }
+    end
+
+    context 'for a youth `HOSPITAL_ORDER` conviction type' do
+      subject { ConvictionType::HOSPITAL_ORDER }
+      it { expect(subject.bailable_offense?).to eq(false) }
+    end
+
+    context 'for an `ADULT_PRISON_SENTENCE` conviction type' do
+      subject { ConvictionType::ADULT_PRISON_SENTENCE }
+      it { expect(subject.bailable_offense?).to eq(true) }
+    end
+
+    context 'for an `ADULT_SUSPENDED_PRISON_SENTENCE` conviction type' do
+      subject { ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE }
+      it { expect(subject.bailable_offense?).to eq(true) }
+    end
+
+    context 'for an `ADULT_HOSPITAL_ORDER` conviction type' do
+      subject { ConvictionType::ADULT_HOSPITAL_ORDER }
+      it { expect(subject.bailable_offense?).to eq(false) }
+    end
+  end
 end
