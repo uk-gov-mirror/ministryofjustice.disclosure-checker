@@ -3,16 +3,12 @@ require 'rails_helper'
 RSpec.describe BaseCalculator do
   subject { described_class.new(disclosure_check) }
 
-
-   let(:disclosure_check) { build(:disclosure_check,
-                                 known_date: known_date) }
-
+  let(:disclosure_check) { build(:disclosure_check, known_date: known_date) }
   let(:known_date) { Date.new(2018, 10, 31) }
 
   before(:each) do
     described_class.send(:public, *described_class.private_instance_methods)
   end
-
 
   it 'distance_in_months' do
     expect(subject.distance_in_months(Date.new(2017, 8, 12), Date.new(2017, 8, 12))).to eq 0
@@ -44,7 +40,6 @@ RSpec.describe BaseCalculator do
     expect(subject.distance_in_months(Date.new(2017, 2, 1), Date.new(2017, 3, 1))).to eq 1
   end
 
-
   context '#sentence_distance_in_months' do
     it 'in weeks' do
       expect(subject.sentence_length_in_months(4, 'weeks')).to be < 1
@@ -60,7 +55,6 @@ RSpec.describe BaseCalculator do
       expect(subject.sentence_length_in_months(25, 'weeks')).to be < 6
       expect(subject.sentence_length_in_months(26, 'weeks')).to be >= 6
 
-
       # 25 months
       expect(subject.sentence_length_in_months(108, 'weeks')).to be < 25
       expect(subject.sentence_length_in_months(109, 'weeks')).to be >= 25
@@ -70,23 +64,22 @@ RSpec.describe BaseCalculator do
       expect(subject.sentence_length_in_months(130, 'weeks')).to be >= 30
     end
 
-
     it 'in months' do
-       # 3 months
+      # 3 months
       expect(subject.sentence_length_in_months(3, 'months')).to eq 3
 
       # 6 months
       expect(subject.sentence_length_in_months(6, 'months')).to eq 6
 
       # 25 months
-     expect(subject.sentence_length_in_months(25, 'months')).to eq 25
+      expect(subject.sentence_length_in_months(25, 'months')).to eq 25
 
       # 30 months
       expect(subject.sentence_length_in_months(30, 'months')).to eq 30
     end
 
     it 'in years' do
-       # 1 year = 12 months
+      # 1 year = 12 months
       expect(subject.sentence_length_in_months(1, 'years')).to eq 12
 
       # 2 years = 24 months
@@ -98,5 +91,16 @@ RSpec.describe BaseCalculator do
       # 25 years = 300 months
       expect(subject.sentence_length_in_months(25, 'years')).to eq 300
     end
+  end
+
+  context '#sentence_distance_in_months when using a bail offset' do
+    it { expect(subject.sentence_length_in_months(5, 'weeks')).to eq(1) }
+    it { expect(subject.sentence_length_in_months(5, 'weeks', offset_days: -6)).to eq(0) }
+
+    it { expect(subject.sentence_length_in_months(3, 'months')).to eq(3) }
+    it { expect(subject.sentence_length_in_months(3, 'months', offset_days: -1)).to eq(2) }
+
+    it { expect(subject.sentence_length_in_months(1, 'years')).to eq(12) }
+    it { expect(subject.sentence_length_in_months(1, 'years', offset_days: -1)).to eq(11) }
   end
 end
