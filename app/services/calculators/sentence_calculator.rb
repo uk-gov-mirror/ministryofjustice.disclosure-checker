@@ -1,6 +1,7 @@
 module Calculators
   class SentenceCalculator < BaseCalculator
     NEVER_SPENT_THRESHOLD = 48
+    BAIL_OFFSET = -0.5 # half a day
 
     # If conviction length is 6 months or less: start date + length + 18 months
     # If conviction length is over 6 months and less than or equal to 30 months: start date + length + 2 years
@@ -56,20 +57,22 @@ module Calculators
       if conviction_length_in_months > NEVER_SPENT_THRESHOLD
         :never_spent
       else
-        conviction_end_date.advance(spent_time)
+        conviction_end_date.advance(rehabilitation_period)
       end
     end
 
     # Used to validate the upper limits, as some convictions can only be given
     # a maximum number of months in the sentence length.
+    # We don't take into consideration the bail time here, as this is purely
+    # the validation of the raw input of the sentence length.
     #
     def valid?
-      conviction_length_in_months <= self.class::UPPER_LIMIT
+      conviction_length_in_months(offset_days: 0) <= self.class::UPPER_LIMIT
     end
 
     private
 
-    def spent_time
+    def rehabilitation_period
       case conviction_length_in_months
       when 0..6
         self.class::REHABILITATION_1
@@ -80,12 +83,23 @@ module Calculators
       end
     end
 
-    def conviction_length_in_months
-      @_conviction_length_in_months ||= sentence_length_in_months(disclosure_check.conviction_length, disclosure_check.conviction_length_type)
+    def conviction_length_in_months(offset_days: bail_offset_days)
+      sentence_length_in_months(
+        disclosure_check.conviction_length,
+        disclosure_check.conviction_length_type,
+        offset_days: offset_days
+      )
+    end
+
+    # Each full day spent on bail with a tag offsets half a day from the sentence length
+    # Attribute can be blank or nil, but `#to_i` makes it safe.
+    #
+    def bail_offset_days
+      disclosure_check.conviction_bail_days.to_i * BAIL_OFFSET
     end
 
     def conviction_end_date
-      super.advance(days: -1)
+      super.advance(days: -1).advance(days: bail_offset_days)
     end
   end
 end
