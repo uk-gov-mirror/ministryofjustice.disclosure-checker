@@ -10,13 +10,8 @@
         <%= error_summary %>
         <%= step_subsection %>
 
-        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
-
-        <p class="govuk-body"><%=t '.lead_text' %></p>
-
         <%= step_form @form_object do |f| %>
-          <%= f.gov_uk_date_field :compensation_payment_date,
-                                  legend_options: { page_heading: false, visually_hidden: true } %>
+          <%= f.gov_uk_date_field :compensation_payment_date %>
 
           <%= render partial: 'steps/shared/unknown_date_details', locals: { ga_label: 'compensation unknown date' } %>
 
