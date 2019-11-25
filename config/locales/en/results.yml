@@ -126,6 +126,8 @@ en:
       answers:
         'yes': Under 18
         'no': 18 or over
+    conviction_bail_days:
+      question: Days on bail
     known_date:
       question: Start date
     conviction_length:
