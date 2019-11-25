@@ -31,6 +31,10 @@ class ResultsPresenter
     result_service.expiry_date
   end
 
+  def time_on_bail?
+    disclosure_check.conviction_bail_days.to_i.positive?
+  end
+
   def variant
     tense = if expiry_date.instance_of?(Date)
               expiry_date.past? ? :spent : :not_spent

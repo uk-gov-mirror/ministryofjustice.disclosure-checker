@@ -10,14 +10,22 @@
 </ul>
 
 <p class="govuk-body">
-  This table shows the information you’ve given us, which has been used to work out your result.
+  This table shows the information you’ve given us, which has been used to work out your result. If you need to change
+  any information, or if you have another caution or conviction you’d like to check,
+  <%= link_to 'use the service again', root_path, class: 'govuk-link govuk-link--no-visited-state ga-pageLink', data: { ga_category: 'results', ga_label: 'new check' } %>.
 </p>
 
 <dl class="govuk-summary-list">
   <%= render result.summary %>
 </dl>
 
-<p class="govuk-body">
-  If you need to change any information, or if you have another caution or conviction you’d like to
-  check, <%= link_to 'use the service again', root_path, class: 'govuk-link govuk-link--no-visited-state ga-pageLink', data: { ga_category: 'results', ga_label: 'new check' } %>.
-</p>
+<% if result.time_on_bail? %>
+  <h2 class="govuk-heading-m">
+    Time spent on bail with an electronic tag
+  </h2>
+
+  <p class="govuk-body">
+    Your result and spent date include the number of days you said you spent on bail with an electronic tag that counted
+    towards your sentence. Each full day offsets half a day from the total length of your sentence.
+  </p>
+<% end %>

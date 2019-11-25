@@ -65,6 +65,19 @@ RSpec.describe Steps::Conviction::ConvictionBailDaysForm do
           expect(subject.errors.details[:conviction_bail_days][0][:error]).to eq(:not_an_integer)
         end
       end
+
+      context 'is not greater than zero' do
+        let(:conviction_bail_days) { 0 }
+
+        it 'returns false' do
+          expect(subject.save).to be(false)
+        end
+
+        it 'has a validation error on the field' do
+          expect(subject).to_not be_valid
+          expect(subject.errors.details[:conviction_bail_days][0][:error]).to eq(:greater_than)
+        end
+      end
     end
   end
 end

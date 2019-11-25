@@ -40,7 +40,7 @@ en:
         steps/conviction/conviction_length_form:
           attributes:
             conviction_length:
-              greater_than: The length must be 1 or more
+              greater_than: The length must be greater than zero
               not_a_number: The length must be a number, like 3
               not_an_integer: The length must be a whole number, like 4
               invalid_sentence: The length of the sentence is invalid for this conviction
@@ -62,6 +62,7 @@ en:
         steps/conviction/conviction_bail_days_form:
           attributes:
             conviction_bail_days:
+              greater_than: The input must be greater than zero, or left blank
               not_a_number: The input must be a number, like 3
               not_an_integer: The input must be a whole number, like 4
 

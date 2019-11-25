@@ -9,6 +9,7 @@ class ConvictionResultPresenter < ResultsPresenter
     [
       :conviction_subtype,
       :under_age,
+      :conviction_bail_days,
       :known_date,
       [:conviction_length, i18n_conviction_length],
       :compensation_payment_date,

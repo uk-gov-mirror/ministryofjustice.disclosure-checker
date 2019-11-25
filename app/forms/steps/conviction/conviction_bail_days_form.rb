@@ -3,7 +3,8 @@ module Steps
     class ConvictionBailDaysForm < BaseForm
       attribute :conviction_bail_days, String
 
-      validates_numericality_of :conviction_bail_days, allow_blank: true, only_integer: true
+      validates_numericality_of :conviction_bail_days,
+                                greater_than: 0, allow_blank: true, only_integer: true
 
       private
 

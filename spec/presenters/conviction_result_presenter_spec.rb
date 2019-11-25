@@ -84,6 +84,28 @@ RSpec.describe ConvictionResultPresenter do
         expect(summary[3].answer).to eq('31 October 2019')
       end
     end
+
+    context 'when there is time on bail' do
+      let(:disclosure_check) { build(:disclosure_check, :dto_conviction, conviction_bail_days: 15) }
+
+      it 'returns the correct question-answer pairs' do
+        expect(summary.size).to eq(5)
+
+        expect(summary[0].question).to eql(:conviction_subtype)
+        expect(summary[0].answer).to eql('detention_training_order')
+
+        expect(summary[1].question).to eql(:under_age)
+        expect(summary[1].answer).to eql('yes')
+
+        expect(summary[2].question).to eql(:conviction_bail_days)
+        expect(summary[2].answer).to eq(15)
+
+        expect(summary[3].question).to eql(:known_date)
+        expect(summary[3].answer).to eq('31 October 2018')
+
+        # ignoring following rows as they are the same as in other tests
+      end
+    end
   end
 
   describe '#expiry_date' do
@@ -93,6 +115,25 @@ RSpec.describe ConvictionResultPresenter do
 
     it 'delegates the method to the calculator' do
       expect(subject.expiry_date).to eq('foobar')
+    end
+  end
+
+  describe '#time_on_bail?' do
+    let(:disclosure_check) { build(:disclosure_check, :dto_conviction, conviction_bail_days: bail_days) }
+
+    context 'when there is time on bail' do
+      let(:bail_days) { 5 }
+      it { expect(subject.time_on_bail?).to eq(true) }
+    end
+
+    context 'when there is no time on bail' do
+      let(:bail_days) { nil }
+      it { expect(subject.time_on_bail?).to eq(false) }
+    end
+
+    context 'when time on bail is zero' do
+      let(:bail_days) { 0 }
+      it { expect(subject.time_on_bail?).to eq(false) }
     end
   end
 end
