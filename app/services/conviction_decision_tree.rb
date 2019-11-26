@@ -9,7 +9,7 @@ class ConvictionDecisionTree < BaseDecisionTree
     case step_name
     when :conviction_type, :bypass_motoring_conviction_type
       after_conviction_type
-    when :conviction_subtype
+    when :conviction_subtype, :bypass_bail_conviction_subtype
       after_conviction_subtype
     when :motoring_endorsement
       after_motoring_endorsement
@@ -43,7 +43,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_conviction_subtype
-    return edit(:conviction_bail)   if conviction_subtype.bailable_offense?
+    return edit(:conviction_bail)   if conviction_subtype.bailable_offense? && !step_name.eql?(:bypass_bail_conviction_subtype)
     return edit(:compensation_paid) if conviction_subtype.compensation?
     return after_adult_motoring     if conviction_subtype.parent.inquiry.adult_motoring?
 
