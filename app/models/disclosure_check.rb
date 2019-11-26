@@ -6,12 +6,4 @@ class DisclosureCheck < ApplicationRecord
     in_progress: 0,
     completed: 10,
   }
-
-  # TODO: once the new data models are in place, we would do the purge
-  # through the DisclosureReport model, instead of here, and we will be
-  # able to remove this method and spec.
-  #
-  def self.purge!(date)
-    where('created_at <= :date', date: date).destroy_all
-  end
 end
