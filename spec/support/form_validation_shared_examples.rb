@@ -115,10 +115,12 @@ end
 
 RSpec.shared_examples 'a date question form' do |options|
   let(:question_attribute) { options[:attribute_name] }
+  let(:approximate_attribute) { ['approximate', question_attribute].join('_').to_sym }
 
   let(:arguments) { {
     disclosure_check: disclosure_check,
-    question_attribute => date_value
+    question_attribute => date_value,
+    approximate_attribute => '1'
   } }
 
   let(:disclosure_check) { instance_double(DisclosureCheck) }
@@ -195,21 +197,12 @@ RSpec.shared_examples 'a date question form' do |options|
           end
         end
       else
-        context 'when date in the future is allowed' do
+        context 'when date is in the future' do
           let(:date_value) { Date.tomorrow }
 
-          it 'has no validation errors on the field' do
-            expect(subject).to be_valid
-            expect(subject.errors.added?(question_attribute, :future)).to eq(false)
+          it 'is valid' do
+            expect(subject.valid?).to eq(true)
           end
-
-          it 'returns true' do
-              expect(disclosure_check).to receive(:update).with(
-                question_attribute => date_value
-              ).and_return(true)
-
-              expect(subject.save).to be(true)
-            end
         end
       end
     end
@@ -217,7 +210,8 @@ RSpec.shared_examples 'a date question form' do |options|
     context 'when form is valid' do
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
-          question_attribute => 3.months.ago.to_date
+          question_attribute => 3.months.ago.to_date,
+          approximate_attribute => true
         ).and_return(true)
 
         expect(subject.save).to be(true)

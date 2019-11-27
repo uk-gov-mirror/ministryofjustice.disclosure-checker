@@ -4,6 +4,7 @@ module Steps
       include GovUkDateFields::ActsAsGovUkDate
 
       attribute :motoring_disqualification_end_date, Date
+      attribute :approximate_motoring_disqualification_end_date, Boolean
 
       acts_as_gov_uk_date :motoring_disqualification_end_date, error_clash_behaviour: :omit_gov_uk_date_field_error
 
@@ -15,7 +16,8 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          motoring_disqualification_end_date: motoring_disqualification_end_date
+          motoring_disqualification_end_date: motoring_disqualification_end_date,
+          approximate_motoring_disqualification_end_date: approximate_motoring_disqualification_end_date
         )
       end
     end

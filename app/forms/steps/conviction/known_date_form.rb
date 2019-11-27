@@ -4,6 +4,7 @@ module Steps
       include GovUkDateFields::ActsAsGovUkDate
 
       attribute :known_date, Date
+      attribute :approximate_known_date, Boolean
 
       acts_as_gov_uk_date :known_date, error_clash_behaviour: :omit_gov_uk_date_field_error
 
@@ -16,7 +17,8 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          known_date: known_date
+          known_date: known_date,
+          approximate_known_date: approximate_known_date
         )
       end
     end
