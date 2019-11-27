@@ -2,10 +2,7 @@ module Steps
   module Conviction
     class CompensationPaymentDateController < Steps::ConvictionStepController
       def edit
-        @form_object = CompensationPaymentDateForm.new(
-          disclosure_check: current_disclosure_check,
-          compensation_payment_date: current_disclosure_check.compensation_payment_date
-        )
+        @form_object = CompensationPaymentDateForm.build(current_disclosure_check)
       end
 
       def update

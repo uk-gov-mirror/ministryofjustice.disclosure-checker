@@ -2,10 +2,7 @@ module Steps
   module Conviction
     class MotoringDisqualificationEndDateController < Steps::ConvictionStepController
       def edit
-        @form_object = MotoringDisqualificationEndDateForm.new(
-          disclosure_check: current_disclosure_check,
-          motoring_disqualification_end_date: current_disclosure_check.motoring_disqualification_end_date
-        )
+        @form_object = MotoringDisqualificationEndDateForm.build(current_disclosure_check)
       end
 
       def update
