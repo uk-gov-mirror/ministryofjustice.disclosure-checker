@@ -62,6 +62,24 @@ module GovukComponents
       end
     end
 
+    def check_box_fieldset(legend_key, attributes, options = {})
+      wrapper_classes = ['govuk-checkboxes']
+      wrapper_classes << 'govuk-checkboxes--small' if options[:small]
+
+      checks = content_tag(:div, nil, class: wrapper_classes) do
+        safe_join(check_box_inputs(attributes), "\n")
+      end
+
+      content_tag(:div, class: form_group_classes(legend_key)) do
+        content_tag(:fieldset, fieldset_options(legend_key, options)) do
+          concat fieldset_legend(legend_key, options) unless options[:no_legend]
+          concat hint(legend_key, options)
+          concat error(legend_key)
+          concat checks
+        end
+      end
+    end
+
     private
 
     def form_group_classes(attribute)
@@ -186,6 +204,17 @@ module GovukComponents
     end
     # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
 
+    def check_box_inputs(attributes)
+      attributes.map do |attribute|
+        input = check_box(attribute, class: 'govuk-checkboxes__input')
+        label = label(attribute, class: 'govuk-label govuk-checkboxes__label') { localized_label(attribute) }
+
+        content_tag :div, class: 'govuk-checkboxes__item' do
+          input + label + check_hint(attribute)
+        end
+      end
+    end
+
     def radio_inputs(attribute, options)
       choices = options[:choices] || [:yes, :no]
       choices.map do |choice|
@@ -212,6 +241,16 @@ module GovukComponents
       text = I18n.t("helpers.hint.radio_buttons.#{attribute}.#{value}")
       content_tag(:span, text, class: 'govuk-hint govuk-radios__hint', id: id_for("#{attribute}_#{value}", 'hint'))
     end
+
+    # :nocov:
+    # TODO: To be removed once a checkbox hint is used
+    def check_hint(attribute)
+      text = I18n.t("helpers.hint.check_boxes.#{attribute}", default: nil)
+      return unless text.present?
+
+      content_tag(:span, text, class: 'govuk-hint govuk-checkboxes__hint', id: id_for(attribute, 'hint'))
+    end
+    # :nocov:
 
     def hint(attribute, options)
       text = localized_text(
