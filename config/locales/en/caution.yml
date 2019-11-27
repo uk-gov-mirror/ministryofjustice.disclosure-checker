@@ -12,3 +12,8 @@ en:
       conditional_end_date:
         edit:
           page_title: End date of conditions
+          details:
+            title: My conditions have not ended
+            body_html: |
+              <p>You can enter a future date if you know when your conditions will end.</p>
+              <p>The result you’re given at the end of the service will be correct as long as you stick to the conditions of your caution.</p>

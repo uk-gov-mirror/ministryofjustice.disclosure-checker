@@ -12,8 +12,7 @@
 
         <%= step_form @form_object do |f| %>
           <%= f.gov_uk_date_field :known_date, i18n_attribute: @form_object.conviction_subtype %>
-
-          <%= render partial: 'steps/shared/unknown_date_details', locals: { ga_label: 'conviction unknown date' } %>
+          <%= f.check_box_fieldset :approximate_known_date, [:approximate_known_date], { small: true, no_legend: true } %>
 
           <%= f.continue_button %>
         <% end %>
