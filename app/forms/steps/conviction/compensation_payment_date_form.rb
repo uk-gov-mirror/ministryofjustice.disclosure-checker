@@ -4,6 +4,7 @@ module Steps
       include GovUkDateFields::ActsAsGovUkDate
 
       attribute :compensation_payment_date, Date
+      attribute :approximate_compensation_payment_date, Boolean
 
       acts_as_gov_uk_date :compensation_payment_date, error_clash_behaviour: :omit_gov_uk_date_field_error
 
@@ -16,7 +17,8 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          compensation_payment_date: compensation_payment_date
+          compensation_payment_date: compensation_payment_date,
+          approximate_compensation_payment_date: approximate_compensation_payment_date
         )
       end
     end

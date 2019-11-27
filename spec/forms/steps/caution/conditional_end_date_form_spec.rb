@@ -1,16 +1,13 @@
 require 'spec_helper'
 
 RSpec.describe Steps::Caution::ConditionalEndDateForm do
-  it_behaves_like 'a date question form', attribute_name: :conditional_end_date, allow_future: true do |variable|
+  it_behaves_like 'a date question form', attribute_name: :conditional_end_date, allow_future: true do
     before do
       allow(subject).to receive(:after_caution_date?).and_return(true)
     end
   end
 
-
   context '#after_caution_date? validation' do
-
-
     let(:disclosure_check) { instance_double(DisclosureCheck, known_date: known_date) }
     let(:known_date) { Date.today }
     let(:conditional_end_date) { nil }

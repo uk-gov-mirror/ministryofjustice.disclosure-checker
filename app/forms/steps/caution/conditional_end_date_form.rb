@@ -4,6 +4,7 @@ module Steps
       include GovUkDateFields::ActsAsGovUkDate
 
       attribute :conditional_end_date, Date
+      attribute :approximate_conditional_end_date, Boolean
 
       acts_as_gov_uk_date :conditional_end_date, error_clash_behaviour: :omit_gov_uk_date_field_error
 
@@ -17,7 +18,8 @@ module Steps
         raise DisclosureCheckNotFound unless disclosure_check
 
         disclosure_check.update(
-          conditional_end_date: conditional_end_date
+          conditional_end_date: conditional_end_date,
+          approximate_conditional_end_date: approximate_conditional_end_date
         )
       end
 
