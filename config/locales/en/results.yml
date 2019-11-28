@@ -101,6 +101,10 @@ en:
     no_record:
       title_html: This fixed penalty notice (FPN) was not a conviction
 
+  results/shared/date_format:
+    exact: '%{date}'
+    approximate: '%{date} (approximate)'
+
   results/caution:
     known_date:
       question: Date caution was given
@@ -145,4 +149,3 @@ en:
       question: End date
     motoring_lifetime_ban:
       question: Motoring lifetime ban
-

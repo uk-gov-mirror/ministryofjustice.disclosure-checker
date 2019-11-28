@@ -60,6 +60,18 @@ RSpec.describe CautionResultPresenter do
         expect(summary[3].answer).to eq('25 December 2018')
       end
     end
+
+    context 'when there are approximate dates' do
+      let(:disclosure_check) { build(:disclosure_check, :youth_conditional_caution, approximate_known_date: true) }
+
+      it 'formats the date to indicate it is approximate' do
+        expect(summary[2].question).to eql(:known_date)
+        expect(summary[2].answer).to eq('31 October 2018 (approximate)')
+
+        expect(summary[3].question).to eql(:conditional_end_date)
+        expect(summary[3].answer).to eq('25 December 2018')
+      end
+    end
   end
 
   describe '#expiry_date' do

@@ -21,7 +21,7 @@ class ResultsPresenter
     question_attributes.map do |item, value|
       QuestionAnswerRow.new(
         item,
-        value || disclosure_check[item],
+        value || format_value(item),
         scope: to_partial_path
       )
     end.select(&:show?)
@@ -51,6 +51,19 @@ class ResultsPresenter
   def result_service
     @_result_service ||= CheckResult.new(
       disclosure_check: disclosure_check
+    )
+  end
+
+  def format_value(attr)
+    value = disclosure_check[attr]
+    return value unless value.is_a?(Date)
+
+    approx_attr = ['approximate', attr].join('_').to_sym
+    format_type = disclosure_check[approx_attr].present? ? 'approximate' : 'exact'
+
+    I18n.translate!(
+      format_type, date: I18n.l(value),
+      scope: 'results/shared/date_format'
     )
   end
 

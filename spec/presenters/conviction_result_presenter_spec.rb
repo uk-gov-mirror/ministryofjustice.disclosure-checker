@@ -85,6 +85,18 @@ RSpec.describe ConvictionResultPresenter do
       end
     end
 
+    context 'when there are approximate dates' do
+      let(:disclosure_check) { build(:disclosure_check, :compensation, approximate_compensation_payment_date: true) }
+
+      it 'formats the date to indicate it is approximate' do
+        expect(summary[2].question).to eql(:known_date)
+        expect(summary[2].answer).to eq('31 October 2018')
+
+        expect(summary[3].question).to eql(:compensation_payment_date)
+        expect(summary[3].answer).to eq('31 October 2019 (approximate)')
+      end
+    end
+
     context 'when there is time on bail' do
       let(:disclosure_check) { build(:disclosure_check, :dto_conviction, conviction_bail_days: 15) }
 
