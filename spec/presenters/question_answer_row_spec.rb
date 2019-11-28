@@ -13,14 +13,7 @@ RSpec.describe QuestionAnswerRow do
   end
 
   describe '#answer' do
-    context 'for a date answer' do
-      let(:answer) { Date.new(2018, 10, 31) }
-      it { expect(subject.answer).to eq('31 October 2018') }
-    end
-
-    context 'for an answer of other type' do
-      it { expect(subject.answer).to eq('answer') }
-    end
+    it { expect(subject.answer).to eq('answer') }
   end
 
   describe '#show?' do
