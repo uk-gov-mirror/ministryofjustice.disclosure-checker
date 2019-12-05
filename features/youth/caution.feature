@@ -20,7 +20,7 @@ Feature: Caution
     Then I should see "When did the conditions end?"
     When I enter a valid date
 
-    Then I should see "Your caution was spent on 1 January 1999"
+    Then I should see "This caution was spent on 1 January 1999"
 
   @happy_path
   Scenario: Caution happy path - under 18, simple caution
@@ -35,4 +35,4 @@ Feature: Caution
     Then I should see "When did you get the caution?"
     When I enter a valid date
 
-    Then I should see "Your caution was spent on 1 January 1999"
+    Then I should see "This caution was spent on 1 January 1999"
