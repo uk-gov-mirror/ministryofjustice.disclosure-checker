@@ -2,17 +2,17 @@
 en:
   dictionary:
     court_sentence_hint_text: &court_sentence_hint_text |
-      This is usually the day you were sentenced in court.
+      This is usually the day you were sentenced in court. If you do not know the exact date, you can enter an approximate one.
       <span class='nowrap'>For example, 23 9 2018</span>
     court_conviction_hint_text: &court_conviction_hint_text |
-      This is usually the day you were convicted in court.
+      This is usually the day you were convicted in court. If you do not know the exact date, you can enter an approximate one.
       <span class='nowrap'>For example, 23 9 2018</span>
     order_started_hint_text: &order_started_hint_text |
-      Enter the date your sentence or order started. This might be the day you were sentenced in court or the first day you were held on remand.
-      <span class='nowrap'>For example, 23 9 2018</span>
+      Enter the date your sentence or order started. This might be the day you were sentenced in court or the first day you were held on remand. If you do not know the exact date, you can enter an approximate one.
+      <p>For example, 23 9 2018</p>
 
-    approximate_date_checkbox: &approximate_date_checkbox "I’ve entered an approximate date"
-    approximate_date_hint: &approximate_date_hint "If you enter an approximate date you will not be given an exact spent date"
+    approximate_date_checkbox: &approximate_date_checkbox "This is not the exact date"
+    approximate_date_hint: &approximate_date_hint ""
 
     DATE_PARTS: &DATE_PARTS
       day: Day
@@ -185,20 +185,20 @@ en:
 
     hint:
       steps_caution_known_date_form:
-        known_date: For example, 23 9 2018
+        known_date_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         approximate_known_date: *approximate_date_hint
       steps_check_under_age_form:
         caution: Select your age when you got the caution, not when you committed the offence
         conviction: Select your age when you got convicted, not when you committed the offence
       steps_caution_conditional_end_date_form:
-        conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. <span class='nowrap'>For example, 23 9 2018</span>"
+        conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>"
         approximate_conditional_end_date: *approximate_date_hint
       steps_conviction_known_date_form:
         approximate_known_date: *approximate_date_hint
         # default key
         known_date_html: *court_sentence_hint_text
         # alternative keys defined with `i18_attribute`
-        referral_order_html: Enter the date of your first youth offender panel meeting. <span class='nowrap'>For example, 23 9 2018</span>
+        referral_order_html: Enter the date of your first youth offender panel meeting. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         bind_over_html: *court_conviction_hint_text
         absolute_discharge_html: *court_conviction_hint_text
         conditional_discharge_html: *court_conviction_hint_text
@@ -209,14 +209,14 @@ en:
         detention_html: *order_started_hint_text
         adult_prison_sentence_html: *order_started_hint_text
         adult_suspended_prison_sentence_html: *order_started_hint_text
-        adult_disqualification: For example, 23 9 2018
+        adult_disqualification_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
       steps_conviction_compensation_payment_date_form:
-        compensation_payment_date_html: If you paid the compensation in stages, enter the date you made the final payment. <span class='nowrap'>For example, 23 9 2018</span>
+        compensation_payment_date_html: If you paid the compensation in stages, enter the date you made the final payment. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         approximate_compensation_payment_date: *approximate_date_hint
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: An endorsement means that your conviction is recorded on your driving licence. Endorsements are usually given by courts.
       steps_conviction_motoring_disqualification_end_date_form:
-        motoring_disqualification_end_date_html: <span class='nowrap'>For example, 23 9 2018</span><p>Leave this blank if your ban had no end date.</p>
+        motoring_disqualification_end_date_html: If you do not know the exact date, you can enter an approximate one. Leave this blank if your ban had no end date. <span class='nowrap'>For example, 23 9 2018</span>
         approximate_motoring_disqualification_end_date: *approximate_date_hint
       steps_conviction_conviction_bail_form:
         conviction_bail: Time spent on bail with an electronic tag affects the spent date of your conviction. Time spent on bail without a tag does not.
