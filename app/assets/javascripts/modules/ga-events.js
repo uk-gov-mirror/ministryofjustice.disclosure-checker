@@ -3,6 +3,7 @@
 moj.Modules.gaEvents = {
     radioFormClass: '.govuk-radios__item input[type="radio"]',
     dateFormClass: '.govuk-date-input input[type="text"]',
+    checkboxClass:  '.govuk-checkboxes__item input[type="checkbox"]',
     linkClass: '.ga-pageLink',
     revealingLinkClass: '.govuk-details__summary span.govuk-details__summary-text',
 
@@ -16,6 +17,9 @@ moj.Modules.gaEvents = {
             }
             if ($(self.dateFormClass).length) {
                 self.trackDateForms();
+            }
+            if ($(self.checkboxClass).length) {
+                self.trackCheckboxes();
             }
             if ($(self.linkClass).length) {
                 self.trackLinks();
@@ -94,6 +98,42 @@ moj.Modules.gaEvents = {
         });
     },
 
+    trackCheckboxes: function () {
+        var self = this,
+            $form = $(self.checkboxClass).closest('form');
+
+        // submitting forms containing a GA tracked checkbox is intercepted[1]
+        // until the GA event has been send, by sending target to make a
+        // callback[2], unless no GA checkboxes in the form are checked, in which
+        // case unbind and submit the form directly[3]
+        $form.on('submit', function (e) {
+            var eventDataArray,
+                options;
+
+            e.preventDefault(); // [1]
+
+            eventDataArray = self.getCheckboxFormData($form);
+
+            if (eventDataArray.length) {
+                // there could be multiple GA checkboxes that are checked and need a
+                // GA event firing, but we only want to submit the form after sending
+                // the last one
+                eventDataArray.forEach(function (eventData, n) {
+                    if (n === eventDataArray.length - 1) {
+                        options = {
+                            actionType: 'form',
+                            actionValue: $form // [2]
+                        };
+                    }
+
+                    self.sendAnalyticsEvent(eventData, options);
+                });
+            } else {
+                $form.unbind('submit').trigger('submit'); // [3]
+            }
+        });
+    },
+
     trackLinks: function () {
         var self = this,
             $links = $(self.linkClass);
@@ -145,9 +185,10 @@ moj.Modules.gaEvents = {
         $("a[rel^=external]").on('click', function(e) {
             var $el = this,
                 url = $el.href,
+                target = $el.target || '_self',
                 event_url = url.replace($el.search, '');
 
-            window.open(url, '_blank');
+            window.open(url, target);
             ga('send', 'event', 'outbound', 'click', event_url, {});
 
             e.preventDefault();
@@ -205,6 +246,27 @@ moj.Modules.gaEvents = {
             if ($year.val()) {
                 eventDataArray.push(eventData);
             }
+        });
+
+        return eventDataArray;
+    },
+
+    getCheckboxFormData: function ($form) {
+        var checkedCheckboxes = $form.find('input[type="checkbox"]:checked'),
+            eventDataArray = [];
+
+        checkedCheckboxes.each(function (n, checkbox) {
+            var $checkbox = $(checkbox),
+                eventData;
+
+            eventData = {
+                hitType: 'event',
+                eventCategory: $checkbox.attr('name'),
+                eventAction: 'checkbox',
+                eventLabel: $checkbox.data('ga-label')
+            };
+
+            eventDataArray.push(eventData);
         });
 
         return eventDataArray;
