@@ -13,9 +13,9 @@ RSpec.describe PilotController, type: :controller do
   describe '#show' do
     let(:expected_params) { { id: reference } }
 
-    it 'responds with HTTP success' do
+    it 'redirects to the home page' do
       get :show, params: expected_params
-      expect(response).to be_successful
+      expect(response).to redirect_to(root_url)
     end
 
     it 'increments the access counter' do

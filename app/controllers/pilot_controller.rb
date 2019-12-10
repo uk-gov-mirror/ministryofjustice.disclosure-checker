@@ -3,7 +3,11 @@ class PilotController < ApplicationController
   before_action :validate_reference,
                 :increment_access_count
 
-  def show; end
+  # We maintain this controller/url as some users still access through it.
+  # But we do not show a landing page anymore, we just redirect to the home.
+  def show
+    redirect_to root_url
+  end
 
   private
 
