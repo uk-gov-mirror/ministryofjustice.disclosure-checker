@@ -12,7 +12,10 @@
 
         <%= step_form @form_object do |f| %>
           <%= f.gov_uk_date_field :motoring_disqualification_end_date %>
-          <%= f.check_box_fieldset :approximate_motoring_disqualification_end_date, [:approximate_motoring_disqualification_end_date], { small: true, no_legend: true } %>
+
+          <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
+            form: f, attribute: :approximate_motoring_disqualification_end_date
+          } %>
 
           <%= f.continue_button %>
         <% end %>
