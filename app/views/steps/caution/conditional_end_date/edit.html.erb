@@ -11,7 +11,10 @@
 
         <%= step_form @form_object do |f| %>
           <%= f.gov_uk_date_field :conditional_end_date %>
-          <%= f.check_box_fieldset :approximate_conditional_end_date, [:approximate_conditional_end_date], { small: true, no_legend: true } %>
+
+          <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
+            form: f, attribute: :approximate_conditional_end_date
+          } %>
 
           <details class="govuk-details" data-module="govuk-details">
             <summary class="govuk-details__summary">
