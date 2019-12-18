@@ -3,7 +3,7 @@ Feature: Conviction
   @happy_path
   Scenario Outline: Military convictions with length
     Given I am completing a basic under 18 "Military" conviction
-    Then I should see "What type of order were you given?"
+    Then I should see "What was your military conviction?"
 
     When I choose "<subtype>"
     Then I should see "<known_date_header>"
@@ -26,7 +26,7 @@ Feature: Conviction
   @happy_path
   Scenario Outline: Military convictions without length
     Given I am completing a basic under 18 "Military" conviction
-    Then I should see "What type of order were you given?"
+    Then I should see "What was your military conviction?"
 
     When I choose "<subtype>"
     Then I should see "<known_date_header>"
