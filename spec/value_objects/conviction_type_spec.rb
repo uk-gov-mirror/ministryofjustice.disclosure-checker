@@ -12,6 +12,7 @@ RSpec.describe ConvictionType do
         custodial_sentence
         discharge
         financial
+        military
         prevention_reparation
       ))
     end
