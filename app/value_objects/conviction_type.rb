@@ -19,6 +19,7 @@ class ConvictionType < ValueObject
       CUSTODIAL_SENTENCE    = new(:custodial_sentence),
       DISCHARGE             = new(:discharge),
       FINANCIAL             = new(:financial),
+      MILITARY              = new(:military),
       PREVENTION_REPARATION = new(:prevention_reparation),
     ].freeze,
 
@@ -34,9 +35,7 @@ class ConvictionType < ValueObject
     # Quick way of enabling/disabling convictions. These will not show in the interface to users.
     # If there are cucumber test, tag the affected scenarios with `@skip`.
     #
-    DISABLED_PARENT_TYPES = [
-      MILITARY = new(:military),
-    ].freeze,
+    DISABLED_PARENT_TYPES = [].freeze,
 
     #####################
     # Youth convictions #
