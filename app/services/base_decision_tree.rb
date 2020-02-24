@@ -5,7 +5,7 @@ class BaseDecisionTree
 
   attr_reader :disclosure_check, :record, :step_params, :as, :next_step
 
-  # rubocop:disable Naming/UncommunicativeMethodParamName
+  # rubocop:disable Naming/MethodParameterName
   def initialize(disclosure_check:, record: nil, step_params: {}, as: nil, next_step: nil)
     @disclosure_check = disclosure_check
     @record = record
@@ -13,7 +13,7 @@ class BaseDecisionTree
     @as = as
     @next_step = next_step
   end
-  # rubocop:enable Naming/UncommunicativeMethodParamName
+  # rubocop:enable Naming/MethodParameterName
 
   private
 
