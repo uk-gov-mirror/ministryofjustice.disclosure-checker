@@ -1,19 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.3'
+ruby '2.6.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 gem 'govuk_elements_form_builder', '~> 1.3.1'
 gem 'gov_uk_date_fields', '~> 4.1.0'
 gem 'jquery-rails'
-gem 'pg', '~> 1.1.0'
+gem 'pg', '~> 1.1'
 gem 'puma'
 gem 'rails', '~> 5.2.4'
 gem 'responders'
 gem 'sass-rails', '< 6.0.0'
-gem 'sentry-raven'
+gem 'sentry-raven', '~> 2.0'
 gem 'uglifier'
 gem 'virtus'
 
