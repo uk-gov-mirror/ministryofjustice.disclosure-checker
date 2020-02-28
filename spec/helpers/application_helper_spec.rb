@@ -125,12 +125,12 @@ RSpec.describe ApplicationHelper, type: :helper do
 
     context 'for a blank value' do
       let(:value) { '' }
-      it { expect(title).to eq('Check when a caution or conviction is spent - GOV.UK') }
+      it { expect(title).to eq('Check when to disclose cautions or convictions - GOV.UK') }
     end
 
     context 'for a provided value' do
       let(:value) { 'Test page' }
-      it { expect(title).to eq('Test page - Check when a caution or conviction is spent - GOV.UK') }
+      it { expect(title).to eq('Test page - Check when to disclose cautions or convictions - GOV.UK') }
     end
   end
 

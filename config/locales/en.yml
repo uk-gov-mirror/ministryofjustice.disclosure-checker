@@ -1,6 +1,6 @@
 en:
   service:
-    name: Check when a caution or conviction is spent
+    name: Check when to disclose cautions or convictions
 
   date:
     formats:
