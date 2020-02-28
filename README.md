@@ -1,4 +1,4 @@
-# Check when a caution or conviction is spent (MVP)
+# Check when to disclose cautions or convictions
 
 [![CircleCI](https://circleci.com/gh/ministryofjustice/disclosure-checker.svg?style=svg)](https://circleci.com/gh/ministryofjustice/disclosure-checker)
 
