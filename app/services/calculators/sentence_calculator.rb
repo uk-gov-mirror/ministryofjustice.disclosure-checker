@@ -1,7 +1,7 @@
 module Calculators
   class SentenceCalculator < BaseCalculator
     NEVER_SPENT_THRESHOLD = 48
-    BAIL_OFFSET = -0.5 # half a day
+    BAIL_OFFSET = -1.0
 
     # If conviction length is 6 months or less: start date + length + 18 months
     # If conviction length is over 6 months and less than or equal to 30 months: start date + length + 2 years
@@ -91,8 +91,8 @@ module Calculators
       )
     end
 
-    # Each full day spent on bail with a tag offsets half a day from the sentence length
-    # Attribute can be blank or nil, but `#to_i` makes it safe.
+    # Each full day spent on bail with a tag offsets the value of `BAIL_OFFSET` from
+    # the sentence length. Attribute can be blank or nil, but `#to_i` makes it safe.
     #
     def bail_offset_days
       disclosure_check.conviction_bail_days.to_i * BAIL_OFFSET
