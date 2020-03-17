@@ -73,8 +73,8 @@ RSpec.describe Calculators::SentenceCalculator do
 
         context 'conviction length of 6 months or less' do
           let(:conviction_months) { 5 }
-          let(:bail_days) { 20 } # equals to 10 days less in the spent date
-          it { expect(subject.expiry_date.to_s).to eq('2018-09-09') }
+          let(:bail_days) { 20 } # equals to 20 days less in the spent date
+          it { expect(subject.expiry_date.to_s).to eq('2018-08-27') }
         end
       end
     end
