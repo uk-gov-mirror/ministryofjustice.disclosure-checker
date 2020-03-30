@@ -176,6 +176,8 @@ en:
         compensation_payment_over_100: Was the compensation order amount over £100?
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: When did you pay the compensation in full?
+      steps_conviction_compensation_payment_receipt_form:
+          compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: Did you get an endorsement?
       steps_conviction_motoring_disqualification_end_date_form:
@@ -215,6 +217,8 @@ en:
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date_html: If you paid the compensation in stages, enter the date you made the final payment. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         approximate_compensation_payment_date: *approximate_date_hint
+      steps_conviction_compensation_payment_receipt_form:
+        compensation_receipt_sent: You must send the compensation payment receipt to the Disclosure and Barring service for the convition to be spent.
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: An endorsement means that your conviction is recorded on your driving licence. Endorsements are usually given by courts.
       steps_conviction_motoring_disqualification_end_date_form:
