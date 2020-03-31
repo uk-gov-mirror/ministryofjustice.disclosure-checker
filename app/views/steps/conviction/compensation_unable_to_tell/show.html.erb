@@ -1,0 +1,20 @@
+<% title t('.page_title') %>
+
+<div class="govuk-width-container">
+  <%= step_header %>
+
+  <main class="govuk-main-wrapper">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-xl"><%=t '.heading' %></h1>
+
+        <p class="govuk-body"><%=t '.paragraph1' %></p>
+        <p class="govuk-body"><%=t '.paragraph2' %></p>
+
+        <%= link_button :start_again, root_path(new: 'y') %>
+      </div>
+    </div>
+
+  </main>
+</div>

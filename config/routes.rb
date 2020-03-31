@@ -63,6 +63,7 @@ Rails.application.routes.draw do
       edit_step :compensation_payment_date
       edit_step :compensation_payment_receipt
       show_step :compensation_not_paid
+      show_step :compensation_unable_to_tell
       edit_step :motoring_endorsement
       edit_step :motoring_disqualification_end_date
       edit_step :motoring_lifetime_ban
