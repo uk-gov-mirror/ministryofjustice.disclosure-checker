@@ -84,6 +84,10 @@ en:
         inclusion: Select caution type
       compensation_paid:
         inclusion: Select yes or no
+      compensation_payment_over_100:
+        inclusion: Select yes or no
+      compensation_receipt_sent:
+        inclusion: Select yes or no
 
     check_completed:
       page_title: Check completed
