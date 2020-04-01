@@ -3,6 +3,7 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   # rubocop:disable Metrics/CyclomaticComplexity
   # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def destination
     return next_step if next_step
 
@@ -23,14 +24,21 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_conviction_length_type
     when :compensation_paid
       after_compensation_paid
+    when :compensation_payment_over_100
+      edit(:compensation_payment_date)
     when :motoring_lifetime_ban
       after_motoring_lifetime_ban
-    when :conviction_length, :compensation_payment_date, :motoring_disqualification_end_date
+    when :compensation_payment_date
+      after_compensation_payment_date
+    when :compensation_receipt_sent
+      after_compensation_receipt_sent
+    when :conviction_length, :motoring_disqualification_end_date
       results
     else
       raise InvalidStep, "Invalid step '#{as || step_params}'"
     end
   end
+  # rubocop:enable Metrics/AbcSize
   # rubocop:enable Metrics/MethodLength
   # rubocop:enable Metrics/CyclomaticComplexity
 
@@ -76,9 +84,21 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_compensation_paid
-    return edit(:compensation_payment_date) if GenericYesNo.new(disclosure_check.compensation_paid).yes?
+    return edit(:compensation_paid_amount) if GenericYesNo.new(disclosure_check.compensation_paid).yes?
 
     show(:compensation_not_paid)
+  end
+
+  def after_compensation_payment_date
+    return edit(:compensation_payment_receipt) if GenericYesNo.new(disclosure_check.compensation_payment_over_100).yes?
+
+    results
+  end
+
+  def after_compensation_receipt_sent
+    return show(:compensation_unable_to_tell) if GenericYesNo.new(disclosure_check.compensation_receipt_sent).no?
+
+    results
   end
 
   def after_motoring_endorsement
