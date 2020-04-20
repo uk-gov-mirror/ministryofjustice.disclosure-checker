@@ -61,7 +61,6 @@ When(/^I am completing a basic under 18 "([^"]*)" conviction$/) do |value|
 end
 
 When(/^I am completing a basic 18 or over "([^"]*)" conviction$/) do |value|
-  step %[I visit "/enable_motoring"]
   step %[I visit "/"]
   step %[I click the "Start now" link]
   step %[I should see "Were you cautioned or convicted?"]

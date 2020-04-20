@@ -8,8 +8,8 @@ class ConvictionDecisionTree < BaseDecisionTree
     return next_step if next_step
 
     case step_name
-    when :conviction_type, :bypass_motoring_conviction_type
-      after_conviction_type
+    when :conviction_type
+      edit(:conviction_subtype)
     when :conviction_subtype, :bypass_bail_conviction_subtype
       after_conviction_subtype
     when :motoring_endorsement
@@ -43,12 +43,6 @@ class ConvictionDecisionTree < BaseDecisionTree
   # rubocop:enable Metrics/CyclomaticComplexity
 
   private
-
-  def after_conviction_type
-    return show(:exit_motoring) if conviction_type.inquiry.adult_motoring? && step_name.eql?(:bypass_motoring_conviction_type)
-
-    edit(:conviction_subtype)
-  end
 
   def after_conviction_subtype
     return edit(:conviction_bail)   if conviction_subtype.bailable_offense? && !step_name.eql?(:bypass_bail_conviction_subtype)

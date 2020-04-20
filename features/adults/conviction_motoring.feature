@@ -1,15 +1,17 @@
 Feature: Conviction
 
   @happy_path
-  Scenario Outline: Lifetime Motoring convictions
+  Scenario: Lifetime Motoring convictions
     Given I am completing a basic 18 or over "Motoring" conviction
     Then I should see "What was your motoring conviction?"
 
     When I choose "Disqualification"
-    Then I should see "Were you given a lifetime ban?"
 
+    Then I should see "Were you given a lifetime ban?"
     And I choose "Yes"
-    Then I should be on "<result>"
+
+    Then I should be on "/steps/check/results"
+    And I should see "This conviction will never be spent"
 
   @happy_path
   Scenario Outline: Motoring convictions
@@ -56,12 +58,14 @@ Feature: Conviction
       | Penalty points             | When were you given the penalty points?  | /steps/check/results |
 
   @happy_path
-  Scenario Outline: Fixed Penalty notice (FPN) convictions without endorsement
+  Scenario: Fixed Penalty notice (FPN) convictions without endorsement
     Given I am completing a basic 18 or over "Motoring" conviction
     Then I should see "What was your motoring conviction?"
 
     When I choose "Fixed Penalty notice (FPN)"
-    Then I should see "Did you get an endorsement?"
 
-    And I choose "NO"
-    Then I should be on "<result>"
+    Then I should see "Did you get an endorsement?"
+    And I choose "No"
+
+    Then I should be on "/steps/check/results"
+    And I should see "This fixed penalty notice (FPN) was not a conviction"
