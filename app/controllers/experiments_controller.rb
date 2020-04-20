@@ -2,16 +2,6 @@ class ExperimentsController < ApplicationController
   before_action :check_permissions, :reset_disclosure_check_session
 
   # :nocov:
-  def enable_motoring
-    cookies.permanent[:motoring_enabled] = 1
-    redirect_to root_path
-  end
-
-  def disable_motoring
-    cookies.delete :motoring_enabled
-    redirect_to root_path
-  end
-
   def enable_multiples
     cookies.permanent[:multiples_enabled] = 1
     redirect_to root_path

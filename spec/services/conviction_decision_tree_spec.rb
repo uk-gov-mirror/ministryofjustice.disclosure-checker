@@ -210,12 +210,6 @@ RSpec.describe ConvictionDecisionTree do
     end
   end
 
-  context 'When the step is bypass_motoring' do
-    let(:conviction_type) { 'adult_motoring' }
-    let(:step_params) { { bypass_motoring_conviction_type: conviction_type } }
-    it { is_expected.to have_destination(:exit_motoring, :show) }
-  end
-
   context 'when the step is `conviction_bail`' do
     let(:step_params) { { conviction_bail: answer } }
 
