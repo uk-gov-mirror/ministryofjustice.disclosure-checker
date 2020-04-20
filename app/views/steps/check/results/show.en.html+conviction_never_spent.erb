@@ -31,6 +31,8 @@
             record check</a>.
         </p>
 
+        <%= render partial: 'steps/check/results/shared/motoring' if @presenter.conviction_type.motoring? %>
+
         <%= render partial: 'steps/check/results/shared/summary', locals: { result: @presenter } %>
 
         <%= render partial: 'steps/check/results/shared/disclaimer' %>
