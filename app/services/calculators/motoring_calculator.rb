@@ -17,7 +17,8 @@ module Calculators
     #  - End date
     class Disqualification < MotoringCalculator
       FIVE_YEARS_ADDED_TIME = { months: 60 }.freeze
-      TWO_YEARS_ADDED_TIME  = { months: 24 }.freeze
+      TWO_AND_HALF_YEARS_ADDED_TIME = { months: 30 }.freeze
+      TWO_YEARS_ADDED_TIME = { months: 24 }.freeze
 
       def expiry_date
         return :never_spent if GenericYesNo.new(disclosure_check.motoring_lifetime_ban).yes?
@@ -29,7 +30,8 @@ module Calculators
       private
 
       def spent_time
-        return conviction_start_date.advance(FIVE_YEARS_ADDED_TIME) if motoring_endorsement? && distance_in_months(conviction_start_date, motoring_disqualification_end_date) <= ENDORSEMENT_THRESHOLD
+        return conviction_start_date.advance(TWO_AND_HALF_YEARS_ADDED_TIME) if (under_age? && motoring_endorsement?) && within_endorsement_threshold?
+        return conviction_start_date.advance(FIVE_YEARS_ADDED_TIME) if motoring_endorsement? && within_endorsement_threshold?
 
         motoring_disqualification_end_date
       end
@@ -42,6 +44,10 @@ module Calculators
 
       def motoring_disqualification_end_date
         @motoring_disqualification_end_date ||= disclosure_check.motoring_disqualification_end_date
+      end
+
+      def within_endorsement_threshold?
+        distance_in_months(conviction_start_date, motoring_disqualification_end_date) <= ENDORSEMENT_THRESHOLD
       end
     end
 
@@ -64,9 +70,20 @@ module Calculators
     # start_date + 5 years
     # If an endorsement was not received
     # start_date + 1 year
+    # If under age start_date + 6 months
     class MotoringFine < MotoringCalculator
       REHABILITATION_1 = { months: 60 }.freeze
       REHABILITATION_2 = { months: 12 }.freeze
+      UNDER_AGE_REHABILITATION_1 = { months: 30 }.freeze
+      UNDER_AGE_REHABILITATION_2 = { months: 6 }.freeze
+
+      def expiry_date
+        return conviction_start_date.advance(self.class::REHABILITATION_1) if motoring_endorsement? && !under_age?
+        return conviction_start_date.advance(self.class::UNDER_AGE_REHABILITATION_1) if motoring_endorsement? && under_age?
+        return conviction_start_date.advance(self.class::UNDER_AGE_REHABILITATION_2) if under_age?
+
+        conviction_start_date.advance(self.class::REHABILITATION_2)
+      end
     end
 
     # If an endorsement was received:
@@ -79,9 +96,13 @@ module Calculators
     end
 
     def expiry_date
-      return conviction_start_date.advance(self.class::REHABILITATION_1) if motoring_endorsement?
+      return conviction_start_date.advance(self.class::REHABILITATION_1) if motoring_endorsement? && !under_age?
 
       conviction_start_date.advance(self.class::REHABILITATION_2)
+    end
+
+    def under_age?
+      GenericYesNo.new(disclosure_check.under_age).yes?
     end
 
     def motoring_endorsement?

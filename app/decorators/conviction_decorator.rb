@@ -14,7 +14,8 @@ module ConvictionDecorator
   end
 
   def motoring?
-    ConvictionType::ADULT_MOTORING.eql?(self)
+    ConvictionType::YOUTH_MOTORING.eql?(self) ||
+      ConvictionType::ADULT_MOTORING.eql?(self)
   end
 
   def bailable_offense?

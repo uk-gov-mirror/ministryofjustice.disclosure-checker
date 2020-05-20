@@ -47,13 +47,13 @@ class ConvictionDecisionTree < BaseDecisionTree
   def after_conviction_subtype
     return edit(:conviction_bail)   if conviction_subtype.bailable_offense? && !step_name.eql?(:bypass_bail_conviction_subtype)
     return edit(:compensation_paid) if conviction_subtype.compensation?
-    return after_adult_motoring     if conviction_subtype.parent.inquiry.adult_motoring?
+    return after_adult_motoring     if conviction_subtype.parent.inquiry.adult_motoring? || conviction_subtype.parent.inquiry.youth_motoring?
 
     known_date_question
   end
 
   def after_adult_motoring
-    return edit(:motoring_lifetime_ban) if conviction_subtype.inquiry.adult_disqualification?
+    return edit(:motoring_lifetime_ban) if conviction_subtype.inquiry.adult_disqualification? || conviction_subtype.inquiry.youth_disqualification?
 
     edit(:motoring_endorsement)
   end
@@ -66,7 +66,7 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   def after_known_date
     return results if conviction_subtype.skip_length?
-    return edit(:motoring_disqualification_end_date) if conviction_subtype.inquiry.adult_disqualification?
+    return edit(:motoring_disqualification_end_date) if conviction_subtype.inquiry.adult_disqualification? || conviction_subtype.inquiry.youth_disqualification?
 
     edit(:conviction_length_type)
   end
@@ -108,7 +108,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def penalty_notice_without_endorsement?
-    conviction_subtype.inquiry.adult_penalty_notice? && GenericYesNo.new(disclosure_check.motoring_endorsement).no?
+    (conviction_subtype.inquiry.adult_penalty_notice? || conviction_subtype.inquiry.youth_penalty_notice?) && GenericYesNo.new(disclosure_check.motoring_endorsement).no?
   end
 
   def known_date_question
