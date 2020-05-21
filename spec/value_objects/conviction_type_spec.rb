@@ -14,6 +14,7 @@ RSpec.describe ConvictionType do
         financial
         military
         prevention_reparation
+        youth_motoring
       ))
     end
   end

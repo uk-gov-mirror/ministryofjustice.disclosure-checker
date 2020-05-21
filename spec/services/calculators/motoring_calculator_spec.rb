@@ -4,11 +4,13 @@ RSpec.describe Calculators::MotoringCalculator do
   subject { described_class.new(disclosure_check) }
 
   let(:disclosure_check) { build(:disclosure_check,
+                                 under_age: under_age,
                                  known_date: known_date,
                                  motoring_endorsement: motoring_endorsement,
                                  motoring_disqualification_end_date: motoring_disqualification_end_date,
                                  motoring_lifetime_ban: motoring_lifetime_ban) }
 
+  let(:under_age) { GenericYesNo::NO }
   let(:known_date) { Date.new(2018, 10, 31) }
   let(:motoring_endorsement) { GenericYesNo::NO }
   let(:motoring_disqualification_end_date) { Date.new(2020, 10, 31) }
@@ -28,6 +30,12 @@ RSpec.describe Calculators::MotoringCalculator do
             let(:motoring_endorsement) { GenericYesNo::YES }
             context 'less than or equal 5 years' do
               it { expect(subject.expiry_date.to_s).to eq('2023-10-31') }
+
+              context 'when under age' do
+                let(:under_age) { GenericYesNo::YES }
+
+                it { expect(subject.expiry_date.to_s).to eq((known_date + 30.months).to_s) }
+              end
             end
 
             context 'greater than 5 years' do
@@ -38,10 +46,16 @@ RSpec.describe Calculators::MotoringCalculator do
 
           context 'without a motoring endorsement ' do
             it { expect(subject.expiry_date.to_s).to eq(motoring_disqualification_end_date.to_s) }
+
+            context 'when under age' do
+              let(:under_age) { GenericYesNo::YES }
+
+              it { expect(subject.expiry_date.to_s).to eq(motoring_disqualification_end_date.to_s) }
+            end
           end
         end
 
-        context 'with a motoring_disqualification_end_date' do
+        context 'without a motoring_disqualification_end_date' do
           let(:motoring_disqualification_end_date) { nil }
           context 'with a motoring endorsement ' do
             let(:motoring_endorsement) { GenericYesNo::YES }
@@ -62,10 +76,22 @@ RSpec.describe Calculators::MotoringCalculator do
       context 'with a motoring endorsement ' do
         let(:motoring_endorsement) { GenericYesNo::YES }
         it { expect(subject.expiry_date.to_s).to eq('2023-10-31') }
+
+        context 'when under age' do
+          let(:under_age) { GenericYesNo::YES }
+
+          it { expect(subject.expiry_date.to_s).to eq((known_date + 30.months).to_s) }
+        end
       end
 
       context 'without a motoring endorsement ' do
         it { expect(subject.expiry_date.to_s).to eq('2019-10-31') }
+
+        context 'when under age' do
+          let(:under_age) { GenericYesNo::YES }
+
+          it { expect(subject.expiry_date.to_s).to eq((known_date + 6.months).to_s) }
+        end
       end
     end
   end
@@ -76,10 +102,22 @@ RSpec.describe Calculators::MotoringCalculator do
       context 'with a motoring endorsement ' do
         let(:motoring_endorsement) { GenericYesNo::YES }
         it { expect(subject.expiry_date.to_s).to eq('2023-10-31') }
+
+        context 'when under age' do
+          let(:under_age) { GenericYesNo::YES }
+
+          it { expect(subject.expiry_date.to_s).to eq((known_date + 36.months).to_s) }
+        end
       end
 
       context 'without a motoring endorsement ' do
         it { expect(subject.expiry_date.to_s).to eq('2021-10-31') }
+
+        context 'when under age' do
+          let(:under_age) { GenericYesNo::YES }
+
+          it { expect(subject.expiry_date.to_s).to eq((known_date + 36.months).to_s) }
+        end
       end
     end
   end

@@ -33,6 +33,7 @@ en:
       financial: Financial penalty
       military: Military
       prevention_reparation: Prevention or reparation order
+      youth_motoring: Motoring
       # adults
       adult_community_reparation: Community, prevention or reparation order
       adult_discharge: Discharge
@@ -88,6 +89,11 @@ en:
       adult_motoring_fine: Fine
       adult_penalty_notice: Fixed Penalty notice (FPN)
       adult_penalty_points: Penalty points
+      # adult_motoring
+      youth_disqualification: Disqualification
+      youth_motoring_fine: Fine
+      youth_penalty_notice: Fixed Penalty notice (FPN)
+      youth_penalty_points: Penalty points
       # adult_discharge
       adult_bind_over: Bind over
       adult_absolute_discharge: Absolute discharge
@@ -143,6 +149,10 @@ en:
         adult_motoring_fine: When were you given the fine?
         adult_penalty_notice: When was the endorsement given?
         adult_penalty_points: When were you given the penalty points?
+        youth_disqualification: When did the ban start?
+        youth_motoring_fine: When were you given the fine?
+        youth_penalty_notice: When was the endorsement given?
+        youth_penalty_points: When were you given the penalty points?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
@@ -156,6 +166,7 @@ en:
         military: What was your military conviction?
         adult_military: What was your military conviction?
         adult_motoring: What was your motoring conviction?
+        youth_motoring: What was your motoring conviction?
         adult_community_reparation: What was your community, prevention or reparation order?
         adult_discharge: What discharge were you given?
         adult_custodial_sentence: What sentence were you given?
@@ -214,6 +225,7 @@ en:
         adult_prison_sentence_html: *order_started_hint_text
         adult_suspended_prison_sentence_html: *order_started_hint_text
         adult_disqualification_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
+        youth_disqualification_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date_html: If you paid the compensation in stages, enter the date you made the final payment. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         approximate_compensation_payment_date: *approximate_date_hint
@@ -245,6 +257,7 @@ en:
           financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
           military: For example, a dismissal or service detention
           prevention_reparation: For example, a restraining order or sexual harm prevention order
+          youth_motoring: For example, penalty points or a driving ban
           # adults
           adult_community_reparation: For example, a sexual prevention order or a restraining order. You might have been asked to wear a tag as part of your order
           adult_discharge: For example, a conditional discharge order or bind over
@@ -299,6 +312,11 @@ en:
           adult_motoring_fine: A court gave you a fine that was not a fixed penalty notice (FPN)
           adult_penalty_notice: You were given a fine ‘on the spot’ or by post
           adult_penalty_points: You were given a number of penalty points for a driving offence
+          # youth motoring
+          youth_disqualification: You were banned from driving
+          youth_motoring_fine: A court gave you a fine that was not a fixed penalty notice (FPN)
+          youth_penalty_notice: You were given a fine ‘on the spot’ or by post
+          youth_penalty_points: You were given a number of penalty points for a driving offence
           # adult_discharge
           adult_bind_over: Your sentence was postponed as long as you kept to certain conditions
           adult_absolute_discharge: You were found guilty of a crime but did not get sentenced
