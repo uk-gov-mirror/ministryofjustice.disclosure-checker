@@ -99,7 +99,7 @@ module Calculators
     end
 
     def expiry_date
-      return conviction_start_date.advance(self.class::REHABILITATION_1) if motoring_endorsement? && !under_age?
+      return conviction_start_date.advance(self.class::REHABILITATION_1) if motoring_endorsement?
 
       conviction_start_date.advance(self.class::REHABILITATION_2)
     end
