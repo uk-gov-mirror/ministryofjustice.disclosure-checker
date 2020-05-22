@@ -433,29 +433,30 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'adult_disqualification' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::MotoringCalculator::Disqualification) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::Motoring::Adult::Disqualification) }
     end
 
     context 'ADULT_MOTORING_FINE' do
       let(:subtype) { 'adult_motoring_fine' }
 
       it { expect(conviction_type.skip_length?).to eq(true) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::MotoringCalculator::MotoringFine) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::Motoring::Adult::Fine) }
     end
 
     context 'ADULT_PENALTY_NOTICE' do
       let(:subtype) { 'adult_penalty_notice' }
 
       it { expect(conviction_type.skip_length?).to eq(true) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::MotoringCalculator::PenaltyNotice) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::Motoring::Adult::PenaltyNotice) }
     end
 
     context 'ADULT_PENALTY_POINTS' do
       let(:subtype) { 'adult_penalty_points' }
 
       it { expect(conviction_type.skip_length?).to eq(true) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::MotoringCalculator::PenaltyPoints) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::Motoring::Adult::PenaltyPoints) }
     end
+
 
     context 'ADULT_BIND_OVER' do
       let(:subtype) { 'adult_bind_over' }
