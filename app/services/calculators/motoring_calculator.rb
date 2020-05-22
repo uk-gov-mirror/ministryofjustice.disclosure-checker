@@ -58,8 +58,10 @@ module Calculators
     # Go to different result page: https://moj-disclosure-checker.herokuapp.com/motoring/v3/fpn-no-conviction
     class PenaltyNotice < MotoringCalculator
       REHABILITATION_1 = { months: 60 }.freeze
+      TWO_AND_HALF_YEARS_ADDED_TIME = { months: 30 }.freeze
 
       def expiry_date
+        return conviction_start_date.advance(TWO_AND_HALF_YEARS_ADDED_TIME) if (under_age? && motoring_endorsement?)
         return conviction_start_date.advance(REHABILITATION_1) if motoring_endorsement?
 
         :no_record
