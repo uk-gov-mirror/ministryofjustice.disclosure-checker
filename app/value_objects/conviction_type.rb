@@ -67,7 +67,7 @@ class ConvictionType < ValueObject
     SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     YOUTH_DISQUALIFICATION             = new(:youth_disqualification,           parent: YOUTH_MOTORING, calculator_class: Calculators::Motoring::Youth::Disqualification),
-    YOUTH_MOTORING_FINE                = new(:youth_motoring_fine,              parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::MotoringCalculator::MotoringFine),
+    YOUTH_MOTORING_FINE                = new(:youth_motoring_fine,              parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::Fine),
     YOUTH_PENALTY_NOTICE               = new(:youth_penalty_notice,             parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::PenaltyNotice),
     YOUTH_PENALTY_POINTS               = new(:youth_penalty_points,             parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::MotoringCalculator::PenaltyPoints),
 
