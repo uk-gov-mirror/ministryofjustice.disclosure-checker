@@ -55,6 +55,7 @@ Feature: Youth Conviction
       | Fine                       | No          | When were you given the fine?            | /steps/check/results | This conviction will be spent on 1 July 2020    |
       | Fixed Penalty notice (FPN) | Yes         | When was the endorsement given?          | /steps/check/results | This conviction will be spent on 1 July 2022    |
       | Penalty points             | Yes         | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |
+      | Penalty points             | No          | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |
 
   @happy_path
   Scenario: Fixed Penalty notice (FPN) convictions without endorsement
