@@ -44,7 +44,7 @@ module Calculators
         end
 
         def within_endorsement_threshold?
-          distance_in_months(conviction_start_date, motoring_disqualification_end_date) <= ENDORSEMENT_THRESHOLD
+          distance_in_months(conviction_start_date, motoring_disqualification_end_date) <= ADULT_ENDORSEMENT_THRESHOLD
         end
       end
     end
