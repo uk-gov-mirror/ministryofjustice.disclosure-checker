@@ -1,6 +1,7 @@
 module Calculators
   class MotoringCalculator < BaseCalculator
     ENDORSEMENT_THRESHOLD = 60
+    YOUTH_ENDORSEMENT_THRESHOLD = 30
 
     # If a lifetime ban was given:
     #  - never spent
