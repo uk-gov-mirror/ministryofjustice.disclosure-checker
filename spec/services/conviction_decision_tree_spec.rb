@@ -161,6 +161,20 @@ RSpec.describe ConvictionDecisionTree do
     end
   end
 
+  context 'when the step is `compensation_receipt_sent`' do
+    let(:step_params) { { compensation_receipt_sent: 'anything' } }
+
+    context 'and the receipt was sent' do
+      let(:compensation_receipt_sent) { GenericYesNo::YES }
+      it { is_expected.to complete_the_check_and_show_results }
+    end
+
+    context 'and the receipt was not sent' do
+      let(:compensation_receipt_sent) { GenericYesNo::NO }
+      it { is_expected.to have_destination(:compensation_unable_to_tell, :show) }
+    end
+  end
+
   context 'when the step is `motoring_disqualification_end_date`' do
     let(:step_params) { { motoring_disqualification_end_date: 'anything' } }
     it { is_expected.to complete_the_check_and_show_results }
