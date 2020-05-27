@@ -92,15 +92,4 @@ RSpec.describe BaseCalculator do
       expect(subject.sentence_length_in_months(25, 'years')).to eq 300
     end
   end
-
-  context '#sentence_distance_in_months when using a bail offset' do
-    it { expect(subject.sentence_length_in_months(5, 'weeks')).to eq(1) }
-    it { expect(subject.sentence_length_in_months(5, 'weeks', offset_days: -6)).to eq(0) }
-
-    it { expect(subject.sentence_length_in_months(3, 'months')).to eq(3) }
-    it { expect(subject.sentence_length_in_months(3, 'months', offset_days: -1)).to eq(2) }
-
-    it { expect(subject.sentence_length_in_months(1, 'years')).to eq(12) }
-    it { expect(subject.sentence_length_in_months(1, 'years', offset_days: -1)).to eq(11) }
-  end
 end
