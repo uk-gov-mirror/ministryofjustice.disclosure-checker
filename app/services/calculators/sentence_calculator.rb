@@ -57,17 +57,15 @@ module Calculators
       if conviction_length_in_months > NEVER_SPENT_THRESHOLD
         :never_spent
       else
-        conviction_end_date.advance(rehabilitation_period)
+        conviction_end_date.advance(rehabilitation_period).advance(bail_offset)
       end
     end
 
     # Used to validate the upper limits, as some convictions can only be given
     # a maximum number of months in the sentence length.
-    # We don't take into consideration the bail time here, as this is purely
-    # the validation of the raw input of the sentence length.
     #
     def valid?
-      conviction_length_in_months(offset_days: 0) <= self.class::UPPER_LIMIT
+      conviction_length_in_months <= self.class::UPPER_LIMIT
     end
 
     private
@@ -83,23 +81,24 @@ module Calculators
       end
     end
 
-    def conviction_length_in_months(offset_days: bail_offset_days)
+    def conviction_length_in_months
       sentence_length_in_months(
         disclosure_check.conviction_length,
-        disclosure_check.conviction_length_type,
-        offset_days: offset_days
+        disclosure_check.conviction_length_type
       )
     end
 
-    # Each full day spent on bail with a tag offsets the value of `BAIL_OFFSET` from
-    # the sentence length. Attribute can be blank or nil, but `#to_i` makes it safe.
-    #
-    def bail_offset_days
-      disclosure_check.conviction_bail_days.to_i * BAIL_OFFSET
+    # The day before the end date, thus we subtract 1 day.
+    def conviction_end_date
+      super.advance(days: -1)
     end
 
-    def conviction_end_date
-      super.advance(days: -1).advance(days: bail_offset_days)
+    # Each full day spent on bail with a tag offsets the value of `BAIL_OFFSET`
+    # from the sentence length (after the rehabilitation period has been applied).
+    # Attribute can be blank or nil, but `#to_i` makes it safe.
+    #
+    def bail_offset
+      { days: disclosure_check.conviction_bail_days.to_i * BAIL_OFFSET }
     end
   end
 end

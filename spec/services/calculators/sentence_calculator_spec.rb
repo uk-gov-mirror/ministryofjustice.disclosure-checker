@@ -60,23 +60,6 @@ RSpec.describe Calculators::SentenceCalculator do
         it { expect(subject.valid?).to eq(false) }
         it { expect { subject.expiry_date }.to raise_exception(BaseCalculator::InvalidCalculation) }
       end
-
-      # Just one example is enough as all other types of sentences behave the same
-      describe 'sentence with bail time' do
-        context 'when bail time would have avoided the upper limit' do
-          let(:bail_days) { 300 }
-          let(:conviction_months) { 25 } # the upper limit in this conviction is 24 months
-
-          it { expect(subject.valid?).to eq(false) }
-          it { expect { subject.expiry_date }.to raise_exception(BaseCalculator::InvalidCalculation) }
-        end
-
-        context 'conviction length of 6 months or less' do
-          let(:conviction_months) { 5 }
-          let(:bail_days) { 20 } # equals to 20 days less in the spent date
-          it { expect(subject.expiry_date.to_s).to eq('2018-08-27') }
-        end
-      end
     end
   end
 
@@ -107,6 +90,15 @@ RSpec.describe Calculators::SentenceCalculator do
         it { expect(subject.valid?).to eq(true) }
         it { expect { subject.expiry_date }.not_to raise_exception(BaseCalculator::InvalidCalculation) }
       end
+    end
+
+    # Just one example is enough as all other types of sentences behave the same
+    context '#expiry_date - with bail time' do
+      let(:known_date) { Date.new(2019, 12, 18) }
+      let(:conviction_months) { 31 }
+      let(:bail_days) { 50 } # equals to 50 days less in the spent date
+
+      it { expect(subject.expiry_date.to_s).to eq('2029-05-28') }
     end
   end
 

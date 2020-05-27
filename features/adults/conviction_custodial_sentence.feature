@@ -15,20 +15,20 @@ Feature: Conviction
     And I click the "Continue" button
     Then I should see "<known_date_header>"
 
-    And I enter a valid date
+    And I enter the following date 01-01-2020
     Then I should see "<length_type_header>"
 
-    And  I choose "Years"
+    And  I choose "Months"
     Then I should see "<length_header>"
-    And I fill in "Number of years" with "2"
+    And I fill in "Number of months" with "22"
 
     Then I click the "Continue" button
-    And I should be on "<result>"
+    And I should see "<result>"
 
     Examples:
-      | subtype                   | known_date_header            | length_type_header                                              | length_header                        | result               |
-      | Prison sentence           | When did the sentence start? | Was the length of the sentence given in weeks, months or years? | What was the length of the sentence? | /steps/check/results |
-      | Suspended prison sentence | When did the sentence start? | Was the length of the sentence given in weeks, months or years? | What was the length of the sentence? | /steps/check/results |
+      | subtype                   | known_date_header            | length_type_header                                              | length_header                        | result                                           |
+      | Prison sentence           | When did the sentence start? | Was the length of the sentence given in weeks, months or years? | What was the length of the sentence? | This conviction will be spent on 21 October 2025 |
+      | Suspended prison sentence | When did the sentence start? | Was the length of the sentence given in weeks, months or years? | What was the length of the sentence? | This conviction will be spent on 21 October 2025 |
 
 
   @happy_path
