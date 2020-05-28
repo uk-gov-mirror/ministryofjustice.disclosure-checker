@@ -108,7 +108,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def penalty_notice_without_endorsement?
-    (conviction_subtype.inquiry.adult_penalty_notice? || conviction_subtype.inquiry.youth_penalty_notice?) && GenericYesNo.new(disclosure_check.motoring_endorsement).no?
+    conviction_subtype.motoring_penalty_notice? && GenericYesNo.new(disclosure_check.motoring_endorsement).no?
   end
 
   def known_date_question
