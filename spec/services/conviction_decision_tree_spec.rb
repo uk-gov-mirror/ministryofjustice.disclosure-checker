@@ -56,6 +56,7 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `conviction_subtype`' do
+    let(:conviction_type) { :referral_supervision_yro }
     let(:conviction_subtype) { :youth_rehabilitation_order }
     let(:step_params) { { conviction_subtype: conviction_subtype } }
 
@@ -65,6 +66,32 @@ RSpec.describe ConvictionDecisionTree do
     end
 
     context 'Motoring sub types' do
+      let(:conviction_type) { :youth_motoring }
+
+      context 'when subtype equal youth_disqualification' do
+        let(:conviction_subtype) { :youth_disqualification }
+        it { is_expected.to have_destination(:motoring_lifetime_ban, :edit) }
+      end
+
+      context 'when subtype equal youth_motoring_fine' do
+        let(:conviction_subtype) { :youth_motoring_fine }
+        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
+      end
+
+      context 'when subtype equal youth_penalty_notice' do
+        let(:conviction_subtype) { :youth_penalty_notice }
+        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
+      end
+
+      context 'when subtype equal youth_penalty_points' do
+        let(:conviction_subtype) { :youth_penalty_points }
+        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
+      end
+    end
+
+    context 'Motoring adult sub types' do
+      let(:conviction_type) { :adult_motoring }
+
       context 'when subtype equal adult_disqualification' do
         let(:conviction_subtype) { :adult_disqualification }
         it { is_expected.to have_destination(:motoring_lifetime_ban, :edit) }

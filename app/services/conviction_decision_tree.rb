@@ -47,7 +47,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   def after_conviction_subtype
     return edit(:conviction_bail)   if conviction_subtype.bailable_offense? && !step_name.eql?(:bypass_bail_conviction_subtype)
     return edit(:compensation_paid) if conviction_subtype.compensation?
-    return after_adult_motoring     if conviction_subtype.parent.inquiry.adult_motoring? || conviction_subtype.parent.inquiry.youth_motoring?
+    return after_adult_motoring     if conviction_type.motoring?
 
     known_date_question
   end
