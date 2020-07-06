@@ -15,7 +15,6 @@ class ConvictionResultPresenter < ResultsPresenter
       :compensation_payment_date,
       :motoring_endorsement,
       :motoring_disqualification_end_date,
-      :motoring_lifetime_ban,
     ].freeze
   end
 
