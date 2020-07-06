@@ -4,20 +4,8 @@ Feature: Youth Conviction
     Then I should see "What was your motoring conviction?"
 
   @happy_path
-  Scenario: Lifetime Motoring convictions
-    When I choose "Disqualification"
-
-    Then I should see "Were you given a lifetime ban?"
-    And I choose "Yes"
-
-    Then I should be on "/steps/check/results"
-    And I should see "This conviction will never be spent"
-
-  @happy_path
   Scenario Outline: Motoring convictions
     When I choose "<subtype>"
-    Then I should see "Were you given a lifetime ban?"
-    And I choose "No"
 
     Then I should see "Did you get an endorsement?"
     And I choose "Yes"
@@ -52,7 +40,7 @@ Feature: Youth Conviction
     Examples:
       | subtype                    | endorsement | known_date_header                        | result               | spent_date                                      |
       | Fine                       | Yes         | When were you given the fine?            | /steps/check/results | This conviction will be spent on 1 July 2022    |
-      | Fine                       | No          | When were you given the fine?            | /steps/check/results | This conviction will be spent on 1 July 2020    |
+      | Fine                       | No          | When were you given the fine?            | /steps/check/results | This conviction was spent on 1 July 2020        |
       | Fixed Penalty notice (FPN) | Yes         | When was the endorsement given?          | /steps/check/results | This conviction will be spent on 1 July 2022    |
       | Penalty points             | Yes         | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |
       | Penalty points             | No          | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |

@@ -4,26 +4,13 @@ Feature: Adult Conviction
     Then I should see "What was your motoring conviction?"
 
   @happy_path
-  Scenario: Lifetime Motoring convictions
-    When I choose "Disqualification"
-
-    Then I should see "Were you given a lifetime ban?"
-    And I choose "Yes"
-
-    Then I should be on "/steps/check/results"
-    And I should see "This conviction will never be spent"
-
-  @happy_path
   Scenario Outline: Motoring convictions
     When I choose "<subtype>"
-    Then I should see "Were you given a lifetime ban?"
 
-    And I choose "No"
     Then I should see "Did you get an endorsement?"
-
     And I choose "Yes"
-    Then I should see "When did the ban start?"
 
+    Then I should see "When did the ban start?"
     And I enter the following date <ban_date>
     Then I should see "When did your disqualification end?"
 
