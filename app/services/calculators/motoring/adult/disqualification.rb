@@ -1,8 +1,6 @@
 module Calculators
   module Motoring
     module Adult
-      # If a lifetime ban was given:
-      #  - never spent
       # If no end_date was given: Start date + 5 years
       #  - Start date + 5 years
       # If an endorsement was received
@@ -19,7 +17,6 @@ module Calculators
         TWO_YEARS_ADDED_TIME = { months: 24 }.freeze
 
         def expiry_date
-          return :never_spent if GenericYesNo.new(disclosure_check.motoring_lifetime_ban).yes?
           return conviction_start_date.advance(missing_end_date_spent_time) if motoring_disqualification_end_date.nil?
 
           spent_time

@@ -26,8 +26,6 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_compensation_paid
     when :compensation_payment_over_100
       edit(:compensation_payment_date)
-    when :motoring_lifetime_ban
-      after_motoring_lifetime_ban
     when :compensation_payment_date
       after_compensation_payment_date
     when :compensation_receipt_sent
@@ -53,14 +51,6 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_motoring_conviction
-    return edit(:motoring_lifetime_ban) if conviction_subtype.motoring_disqualification?
-
-    edit(:motoring_endorsement)
-  end
-
-  def after_motoring_lifetime_ban
-    return results if GenericYesNo.new(disclosure_check.motoring_lifetime_ban).yes?
-
     edit(:motoring_endorsement)
   end
 
