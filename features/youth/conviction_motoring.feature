@@ -3,8 +3,9 @@ Feature: Youth Conviction
     Given I am completing a basic under 18 "Motoring" conviction
     Then I should see "What was your motoring conviction?"
 
-  @happy_path
+  @happy_path @date_travel
   Scenario Outline: Motoring convictions
+    Given The current date is 03-07-2020
     When I choose "<subtype>"
 
     Then I should see "Did you get an endorsement?"
@@ -24,8 +25,9 @@ Feature: Youth Conviction
       | Disqualification  | When did the ban start?    | When did your disqualification end?       | 01-06-2020            | /steps/check/results | This conviction will be spent on 1 July 2022 |
       | Disqualification  | When did the ban start?    | When did your disqualification end?       | 22-05-2023            | /steps/check/results | This conviction will be spent on 22 May 2023 |
 
-  @happy_path
+  @happy_path @date_travel
   Scenario Outline: Motoring convictions without length
+    Given The current date is 03-07-2020
     When I choose "<subtype>"
 
     Then I should see "Did you get an endorsement?"

@@ -84,3 +84,7 @@ When(/^I enter the following date (\d+)\-(\d+)\-(\d+)$/) do |day, month, year|
   step %[I fill in "Year" with "#{year}"]
   step %[I click the "Continue" button]
 end
+
+When(/^The current date is (\d+)\-(\d+)\-(\d+)$/) do |day, month, year|
+  travel_to Date.new(year, month, day)
+end
