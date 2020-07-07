@@ -193,8 +193,6 @@ en:
         motoring_endorsement: Did you get an endorsement?
       steps_conviction_motoring_disqualification_end_date_form:
         motoring_disqualification_end_date: When did your disqualification end?
-      steps_conviction_motoring_lifetime_ban_form:
-        motoring_lifetime_ban: Were you given a lifetime ban?
       steps_conviction_conviction_bail_form:
         conviction_bail: Did you spend any time on bail with an electronic tag?
 

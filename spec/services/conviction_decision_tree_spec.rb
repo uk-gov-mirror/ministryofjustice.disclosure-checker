@@ -7,7 +7,6 @@ RSpec.describe ConvictionDecisionTree do
       conviction_type: conviction_type,
       conviction_subtype: conviction_subtype,
       compensation_paid: compensation_paid,
-      motoring_lifetime_ban: motoring_lifetime_ban,
       motoring_endorsement: motoring_endorsement,
       compensation_payment_over_100: compensation_payment_over_100,
       compensation_receipt_sent: compensation_receipt_sent,
@@ -20,7 +19,6 @@ RSpec.describe ConvictionDecisionTree do
   let(:conviction_type)    { nil }
   let(:conviction_subtype) { nil }
   let(:compensation_paid)  { nil }
-  let(:motoring_lifetime_ban) { nil }
   let(:motoring_endorsement) { nil }
   let(:compensation_payment_over_100) { nil }
   let(:compensation_receipt_sent) { nil }
@@ -68,11 +66,6 @@ RSpec.describe ConvictionDecisionTree do
     context 'Motoring sub types' do
       let(:conviction_type) { :youth_motoring }
 
-      context 'when subtype equal youth_disqualification' do
-        let(:conviction_subtype) { :youth_disqualification }
-        it { is_expected.to have_destination(:motoring_lifetime_ban, :edit) }
-      end
-
       context 'when subtype equal youth_motoring_fine' do
         let(:conviction_subtype) { :youth_motoring_fine }
         it { is_expected.to have_destination(:motoring_endorsement, :edit) }
@@ -91,11 +84,6 @@ RSpec.describe ConvictionDecisionTree do
 
     context 'Motoring adult sub types' do
       let(:conviction_type) { :adult_motoring }
-
-      context 'when subtype equal adult_disqualification' do
-        let(:conviction_subtype) { :adult_disqualification }
-        it { is_expected.to have_destination(:motoring_lifetime_ban, :edit) }
-      end
 
       context 'when subtype equal adult_motoring_fine' do
         let(:conviction_subtype) { :adult_motoring_fine }
@@ -234,20 +222,6 @@ RSpec.describe ConvictionDecisionTree do
         let(:motoring_endorsement) {GenericYesNo::NO }
         it { is_expected.to have_destination(:known_date, :edit) }
       end
-    end
-  end
-
-  context 'when the step is `motoring_lifetime_ban`' do
-    context 'when the step is `motoring_lifetime_ban` equal yes' do
-      let(:motoring_lifetime_ban)  { GenericYesNo::YES }
-      let(:step_params) { { motoring_lifetime_ban: motoring_lifetime_ban } }
-      it { is_expected.to complete_the_check_and_show_results }
-    end
-
-    context 'when the step is `motoring_lifetime_ban` equal no' do
-      let(:motoring_lifetime_ban)  { GenericYesNo::NO }
-      let(:step_params) { { motoring_lifetime_ban: motoring_lifetime_ban } }
-      it { is_expected.to have_destination(:motoring_endorsement, :edit) }
     end
   end
 
