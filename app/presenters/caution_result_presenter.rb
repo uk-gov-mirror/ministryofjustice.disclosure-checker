@@ -6,11 +6,7 @@ class CautionResultPresenter < ResultsPresenter
   def variant
     return 'caution_simple' if caution_type.simple?
 
-    tense = if expiry_date.instance_of?(Date)
-              expiry_date.past? ? :spent : :not_spent
-            else
-              expiry_date
-            end
+    tense = expiry_date.past? ? :spent : :not_spent
 
     # The tense can be one of these values: spent, not_spent, never_spent or no_record
     [disclosure_check.kind, tense].join('_')
