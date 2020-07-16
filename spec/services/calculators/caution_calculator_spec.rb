@@ -11,11 +11,12 @@ RSpec.describe Calculators::CautionCalculator do
 
     context 'for a simple caution' do
       let(:caution_type) { CautionType::ADULT_SIMPLE_CAUTION }
-      let(:known_date) { Date.new(2019, 1, 31) }
+      let(:known_date) { nil }
       let(:conditional_end_date) { nil }
 
-      it 'returns the caution given date (known date)' do
-        expect(subject.expiry_date.to_s).to eq(known_date.to_s)
+      it 'returns `:spent_simple` without doing any date calculations' do
+        # This is because simple cautions are spent on the day they given.
+        expect(subject.expiry_date).to eq(:spent_simple)
       end
     end
 
