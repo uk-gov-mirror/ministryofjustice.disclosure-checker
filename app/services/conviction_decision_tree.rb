@@ -51,7 +51,9 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_motoring_conviction
-    edit(:motoring_endorsement)
+    return edit(:motoring_endorsement) unless conviction_subtype.motoring_penalty_points?
+
+    known_date_question
   end
 
   def after_known_date

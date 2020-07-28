@@ -1,9 +1,7 @@
 module Calculators
   module Motoring
     module Youth
-      # If an endorsement was received:
-      # start_date + 3 years
-      # If an endorsement was not received:
+      # An endorsement is always received when Penalty Points
       # start_date + 3 years
       # Because the Youth endorsement is 2.5 years and penalty points are 3 years,
       # even if there is an endorsement, the penalty points have a longer duration

@@ -32,7 +32,8 @@ module Steps
           conviction_length: nil,
           conviction_length_type: nil,
           compensation_paid: nil,
-          compensation_payment_date: nil
+          compensation_payment_date: nil,
+          motoring_endorsement: nil
         )
       end
     end

@@ -41,7 +41,8 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
           conviction_length: nil,
           conviction_length_type: nil,
           compensation_paid: nil,
-          compensation_payment_date: nil
+          compensation_payment_date: nil,
+          motoring_endorsement: nil,
         ).and_return(true)
 
         expect(subject.save).to be(true)
