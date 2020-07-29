@@ -1,10 +1,11 @@
 Feature: Conviction
 
-  @happy_path
+  @happy_path @date_travel
   Scenario Outline: Prison sentences (bailable)
+    Given The current date is 03-07-2020
     When I am completing a basic under 18 "Custody or hospital order" conviction
-    Then I should see "What sentence were you given?"
 
+    Then I should see "What sentence were you given?"
     When I choose "<subtype>"
     Then I should see "Did you spend any time on bail with an electronic tag?"
 
