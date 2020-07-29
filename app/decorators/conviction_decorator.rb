@@ -28,6 +28,11 @@ module ConvictionDecorator
       ConvictionType::ADULT_PENALTY_NOTICE.eql?(self)
   end
 
+  def motoring_penalty_points?
+    ConvictionType::YOUTH_PENALTY_POINTS.eql?(self) ||
+      ConvictionType::ADULT_PENALTY_POINTS.eql?(self)
+  end
+
   def bailable_offense?
     [
       ConvictionType::DETENTION,

@@ -40,8 +40,19 @@ Feature: Adult Conviction
       | Fine                       | 01-01-2020 | Yes         | When were you given the fine?            | will be spent on 1 January 2025 |
       | Fine                       | 01-01-2020 | No          | When were you given the fine?            | will be spent on 1 January 2021 |
       | Fixed Penalty notice (FPN) | 01-01-2020 | Yes         | When was the endorsement given?          | will be spent on 1 January 2025 |
-      | Penalty points             | 01-01-2020 | Yes         | When were you given the penalty points?  | will be spent on 1 January 2025 |
-      | Penalty points             | 01-01-2020 | No          | When were you given the penalty points?  | will be spent on 1 January 2023 |
+
+  @happy_path
+  Scenario Outline: Motoring convictions without length (penalty points)
+    When I choose "<subtype>"
+    Then I should see "<known_date_header>"
+
+    And I enter the following date <ban_date>
+    Then I should be on "/steps/check/results"
+    And I should see "This conviction <spent_date>"
+
+    Examples:
+      | subtype                    | ban_date   | known_date_header                        | spent_date     |
+      | Penalty points             | 01-01-2020 | When were you given the penalty points?  | will be spent on 1 January 2025 |
 
   @happy_path
   Scenario: Fixed Penalty notice (FPN) convictions without endorsement

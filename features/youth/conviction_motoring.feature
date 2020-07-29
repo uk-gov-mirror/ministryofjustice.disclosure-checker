@@ -44,8 +44,21 @@ Feature: Youth Conviction
       | Fine                       | Yes         | When were you given the fine?            | /steps/check/results | This conviction will be spent on 1 July 2022    |
       | Fine                       | No          | When were you given the fine?            | /steps/check/results | This conviction was spent on 1 July 2020        |
       | Fixed Penalty notice (FPN) | Yes         | When was the endorsement given?          | /steps/check/results | This conviction will be spent on 1 July 2022    |
-      | Penalty points             | Yes         | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |
-      | Penalty points             | No          | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |
+
+  @happy_path @date_travel
+  Scenario Outline: Motoring convictions without length (penalty points)
+    Given The current date is 03-07-2020
+    When I choose "<subtype>"
+
+    Then I should see "<known_date_header>"
+    And I enter the following date 01-01-2020
+
+    Then I should be on "<result>"
+    And I should see "<spent_date>"
+
+    Examples:
+      | subtype        | known_date_header                        | result               | spent_date                                      |
+      | Penalty points | When were you given the penalty points?  | /steps/check/results | This conviction will be spent on 1 January 2023 |
 
   @happy_path
   Scenario: Fixed Penalty notice (FPN) convictions without endorsement
