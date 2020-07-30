@@ -17,6 +17,12 @@ RSpec.describe ChecksController, type: :controller do
         allow(controller).to receive(:current_disclosure_check).and_return(disclosure_check)
       end
 
+      before(:context) do
+        # As we are creating some real records in these tests, ensure we always
+        # start with a clean database the following contexts.
+        DisclosureCheck.destroy_all
+      end
+
       context 'for a new check in a separate proceeding' do
         it 'creates a new disclosure check in a new group inside current disclosure report' do
           expect {

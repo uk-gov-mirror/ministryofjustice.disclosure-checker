@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.5
+  NewCops: enable
   Exclude:
     - './*'
     - 'db/**/*'
@@ -58,20 +59,4 @@ Style/HashTransformKeys:
   Enabled: true
 
 Style/HashTransformValues:
-  Enabled: true
-
-# New cops rubocop > 0.80
-Layout/EmptyLinesAroundAttributeAccessor:
-  Enabled: true
-Layout/SpaceAroundMethodCallOperator:
-  Enabled: true
-Lint/DeprecatedOpenSSLConstant:
-  Enabled: true
-Lint/RaiseException:
-  Enabled: true
-Lint/StructNewOverride:
-  Enabled: true
-Style/ExponentialNotation:
-  Enabled: true
-Style/SlicingWithRange:
   Enabled: true

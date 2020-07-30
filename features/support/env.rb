@@ -5,6 +5,9 @@ require 'capybara/cucumber'
 require 'cucumber/rails'
 require 'dotenv/load'
 
+# For some weird reason cucumber tests fail unless ActionMailer is required
+require 'action_mailer/railtie'
+
 Capybara.register_driver(:chrome_headless) do |app|
   args = %w[disable-gpu no-sandbox]
   args << 'headless' unless ENV['SHOW_BROWSER']

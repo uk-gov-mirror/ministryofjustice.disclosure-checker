@@ -13,7 +13,7 @@ gem 'puma'
 gem 'rails', '~> 5.2.4'
 gem 'responders'
 gem 'sass-rails', '< 6.0.0'
-gem 'sentry-raven', '~> 2.0'
+gem 'sentry-raven', '~> 3.0'
 gem 'uglifier'
 gem 'virtus'
 
@@ -47,7 +47,6 @@ group :test do
   gem 'cucumber'
   gem 'cucumber-rails', require: false
   gem 'rails-controller-testing'
-  gem 'rspec_junit_formatter'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
   gem 'selenium-webdriver'
