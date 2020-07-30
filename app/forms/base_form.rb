@@ -8,8 +8,8 @@ class BaseForm
 
   extend ActiveModel::Callbacks
 
-  attr_accessor :disclosure_check
-  attr_accessor :record
+  attr_accessor :disclosure_check,
+                :record
 
   # This will allow subclasses to define after_initialize callbacks
   # and is needed for some functionality to work, i.e. acts_as_gov_uk_date

@@ -1,8 +1,8 @@
 module Calculators
   module Multiples
     class MultipleOffensesCalculator
-      attr_reader :disclosure_report
-      attr_reader :results
+      attr_reader :disclosure_report,
+                  :results
 
       def initialize(disclosure_report)
         @disclosure_report = disclosure_report
