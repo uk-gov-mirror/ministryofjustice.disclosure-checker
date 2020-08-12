@@ -18,19 +18,19 @@ class ConvictionType < ValueObject
       REFERRAL_SUPERVISION_YRO = new(:referral_supervision_yro),
       CUSTODIAL_SENTENCE    = new(:custodial_sentence),
       DISCHARGE             = new(:discharge),
-      FINANCIAL             = new(:financial),
+      YOUTH_MOTORING        = new(:youth_motoring),
       MILITARY              = new(:military),
       PREVENTION_REPARATION = new(:prevention_reparation),
-      YOUTH_MOTORING        = new(:youth_motoring),
+      FINANCIAL             = new(:financial),
     ].freeze,
 
     ADULT_PARENT_TYPES = [
       ADULT_COMMUNITY_REPARATION  = new(:adult_community_reparation),
       ADULT_CUSTODIAL_SENTENCE    = new(:adult_custodial_sentence),
       ADULT_DISCHARGE             = new(:adult_discharge),
-      ADULT_FINANCIAL             = new(:adult_financial),
-      ADULT_MILITARY              = new(:adult_military),
       ADULT_MOTORING              = new(:adult_motoring),
+      ADULT_MILITARY              = new(:adult_military),
+      ADULT_FINANCIAL             = new(:adult_financial),
     ].freeze,
 
     # Quick way of enabling/disabling convictions. These will not show in the interface to users.

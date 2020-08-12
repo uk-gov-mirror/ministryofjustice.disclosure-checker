@@ -11,10 +11,10 @@ RSpec.describe ConvictionType do
         referral_supervision_yro
         custodial_sentence
         discharge
-        financial
+        youth_motoring
         military
         prevention_reparation
-        youth_motoring
+        financial
       ))
     end
   end
@@ -29,9 +29,9 @@ RSpec.describe ConvictionType do
         adult_community_reparation
         adult_custodial_sentence
         adult_discharge
-        adult_financial
-        adult_military
         adult_motoring
+        adult_military
+        adult_financial
       ))
     end
   end

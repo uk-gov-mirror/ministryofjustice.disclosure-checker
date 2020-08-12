@@ -1,6 +1,6 @@
 Feature: Adult Conviction
   Background:
-    Given I am completing a basic 18 or over "Motoring" conviction
+    Given I am completing a basic 18 or over "Motoring (including motoring fines)" conviction
     Then I should see "What was your motoring conviction?"
 
   @happy_path @date_travel

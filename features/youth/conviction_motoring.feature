@@ -1,6 +1,6 @@
 Feature: Youth Conviction
   Background:
-    Given I am completing a basic under 18 "Motoring" conviction
+    Given I am completing a basic under 18 "Motoring (including motoring fines)" conviction
     Then I should see "What was your motoring conviction?"
 
   @happy_path @date_travel
