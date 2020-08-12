@@ -1,6 +1,6 @@
 Feature: Conviction
   Background:
-    When I am completing a basic 18 or over "Financial penalty" conviction
+    When I am completing a basic 18 or over "Financial penalty (not including motoring fines)" conviction
 
   @happy_path
   Scenario: Conviction Financial penalty - Fine
