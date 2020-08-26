@@ -21,3 +21,7 @@ require_relative '../../lib/govuk_components/form_builder'
 require_relative '../../lib/govuk_components/error_helpers'
 
 ActionView::Base.default_form_builder = GovukComponents::FormBuilder
+
+GOVUKDesignSystemFormBuilder::FormBuilder.class_eval do
+   include CustomFormHelper
+ end
