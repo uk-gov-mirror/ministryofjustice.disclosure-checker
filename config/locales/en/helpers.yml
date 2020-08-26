@@ -118,8 +118,6 @@ en:
       cancel_check: Go back to check your answers
       results_page: Go to results page
     fieldset:
-      steps_check_kind_form:
-        kind: Were you cautioned or convicted?
       steps_check_under_age_form:
         caution: How old were you when you got cautioned?
         conviction: How old were you when you got convicted?
@@ -327,7 +325,7 @@ en:
 
     label:
       steps_check_kind_form:
-        kind:
+        kind_options:
           caution: Cautioned
           conviction: Convicted
       steps_check_under_age_form:
@@ -370,3 +368,7 @@ en:
         approximate_motoring_disqualification_end_date: *approximate_date_checkbox
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: Number of days
+
+    legend:
+      steps_check_kind_form:
+        kind: Were you cautioned or convicted?
