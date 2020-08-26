@@ -46,6 +46,17 @@ module ApplicationHelper
     )
   end
 
+  def govuk_error_summary(form_object = @form_object)
+    # TODO: can be removed once we use this builder globally
+    options = {
+      builder: GOVUKDesignSystemFormBuilder::FormBuilder
+    }
+
+    fields_for(form_object, form_object, options) do |f|
+      f.govuk_error_summary t('errors.error_summary.heading')
+    end
+   end
+
   def service_name
     t('service.name')
   end
