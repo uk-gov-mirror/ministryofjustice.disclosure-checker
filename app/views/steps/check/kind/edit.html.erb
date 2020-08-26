@@ -11,7 +11,7 @@
         <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
           <%= f.govuk_collection_radio_buttons :kind, CheckKind.values, :value, nil %>
 
-          <%= f.submit_button(:continue) %>
+          <%= f.continue_button %>
         <% end %>
       </div>
     </div>

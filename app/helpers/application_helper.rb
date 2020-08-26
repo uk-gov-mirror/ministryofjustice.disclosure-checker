@@ -55,7 +55,7 @@ module ApplicationHelper
     fields_for(form_object, form_object, options) do |f|
       f.govuk_error_summary t('errors.error_summary.heading')
     end
-   end
+  end
 
   def service_name
     t('service.name')

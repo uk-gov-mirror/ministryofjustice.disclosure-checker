@@ -196,6 +196,10 @@ en:
         conviction_bail: Did you spend any time on bail with an electronic tag?
 
     hint:
+      steps_check_kind_form:
+        kind_options:
+          caution: You were given an official warning by the police
+          conviction: You were found guilty of a crime in court
       steps_caution_known_date_form:
         known_date_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         approximate_known_date: *approximate_date_hint
@@ -238,9 +242,6 @@ en:
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: This is decided by the court. If you do not know the exact number of days you can enter an approximate number or leave this blank, but it might affect the accuracy of your result.
       radio_buttons:
-        kind:
-          caution: You were given an official warning by the police
-          conviction: You were found guilty of a crime in court
         caution_type:
           adult_simple_caution: You did not have to agree to any conditions
           adult_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
