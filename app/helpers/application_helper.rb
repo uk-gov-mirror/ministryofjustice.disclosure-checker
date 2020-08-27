@@ -47,10 +47,17 @@ module ApplicationHelper
   end
 
   def govuk_error_summary(form_object = @form_object)
+    return unless form_object.try(:errors).present?
+
     # TODO: can be removed once we use this builder globally
     options = {
       builder: GOVUKDesignSystemFormBuilder::FormBuilder
     }
+
+    # Prepend page title so screen readers read it out as soon as possible
+    content_for(:page_title, flush: true) do
+      content_for(:page_title).insert(0, t('errors.page_title_prefix'))
+    end
 
     fields_for(form_object, form_object, options) do |f|
       f.govuk_error_summary t('errors.error_summary.heading')
