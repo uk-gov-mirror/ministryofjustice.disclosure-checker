@@ -1,12 +1,8 @@
 module Steps
   module Caution
     class ConditionalEndDateForm < BaseForm
-      include GovUkDateFields::ActsAsGovUkDate
-
-      attribute :conditional_end_date, Date
+      attribute :conditional_end_date, MultiParamDate
       attribute :approximate_conditional_end_date, Boolean
-
-      acts_as_gov_uk_date :conditional_end_date, error_clash_behaviour: :omit_gov_uk_date_field_error
 
       validates_presence_of :conditional_end_date
       validates :conditional_end_date, sensible_date: { allow_future: true }

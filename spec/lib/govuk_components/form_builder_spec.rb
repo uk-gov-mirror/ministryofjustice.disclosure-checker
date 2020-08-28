@@ -54,62 +54,6 @@ RSpec.describe GovukComponents::FormBuilder do
   # It is also coupled to current i18n so, if the strings change,
   # then the HTML fixture will need to also be updated.
   #
-  describe '#check_box_fieldset' do
-    let(:builder) { described_class.new form.to_sym, disclosure_check, helper, {} }
-
-    let(:form) { 'steps_caution_known_date_form' }
-    let(:attribute) { :approximate_known_date }
-    let(:items) { [:approximate_known_date] }
-
-    let(:options) do
-      { }
-    end
-
-    let(:html_output) { builder.check_box_fieldset attribute, items, options }
-
-    context 'no errors' do
-      let(:html_fixture) { file_fixture('check_box_fieldset.html').read }
-
-      it 'outputs the expected markup' do
-        expect(
-          strip_text(html_output)
-        ).to eq(
-          strip_text(html_fixture)
-        )
-      end
-    end
-
-    context 'small check boxes' do
-      let(:html_fixture) { file_fixture('check_box_fieldset.html').read }
-      let(:options) do
-        { small: true }
-      end
-
-      it 'outputs the expected markup' do
-        expect(
-          strip_text(html_output)
-        ).to match(/govuk-checkboxes--small/)
-      end
-    end
-
-    context 'no legend' do
-      let(:html_fixture) { file_fixture('check_box_fieldset.html').read }
-      let(:options) do
-        { no_legend: true }
-      end
-
-      it 'outputs the expected markup' do
-        expect(
-          strip_text(html_output)
-        ).not_to match(/<\/legend>/)
-      end
-    end
-  end
-
-  # Note: This is just a very broad and `happy path` test.
-  # It is also coupled to current i18n so, if the strings change,
-  # then the HTML fixture will need to also be updated.
-  #
   describe '#text_field' do
     let(:builder) { described_class.new form.to_sym, disclosure_check, helper, {} }
 

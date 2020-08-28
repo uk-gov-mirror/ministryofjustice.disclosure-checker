@@ -75,4 +75,62 @@ RSpec.describe DummyStepController, type: :controller do
       end
     end
   end
+
+  # Note this method is private as it is used via another method but as the logic
+  # is quite self contained it makes sense to test it in isolation.
+  #
+  describe '#normalise_date_attributes!' do
+    let(:normalised_attributes) { subject.send(:normalise_date_attributes!, parameters) }
+    let(:extra_parameters) { { foo: 'bar', another: 'attribute' } }
+
+    context 'when there are not multi param dates' do
+      let(:parameters) { extra_parameters }
+
+      it 'returns the parameters as usual' do
+        expect(
+          normalised_attributes
+        ).to eq(extra_parameters)
+      end
+    end
+
+    context 'when there is a multi param date' do
+      let(:parameters) {
+        {'birth_date(1i)' => '2008', 'birth_date(2i)' => '11', 'birth_date(3i)' => '22'}.merge(extra_parameters)
+      }
+
+      it 'converts the date parts to an array' do
+        expect(
+          normalised_attributes
+        ).to eq({ 'birth_date' => [nil, 2008, 11, 22] }.merge(extra_parameters))
+      end
+    end
+
+    context 'when there is more than one multi param date and different part orders' do
+      let(:parameters) {
+        {
+          'birth_date(1i)' => '2008', 'birth_date(2i)' => '11', 'birth_date(3i)' => '22'
+        }.merge(
+          'certification_date(3i)' => '25', 'certification_date(2i)' => '12', 'certification_date(1i)' => '2018'
+        ).merge(extra_parameters)
+      }
+
+      it 'converts the date parts to an array' do
+        expect(
+          normalised_attributes
+        ).to eq({ 'birth_date' => [nil, 2008, 11, 22], 'certification_date' => [nil, 2018, 12, 25] }.merge(extra_parameters))
+      end
+    end
+
+    context 'when some part of the date is missing or not a number' do
+      let(:parameters) {
+        {'birth_date(1i)' => '', 'birth_date(2i)' => 'foobar', 'birth_date(3i)' => '22'}.merge(extra_parameters)
+      }
+
+      it 'converts the date parts to an array' do
+        expect(
+          normalised_attributes
+        ).to eq({ 'birth_date' => [nil, 0, 0, 22] }.merge(extra_parameters))
+      end
+    end
+  end
 end

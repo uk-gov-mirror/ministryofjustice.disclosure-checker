@@ -1,12 +1,8 @@
 module Steps
   module Caution
     class KnownDateForm < BaseForm
-      include GovUkDateFields::ActsAsGovUkDate
-
-      attribute :known_date, Date
+      attribute :known_date, MultiParamDate
       attribute :approximate_known_date, Boolean
-
-      acts_as_gov_uk_date :known_date, error_clash_behaviour: :omit_gov_uk_date_field_error
 
       validates_presence_of :known_date
       validates :known_date, sensible_date: true
