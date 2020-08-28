@@ -6,6 +6,10 @@
   font-style: normal;
 }
 
+.app-util--compact-form-group {
+  margin-bottom: 1em;
+}
+
 dl.multiple-checks-summary:not(:only-child) {
   &:not(:last-of-type) { padding-bottom: 1em; }
 }
