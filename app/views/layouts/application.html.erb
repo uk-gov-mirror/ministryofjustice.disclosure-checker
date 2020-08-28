@@ -1,6 +1,7 @@
 <% content_for?(:page_title) ? yield(:page_title) : fallback_title %>
 
 <% content_for(:head) do %>
+  <%= csrf_meta_tags %>
   <%= render partial: 'layouts/analytics' if analytics_tracking_id.present? %>
 <% end %>
 
