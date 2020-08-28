@@ -42,9 +42,22 @@ RSpec.describe ApplicationHelper, type: :helper do
   end
 
   describe '#step_header' do
+    let(:form_object) { double('Form object') }
+
     it 'renders the expected content' do
-      expect(helper).to receive(:render).with(partial: 'step_header', locals: {path: '/foo/bar'}).and_return('foobar')
+      expect(helper).to receive(:render).with(partial: 'layouts/step_header', locals: {path: '/foo/bar'}).and_return('foobar')
+      assign(:form_object, form_object)
+
       expect(helper.step_header).to eq('foobar')
+    end
+
+    context 'a specific path is provided' do
+      it 'renders the back link with provided path' do
+        expect(helper).to receive(:render).with(partial: 'layouts/step_header', locals: {path: '/another/step'}).and_return('foobar')
+        assign(:form_object, form_object)
+
+        expect(helper.step_header(path: '/another/step')).to eq('foobar')
+      end
     end
   end
 

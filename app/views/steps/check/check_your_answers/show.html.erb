@@ -1,33 +1,27 @@
 <% title t('.page_title') %>
 
-<div class="govuk-width-container">
-  <main class="govuk-main-wrapper">
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <h1 class="govuk-heading-xl">What you've told us</h1>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <h1 class="govuk-heading-xl">What you've told us</h1>
+    <p class="govuk-body">Here’s what you’ve told us so far. You can check the information you’ve entered is correct before choosing to:</p>
 
-        <p class="govuk-body">Here’s what you’ve told us so far. You can check the information you’ve entered is correct before choosing to:</p>
+    <ul class="govuk-list govuk-list--bullet">
+      <li>add a sentence to an existing conviction – for example, if you were given a community order and a fine for a single offence)</li>
+      <li>enter a separate caution or conviction – for example, if you were convicted for an unrelated offence</li>
+      <li>continue to the results page, if you have no more cautions, convictions or sentences to check</li>
+    </ul>
 
-        <ul class="govuk-list govuk-list--bullet">
-          <li>add a sentence to an existing conviction – for example, if you were given a community order and a fine for a single offence)</li>
-          <li>enter a separate caution or conviction – for example, if you were convicted for an unrelated offence</li>
-          <li>continue to the results page, if you have no more cautions, convictions or sentences to check</li>
-        </ul>
+    <p class="govuk-heading-m">Your cautions or convictions</p>
 
-        <p class="govuk-heading-m">Your cautions or convictions</p>
+    <%= render @presenter.summary %>
 
-        <%= render @presenter.summary %>
+    <h2 class="govuk-heading-m">Add a separate caution or conviction</h2>
 
-        <h2 class="govuk-heading-m">Add a separate caution or conviction</h2>
+    <%= button_to 'Enter a new caution or conviction', checks_path,
+                  class: 'govuk-button govuk-button--secondary',
+                  data: { module: 'govuk-button', 'prevent-double-click': true } %>
 
-        <%= button_to 'Enter a new caution or conviction', checks_path,
-                      class: 'govuk-button govuk-button--secondary',
-                      data: { module: 'govuk-button', 'prevent-double-click': true } %>
-
-        <%= link_button :results_page, steps_check_results_path(show_results: true), class: 'govuk-button govuk-!-margin-top-5' %>
-      </div>
-    </div>
-
-  </main>
+    <%= link_button :results_page, steps_check_results_path(show_results: true), class: 'govuk-button govuk-!-margin-top-5' %>
+  </div>
 </div>
