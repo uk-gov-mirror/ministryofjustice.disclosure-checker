@@ -98,6 +98,47 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
+  describe '#govuk_error_summary' do
+    context 'when no form object is given' do
+      let(:form_object) { nil }
+
+      it 'returns nil' do
+        expect(helper.govuk_error_summary(form_object)).to be_nil
+      end
+    end
+
+    context 'when a form object without errors is given' do
+      let(:form_object) { BaseForm.new }
+
+      it 'returns nil' do
+        expect(helper.govuk_error_summary(form_object)).to be_nil
+      end
+    end
+
+    context 'when a form object with errors is given' do
+      let(:form_object) { BaseForm.new }
+      let(:title) { helper.content_for(:page_title) }
+
+      before do
+        helper.title('A page')
+        form_object.errors.add(:base, :blank)
+      end
+
+      it 'returns the summary' do
+        expect(
+          helper.govuk_error_summary(form_object)
+        ).to eq(
+          '<div class="govuk-error-summary" tabindex="-1" role="alert" data-module="govuk-error-summary" aria-labelledby="error-summary-title"><h2 id="error-summary-title" class="govuk-error-summary__title">There is a problem on this page</h2><div class="govuk-error-summary__body"><ul class="govuk-list govuk-error-summary__list"><li><a data-turbolinks="false" href="#base-form-base-field-error">can&#39;t be blank</a></li></ul></div></div>'
+        )
+      end
+
+      it 'prepends the page title with an error hint' do
+        helper.govuk_error_summary(form_object)
+        expect(title).to start_with('Error: A page')
+      end
+    end
+  end
+
   describe 'capture missing translations' do
     before do
       ActionView::Base.raise_on_missing_translations = false
