@@ -5,15 +5,19 @@ module Steps
 
       validates_inclusion_of :caution_type, in: :choices, if: :disclosure_check
 
-      def choices
+      def values
         if under_age?
           CautionType::YOUTH_TYPES
         else
           CautionType::ADULT_TYPES
-        end.map(&:to_s)
+        end
       end
 
       private
+
+      def choices
+        values.map(&:to_s)
+      end
 
       def under_age?
         disclosure_check.under_age.inquiry.yes?

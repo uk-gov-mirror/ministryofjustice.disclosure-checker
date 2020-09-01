@@ -25,6 +25,12 @@ en:
       adult_simple_caution: Simple caution
       adult_conditional_caution: Conditional caution
 
+    CAUTION_TYPE_HINTS: &CAUTION_TYPE_HINTS
+      simple_caution_hint: &simple_caution_hint |
+        You did not have to agree to any conditions
+      conditional_caution_hint: &conditional_caution_hint |
+        You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
+
     CONVICTION_TYPES: &CONVICTION_TYPES
       # youth
       referral_supervision_yro: Referral or youth rehabilitation order (YRO)
@@ -121,8 +127,6 @@ en:
       steps_check_under_age_form:
         caution: How old were you when you got cautioned?
         conviction: How old were you when you got convicted?
-      steps_caution_caution_type_form:
-        caution_type: What type of caution did you get?
       steps_conviction_known_date_form:
         # default key
         known_date: When were you given the order?
@@ -192,6 +196,12 @@ en:
         conviction_bail: Did you spend any time on bail with an electronic tag?
 
     hint:
+      steps_caution_caution_type_form:
+        caution_type_options:
+          youth_simple_caution: *simple_caution_hint
+          youth_conditional_caution: *conditional_caution_hint
+          adult_simple_caution: *simple_caution_hint
+          adult_conditional_caution: *conditional_caution_hint
       steps_check_kind_form:
         kind_options:
           caution: You were given an official warning by the police
@@ -233,11 +243,6 @@ en:
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: This is decided by the court. If you do not know the exact number of days you can enter an approximate number or leave this blank, but it might affect the accuracy of your result.
       radio_buttons:
-        caution_type:
-          adult_simple_caution: You did not have to agree to any conditions
-          adult_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
-          youth_simple_caution: You did not have to agree to any conditions
-          youth_conditional_caution: You agreed to certain conditions, such as paying a fine or learning about the effects of drugs
         conviction_type:
           # youth
           referral_supervision_yro: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
@@ -331,7 +336,7 @@ en:
         approximate_conditional_end_date_options:
           'true': *approximate_date_checkbox
       steps_caution_caution_type_form:
-        caution_type:
+        caution_type_options:
           <<: *CAUTION_TYPES
       steps_conviction_known_date_form:
         <<: *DATE_PARTS
@@ -364,6 +369,8 @@ en:
     legend:
       steps_check_kind_form:
         kind: Were you cautioned or convicted?
+      steps_caution_caution_type_form:
+        caution_type: What type of caution did you get?
       steps_caution_known_date_form:
         known_date: When did you get the caution?
         approximate_known_date: *approximate_date_legend
