@@ -1,0 +1,5 @@
+<%# Use this partial with the new gem, and rename once all is migrated %>
+
+<%= form.govuk_check_boxes_fieldset attribute, small: true, legend: { tag: 'span', size: 's', hidden: true } do %>
+  <%= form.govuk_check_box attribute, true, multiple: false, link_errors: true %>
+<% end %>

@@ -1,36 +1,29 @@
 <% title t('.page_title') %>
+<% step_header %>
 
-<div class="govuk-width-container">
-  <%= step_header %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_error_summary %>
 
-  <main class="govuk-main-wrapper" id="main-content">
+    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+      <%= f.govuk_date_field :conditional_end_date, form_group_classes: 'app-util--compact-form-group' %>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <%= error_summary %>
+      <%= render partial: 'steps/shared/new_approx_date_checkbox', locals: {
+        form: f, attribute: :approximate_conditional_end_date
+      } %>
 
-        <%= step_form @form_object do |f| %>
-          <%= f.gov_uk_date_field :conditional_end_date %>
+      <details class="govuk-details" data-module="govuk-details">
+        <summary class="govuk-details__summary">
+          <span class="govuk-details__summary-text" data-ga-category="explanations" data-ga-label="conditions not ended">
+            <%=t '.details.title' %>
+          </span>
+        </summary>
+        <div class="govuk-details__text">
+          <%=t '.details.body_html' %>
+        </div>
+      </details>
 
-          <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
-            form: f, attribute: :approximate_conditional_end_date
-          } %>
-
-          <details class="govuk-details" data-module="govuk-details">
-            <summary class="govuk-details__summary">
-              <span class="govuk-details__summary-text" data-ga-category="explanations" data-ga-label="conditions not ended">
-                <%=t '.details.title' %>
-              </span>
-            </summary>
-            <div class="govuk-details__text">
-              <%=t '.details.body_html' %>
-            </div>
-          </details>
-
-          <%= f.continue_button %>
-        <% end %>
-      </div>
-    </div>
-
-  </main>
+      <%= f.continue_button %>
+    <% end %>
+  </div>
 </div>
