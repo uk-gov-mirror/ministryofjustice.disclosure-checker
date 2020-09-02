@@ -362,8 +362,8 @@ en:
         months: Number of months
         years: Number of years
       steps_conviction_compensation_payment_date_form:
-        <<: *DATE_PARTS
-        approximate_compensation_payment_date: *approximate_date_checkbox
+        approximate_compensation_payment_date_options:
+          'true': *approximate_date_checkbox
       steps_conviction_compensation_paid_amount_form:
         compensation_payment_over_100_options: *YESNO
       steps_conviction_motoring_disqualification_end_date_form:
@@ -385,6 +385,9 @@ en:
       steps_caution_conditional_end_date_form:
         conditional_end_date: When did the conditions end?
         approximate_conditional_end_date: *approximate_date_legend
+      steps_conviction_compensation_payment_date_form:
+        compensation_payment_date: When did you pay the compensation in full?
+        approximate_compensation_payment_date: *approximate_date_legend
       steps_conviction_compensation_paid_amount_form:
         compensation_payment_over_100: Was the compensation order amount over £100?
       steps_conviction_compensation_paid_form:
