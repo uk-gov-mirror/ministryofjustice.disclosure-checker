@@ -110,6 +110,10 @@ en:
       adult_suspended_prison_sentence: Suspended prison sentence
       adult_prison_sentence: Prison sentence
 
+    YESNO: &YESNO
+      'yes': 'Yes'
+      'no': 'No'
+
   shared:
     back_link: Back
     subsection:
@@ -182,8 +186,6 @@ en:
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
       steps_conviction_compensation_paid_form:
         compensation_paid: Have you paid the compensation in full?
-      steps_conviction_compensation_paid_amount_form:
-        compensation_payment_over_100: Was the compensation order amount over £100?
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: When did you pay the compensation in full?
       steps_conviction_compensation_payment_receipt_form:
@@ -360,6 +362,8 @@ en:
       steps_conviction_compensation_payment_date_form:
         <<: *DATE_PARTS
         approximate_compensation_payment_date: *approximate_date_checkbox
+      steps_conviction_compensation_paid_amount_form:
+        compensation_payment_over_100_options: *YESNO
       steps_conviction_motoring_disqualification_end_date_form:
         <<: *DATE_PARTS
         approximate_motoring_disqualification_end_date: *approximate_date_checkbox
@@ -377,3 +381,5 @@ en:
       steps_caution_conditional_end_date_form:
         conditional_end_date: When did the conditions end?
         approximate_conditional_end_date: *approximate_date_legend
+      steps_conviction_compensation_paid_amount_form:
+        compensation_payment_over_100: Was the compensation order amount over £100?
