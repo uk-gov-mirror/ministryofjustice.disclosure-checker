@@ -1,26 +1,19 @@
 <% title t('.page_title') %>
+<% step_header %>
 
-<div class="govuk-width-container">
-  <%= step_header %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_error_summary %>
+    <%= step_subsection %>
 
-  <main id="main-content" class="govuk-main-wrapper">
+    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+      <%= f.govuk_date_field :compensation_payment_date, form_group_classes: 'app-util--compact-form-group' %>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <%= error_summary %>
-        <%= step_subsection %>
+      <%= render partial: 'steps/shared/new_approx_date_checkbox', locals: {
+        form: f, attribute: :approximate_compensation_payment_date
+      } %>
 
-        <%= step_form @form_object do |f| %>
-          <%= f.gov_uk_date_field :compensation_payment_date %>
-
-          <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
-            form: f, attribute: :approximate_compensation_payment_date
-          } %>
-
-          <%= f.continue_button %>
-        <% end %>
-      </div>
-    </div>
-
-  </main>
+      <%= f.continue_button %>
+    <% end %>
+  </div>
 </div>
