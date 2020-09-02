@@ -14,20 +14,20 @@ RSpec.describe Steps::Conviction::ConvictionTypeForm do
 
   subject { described_class.new(arguments) }
 
-  describe '#choices' do
+  describe '#values' do
     context 'when under 18' do
       let(:under_age) { 'yes' }
 
-      it 'shows only the relevant choices' do
-        expect(subject.choices).to eq(ConvictionType::YOUTH_PARENT_TYPES.map(&:to_s))
+      it 'shows only the relevant values' do
+        expect(subject.values).to eq(ConvictionType::YOUTH_PARENT_TYPES)
       end
     end
 
     context 'when over 18' do
       let(:under_age) { 'no' }
 
-      it 'shows only the relevant choices' do
-        expect(subject.choices).to eq(ConvictionType::ADULT_PARENT_TYPES.map(&:to_s))
+      it 'shows only the relevant values' do
+        expect(subject.values).to eq(ConvictionType::ADULT_PARENT_TYPES)
       end
     end
   end

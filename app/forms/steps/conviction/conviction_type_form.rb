@@ -5,15 +5,19 @@ module Steps
 
       validates_inclusion_of :conviction_type, in: :choices, if: :disclosure_check
 
-      def choices
+      def values
         if under_age?
           ConvictionType::YOUTH_PARENT_TYPES
         else
           ConvictionType::ADULT_PARENT_TYPES
-        end.map(&:to_s)
+        end
       end
 
       private
+
+      def choices
+        values.map(&:to_s)
+      end
 
       def under_age?
         disclosure_check.under_age.inquiry.yes?
