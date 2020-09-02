@@ -186,6 +186,8 @@ en:
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
       steps_conviction_compensation_paid_form:
         compensation_paid: Have you paid the compensation in full?
+      steps_conviction_compensation_paid_amount_form:
+        compensation_payment_over_100: Was the compensation order amount over £100?
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: When did you pay the compensation in full?
       steps_conviction_compensation_payment_receipt_form:
@@ -369,6 +371,8 @@ en:
         approximate_motoring_disqualification_end_date: *approximate_date_checkbox
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: Number of days
+      steps_conviction_compensation_paid_form:
+        compensation_paid_options: *YESNO
 
     legend:
       steps_check_kind_form:
@@ -383,3 +387,5 @@ en:
         approximate_conditional_end_date: *approximate_date_legend
       steps_conviction_compensation_paid_amount_form:
         compensation_payment_over_100: Was the compensation order amount over £100?
+      steps_conviction_compensation_paid_form:
+        compensation_paid: Have you paid the compensation in full?
