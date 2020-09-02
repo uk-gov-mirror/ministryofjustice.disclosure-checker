@@ -1,26 +1,20 @@
 <% title t('.page_title') %>
+<% step_header %>
 
-<div class="govuk-width-container">
-  <%= step_header %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_error_summary %>
+    <%= step_subsection %>
 
-  <main id="main-content" class="govuk-main-wrapper">
+    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+      <%= f.govuk_date_field :known_date, form_group_classes: 'app-util--compact-form-group',
+                             legend: { text: f.i18n_legend }, hint_text: f.i18n_hint %>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <%= error_summary %>
-        <%= step_subsection %>
+      <%= render partial: 'steps/shared/new_approx_date_checkbox', locals: {
+        form: f, attribute: :approximate_known_date
+      } %>
 
-        <%= step_form @form_object do |f| %>
-          <%= f.gov_uk_date_field :known_date, i18n_attribute: @form_object.conviction_subtype %>
-
-          <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
-            form: f, attribute: :approximate_known_date
-          } %>
-
-          <%= f.continue_button %>
-        <% end %>
-      </div>
-    </div>
-
-  </main>
+      <%= f.continue_button %>
+    <% end %>
+  </div>
 </div>

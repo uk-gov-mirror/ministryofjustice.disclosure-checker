@@ -131,31 +131,6 @@ en:
       steps_check_under_age_form:
         caution: How old were you when you got cautioned?
         conviction: How old were you when you got convicted?
-      steps_conviction_known_date_form:
-        # default key
-        known_date: When were you given the order?
-        # alternative keys defined with `i18_attribute`
-        referral_order: What was the date of your first panel meeting?
-        dismissal: When were you given the dismissal?
-        service_detention: When were you given the detention?
-        detention_training_order: When did the DTO start?
-        detention: When did the detention start?
-        absolute_discharge: When were you given the discharge?
-        conditional_discharge: When were you given the discharge?
-        adult_absolute_discharge: When were you given the discharge?
-        adult_conditional_discharge: When were you given the discharge?
-        adult_suspended_prison_sentence: When did the sentence start?
-        adult_prison_sentence: When did the sentence start?
-        adult_dismissal: When were you given the dismissal?
-        adult_service_detention: When were you given the detention?
-        adult_disqualification: When did the ban start?
-        adult_motoring_fine: When were you given the fine?
-        adult_penalty_notice: When was the endorsement given?
-        adult_penalty_points: When were you given the penalty points?
-        youth_disqualification: When did the ban start?
-        youth_motoring_fine: When were you given the fine?
-        youth_penalty_notice: When was the endorsement given?
-        youth_penalty_points: When were you given the penalty points?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
@@ -184,14 +159,8 @@ en:
         adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
-      steps_conviction_compensation_paid_form:
-        compensation_paid: Have you paid the compensation in full?
-      steps_conviction_compensation_paid_amount_form:
-        compensation_payment_over_100: Was the compensation order amount over £100?
-      steps_conviction_compensation_payment_date_form:
-        compensation_payment_date: When did you pay the compensation in full?
       steps_conviction_compensation_payment_receipt_form:
-          compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?
+        compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: Did you get an endorsement?
       steps_conviction_motoring_disqualification_end_date_form:
@@ -219,7 +188,7 @@ en:
         conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>"
       steps_conviction_known_date_form:
         # default key
-        known_date_html: *court_sentence_hint_text
+        default_html: *court_sentence_hint_text
         # alternative keys defined with `i18_attribute`
         referral_order_html: Enter the date of your first youth offender panel meeting. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
         bind_over_html: *court_conviction_hint_text
@@ -343,8 +312,8 @@ en:
         caution_type_options:
           <<: *CAUTION_TYPES
       steps_conviction_known_date_form:
-        <<: *DATE_PARTS
-        approximate_known_date: *approximate_date_checkbox
+        approximate_known_date_options:
+          'true': *approximate_date_checkbox
       steps_conviction_conviction_type_form:
         conviction_type:
           <<: *CONVICTION_TYPES
@@ -385,6 +354,32 @@ en:
       steps_caution_conditional_end_date_form:
         conditional_end_date: When did the conditions end?
         approximate_conditional_end_date: *approximate_date_legend
+      steps_conviction_known_date_form:
+        approximate_known_date: *approximate_date_legend
+        # default key
+        default: When were you given the order?
+        # alternative keys defined with `i18_attribute`
+        referral_order: What was the date of your first panel meeting?
+        dismissal: When were you given the dismissal?
+        service_detention: When were you given the detention?
+        detention_training_order: When did the DTO start?
+        detention: When did the detention start?
+        absolute_discharge: When were you given the discharge?
+        conditional_discharge: When were you given the discharge?
+        adult_absolute_discharge: When were you given the discharge?
+        adult_conditional_discharge: When were you given the discharge?
+        adult_suspended_prison_sentence: When did the sentence start?
+        adult_prison_sentence: When did the sentence start?
+        adult_dismissal: When were you given the dismissal?
+        adult_service_detention: When were you given the detention?
+        adult_disqualification: When did the ban start?
+        adult_motoring_fine: When were you given the fine?
+        adult_penalty_notice: When was the endorsement given?
+        adult_penalty_points: When were you given the penalty points?
+        youth_disqualification: When did the ban start?
+        youth_motoring_fine: When were you given the fine?
+        youth_penalty_notice: When was the endorsement given?
+        youth_penalty_points: When were you given the penalty points?
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: When did you pay the compensation in full?
         approximate_compensation_payment_date: *approximate_date_legend
