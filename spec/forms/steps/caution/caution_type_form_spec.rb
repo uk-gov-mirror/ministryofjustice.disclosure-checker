@@ -13,26 +13,31 @@ RSpec.describe Steps::Caution::CautionTypeForm do
 
   subject { described_class.new(arguments) }
 
-  describe '#choices' do
+  describe '#values' do
     context 'when under 18' do
       let(:under_age) { 'yes' }
 
-      it 'shows only the relevant choices' do
-        expect(subject.choices).to eq(%w(
-          youth_simple_caution
-          youth_conditional_caution
-        ))
+      it 'shows only the relevant values' do
+
+        expect(subject.values).to eq(
+           [
+             CautionType.new(:youth_simple_caution),
+             CautionType.new(:youth_conditional_caution),
+           ]
+         )
       end
     end
 
     context 'when over 18' do
       let(:under_age) { 'no' }
 
-      it 'shows only the relevant choices' do
-        expect(subject.choices).to eq(%w(
-          adult_simple_caution
-          adult_conditional_caution
-        ))
+      it 'shows only the relevant values' do
+        expect(subject.values).to eq(
+           [
+             CautionType.new(:adult_simple_caution),
+             CautionType.new(:adult_conditional_caution),
+           ]
+         )
       end
     end
   end
@@ -40,8 +45,9 @@ RSpec.describe Steps::Caution::CautionTypeForm do
   describe '#save' do
     it_behaves_like 'a value object form', attribute_name: :caution_type, example_value: 'youth_simple_caution'
 
+    let(:caution_type) { 'youth_simple_caution' }
+
     context 'when form is valid' do
-      let(:caution_type) { 'youth_simple_caution' }
 
       it 'saves the record' do
         expect(disclosure_check).to receive(:update).with(
@@ -50,15 +56,13 @@ RSpec.describe Steps::Caution::CautionTypeForm do
           known_date: nil,
           conditional_end_date: nil
         ).and_return(true)
-
         expect(subject.save).to be(true)
       end
 
       context 'when caution_type is already the same on the model' do
         let(:disclosure_check) {
-          instance_double(DisclosureCheck, caution_type: 'youth_simple_caution', under_age: 'yes')
+          instance_double(DisclosureCheck, caution_type: caution_type, under_age: 'yes')
         }
-        let(:caution_type) { 'youth_simple_caution' }
 
         it 'does not save the record but returns true' do
           expect(disclosure_check).to_not receive(:update)

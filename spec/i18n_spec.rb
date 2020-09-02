@@ -17,7 +17,7 @@ RSpec.describe 'I18n' do
   context 'shared dictionaries sanity checks' do
     it 'caution types in `helpers.yml` matches caution types in `results.yml`' do
       expect(
-        i18n.tree('en.helpers.label.steps_caution_caution_type_form.caution_type').to_hash
+        i18n.tree('en.helpers.label.steps_caution_caution_type_form.caution_type_options').to_hash
       ).to eq(
         i18n.tree('en.results/caution.caution_type.answers').to_hash
       )
