@@ -17,11 +17,21 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
 
   subject { described_class.new(arguments) }
 
+  describe '#i18n_attribute' do
+    it 'returns the key that will be used to translate legends and hints' do
+      expect(subject.i18n_attribute).to eq(ConvictionType.new(:referral_supervision_yro))
+    end
+  end
+
   # Note: no need to check for all the returned values, as we cover this extensively
   # in the value-object spec `spec/value_objects/conviction_type_spec.rb`
-  describe '#choices' do
-    it 'returns the relevant choices (children of the conviction type)' do
-      expect(subject.choices).to include('referral_order', 'supervision_order', 'youth_rehabilitation_order')
+  describe '#values' do
+    it 'returns the relevant values (children of the conviction type)' do
+      expect(subject.values).to include(
+        ConvictionType.new(:referral_order),
+        ConvictionType.new(:supervision_order),
+        ConvictionType.new(:youth_rehabilitation_order)
+      )
     end
   end
 

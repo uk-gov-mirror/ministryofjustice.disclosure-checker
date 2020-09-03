@@ -1,23 +1,15 @@
 <% title t('.page_title') %>
+<% step_header %>
 
-<div class="govuk-width-container">
-  <%= step_header %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_error_summary %>
 
-  <main id="main-content" class="govuk-main-wrapper">
+    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+      <%= f.govuk_collection_radio_buttons :conviction_subtype, @form_object.values, :value, nil,
+            legend: { text: f.i18n_legend } %>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <%= error_summary %>
-
-        <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :conviction_subtype, radio_hint: true,
-                                      choices: @form_object.choices,
-                                      i18n_attribute: @form_object.conviction_type %>
-
-          <%= f.continue_button %>
-        <% end %>
-      </div>
-    </div>
-
-  </main>
+      <%= f.continue_button %>
+    <% end %>
+  </div>
 </div>
