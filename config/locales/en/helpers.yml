@@ -167,6 +167,23 @@ en:
         conviction_bail: Did you spend any time on bail with an electronic tag?
 
     hint:
+      steps_conviction_conviction_type_form:
+        conviction_type_options:
+          # youth
+          referral_supervision_yro: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
+          custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
+          discharge: For example, a conditional discharge order or bind over
+          financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
+          military: For example, a dismissal or service detention
+          prevention_reparation: For example, a restraining order or sexual harm prevention order
+          youth_motoring: For example, penalty points, fines or a driving ban
+          # adults
+          adult_community_reparation: For example, a sexual prevention order or a restraining order. You might have been asked to wear a tag as part of your order
+          adult_discharge: For example, a conditional discharge order or bind over
+          adult_financial: For example, paying a fine or compensation
+          adult_military: For example, a dismissal or service detention
+          adult_motoring: For example, penalty points, fines or a driving ban
+          adult_custodial_sentence: For example, a prison sentence, suspended sentence or hospital order given under the Mental Health Act
       steps_caution_caution_type_form:
         caution_type_options:
           youth_simple_caution: *simple_caution_hint
@@ -214,22 +231,6 @@ en:
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: This is decided by the court. If you do not know the exact number of days you can enter an approximate number or leave this blank, but it might affect the accuracy of your result.
       radio_buttons:
-        conviction_type:
-          # youth
-          referral_supervision_yro: For example, a curfew or supervision. You might have been asked to wear a tag as part of your order
-          custodial_sentence: For example, a detention and training order (DTO) or a hospital order given under the Mental Health Act
-          discharge: For example, a conditional discharge order or bind over
-          financial: For example, paying a fine or compensation that was not part of a community order or youth rehabilitation order
-          military: For example, a dismissal or service detention
-          prevention_reparation: For example, a restraining order or sexual harm prevention order
-          youth_motoring: For example, penalty points, fines or a driving ban
-          # adults
-          adult_community_reparation: For example, a sexual prevention order or a restraining order. You might have been asked to wear a tag as part of your order
-          adult_discharge: For example, a conditional discharge order or bind over
-          adult_financial: For example, paying a fine or compensation
-          adult_military: For example, a dismissal or service detention
-          adult_motoring: For example, penalty points, fines or a driving ban
-          adult_custodial_sentence: For example, a prison sentence, suspended sentence or hospital order given under the Mental Health Act
         conviction_subtype:
           # referral_supervision_yro
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
@@ -313,7 +314,7 @@ en:
         approximate_known_date_options:
           'true': *approximate_date_checkbox
       steps_conviction_conviction_type_form:
-        conviction_type:
+        conviction_type_options:
           <<: *CONVICTION_TYPES
       steps_conviction_conviction_subtype_form:
         conviction_subtype:
@@ -380,6 +381,8 @@ en:
         youth_motoring_fine: When were you given the fine?
         youth_penalty_notice: When was the endorsement given?
         youth_penalty_points: When were you given the penalty points?
+      steps_conviction_conviction_type_form:
+        conviction_type: What type of conviction did you get?
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: When did you pay the compensation in full?
         approximate_compensation_payment_date: *approximate_date_legend
