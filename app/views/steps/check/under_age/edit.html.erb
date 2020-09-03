@@ -1,23 +1,15 @@
 <% title t('.page_title') %>
+<% step_header %>
 
-<div class="govuk-width-container">
-  <%= step_header %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= error_summary %>
 
-  <main class="govuk-main-wrapper" id="main-content">
+    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+        <%= f.govuk_collection_radio_buttons :under_age, GenericYesNo.values, :value, nil,
+              legend: { text: f.i18n_legend }, hint_text: f.i18n_hint %>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <%= error_summary %>
-
-        <!-- The header is part of the radios legend by default, but can be configured -->
-
-        <%= step_form @form_object do |f| %>
-          <%= f.radio_button_fieldset :under_age, choices: GenericYesNo.values,
-                                      i18n_attribute: current_disclosure_check.kind %>
-          <%= f.continue_button %>
-        <% end %>
-      </div>
-    </div>
-
-  </main>
+        <%= f.continue_button %>
+    <% end %>
+  </div>
 </div>

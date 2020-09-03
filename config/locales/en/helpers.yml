@@ -128,9 +128,6 @@ en:
       cancel_check: Go back to check your answers
       results_page: Go to results page
     fieldset:
-      steps_check_under_age_form:
-        caution: How old were you when you got cautioned?
-        conviction: How old were you when you got convicted?
       steps_conviction_conviction_subtype_form:
         # default key
         conviction_subtype: What type of order were you given?
@@ -193,8 +190,8 @@ en:
       steps_caution_known_date_form:
         known_date_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
       steps_check_under_age_form:
-        caution: Select your age when you got the caution, not when you committed the offence
-        conviction: Select your age when you got convicted, not when you committed the offence
+        caution_html: Select your age when you got the caution, not when you committed the offence
+        conviction_html: Select your age when you got convicted, not when you committed the offence
       steps_caution_conditional_end_date_form:
         conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>"
       steps_conviction_known_date_form:
@@ -294,7 +291,7 @@ en:
           caution: Cautioned
           conviction: Convicted
       steps_check_under_age_form:
-        under_age:
+        under_age_options:
           'yes': Under 18
           'no': 18 or over
       steps_caution_known_date_form:
@@ -345,6 +342,9 @@ en:
         kind: Were you cautioned or convicted?
       steps_caution_caution_type_form:
         caution_type: What type of caution did you get?
+      steps_check_under_age_form:
+        caution: How old were you when you got cautioned?
+        conviction: How old were you when you got convicted?
       steps_caution_known_date_form:
         known_date: When did you get the caution?
         approximate_known_date: *approximate_date_legend
