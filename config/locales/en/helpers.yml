@@ -131,8 +131,6 @@ en:
       steps_check_under_age_form:
         caution: How old were you when you got cautioned?
         conviction: How old were you when you got convicted?
-      steps_conviction_conviction_type_form:
-        conviction_type: What type of conviction did you get?
       steps_conviction_conviction_subtype_form:
         # default key
         conviction_subtype: What type of order were you given?
@@ -161,8 +159,6 @@ en:
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: Did you get an endorsement?
-      steps_conviction_motoring_disqualification_end_date_form:
-        motoring_disqualification_end_date: When did your disqualification end?
       steps_conviction_conviction_bail_form:
         conviction_bail: Did you spend any time on bail with an electronic tag?
 
@@ -225,7 +221,7 @@ en:
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: An endorsement means that your conviction is recorded on your driving licence. Endorsements are usually given by courts.
       steps_conviction_motoring_disqualification_end_date_form:
-        motoring_disqualification_end_date_html: If you do not know the exact date, you can enter an approximate one. Leave this blank if your ban had no end date. <span class='nowrap'>For example, 23 9 2018</span>
+        motoring_disqualification_end_date_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span> <p>Leave this blank if your ban had no end date.</p>
       steps_conviction_conviction_bail_form:
         conviction_bail: Time spent on bail with an electronic tag affects the spent date of your conviction. Time spent on bail without a tag does not.
       steps_conviction_conviction_bail_days_form:
@@ -335,8 +331,8 @@ en:
       steps_conviction_compensation_paid_amount_form:
         compensation_payment_over_100_options: *YESNO
       steps_conviction_motoring_disqualification_end_date_form:
-        <<: *DATE_PARTS
-        approximate_motoring_disqualification_end_date: *approximate_date_checkbox
+        approximate_motoring_disqualification_end_date_options:
+          'true': *approximate_date_checkbox
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: Number of days
       steps_conviction_compensation_paid_form:
@@ -383,6 +379,9 @@ en:
         youth_penalty_points: When were you given the penalty points?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
+      steps_conviction_motoring_disqualification_end_date_form:
+        motoring_disqualification_end_date: When did your disqualification end?
+        approximate_motoring_disqualification_end_date: *approximate_date_legend
       steps_conviction_compensation_payment_date_form:
         compensation_payment_date: When did you pay the compensation in full?
         approximate_compensation_payment_date: *approximate_date_legend
@@ -391,4 +390,4 @@ en:
       steps_conviction_compensation_paid_form:
         compensation_paid: Have you paid the compensation in full?
       steps_conviction_compensation_payment_receipt_form:
-          compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?
+        compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?

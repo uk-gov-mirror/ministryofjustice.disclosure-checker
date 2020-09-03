@@ -52,9 +52,9 @@ en:
               future: The date of the compensation payment date can’t be in the future
         steps/conviction/motoring_disqualification_end_date_form:
           attributes:
+            # Note: this date can be blank or in the future, but not too far in the past
             motoring_disqualification_end_date:
-              blank: Enter the end date of the motoring disqualification in the format dd/mm/yyyy
-              invalid: The end date of the motoring disqualification is not valid
+              invalid: The date is too far in the past. Enter a date after 01/01/1940
         steps/conviction/conviction_bail_form:
           attributes:
             conviction_bail:
