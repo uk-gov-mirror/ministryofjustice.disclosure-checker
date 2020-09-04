@@ -11,7 +11,6 @@ gem 'govuk_design_system_formbuilder'
 #       migrated all the forms to the govuk_design_system_formbuilder
 gem 'govuk_elements_form_builder', '~> 1.3.1'
 
-gem 'gov_uk_date_fields', '~> 4.1.0'
 gem 'jquery-rails'
 gem 'pg', '~> 1.1'
 gem 'puma'

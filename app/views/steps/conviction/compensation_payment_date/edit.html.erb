@@ -9,7 +9,7 @@
     <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
       <%= f.govuk_date_field :compensation_payment_date, form_group_classes: 'app-util--compact-form-group' %>
 
-      <%= render partial: 'steps/shared/new_approx_date_checkbox', locals: {
+      <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
         form: f, attribute: :approximate_compensation_payment_date
       } %>
 
