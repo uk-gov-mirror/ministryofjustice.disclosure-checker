@@ -13,22 +13,30 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
 
   subject { described_class.new(arguments) }
 
+  describe '#i18n_attribute' do
+    it 'returns the key that will be used to translate legends and hints' do
+      expect(subject.i18n_attribute).to eq(ConvictionType.new(:youth_rehabilitation_order))
+    end
+  end
+
   # Note: no need to test all combinations here, we do that already in
   # the spec `spec/services/conviction_length_choices_spec.rb`
   #
-  describe '#choices' do
+  describe '#values' do
     context 'for a `Youth rehabilitation order`' do
-      it 'includes `no_length` in the choices' do
+      it 'includes `no_length` in the values' do
         expect(ConvictionLengthChoices).to receive(:choices).with(
           conviction_subtype: ConvictionType::YOUTH_REHABILITATION_ORDER
         ).and_call_original
 
-        expect(subject.choices).to eq(%w(
-          weeks
-          months
-          years
-          no_length
-        ))
+        expect(subject.values).to eq(
+          [
+            ConvictionLengthType.new(:weeks),
+            ConvictionLengthType.new(:months),
+            ConvictionLengthType.new(:years),
+            ConvictionLengthType.new(:no_length)
+          ]
+        )
       end
     end
   end

@@ -5,13 +5,21 @@ module Steps
 
       validates_inclusion_of :conviction_length_type, in: :choices, if: :disclosure_check
 
-      def choices
+      def values
         ConvictionLengthChoices.choices(
           conviction_subtype: conviction_subtype
-        ).map(&:to_s)
+        )
+      end
+
+      def i18n_attribute
+        conviction_subtype
       end
 
       private
+
+      def choices
+        values.map(&:to_s)
+      end
 
       def changed?
         disclosure_check.conviction_length_type != conviction_length_type
