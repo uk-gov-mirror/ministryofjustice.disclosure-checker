@@ -127,18 +127,6 @@ en:
       restart_check: Start a new check
       cancel_check: Go back to check your answers
       results_page: Go to results page
-    fieldset:
-      steps_conviction_conviction_length_type_form:
-        # default key
-        conviction_length_type: Was the length of the order given in weeks, months or years?
-        # alternative keys defined with `i18_attribute`
-        detention_training_order: Was the length of the DTO given in weeks, months or years?
-        detention: Was the length of the detention given in weeks, months or years?
-        conditional_discharge: Was the length of the conditions given in weeks, months or years?
-        adult_conditional_discharge: Was the length of the conditions given in weeks, months or years?
-        adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
-        adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
-        adult_disqualification: Was the length of the disqualification given in weeks, months or years?
 
     hint:
       steps_conviction_conviction_type_form:
@@ -278,7 +266,7 @@ en:
         conviction_subtype_options:
           <<: *CONVICTION_SUBTYPES
       steps_conviction_conviction_length_type_form:
-        conviction_length_type:
+        conviction_length_type_options:
           weeks: Weeks
           months: Months
           years: Years
@@ -378,3 +366,14 @@ en:
         compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?
       steps_conviction_conviction_bail_form:
         conviction_bail: Did you spend any time on bail with an electronic tag?
+      steps_conviction_conviction_length_type_form:
+        # default key
+        default: Was the length of the order given in weeks, months or years?
+        # alternative keys defined with `i18_attribute`
+        detention_training_order: Was the length of the DTO given in weeks, months or years?
+        detention: Was the length of the detention given in weeks, months or years?
+        conditional_discharge: Was the length of the conditions given in weeks, months or years?
+        adult_conditional_discharge: Was the length of the conditions given in weeks, months or years?
+        adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
+        adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
+        adult_disqualification: Was the length of the disqualification given in weeks, months or years?
