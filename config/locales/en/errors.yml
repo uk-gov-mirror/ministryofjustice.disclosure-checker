@@ -65,6 +65,10 @@ en:
               greater_than: The input must be greater than zero, or left blank
               not_a_number: The input must be a number, like 3
               not_an_integer: The input must be a whole number, like 4
+        steps/conviction/motoring_endorsement_form:
+          attributes:
+            motoring_endorsement:
+              inclusion: Select yes if you have received an endorsement
 
   errors:
     format: "%{message}"

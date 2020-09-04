@@ -139,8 +139,6 @@ en:
         adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
-      steps_conviction_motoring_endorsement_form:
-        motoring_endorsement: Did you get an endorsement?
 
     hint:
       steps_conviction_conviction_type_form:
@@ -305,6 +303,8 @@ en:
         compensation_paid_options: *YESNO
       steps_conviction_compensation_payment_receipt_form:
         compensation_receipt_sent_options: *YESNO
+      steps_conviction_motoring_endorsement_form:
+        motoring_endorsement_options: *YESNO
 
     legend:
       steps_check_kind_form:
@@ -351,6 +351,8 @@ en:
       steps_conviction_motoring_disqualification_end_date_form:
         motoring_disqualification_end_date: When did your disqualification end?
         approximate_motoring_disqualification_end_date: *approximate_date_legend
+      steps_conviction_motoring_endorsement_form:
+        motoring_endorsement: Did you get an endorsement?
       steps_conviction_conviction_subtype_form:
         default: What type of order were you given?
         # alternative keys defined with `i18_attribute`
