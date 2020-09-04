@@ -5,11 +5,19 @@ module Steps
 
       validates_inclusion_of :conviction_subtype, in: :choices, if: :disclosure_check
 
-      def choices
-        conviction_subtypes.map(&:to_s)
+      def values
+        conviction_subtypes
+      end
+
+      def i18n_attribute
+        conviction_type
       end
 
       private
+
+      def choices
+        values.map(&:to_s)
+      end
 
       def conviction_subtypes
         ConvictionType.new(conviction_type).children

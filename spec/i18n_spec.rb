@@ -25,7 +25,7 @@ RSpec.describe 'I18n' do
 
     it 'convictions subtypes in `helpers.yml` matches convictions subtypes in `results.yml`' do
       expect(
-        i18n.tree('en.helpers.label.steps_conviction_conviction_subtype_form.conviction_subtype').to_hash
+        i18n.tree('en.helpers.label.steps_conviction_conviction_subtype_form.conviction_subtype_options').to_hash
       ).to eq(
         i18n.tree('en.results/conviction.conviction_subtype.answers').to_hash
       )
