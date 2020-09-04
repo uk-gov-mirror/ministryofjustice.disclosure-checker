@@ -141,8 +141,6 @@ en:
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: Did you get an endorsement?
-      steps_conviction_conviction_bail_form:
-        conviction_bail: Did you spend any time on bail with an electronic tag?
 
     hint:
       steps_conviction_conviction_type_form:
@@ -299,6 +297,8 @@ en:
       steps_conviction_motoring_disqualification_end_date_form:
         approximate_motoring_disqualification_end_date_options:
           'true': *approximate_date_checkbox
+      steps_conviction_conviction_bail_form:
+        conviction_bail_options: *YESNO
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: Number of days
       steps_conviction_compensation_paid_form:
@@ -374,3 +374,5 @@ en:
         compensation_paid: Have you paid the compensation in full?
       steps_conviction_compensation_payment_receipt_form:
         compensation_receipt_sent: Did you send the payment receipt to the Disclosure and Barring (DBS) service?
+      steps_conviction_conviction_bail_form:
+        conviction_bail: Did you spend any time on bail with an electronic tag?
