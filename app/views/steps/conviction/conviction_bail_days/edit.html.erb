@@ -10,7 +10,7 @@
       <%=t '.heading' %>
     </h1>
 
-    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+    <%= step_form @form_object do |f| %>
       <%= f.govuk_text_field :conviction_bail_days, width: 3, pattern: "[0-9]*", inputmode: "numeric" %>
 
       <%= f.continue_button %>

@@ -20,7 +20,7 @@
 require_relative '../../lib/govuk_components/form_builder'
 require_relative '../../lib/govuk_components/error_helpers'
 
-ActionView::Base.default_form_builder = GovukComponents::FormBuilder
+ActionView::Base.default_form_builder = GOVUKDesignSystemFormBuilder::FormBuilder
 
 GOVUKDesignSystemFormBuilder.configure do |config|
   config.default_legend_tag   = 'h1'
