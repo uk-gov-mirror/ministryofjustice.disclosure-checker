@@ -4,7 +4,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= step_subsection %>
+    <%= render 'step_subsection', step_subsection: @form_object.conviction_subtype %>
 
     <%= step_form @form_object do |f| %>
       <%= f.govuk_collection_radio_buttons :compensation_paid, GenericYesNo.values, :value, nil %>

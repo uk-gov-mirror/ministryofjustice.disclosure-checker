@@ -4,7 +4,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= step_subsection %>
+    <%= render 'step_subsection', step_subsection: @form_object.conviction_subtype %>
 
     <%= step_form @form_object do |f| %>
       <%= f.govuk_date_field :known_date, form_group_classes: 'app-util--compact-form-group',

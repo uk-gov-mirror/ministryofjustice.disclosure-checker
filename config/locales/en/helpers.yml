@@ -114,6 +114,12 @@ en:
       'yes': 'Yes'
       'no': 'No'
 
+  steps:
+    conviction:
+      known_date:
+        edit:
+          section: *CONVICTION_SUBTYPES
+
   shared:
     back_link: Back
     subsection:
