@@ -5,7 +5,7 @@
   <div class="govuk-grid-column-two-thirds">
     <%= error_summary %>
 
-    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+    <%= step_form @form_object do |f| %>
         <%= f.govuk_collection_radio_buttons :under_age, GenericYesNo.values, :value, nil,
               legend: { text: f.i18n_legend }, hint_text: f.i18n_hint %>
 

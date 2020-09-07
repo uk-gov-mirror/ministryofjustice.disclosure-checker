@@ -12,7 +12,7 @@
 
     <%=t ".explanation.#{@form_object.conviction_subtype}_html", default: '' %>
 
-    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+    <%= step_form @form_object do |f| %>
         <%= f.govuk_text_field :conviction_length,
                        label: { text: f.i18n_legend },
                        width: 3, pattern: "[0-9]*", inputmode: "numeric" %>

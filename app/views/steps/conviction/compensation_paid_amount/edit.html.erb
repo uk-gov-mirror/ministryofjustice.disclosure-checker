@@ -6,7 +6,7 @@
     <%= govuk_error_summary %>
     <%= step_subsection %>
 
-    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+    <%= step_form @form_object do |f| %>
       <%= f.govuk_collection_radio_buttons :compensation_payment_over_100, GenericYesNo.values, :value, nil, inline: true %>
 
       <%= f.continue_button %>
