@@ -1,31 +1,22 @@
 <% title t('.page_title') %>
+<%= step_header %>
 
-<div class="govuk-width-container">
-  <%= step_header %>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <%= govuk_error_summary %>
+    <%= step_subsection %>
 
-  <main id="main-content" class="govuk-main-wrapper">
+    <h1 class="govuk-heading-xl">
+      <%=t ".heading.#{@form_object.conviction_subtype}", default: t('.heading.default') %>
+    </h1>
 
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <%= error_summary %>
-        <%= step_subsection %>
+    <%=t ".explanation.#{@form_object.conviction_subtype}_html", default: '' %>
 
-        <h1 class="govuk-heading-xl">
-          <%=t ".heading.#{@form_object.conviction_subtype}", default: t('.heading.default') %>
-        </h1>
-
-        <%=t ".explanation.#{@form_object.conviction_subtype}_html", default: '' %>
-
-        <%= step_form @form_object do |f| %>
-          <%= f.text_field :conviction_length,
-                           i18n_attribute: @form_object.conviction_length_type,
-                           input_options: { class: 'govuk-input--width-3', inputmode: :numeric, pattern: '[0-9]*' },
-                           label_options: { page_heading: false, size: 's' } %>
-
-          <%= f.continue_button %>
-        <% end %>
-      </div>
-    </div>
-
-  </main>
+    <%= step_form @form_object, builder: GOVUKDesignSystemFormBuilder::FormBuilder do |f| %>
+        <%= f.govuk_text_field :conviction_length,
+                       label: { text: f.i18n_legend },
+                       width: 3, pattern: "[0-9]*", inputmode: "numeric" %>
+      <%= f.continue_button %>
+    <% end %>
+  </div>
 </div>

@@ -7,6 +7,10 @@ module Steps
       validates_numericality_of :conviction_length, greater_than: 0, only_integer: true
       validates :conviction_length, sentence_length: true, if: :disclosure_check
 
+      def i18n_attribute
+        disclosure_check.conviction_length_type
+      end
+
       private
 
       def persist!

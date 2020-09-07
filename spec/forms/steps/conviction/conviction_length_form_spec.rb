@@ -17,6 +17,13 @@ RSpec.describe Steps::Conviction::ConvictionLengthForm do
 
   subject { described_class.new(arguments) }
 
+
+  describe '#i18n_attribute' do
+    it 'returns the key that will be used to translate legends and hints' do
+      expect(subject.i18n_attribute).to eq("months")
+    end
+  end
+
   describe '#conviction_length_type' do
     it 'delegates to `disclosure_checker`' do
       expect(disclosure_check).to receive(:conviction_length_type)
