@@ -4,7 +4,10 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= render 'step_subsection', step_subsection: @form_object.conviction_subtype %>
+
+    <span class="govuk-caption-xl">
+      <%= t @form_object.conviction_subtype, scope: [:shared, :subsection], default: '' %>
+    </span>
 
     <%= step_form @form_object do |f| %>
       <%= f.govuk_collection_radio_buttons :compensation_payment_over_100, GenericYesNo.values, :value, nil, inline: true %>
