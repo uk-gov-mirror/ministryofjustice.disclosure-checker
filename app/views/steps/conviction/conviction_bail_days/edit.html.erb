@@ -4,14 +4,17 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= step_subsection %>
 
     <h1 class="govuk-heading-xl">
       <%=t '.heading' %>
     </h1>
 
     <%= step_form @form_object do |f| %>
-      <%= f.govuk_text_field :conviction_bail_days, width: 3, pattern: "[0-9]*", inputmode: "numeric" %>
+      <%= f.govuk_text_field :conviction_bail_days,
+            width: 3,
+            pattern: "[0-9]*",
+            inputmode: "numeric",
+            caption: { text: f.i18n_caption } %>
 
       <%= f.continue_button %>
     <% end %>

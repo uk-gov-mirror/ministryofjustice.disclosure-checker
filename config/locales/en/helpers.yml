@@ -116,8 +116,6 @@ en:
 
   shared:
     back_link: Back
-    subsection:
-      <<: *CONVICTION_SUBTYPES
 
   helpers:
     buttons:
@@ -127,6 +125,28 @@ en:
       restart_check: Start a new check
       cancel_check: Go back to check your answers
       results_page: Go to results page
+
+    caption:
+      steps_conviction_known_date_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_compensation_paid_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_compensation_payment_date_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_compensation_payment_receipt_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_conviction_bail_days_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_conviction_bail_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_conviction_length_type_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_conviction_length_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_motoring_disqualification_end_date_form:
+        <<: *CONVICTION_SUBTYPES
+      steps_conviction_motoring_endorsement_form:
+        <<: *CONVICTION_SUBTYPES
 
     hint:
       steps_conviction_conviction_type_form:

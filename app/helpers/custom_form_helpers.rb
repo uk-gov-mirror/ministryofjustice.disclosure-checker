@@ -3,6 +3,13 @@ module CustomFormHelpers
     submit_button(continue)
   end
 
+  # Used to customise captions above the page heading
+  def i18n_caption
+    I18n.t(
+      object.conviction_subtype, scope: scope_for_locale(:caption)
+    )
+  end
+
   # Used to customise legends when reusing the same view
   def i18n_legend
     I18n.t(

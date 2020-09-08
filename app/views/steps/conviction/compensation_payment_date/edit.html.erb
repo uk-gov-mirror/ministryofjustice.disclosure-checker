@@ -4,10 +4,11 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= step_subsection %>
 
     <%= step_form @form_object do |f| %>
-      <%= f.govuk_date_field :compensation_payment_date, form_group_classes: 'app-util--compact-form-group' %>
+      <%= f.govuk_date_field :compensation_payment_date,
+          form_group_classes: 'app-util--compact-form-group',
+          caption: { text: f.i18n_caption } %>
 
       <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
         form: f, attribute: :approximate_compensation_payment_date
