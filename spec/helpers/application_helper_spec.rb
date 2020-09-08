@@ -61,15 +61,6 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe '#step_subsection' do
-    let(:form_object) { double('form object', conviction_subtype: 'conviction_subtype') }
-
-    it 'renders the expected content' do
-      expect(helper).to receive(:render).with(partial: 'step_subsection', locals: {subsection: 'conviction_subtype'}).and_return('foobar')
-      expect(helper.step_subsection(form_object)).to eq('foobar')
-    end
-  end
-
   describe '#error_summary' do
     context 'when no form object is given' do
       let(:form_object) { nil }

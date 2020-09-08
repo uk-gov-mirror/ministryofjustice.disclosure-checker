@@ -23,6 +23,20 @@ RSpec.describe CustomFormHelpers, type: :helper do
     end
   end
 
+  describe '#i18n_caption' do
+    before do
+      allow(form_object).to receive(:conviction_subtype).and_return(:foobar)
+    end
+
+    it 'seeks the expected locale key' do
+      expect(I18n).to receive(:t).with(
+        :foobar, scope: [:helpers, :caption, :disclosure_check]
+      )
+
+      builder.i18n_caption
+    end
+  end
+
   describe '#i18n_legend' do
     before do
       allow(form_object).to receive(:i18n_attribute).and_return(:foobar)

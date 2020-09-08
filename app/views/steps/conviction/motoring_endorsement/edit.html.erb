@@ -4,10 +4,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= step_subsection %>
 
     <%= step_form @form_object do |f| %>
-      <%= f.govuk_collection_radio_buttons :motoring_endorsement, GenericYesNo.values, :value, nil %>
+      <%= f.govuk_collection_radio_buttons :motoring_endorsement,
+            GenericYesNo.values, :value, nil,
+            caption: { text: f.i18n_caption } %>
+
       <%= f.continue_button %>
     <% end %>
   </div>

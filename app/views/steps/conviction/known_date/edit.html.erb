@@ -4,11 +4,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
-    <%= step_subsection %>
 
     <%= step_form @form_object do |f| %>
       <%= f.govuk_date_field :known_date, form_group_classes: 'app-util--compact-form-group',
-                             legend: { text: f.i18n_legend }, hint_text: f.i18n_hint %>
+            legend: { text: f.i18n_legend },
+            hint_text: f.i18n_hint,
+            caption: { text: f.i18n_caption } %>
 
       <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
         form: f, attribute: :approximate_known_date
