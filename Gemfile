@@ -5,11 +5,11 @@ ruby '2.6.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
-gem 'govuk_design_system_formbuilder'
 
-# TODO: remove govuk_elements_form_builder gem once we have
-#       migrated all the forms to the govuk_design_system_formbuilder
-gem 'govuk_elements_form_builder', '~> 1.3.1'
+# This gem complies with the GOV.UK Design System
+# https://design-system.service.gov.uk
+# https://govuk-form-builder.netlify.app
+gem 'govuk_design_system_formbuilder'
 
 gem 'jquery-rails'
 gem 'pg', '~> 1.1'
