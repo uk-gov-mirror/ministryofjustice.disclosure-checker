@@ -147,6 +147,8 @@ en:
         <<: *CONVICTION_SUBTYPES
       steps_conviction_motoring_endorsement_form:
         <<: *CONVICTION_SUBTYPES
+      steps_conviction_compensation_paid_amount_form:
+        <<: *CONVICTION_SUBTYPES
 
     hint:
       steps_conviction_conviction_type_form:
