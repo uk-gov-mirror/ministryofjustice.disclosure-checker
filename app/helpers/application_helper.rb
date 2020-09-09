@@ -23,19 +23,6 @@ module ApplicationHelper
     }
   end
 
-  def error_summary(form_object = @form_object)
-    return unless GovukElementsErrorsHelper.errors_exist?(form_object)
-
-    content_for(:page_title, flush: true) do
-      content_for(:page_title).insert(0, t('errors.page_title_prefix'))
-    end
-
-    GovukElementsErrorsHelper.error_summary(
-      form_object,
-      t('errors.error_summary.heading')
-    )
-  end
-
   def govuk_error_summary(form_object = @form_object)
     return unless form_object.try(:errors).present?
 

@@ -22,10 +22,6 @@ module FormAttributeMethods
   end
 
   module ClassMethods
-    def attribute_names
-      attribute_set.map(&:name)
-    end
-
     # Iterates through all declared attributes in the form object, mapping its values
     def attributes_map(origin)
       attribute_set.map { |attr| [attr.name, origin[attr.name]] }.to_h
