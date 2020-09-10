@@ -229,7 +229,7 @@ moj.Modules.gaEvents = {
     },
 
     getDateYearData: function ($form) {
-        var $dateYears = $form.find('input[type="text"][id$="_yyyy"]'),
+        var $dateYears = $form.find('input[type="text"][id$="date_1i"]'),
             eventDataArray = [];
 
         $dateYears.each(function (n, year) {
@@ -238,7 +238,7 @@ moj.Modules.gaEvents = {
 
             eventData = {
                 hitType: 'event',
-                eventCategory: $year.attr('name'),
+                eventCategory: $year.attr('name').replace("(1i)", "_yyyy"),
                 eventAction: 'enter_date',
                 eventLabel: $year.val()
             };
