@@ -19,3 +19,11 @@
   If you're not sure if you should tell people about a caution or conviction,
   you should consider getting specific legal advice. This checker offers general guidance only.
 </p>
+
+<p class="govuk-body">
+  If you need to change any information, or if you have another caution or conviction you’d like to check,
+  start a new check.
+</p>
+
+<%= link_button :restart_check, root_path, class: 'govuk-button ga-pageLink govuk-!-margin-top-2',
+                data: { module: 'govuk-button', ga_category: 'results', ga_label: 'new check' } %>
