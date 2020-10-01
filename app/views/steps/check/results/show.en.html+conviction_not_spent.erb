@@ -13,6 +13,11 @@
       </div>
     </div>
 
+    <p class="govuk-body">
+      This result is correct if you serve your sentence in full as the court ordered you to. The conviction might not be
+      spent if you do not stick to the terms of your sentence.
+    </p>
+
     <%= render partial: 'steps/check/results/shared/meaning' %>
 
     <%= render partial: 'steps/check/results/shared/motoring' if @presenter.conviction_type.motoring? %>
