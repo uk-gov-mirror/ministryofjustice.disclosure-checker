@@ -7,7 +7,7 @@
 
     <%= step_form @form_object do |f| %>
       <%= f.govuk_date_field :motoring_disqualification_end_date,
-            form_group_classes: 'app-util--compact-form-group',
+            form_group: { classes: 'app-util--compact-form-group' },
             caption: { text: f.i18n_caption } %>
 
       <%= render partial: 'steps/shared/approx_date_checkbox', locals: {
