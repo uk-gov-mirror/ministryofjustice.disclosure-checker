@@ -48,8 +48,8 @@ end
 group :test do
   gem 'brakeman'
   gem 'capybara'
-  gem 'cucumber'
-  gem 'cucumber-rails', '1.8.0', require: false
+  gem 'cucumber', '< 5.0.0'
+  gem 'cucumber-rails', require: false
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
