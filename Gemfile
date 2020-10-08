@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby File.read('.ruby-version')
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -48,7 +48,7 @@ end
 group :test do
   gem 'brakeman'
   gem 'capybara'
-  gem 'cucumber'
+  gem 'cucumber', '< 5.0.0'
   gem 'cucumber-rails', require: false
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
