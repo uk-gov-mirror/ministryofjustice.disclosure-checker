@@ -49,7 +49,7 @@ group :test do
   gem 'brakeman'
   gem 'capybara'
   gem 'cucumber'
-  gem 'cucumber-rails', '1.6.0', require: false
+  gem 'cucumber-rails', '1.8.0', require: false
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
   gem 'rubocop-rspec', require: false
