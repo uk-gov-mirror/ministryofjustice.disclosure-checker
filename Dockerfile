@@ -35,6 +35,7 @@ RUN addgroup -g 1000 -S appgroup && \
 RUN mkdir -p /usr/src/app && mkdir -p /usr/src/app/tmp
 WORKDIR /usr/src/app
 
+COPY Gemfile* .ruby-version ./
 COPY Gemfile* ./
 
 RUN gem install bundler -v 2.1.4 && \
