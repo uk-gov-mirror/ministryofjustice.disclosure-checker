@@ -7,7 +7,7 @@
 
     <%= step_form @form_object do |f| %>
       <%= f.govuk_collection_radio_buttons :compensation_paid,
-            GenericYesNo.values, :value, nil,
+            GenericYesNo.values, :value, nil, inline: true,
             caption: { text: f.i18n_caption } %>
 
       <%= f.continue_button %>
