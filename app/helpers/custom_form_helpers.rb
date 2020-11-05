@@ -28,7 +28,7 @@ module CustomFormHelpers
   private
 
   def submit_button(i18n_key, opts = {}, &block)
-    govuk_submit I18n.t("helpers.buttons.#{i18n_key}"), opts, &block
+    govuk_submit I18n.t("helpers.buttons.#{i18n_key}"), **opts, &block
   end
 
   def scope_for_locale(context)
