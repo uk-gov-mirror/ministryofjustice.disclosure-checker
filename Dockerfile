@@ -38,8 +38,9 @@ WORKDIR /usr/src/app
 COPY Gemfile* .ruby-version ./
 
 RUN gem install bundler -v 2.1.4 && \
-    bundle config --global without test:development && \
-    bundle install --frozen --jobs 2 --retry 3
+    bundle config set frozen 'true' && \
+    bundle config without test:development && \
+    bundle install --jobs 2 --retry 3
 
 COPY . .
 
