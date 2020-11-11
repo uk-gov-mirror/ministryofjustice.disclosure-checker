@@ -88,3 +88,8 @@ end
 When(/^The current date is (\d+)\-(\d+)\-(\d+)$/) do |day, month, year|
   travel_to Date.new(year, month, day)
 end
+
+When(/^I have started an application$/) do
+  step %[I visit "/"]
+  step %[I click the "Start now" link]
+end
