@@ -50,8 +50,7 @@ And(/^I choose "([^"]*)" and fill in "([^"]*)" with "([^"]*)"$/) do |text, field
 end
 
 When(/^I am completing a basic under 18 "([^"]*)" conviction$/) do |value|
-  step %[I visit "/"]
-  step %[I click the "Start now" link]
+  step %[I have started a check]
   step %[I should see "Were you cautioned or convicted?"]
   step %[I choose "Convicted"]
   step %[I should see "How old were you when you got convicted?"]
@@ -61,8 +60,7 @@ When(/^I am completing a basic under 18 "([^"]*)" conviction$/) do |value|
 end
 
 When(/^I am completing a basic 18 or over "([^"]*)" conviction$/) do |value|
-  step %[I visit "/"]
-  step %[I click the "Start now" link]
+  step %[I have started a check]
   step %[I should see "Were you cautioned or convicted?"]
   step %[I choose "Convicted"]
   step %[I should see "How old were you when you got convicted?"]
@@ -89,7 +87,12 @@ When(/^The current date is (\d+)\-(\d+)\-(\d+)$/) do |day, month, year|
   travel_to Date.new(year, month, day)
 end
 
-When(/^I have started an application$/) do
+When(/^I have started a check$/) do
   step %[I visit "/"]
   step %[I click the "Start now" link]
+end
+
+When(/^I am in the conviction known date step$/) do
+  step %[I am completing a basic under 18 "Discharge" conviction]
+  step %[I choose "Bind over"]
 end

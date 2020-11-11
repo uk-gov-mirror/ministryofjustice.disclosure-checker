@@ -1,6 +1,6 @@
 Feature: High level form markup smoke tests
   Scenario: Radio button form markup should be correct
-    Given I have started an application
+    Given I have started a check
     When I visit "steps/check/kind"
 
     Then The form markup should match "steps_check_kind"
