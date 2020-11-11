@@ -1,15 +1,13 @@
 Feature: High level form markup smoke tests
-  Background:
+  Scenario: Radio button form markup should be correct
     Given I have started an application
+    When I visit "steps/check/kind"
 
-  Scenario Outline: Form markup should be correct
-    When I visit "<step_path>"
+    Then The form markup should match "steps_check_kind"
+    Then The form markup with errors should match "steps_check_kind_with_errors"
 
-    Then The form markup should match "<fixture_file>"
-    Then The form markup with errors should match "<error_fixture_file>"
+  Scenario: Date form markup should be correct
+    When I am in the conviction known date step
 
-    Examples:
-      | step_path        | fixture_file     | error_fixture_file           |
-      | steps/check/kind | steps_check_kind | steps_check_kind_with_errors |
-
-  # cover date , checkbox and radio button forms
+    Then The form markup should match "steps_conviction_known_date"
+    Then The form markup with errors should match "steps_conviction_known_date_with_errors"
