@@ -236,7 +236,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'supervision_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusSixMonths) }
     end
 
     context 'YOUTH_REHABILITATION_ORDER' do
