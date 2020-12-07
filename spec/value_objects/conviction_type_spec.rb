@@ -123,7 +123,6 @@ RSpec.describe ConvictionType do
           adult_restraining_order
           adult_serious_crime_prevention
           adult_sexual_harm_prevention_order
-          adult_supervision_order
         ))
       end
     end
@@ -369,13 +368,6 @@ RSpec.describe ConvictionType do
 
     context 'ADULT_SEXUAL_HARM_PREVENTION_ORDER' do
       let(:subtype) { 'adult_sexual_harm_prevention_order' }
-
-      it { expect(conviction_type.skip_length?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
-    end
-
-    context 'ADULT_SUPERVISION_ORDER' do
-      let(:subtype) { 'adult_supervision_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
