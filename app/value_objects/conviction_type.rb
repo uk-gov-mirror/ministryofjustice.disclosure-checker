@@ -77,7 +77,7 @@ class ConvictionType < ValueObject
 
     ADULT_ATTENDANCE_CENTRE_ORDER       = new(:adult_attendance_centre_order,      parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_COMMUNITY_ORDER               = new(:adult_community_order,              parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusTwelveMonths),
-    ADULT_CRIMINAL_BEHAVIOUR            = new(:adult_criminal_behaviour,           parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusTwelveMonths),
+    ADULT_CRIMINAL_BEHAVIOUR            = new(:adult_criminal_behaviour,           parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_REPARATION_ORDER              = new(:adult_reparation_order,             parent: ADULT_COMMUNITY_REPARATION, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
     ADULT_RESTRAINING_ORDER             = new(:adult_restraining_order,            parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_SERIOUS_CRIME_PREVENTION      = new(:adult_serious_crime_prevention,     parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
