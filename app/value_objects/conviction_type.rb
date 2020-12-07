@@ -43,7 +43,7 @@ class ConvictionType < ValueObject
     #####################
     #
     REFERRAL_ORDER                     = new(:referral_order,                   parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    SUPERVISION_ORDER                  = new(:supervision_order,                parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    SUPERVISION_ORDER                  = new(:supervision_order,                parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
     YOUTH_REHABILITATION_ORDER         = new(:youth_rehabilitation_order,       parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
 
     DETENTION_TRAINING_ORDER           = new(:detention_training_order,         parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::SentenceCalculator::DetentionTraining),
@@ -82,7 +82,6 @@ class ConvictionType < ValueObject
     ADULT_RESTRAINING_ORDER             = new(:adult_restraining_order,            parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_SERIOUS_CRIME_PREVENTION      = new(:adult_serious_crime_prevention,     parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_SEXUAL_HARM_PREVENTION_ORDER  = new(:adult_sexual_harm_prevention_order, parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    ADULT_SUPERVISION_ORDER             = new(:adult_supervision_order,            parent: ADULT_COMMUNITY_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     ADULT_BIND_OVER                     = new(:adult_bind_over,                    parent: ADULT_DISCHARGE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ADULT_ABSOLUTE_DISCHARGE            = new(:adult_absolute_discharge,           parent: ADULT_DISCHARGE, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
