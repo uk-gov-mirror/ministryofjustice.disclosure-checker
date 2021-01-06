@@ -1,7 +1,7 @@
 class ConvictionType < ValueObject
   include ConvictionDecorator
 
-  attr_reader :parent, :skip_length, :calculator_class
+  attr_reader :parent, :skip_length, :calculator_class, :relevant_order
 
   def initialize(raw_value, params = {})
     @parent = params.fetch(:parent, nil)
@@ -13,6 +13,7 @@ class ConvictionType < ValueObject
   end
 
   alias skip_length? skip_length
+  alias relevant_order? relevant_order
 
   VALUES = [
     YOUTH_PARENT_TYPES = [
