@@ -175,20 +175,20 @@ RSpec.describe ConvictionType do
         ))
       end
     end
+  end
 
-    context 'ConvictionType attributes' do
-      let(:subtype) { 'sexual_harm_prevention_order' }
-      let(:conviction_type) { described_class.find_constant(subtype) }
+  describe 'ConvictionType attributes' do
+    let(:subtype) { 'sexual_harm_prevention_order' }
+    let(:conviction_type) { described_class.find_constant(subtype) }
 
-      context 'skip_length?' do
-        context 'skip_length is false' do
-          it { expect(conviction_type.skip_length?).to eq(false) }
-        end
+    context 'skip_length?' do
+      context 'skip_length is false' do
+        it { expect(conviction_type.skip_length?).to eq(false) }
+      end
 
-        context 'skip_length is true' do
-          let(:subtype) { 'absolute_discharge' }
-          it { expect(conviction_type.skip_length?).to eq(true) }
-        end
+      context 'skip_length? is true' do
+        let(:subtype) { 'absolute_discharge' }
+        it { expect(conviction_type.skip_length?).to eq(true) }
       end
     end
   end
