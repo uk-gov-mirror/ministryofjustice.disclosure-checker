@@ -7,6 +7,7 @@ class ConvictionType < ValueObject
     @parent = params.fetch(:parent, nil)
     @skip_length = params.fetch(:skip_length, false)
     @calculator_class = params.fetch(:calculator_class, nil)
+    @relevant_order = params.fetch(:relevant_order, false)
 
     super(raw_value)
   end
@@ -42,31 +43,31 @@ class ConvictionType < ValueObject
     # Youth convictions #
     #####################
     #
-    REFERRAL_ORDER                     = new(:referral_order,                   parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    REFERRAL_ORDER                     = new(:referral_order,                   parent: REFERRAL_SUPERVISION_YRO, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     SUPERVISION_ORDER                  = new(:supervision_order,                parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
     YOUTH_REHABILITATION_ORDER         = new(:youth_rehabilitation_order,       parent: REFERRAL_SUPERVISION_YRO, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
 
     DETENTION_TRAINING_ORDER           = new(:detention_training_order,         parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::SentenceCalculator::DetentionTraining),
     DETENTION                          = new(:detention,                        parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::SentenceCalculator::Detention),
-    HOSPITAL_ORDER                     = new(:hospital_order,                   parent: CUSTODIAL_SENTENCE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    HOSPITAL_ORDER                     = new(:hospital_order,                   parent: CUSTODIAL_SENTENCE, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
-    BIND_OVER                          = new(:bind_over,                        parent: DISCHARGE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    BIND_OVER                          = new(:bind_over,                        parent: DISCHARGE, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     ABSOLUTE_DISCHARGE                 = new(:absolute_discharge,               parent: DISCHARGE, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
-    CONDITIONAL_DISCHARGE              = new(:conditional_discharge,            parent: DISCHARGE, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    CONDITIONAL_DISCHARGE              = new(:conditional_discharge,            parent: DISCHARGE, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
     FINE                               = new(:fine,                             parent: FINANCIAL, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
-    COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, calculator_class: Calculators::CompensationCalculator),
+    COMPENSATION_TO_A_VICTIM           = new(:compensation_to_a_victim,         parent: FINANCIAL, relevant_order: true, calculator_class: Calculators::CompensationCalculator),
 
     DISMISSAL                          = new(:dismissal,                        parent: MILITARY, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
     OVERSEAS_COMMUNITY_ORDER           = new(:overseas_community_order,         parent: MILITARY, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
     SERVICE_COMMUNITY_ORDER            = new(:service_community_order,          parent: MILITARY, calculator_class: Calculators::AdditionCalculator::PlusSixMonths),
     SERVICE_DETENTION                  = new(:service_detention,                parent: MILITARY, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusSixMonths),
 
-    REPARATION_ORDER                   = new(:reparation_order,                 parent: PREVENTION_REPARATION, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
-    RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
-    SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: PREVENTION_REPARATION, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    REPARATION_ORDER                   = new(:reparation_order,                 parent: PREVENTION_REPARATION, relevant_order: true, skip_length: true, calculator_class: Calculators::ImmediatelyCalculator),
+    RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_REPARATION, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
+    SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: PREVENTION_REPARATION, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
-    YOUTH_DISQUALIFICATION             = new(:youth_disqualification,           parent: YOUTH_MOTORING, calculator_class: Calculators::Motoring::Youth::Disqualification),
+    YOUTH_DISQUALIFICATION             = new(:youth_disqualification,           parent: YOUTH_MOTORING, relevant_order: true, calculator_class: Calculators::Motoring::Youth::Disqualification),
     YOUTH_MOTORING_FINE                = new(:youth_motoring_fine,              parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::Fine),
     YOUTH_PENALTY_NOTICE               = new(:youth_penalty_notice,             parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::PenaltyNotice),
     YOUTH_PENALTY_POINTS               = new(:youth_penalty_points,             parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::PenaltyPoints),
