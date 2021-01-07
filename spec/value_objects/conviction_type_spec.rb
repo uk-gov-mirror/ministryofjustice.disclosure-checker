@@ -228,6 +228,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'referral_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
@@ -263,6 +264,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'hospital_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
@@ -270,6 +272,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'bind_over' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
@@ -284,6 +287,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'conditional_discharge' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
@@ -298,6 +302,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'compensation_to_a_victim' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::CompensationCalculator) }
     end
 
@@ -305,6 +310,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'reparation_order' }
 
       it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::ImmediatelyCalculator) }
     end
 
@@ -312,6 +318,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'restraining_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
@@ -319,6 +326,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'sexual_harm_prevention_order' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusZeroMonths) }
     end
 
@@ -432,6 +440,7 @@ RSpec.describe ConvictionType do
       let(:subtype) { 'youth_disqualification' }
 
       it { expect(conviction_type.skip_length?).to eq(false) }
+      it { expect(conviction_type.relevant_order?).to eq(true) }
       it { expect(conviction_type.calculator_class).to eq(Calculators::Motoring::Youth::Disqualification) }
     end
 
