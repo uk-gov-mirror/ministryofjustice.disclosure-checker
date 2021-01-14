@@ -30,7 +30,6 @@ RSpec.describe ConvictionLengthChoices do
         ConvictionType::ADULT_PRISON_SENTENCE,
         ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE,
         ConvictionType::ADULT_ATTENDANCE_CENTRE_ORDER,
-        ConvictionType::ADULT_SERIOUS_CRIME_PREVENTION,
       ])
     }
   end
@@ -44,7 +43,7 @@ RSpec.describe ConvictionLengthChoices do
       ConvictionType.values.size - described_class::SUBTYPES_HIDE_NO_LENGTH_CHOICE.size
     }
 
-    it { expect(total).to eq(52) }
+    it { expect(total).to eq(53) }
   end
 
   describe '.choices' do
