@@ -9,6 +9,7 @@ RSpec.describe ConvictionLengthChoices do
       ConvictionLengthType::MONTHS,
       ConvictionLengthType::YEARS,
       ConvictionLengthType::NO_LENGTH,
+      ConvictionLengthType::INDEFINITE,
     ]
   }
 
@@ -50,7 +51,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'youth custodial sentence detention' do
       let(:conviction_subtype) { ConvictionType::DETENTION }
 
-      it 'excludes `no_length` in the choices' do
+      it 'excludes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices_except_no_length)
       end
     end
@@ -58,7 +59,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'youth custodial sentence detention training order' do
       let(:conviction_subtype) { ConvictionType::DETENTION_TRAINING_ORDER }
 
-      it 'excludes `no_length` in the choices' do
+      it 'excludes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices_except_no_length)
       end
     end
@@ -66,7 +67,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'adult custodial prison sentence' do
       let(:conviction_subtype) { ConvictionType::ADULT_PRISON_SENTENCE }
 
-      it 'excludes `no_length` in the choices' do
+      it 'excludes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices_except_no_length)
       end
     end
@@ -74,7 +75,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'adult custodial suspended prison sentence' do
       let(:conviction_subtype) { ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE }
 
-      it 'excludes `no_length` in the choices' do
+      it 'excludes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices_except_no_length)
       end
     end
@@ -84,7 +85,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'youth prevention and reparation orders' do
       let(:conviction_subtype) { ConvictionType::SEXUAL_HARM_PREVENTION_ORDER }
 
-      it 'includes `no_length` in the choices' do
+      it 'includes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices)
       end
     end
@@ -92,7 +93,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'bind over convictions' do
       let(:conviction_subtype) { ConvictionType::BIND_OVER }
 
-      it 'includes `no_length` in the choices' do
+      it 'includes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices)
       end
     end
@@ -100,7 +101,7 @@ RSpec.describe ConvictionLengthChoices do
     context 'adult bind over convictions' do
       let(:conviction_subtype) { ConvictionType::ADULT_BIND_OVER }
 
-      it 'includes `no_length` in the choices' do
+      it 'includes `no_length` and `indefinite` in the choices' do
         expect(subject).to eq(all_choices)
       end
     end

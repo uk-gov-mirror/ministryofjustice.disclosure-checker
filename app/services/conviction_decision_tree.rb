@@ -64,7 +64,7 @@ class ConvictionDecisionTree < BaseDecisionTree
   end
 
   def after_conviction_length_type
-    return results if step_value(:conviction_length_type).inquiry.no_length?
+    return results if ConvictionLengthType.new(step_value(:conviction_length_type)).without_length?
 
     edit(:conviction_length)
   end

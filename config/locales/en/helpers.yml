@@ -291,6 +291,7 @@ en:
           months: Months
           years: Years
           no_length: No length was given
+          indefinite: Until further order
       steps_conviction_conviction_length_form:
         weeks: Number of weeks
         months: Number of months

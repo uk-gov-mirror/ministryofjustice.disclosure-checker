@@ -39,6 +39,26 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
         )
       end
     end
+
+    context 'for a `Youth referral order`' do
+      let(:conviction_subtype) { ConvictionType::REFERRAL_ORDER.to_s }
+
+      it 'includes `no_length` and `indefinite` in the values' do
+        expect(ConvictionLengthChoices).to receive(:choices).with(
+          conviction_subtype: ConvictionType::REFERRAL_ORDER
+        ).and_call_original
+
+        expect(subject.values).to eq(
+          [
+            ConvictionLengthType.new(:weeks),
+            ConvictionLengthType.new(:months),
+            ConvictionLengthType.new(:years),
+            ConvictionLengthType.new(:no_length),
+            ConvictionLengthType.new(:indefinite),
+          ]
+        )
+      end
+    end
   end
 
   describe '#save' do
