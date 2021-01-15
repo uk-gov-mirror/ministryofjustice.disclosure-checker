@@ -56,6 +56,14 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
     end
 
+    context 'when there is an offence with `spent_simple`' do
+      let(:spent_dates) { [Date.yesterday, :spent_simple] }
+
+      it 'considers the spent_simple as spent' do
+        expect(subject.all_spent?).to eq(true)
+      end
+    end
+
     context 'when there is an offence with `no_record`' do
       let(:spent_dates) { [:no_record, Date.tomorrow] }
 

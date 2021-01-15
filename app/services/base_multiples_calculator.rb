@@ -12,6 +12,7 @@ class BaseMultiplesCalculator
   def spent?
     return false if spent_date == :never_spent
     return true  if spent_date == :no_record
+    return true  if spent_date == :spent_simple
 
     spent_date.past?
   end
