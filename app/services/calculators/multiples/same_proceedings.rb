@@ -2,6 +2,7 @@
 #
 #   - Calculation changes for prison sentences (consecutive or concurrent).
 #   - What to do with `no_record` (at the moment we ignore them).
+#   - What to do with `indefinite` (at the moment we ignore them).
 #
 module Calculators
   module Multiples
@@ -22,7 +23,7 @@ module Calculators
       end
 
       def excluded_dates
-        [:no_record].freeze
+        [:no_record, :indefinite].freeze
       end
     end
   end
