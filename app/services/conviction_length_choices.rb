@@ -8,10 +8,14 @@ class ConvictionLengthChoices
   ].freeze
 
   def self.choices(conviction_subtype:)
-    if SUBTYPES_HIDE_NO_LENGTH_CHOICE.include?(conviction_subtype)
-      ConvictionLengthType.values - [ConvictionLengthType::NO_LENGTH]
-    else
-      ConvictionLengthType.values
-    end
+    choices = ConvictionLengthType.values.dup
+
+    # Big majority of orders show the `no_length` option, just a few exceptions
+    choices.delete(ConvictionLengthType::NO_LENGTH) if SUBTYPES_HIDE_NO_LENGTH_CHOICE.include?(conviction_subtype)
+
+    # Only `relevant orders` will show the `indefinite` length option
+    choices.delete(ConvictionLengthType::INDEFINITE) unless conviction_subtype.relevant_order?
+
+    choices
   end
 end

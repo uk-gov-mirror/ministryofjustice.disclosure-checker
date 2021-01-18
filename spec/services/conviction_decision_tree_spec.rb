@@ -119,6 +119,11 @@ RSpec.describe ConvictionDecisionTree do
       it { is_expected.to complete_the_check_and_show_results }
     end
 
+    context 'and the answer is `indefinite`' do
+      let(:conviction_length_type) { ConvictionLengthType::INDEFINITE.to_s }
+      it { is_expected.to complete_the_check_and_show_results }
+    end
+
     context 'and the answer is other than `no_length`' do
       let(:conviction_length_type) { ConvictionLengthType::MONTHS.to_s }
       it { is_expected.to have_destination(:conviction_length, :edit) }

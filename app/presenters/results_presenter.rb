@@ -42,7 +42,8 @@ class ResultsPresenter
               expiry_date
             end
 
-    # The tense can be one of these values: spent, not_spent, never_spent or no_record
+    # The tense can be one of these values:
+    #   spent, not_spent, never_spent, indefinite, or no_record
     [disclosure_check.kind, tense].join('_')
   end
 

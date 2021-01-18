@@ -145,6 +145,7 @@ en:
         months: '%{length} months'
         years: '%{length} years'
         no_length: No length was given
+        indefinite: Until further order
     compensation_payment_date:
       question: Compensation payment date
     motoring_endorsement:

@@ -15,6 +15,7 @@ RSpec.describe Calculators::Multiples::SameProceedings do
 
   let(:check_never_spent) { instance_double(CheckResult, expiry_date: :never_spent) }
   let(:check_no_record) { instance_double(CheckResult, expiry_date: :no_record) }
+  let(:check_indefinite) { instance_double(CheckResult, expiry_date: :indefinite) }
 
   describe '#kind' do
     it 'is always conviction for same proceedings' do
@@ -39,6 +40,16 @@ RSpec.describe Calculators::Multiples::SameProceedings do
       end
 
       it 'picks the latest date' do
+        expect(subject.spent_date).to eq(Date.new(2018, 10, 31))
+      end
+    end
+
+    context 'when there is at least one `indefinite` date' do
+      before do
+        allow(CheckResult).to receive(:new).and_return(check_result1, check_result2, check_indefinite)
+      end
+
+      it 'ignores the conviction with `indefinite` and picks the latest date' do
         expect(subject.spent_date).to eq(Date.new(2018, 10, 31))
       end
     end
