@@ -53,3 +53,24 @@ Feature: Conviction
     Examples:
       | subtype        | known_date_header              | length_type_header                                           | length_header                     | result               |
       | Hospital order | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? | /steps/check/results |
+
+  @happy_path @date_travel
+  Scenario Outline: Hospital orders (with no length or indefinite length)
+    Given The current date is 15-12-2020
+    When I am completing a basic 18 or over "Custody or hospital order" conviction
+
+    Then I should see "What sentence were you given?"
+
+    When I choose "<subtype>"
+    Then I should see "<known_date_header>"
+
+    And I enter the following date 01-01-2020
+    Then I should see "<length_type_header>"
+
+    When I choose "<length_type>"
+    Then I should see "<result>"
+
+    Examples:
+      | subtype        | known_date_header              | length_type_header                                           | length_type         | result                                                                             |
+      | Hospital order | When were you given the order? | Was the length of the order given in weeks, months or years? | No length was given | This conviction will be spent on 1 January 2022                                    |
+      | Hospital order | When were you given the order? | Was the length of the order given in weeks, months or years? | Until further order | This conviction will stay in place until another order is made to change or end it |
