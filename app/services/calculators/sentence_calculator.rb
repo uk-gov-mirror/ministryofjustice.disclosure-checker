@@ -55,7 +55,7 @@ module Calculators
       raise InvalidCalculation unless valid?
 
       if conviction_length_in_months > NEVER_SPENT_THRESHOLD
-        :never_spent
+        ResultsVariant::NEVER_SPENT
       else
         conviction_end_date.advance(rehabilitation_period).advance(bail_offset)
       end

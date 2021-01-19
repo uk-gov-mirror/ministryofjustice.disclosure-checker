@@ -10,9 +10,9 @@ class BaseMultiplesCalculator
   end
 
   def spent?
-    return false if spent_date == :never_spent
-    return false if spent_date == :indefinite
-    return true  if spent_date == :spent_simple
+    return false if spent_date == ResultsVariant::NEVER_SPENT
+    return false if spent_date == ResultsVariant::INDEFINITE
+    return true  if spent_date == ResultsVariant::SPENT_SIMPLE
 
     spent_date.past?
   end

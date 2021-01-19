@@ -54,7 +54,7 @@ module Calculators
     end
 
     def expiry_date
-      return :indefinite if indefinite_length?
+      return ResultsVariant::INDEFINITE if indefinite_length?
 
       if disclosure_check.conviction_length?
         conviction_end_date.advance(added_time)

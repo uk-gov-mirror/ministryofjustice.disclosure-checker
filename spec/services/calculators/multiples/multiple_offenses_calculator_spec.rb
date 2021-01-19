@@ -49,7 +49,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     end
 
     context 'when there is an offence that will never be spent' do
-      let(:spent_dates) { [:never_spent, Date.yesterday] }
+      let(:spent_dates) { [ResultsVariant::NEVER_SPENT, Date.yesterday] }
 
       it 'returns false' do
         expect(subject.all_spent?).to eq(false)
@@ -57,7 +57,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     end
 
     context 'when there is an offence with `spent_simple`' do
-      let(:spent_dates) { [Date.yesterday, :spent_simple] }
+      let(:spent_dates) { [Date.yesterday, ResultsVariant::SPENT_SIMPLE] }
 
       it 'considers the spent_simple as spent' do
         expect(subject.all_spent?).to eq(true)
@@ -65,7 +65,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     end
 
     context 'when there is an offence with `indefinite`' do
-      let(:spent_dates) { [:indefinite, Date.tomorrow] }
+      let(:spent_dates) { [ResultsVariant::INDEFINITE, Date.tomorrow] }
 
       it 'excludes the `indefinite` offence, and check the other dates' do
         expect(subject.all_spent?).to eq(false)

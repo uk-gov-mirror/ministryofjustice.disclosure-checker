@@ -14,9 +14,9 @@ RSpec.describe Calculators::CautionCalculator do
       let(:known_date) { nil }
       let(:conditional_end_date) { nil }
 
-      it 'returns `:spent_simple` without doing any date calculations' do
+      it 'returns the `spent_simple` variant without doing any date calculations' do
         # This is because simple cautions are spent on the day they given.
-        expect(subject.expiry_date).to eq(:spent_simple)
+        expect(subject.expiry_date).to eq(ResultsVariant::SPENT_SIMPLE)
       end
     end
 

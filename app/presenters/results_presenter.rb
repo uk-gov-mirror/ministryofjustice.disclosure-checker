@@ -37,13 +37,12 @@ class ResultsPresenter
 
   def variant
     tense = if expiry_date.instance_of?(Date)
-              expiry_date.past? ? :spent : :not_spent
+              expiry_date.past? ? ResultsVariant::SPENT : ResultsVariant::NOT_SPENT
             else
               expiry_date
             end
 
-    # The tense can be one of these values:
-    #   spent, not_spent, never_spent, indefinite, or no_record
+    # The tense can be any of the values defined in `ResultsVariant`
     [disclosure_check.kind, tense].join('_')
   end
 
