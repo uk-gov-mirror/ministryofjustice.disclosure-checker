@@ -12,7 +12,7 @@ module Calculators
     CONDITIONAL_ADDED_TIME = { months: 3 }.freeze
 
     def expiry_date
-      return :spent_simple unless conditional?
+      return ResultsVariant::SPENT_SIMPLE unless conditional?
       return conditional_end_date if distance_in_months(caution_date, conditional_end_date) < 3
 
       caution_date.advance(CONDITIONAL_ADDED_TIME)

@@ -21,7 +21,7 @@ RSpec.describe Calculators::AdditionCalculator do
 
       context 'with an indefinite conviction length' do
         let(:conviction_length_type) { 'indefinite' }
-        it { expect(subject.expiry_date).to eq(:indefinite) }
+        it { expect(subject.expiry_date).to eq(ResultsVariant::INDEFINITE) }
       end
 
       context 'with a conviction length' do
@@ -41,7 +41,7 @@ RSpec.describe Calculators::AdditionCalculator do
 
       context 'with an indefinite conviction length' do
         let(:conviction_length_type) { 'indefinite' }
-        it { expect(subject.expiry_date).to eq(:indefinite) }
+        it { expect(subject.expiry_date).to eq(ResultsVariant::INDEFINITE) }
       end
 
       context 'with a conviction length' do
@@ -61,7 +61,7 @@ RSpec.describe Calculators::AdditionCalculator do
 
       context 'with an indefinite conviction length' do
         let(:conviction_length_type) { 'indefinite' }
-        it { expect(subject.expiry_date).to eq(:indefinite) }
+        it { expect(subject.expiry_date).to eq(ResultsVariant::INDEFINITE) }
       end
 
       context 'with a conviction length' do

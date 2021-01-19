@@ -23,12 +23,12 @@ RSpec.describe ConvictionResultPresenter do
     end
 
     context 'never spent conviction' do
-      let(:expiry_date) { :never_spent }
+      let(:expiry_date) { 'never_spent' }
       it { expect(subject.variant).to eq('conviction_never_spent') }
     end
 
     context 'indefinite length conviction' do
-      let(:expiry_date) { :indefinite }
+      let(:expiry_date) { 'indefinite' }
       it { expect(subject.variant).to eq('conviction_indefinite') }
     end
   end

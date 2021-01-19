@@ -11,17 +11,17 @@ RSpec.describe SpentDatePanel do
   describe '#scope' do
     context 'for a past date' do
       let(:spent_date) { Date.yesterday }
-      it { expect(subject.scope).to eq([partial_path, :spent]) }
+      it { expect(subject.scope).to eq([partial_path, ResultsVariant::SPENT]) }
     end
 
     context 'for a future date' do
       let(:spent_date) { Date.tomorrow }
-      it { expect(subject.scope).to eq([partial_path, :not_spent]) }
+      it { expect(subject.scope).to eq([partial_path, ResultsVariant::NOT_SPENT]) }
     end
 
-    context 'when offense will never be spent' do
-      let(:spent_date) { :never_spent }
-      it { expect(subject.scope).to eq([partial_path, :never_spent]) }
+    context 'when `spent_date` is not a date, it just returns its value' do
+      let(:spent_date) { :foobar }
+      it { expect(subject.scope).to eq([partial_path, :foobar]) }
     end
   end
 
@@ -32,7 +32,7 @@ RSpec.describe SpentDatePanel do
     end
 
     context 'it is not a date instance' do
-      let(:spent_date) { :never_spent }
+      let(:spent_date) { :foobar }
       it { expect(subject.date).to be_nil }
     end
   end

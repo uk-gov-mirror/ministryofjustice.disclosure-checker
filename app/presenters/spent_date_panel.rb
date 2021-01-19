@@ -23,7 +23,7 @@ class SpentDatePanel
   # TODO: we use this or similar method in other places. Unify them.
   def tense
     if spent_date.instance_of?(Date)
-      spent_date.past? ? :spent : :not_spent
+      spent_date.past? ? ResultsVariant::SPENT : ResultsVariant::NOT_SPENT
     else
       spent_date
     end
