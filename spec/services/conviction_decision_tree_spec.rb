@@ -71,11 +71,6 @@ RSpec.describe ConvictionDecisionTree do
         it { is_expected.to have_destination(:motoring_endorsement, :edit) }
       end
 
-      context 'when subtype equal youth_penalty_notice' do
-        let(:conviction_subtype) { :youth_penalty_notice }
-        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
-      end
-
       context 'when subtype equal youth_penalty_points' do
         let(:conviction_subtype) { :youth_penalty_points }
         it { is_expected.to have_destination(:known_date, :edit) }
@@ -87,11 +82,6 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal adult_motoring_fine' do
         let(:conviction_subtype) { :adult_motoring_fine }
-        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
-      end
-
-      context 'when subtype equal adult_penalty_notice' do
-        let(:conviction_subtype) { :adult_penalty_notice }
         it { is_expected.to have_destination(:motoring_endorsement, :edit) }
       end
 
@@ -201,31 +191,21 @@ RSpec.describe ConvictionDecisionTree do
   end
 
   context 'when the step is `motoring_endorsement`' do
-    let(:motoring_endorsement) {GenericYesNo::YES }
+    let(:motoring_endorsement) { GenericYesNo::YES }
     let(:step_params) { { motoring_endorsement:  motoring_endorsement } }
 
-    context 'when subtype is equal adult_penalty_notice' do
-      let(:conviction_subtype) { :adult_penalty_notice }
-      context 'with a endorsement' do
-        it { is_expected.to have_destination(:known_date, :edit) }
-      end
+    %i(adult_disqualification adult_motoring_fine adult_penalty_points).each do |subtype|
+      context "when subtype is '#{subtype}'" do
+        let(:conviction_subtype) { subtype }
 
-      context ' without a endorsement' do
-        let(:motoring_endorsement) {GenericYesNo::NO }
-        it { is_expected.to complete_the_check_and_show_results }
-      end
-    end
+        context 'with a endorsement' do
+          it { is_expected.to have_destination(:known_date, :edit) }
+        end
 
-    context 'when subtype is not equal to adult_penalty_notice sub types' do
-      let(:conviction_subtype) { :adult_disqualification }
-
-      context 'with a endorsement' do
-        it { is_expected.to have_destination(:known_date, :edit) }
-      end
-
-      context 'without a endorsement' do
-        let(:motoring_endorsement) {GenericYesNo::NO }
-        it { is_expected.to have_destination(:known_date, :edit) }
+        context 'without a endorsement' do
+          let(:motoring_endorsement) { GenericYesNo::NO }
+          it { is_expected.to have_destination(:known_date, :edit) }
+        end
       end
     end
   end
