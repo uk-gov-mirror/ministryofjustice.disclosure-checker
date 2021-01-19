@@ -64,10 +64,10 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
     end
 
-    context 'when there is an offence with `no_record`' do
-      let(:spent_dates) { [:no_record, Date.tomorrow] }
+    context 'when there is an offence with `indefinite`' do
+      let(:spent_dates) { [:indefinite, Date.tomorrow] }
 
-      it 'considers the no_record as spent, and check the other dates' do
+      it 'excludes the `indefinite` offence, and check the other dates' do
         expect(subject.all_spent?).to eq(false)
       end
     end
