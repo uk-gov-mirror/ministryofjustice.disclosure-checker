@@ -31,11 +31,6 @@ RSpec.describe ConvictionResultPresenter do
       let(:expiry_date) { :indefinite }
       it { expect(subject.variant).to eq('conviction_indefinite') }
     end
-
-    context 'no record (motoring-specific)' do
-      let(:expiry_date) { :no_record }
-      it { expect(subject.variant).to eq('conviction_no_record') }
-    end
   end
 
   describe '#summary' do

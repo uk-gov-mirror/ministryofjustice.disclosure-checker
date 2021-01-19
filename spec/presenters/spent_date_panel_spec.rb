@@ -23,11 +23,6 @@ RSpec.describe SpentDatePanel do
       let(:spent_date) { :never_spent }
       it { expect(subject.scope).to eq([partial_path, :never_spent]) }
     end
-
-    context 'when offense has no record' do
-      let(:spent_date) { :no_record }
-      it { expect(subject.scope).to eq([partial_path, :no_record]) }
-    end
   end
 
   describe '#date' do
