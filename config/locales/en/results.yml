@@ -67,12 +67,10 @@ en:
       # adult_motoring
       adult_disqualification: Disqualification
       adult_motoring_fine: Fine
-      adult_penalty_notice: Fixed Penalty notice (FPN)
       adult_penalty_points: Penalty points
       # youth_motoring
       youth_disqualification: Disqualification
       youth_motoring_fine: Fine
-      youth_penalty_notice: Fixed Penalty notice (FPN)
       youth_penalty_points: Penalty points
       # adult_discharge
       adult_bind_over: Bind over
@@ -102,8 +100,6 @@ en:
       title_html: This %{kind} will be spent on <span class="nowrap">%{date}</span>
     never_spent:
       title_html: This %{kind} will never be spent
-    no_record:
-      title_html: This fixed penalty notice (FPN) was not a conviction
 
   results/shared/date_format:
     exact: '%{date}'
