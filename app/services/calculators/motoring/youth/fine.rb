@@ -5,7 +5,7 @@ module Calculators
       # start_date + 2.5 years
       # If an endorsement was not received
       # start_date + 6 months
-      class Fine < MotoringCalculator
+      class Fine < BaseCalculator
         REHABILITATION_1 = { months: 30 }.freeze
         REHABILITATION_2 = { months: 6 }.freeze
 

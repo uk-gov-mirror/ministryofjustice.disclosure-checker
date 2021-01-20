@@ -13,12 +13,23 @@ class BaseCalculator
 
   private
 
+  def motoring_endorsement?
+    GenericYesNo.new(disclosure_check.motoring_endorsement).yes?
+  end
+
   def indefinite_length?
     ConvictionLengthType.new(disclosure_check.conviction_length_type.to_s).inquiry.indefinite?
   end
 
   def conviction_length
     { disclosure_check.conviction_length_type.to_sym => disclosure_check.conviction_length }
+  end
+
+  def conviction_length_in_months
+    sentence_length_in_months(
+      disclosure_check.conviction_length,
+      disclosure_check.conviction_length_type
+    )
   end
 
   def conviction_start_date

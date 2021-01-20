@@ -68,7 +68,7 @@ class ConvictionType < ValueObject
     RESTRAINING_ORDER                  = new(:restraining_order,                parent: PREVENTION_REPARATION, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
     SEXUAL_HARM_PREVENTION_ORDER       = new(:sexual_harm_prevention_order,     parent: PREVENTION_REPARATION, relevant_order: true, calculator_class: Calculators::AdditionCalculator::PlusZeroMonths),
 
-    YOUTH_DISQUALIFICATION             = new(:youth_disqualification,           parent: YOUTH_MOTORING, relevant_order: true, calculator_class: Calculators::Motoring::Youth::Disqualification),
+    YOUTH_DISQUALIFICATION             = new(:youth_disqualification,           parent: YOUTH_MOTORING, relevant_order: true, calculator_class: Calculators::DisqualificationCalculator::Youths),
     YOUTH_MOTORING_FINE                = new(:youth_motoring_fine,              parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::Fine),
     YOUTH_PENALTY_POINTS               = new(:youth_penalty_points,             parent: YOUTH_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Youth::PenaltyPoints),
 
@@ -96,7 +96,7 @@ class ConvictionType < ValueObject
     ADULT_SERVICE_COMMUNITY_ORDER       = new(:adult_service_community_order,      parent: ADULT_MILITARY, calculator_class: Calculators::AdditionCalculator::PlusTwelveMonths),
     ADULT_SERVICE_DETENTION             = new(:adult_service_detention,            parent: ADULT_MILITARY, skip_length: true, calculator_class: Calculators::AdditionCalculator::StartPlusTwelveMonths),
 
-    ADULT_DISQUALIFICATION              = new(:adult_disqualification,             parent: ADULT_MOTORING, relevant_order: true, calculator_class: Calculators::Motoring::Adult::Disqualification),
+    ADULT_DISQUALIFICATION              = new(:adult_disqualification,             parent: ADULT_MOTORING, relevant_order: true, calculator_class: Calculators::DisqualificationCalculator::Adults),
     ADULT_MOTORING_FINE                 = new(:adult_motoring_fine,                parent: ADULT_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Adult::Fine),
     ADULT_PENALTY_POINTS                = new(:adult_penalty_points,               parent: ADULT_MOTORING, skip_length: true, calculator_class: Calculators::Motoring::Adult::PenaltyPoints),
 

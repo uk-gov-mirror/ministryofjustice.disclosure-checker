@@ -81,13 +81,6 @@ module Calculators
       end
     end
 
-    def conviction_length_in_months
-      sentence_length_in_months(
-        disclosure_check.conviction_length,
-        disclosure_check.conviction_length_type
-      )
-    end
-
     # The day before the end date, thus we subtract 1 day.
     def conviction_end_date
       super.advance(days: -1)

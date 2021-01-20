@@ -6,7 +6,7 @@ module Calculators
       # Because the Youth endorsement is 2.5 years and penalty points are 3 years,
       # even if there is an endorsement, the penalty points have a longer duration
       # hence being 3 years always
-      class PenaltyPoints < MotoringCalculator
+      class PenaltyPoints < BaseCalculator
         REHABILITATION_1 = { months: 36 }.freeze
 
         def expiry_date
