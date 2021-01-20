@@ -3,7 +3,7 @@ module Calculators
     module Adult
       # An endorsement is always received when Penalty Points
       # start_date + 5 years
-      class PenaltyPoints < MotoringCalculator
+      class PenaltyPoints < BaseCalculator
         REHABILITATION_1 = { months: 60 }.freeze
 
         def expiry_date
