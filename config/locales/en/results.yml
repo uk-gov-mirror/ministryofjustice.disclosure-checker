@@ -151,5 +151,8 @@ en:
       question: Compensation payment date
     motoring_endorsement:
       question: Motoring endorsement
+      answers:
+        'yes': 'Yes'
+        'no': 'No'
     motoring_disqualification_end_date:
       question: End date

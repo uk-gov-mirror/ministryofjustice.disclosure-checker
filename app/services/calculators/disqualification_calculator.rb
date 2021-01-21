@@ -43,26 +43,31 @@ module Calculators
     end
 
     def expiry_date
-      return conviction_start_date.advance(no_length_rehabilitation) if motoring_disqualification_end_date.nil?
-      return conviction_start_date.advance(self.class::REHABILITATION_WITH_ENDORSEMENT) if motoring_endorsement? && within_endorsement_threshold?
+      return ResultsVariant::INDEFINITE if indefinite_length?
 
-      motoring_disqualification_end_date
+      if disclosure_check.conviction_length?
+        conviction_start_date.advance(rehabilitation_with_length)
+      else
+        conviction_start_date.advance(rehabilitation_without_length)
+      end
     end
 
     private
 
-    def no_length_rehabilitation
+    def rehabilitation_without_length
       return self.class::REHABILITATION_WITH_ENDORSEMENT if motoring_endorsement?
 
       self.class::REHABILITATION_WITHOUT_ENDORSEMENT
     end
 
-    def motoring_disqualification_end_date
-      disclosure_check.motoring_disqualification_end_date
+    def rehabilitation_with_length
+      return self.class::REHABILITATION_WITH_ENDORSEMENT if motoring_endorsement? && within_endorsement_threshold?
+
+      conviction_length
     end
 
     def within_endorsement_threshold?
-      distance_in_months(conviction_start_date, motoring_disqualification_end_date) <= self.class::ENDORSEMENT_THRESHOLD
+      conviction_length_in_months <= self.class::ENDORSEMENT_THRESHOLD
     end
   end
 end

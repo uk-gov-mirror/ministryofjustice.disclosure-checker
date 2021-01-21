@@ -51,6 +51,7 @@ en:
             adult_prison_sentence: What was the length of the sentence?
             adult_suspended_prison_sentence: What was the length of the sentence?
             adult_disqualification: What was the length of the disqualification?
+            youth_disqualification: What was the length of the disqualification?
           explanation:
             detention_html: *sentence_info_with_callout
             detention_training_order_html: *sentence_info
