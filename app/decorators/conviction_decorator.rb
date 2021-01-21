@@ -18,11 +18,6 @@ module ConvictionDecorator
       ConvictionType::ADULT_MOTORING.eql?(self)
   end
 
-  def motoring_disqualification?
-    ConvictionType::YOUTH_DISQUALIFICATION.eql?(self) ||
-      ConvictionType::ADULT_DISQUALIFICATION.eql?(self)
-  end
-
   def motoring_penalty_points?
     ConvictionType::YOUTH_PENALTY_POINTS.eql?(self) ||
       ConvictionType::ADULT_PENALTY_POINTS.eql?(self)

@@ -58,7 +58,6 @@ class ConvictionDecisionTree < BaseDecisionTree
 
   def after_known_date
     return results if conviction_subtype.skip_length?
-    return edit(:motoring_disqualification_end_date) if conviction_subtype.motoring_disqualification?
 
     edit(:conviction_length_type)
   end

@@ -47,18 +47,6 @@ RSpec.describe ConvictionDecorator do
     end
   end
 
-  describe '#motoring_disqualification?' do
-    context 'for an adult `ADULT_DISQUALIFICATION` conviction type' do
-      subject { ConvictionType::ADULT_DISQUALIFICATION }
-      it { expect(subject.motoring_disqualification?).to eq(true) }
-    end
-
-    context 'for a youth `YOUTH_DISQUALIFICATION` conviction type' do
-      subject { ConvictionType::YOUTH_DISQUALIFICATION }
-      it { expect(subject.motoring_disqualification?).to eq(true) }
-    end
-  end
-
   describe '#bailable_offense?' do
     context 'for a youth `DETENTION` conviction type' do
       subject { ConvictionType::DETENTION }

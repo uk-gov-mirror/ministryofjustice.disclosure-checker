@@ -392,6 +392,7 @@ en:
         adult_suspended_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_prison_sentence: Was the length of the sentence given in weeks, months or years?
         adult_disqualification: Was the length of the disqualification given in weeks, months or years?
+        youth_disqualification: Was the length of the disqualification given in weeks, months or years?
       steps_conviction_conviction_length_form:
         weeks: Number of weeks
         months: Number of months
