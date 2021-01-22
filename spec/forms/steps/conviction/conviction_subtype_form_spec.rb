@@ -53,8 +53,6 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
           compensation_paid: nil,
           compensation_payment_date: nil,
           motoring_endorsement: nil,
-          motoring_disqualification_end_date: nil,
-          approximate_motoring_disqualification_end_date: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)

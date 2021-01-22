@@ -41,9 +41,7 @@ module Steps
           conviction_length_type: nil,
           compensation_paid: nil,
           compensation_payment_date: nil,
-          motoring_endorsement: nil,
-          motoring_disqualification_end_date: nil,
-          approximate_motoring_disqualification_end_date: nil
+          motoring_endorsement: nil
         )
       end
     end

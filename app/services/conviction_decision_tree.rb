@@ -30,7 +30,7 @@ class ConvictionDecisionTree < BaseDecisionTree
       after_compensation_payment_date
     when :compensation_receipt_sent
       after_compensation_receipt_sent
-    when :conviction_length, :motoring_disqualification_end_date
+    when :conviction_length
       results
     else
       raise InvalidStep, "Invalid step '#{as || step_params}'"
