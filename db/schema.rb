@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_16_114413) do
+ActiveRecord::Schema.define(version: 2021_01_22_092339) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_07_16_114413) do
     t.string "compensation_paid"
     t.date "compensation_payment_date"
     t.string "motoring_endorsement"
-    t.date "motoring_disqualification_end_date"
     t.uuid "check_group_id"
     t.string "conviction_bail"
     t.integer "conviction_bail_days"

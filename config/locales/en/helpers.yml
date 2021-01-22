@@ -140,8 +140,6 @@ en:
         <<: *CONVICTION_SUBTYPES
       steps_conviction_conviction_length_form:
         <<: *CONVICTION_SUBTYPES
-      steps_conviction_motoring_disqualification_end_date_form:
-        <<: *CONVICTION_SUBTYPES
       steps_conviction_motoring_endorsement_form:
         <<: *CONVICTION_SUBTYPES
       steps_conviction_compensation_paid_amount_form:
@@ -205,8 +203,6 @@ en:
         compensation_receipt_sent: You must send the compensation payment receipt to the Disclosure and Barring service for the convition to be spent.
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: An endorsement means that your conviction is recorded on your driving licence. Endorsements are usually given by courts.
-      steps_conviction_motoring_disqualification_end_date_form:
-        motoring_disqualification_end_date_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span> <p>Leave this blank if your ban had no end date.</p>
       steps_conviction_conviction_bail_form:
         conviction_bail: Time spent on bail with an electronic tag affects the spent date of your conviction. Time spent on bail without a tag does not.
       steps_conviction_conviction_bail_days_form:
@@ -297,9 +293,6 @@ en:
           'true': *approximate_date_checkbox
       steps_conviction_compensation_paid_amount_form:
         compensation_payment_over_100_options: *YESNO
-      steps_conviction_motoring_disqualification_end_date_form:
-        approximate_motoring_disqualification_end_date_options:
-          'true': *approximate_date_checkbox
       steps_conviction_conviction_bail_form:
         conviction_bail_options: *YESNO
       steps_conviction_conviction_bail_days_form:
@@ -351,9 +344,6 @@ en:
         youth_penalty_points: When were you given the penalty points?
       steps_conviction_conviction_type_form:
         conviction_type: What type of conviction did you get?
-      steps_conviction_motoring_disqualification_end_date_form:
-        motoring_disqualification_end_date: When did your disqualification end?
-        approximate_motoring_disqualification_end_date: *approximate_date_legend
       steps_conviction_motoring_endorsement_form:
         motoring_endorsement: Did you get an endorsement?
       steps_conviction_conviction_subtype_form:

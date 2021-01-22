@@ -14,7 +14,6 @@ class ConvictionResultPresenter < ResultsPresenter
       [:conviction_length, i18n_conviction_length],
       :compensation_payment_date,
       :motoring_endorsement,
-      :motoring_disqualification_end_date,
     ].freeze
   end
 
