@@ -68,6 +68,22 @@ FactoryBot.define do
       conviction_length { 15 }
     end
 
+    # Prison
+
+    trait :with_conviction_bail do
+      conviction_bail { GenericYesNo::YES }
+      conviction_bail_days { 10 }
+    end
+
+    trait :with_prison_sentence do
+      adult
+      conviction_with_known_date
+      conviction_type { ConvictionType::ADULT_CUSTODIAL_SENTENCE }
+      conviction_subtype { ConvictionType::ADULT_PRISON_SENTENCE }
+      conviction_length_type { ConvictionLengthType::MONTHS }
+      conviction_length { 12 }
+    end
+
     # Financial
 
     trait :with_fine do
@@ -94,6 +110,35 @@ FactoryBot.define do
       conviction_with_known_date
       conviction_type { self.under_age.inquiry.yes? ? ConvictionType::YOUTH_MOTORING : ConvictionType::ADULT_MOTORING }
       conviction_subtype { self.under_age.inquiry.yes? ? ConvictionType::YOUTH_MOTORING_FINE : ConvictionType::ADULT_MOTORING_FINE }
+    end
+
+    # Discharge
+
+    trait :with_bind_over do
+      conviction_with_known_date
+      conviction_type { self.under_age.inquiry.yes? ? ConvictionType::DISCHARGE : ConvictionType::ADULT_DISCHARGE }
+      conviction_subtype { self.under_age.inquiry.yes? ? ConvictionType::BIND_OVER : ConvictionType::ADULT_BIND_OVER }
+    end
+
+    trait :with_discharge_order do
+      conviction_with_known_date
+      conviction_type { self.under_age.inquiry.yes? ? ConvictionType::DISCHARGE : ConvictionType::ADULT_DISCHARGE }
+      conviction_subtype { self.under_age.inquiry.yes? ? ConvictionType::CONDITIONAL_DISCHARGE : ConvictionType::ADULT_CONDITIONAL_DISCHARGE }
+    end
+
+    # Community Reparation
+    # Only for adults
+
+    trait :with_community_order do
+      conviction_with_known_date
+      conviction_type { ConvictionType::ADULT_COMMUNITY_REPARATION }
+      conviction_subtype { ConvictionType::ADULT_COMMUNITY_ORDER }
+    end
+
+    trait :with_sexual_harm_order do
+      conviction_with_known_date
+      conviction_type { ConvictionType::ADULT_COMMUNITY_REPARATION }
+      conviction_subtype { ConvictionType::ADULT_SEXUAL_HARM_PREVENTION_ORDER }
     end
 
     trait :completed do
