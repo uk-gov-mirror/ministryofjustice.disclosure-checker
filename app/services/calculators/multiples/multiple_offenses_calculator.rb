@@ -13,7 +13,6 @@ module Calculators
         disclosure_report.check_groups.with_completed_checks.each(&method(:process_group))
       end
 
-      # rubocop:disable Metrics/AbcSize
       def spent_date_for(check_group)
         return unless results.any?
 
@@ -26,7 +25,7 @@ module Calculators
         # of this group overlaps with the spent date of another group and if so, then
         # the spent date of this group becomes the spent date of the other group.
         #
-        results.values.select(&:conviction?).each do |conviction|
+        convictions.each do |conviction|
           other_spent_date = conviction.spent_date
 
           spent_date = ResultsVariant::NEVER_SPENT if other_spent_date == ResultsVariant::NEVER_SPENT
@@ -41,13 +40,16 @@ module Calculators
 
         spent_date
       end
-      # rubocop:enable Metrics/AbcSize
 
       def all_spent?
         results.values.all?(&:spent?)
       end
 
       private
+
+      def convictions
+        @_convictions ||= results.values.select(&:conviction?).sort_by(&:start_date)
+      end
 
       def process_group(check_group)
         results[check_group.id] = if check_group.disclosure_checks.count > 1

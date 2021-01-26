@@ -4,9 +4,10 @@ RSpec.describe Calculators::Multiples::SeparateProceedings do
   subject { described_class.new(check_group) }
 
   let(:check_group) { instance_double(CheckGroup, disclosure_checks: [disclosure_check]) }
-  let(:disclosure_check) { instance_double(DisclosureCheck, kind: kind) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, kind: kind, known_date: known_date) }
 
   let(:check_result) { instance_double(CheckResult, expiry_date: expiry_date) }
+  let(:known_date) { Date.new(2015, 12, 25) }
   let(:expiry_date) { Date.new(2018, 10, 31) }
   let(:kind) { nil }
 
@@ -31,6 +32,12 @@ RSpec.describe Calculators::Multiples::SeparateProceedings do
     context 'for a conviction' do
       let(:kind) { 'conviction' }
       it { expect(subject.conviction?).to eq(true) }
+    end
+  end
+
+  context '#start_date' do
+    it 'returns the known date of the caution or conviction' do
+      expect(subject.start_date).to eq(known_date)
     end
   end
 

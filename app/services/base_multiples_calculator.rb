@@ -21,6 +21,11 @@ class BaseMultiplesCalculator
     spent_date.past?
   end
 
+  def start_date
+    # Pick the earliest date in the collection
+    disclosure_checks.map(&:known_date).min
+  end
+
   # :nocov:
   def spent_date
     raise 'implement in subclasses'
