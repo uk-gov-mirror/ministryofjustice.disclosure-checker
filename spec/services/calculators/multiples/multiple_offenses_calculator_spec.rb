@@ -27,20 +27,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     end
   end
 
-  context '#spent_date_for' do
-    before do
-      BaseMultiplesCalculator.subclasses.each do |klass|
-        allow_any_instance_of(klass).to receive(:spent_date).and_return("date_#{klass}")
-      end
-    end
-
-    it 'returns the spent date for the matching check group' do
-      expect(subject.spent_date_for(check_group1)).to eq('date_Calculators::Multiples::SameProceedings')
-      expect(subject.spent_date_for(check_group2)).to eq('date_Calculators::Multiples::SeparateProceedings')
-    end
-  end
-
-  describe '#spent_date_for (factories)' do
+  describe '#spent_date_for' do
     context 'conviction with 2 sentences, and one simple caution' do
       let(:disclosure_check1) { build(:disclosure_check, :dto_conviction) }
       let(:disclosure_check2) { build(:disclosure_check, :suspended_prison_sentence) }

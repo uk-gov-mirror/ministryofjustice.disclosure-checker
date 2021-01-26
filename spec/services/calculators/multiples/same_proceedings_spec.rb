@@ -5,9 +5,9 @@ RSpec.describe Calculators::Multiples::SameProceedings do
 
   let(:check_group) { instance_double(CheckGroup, disclosure_checks: [disclosure_check1, disclosure_check2, disclosure_check3]) }
 
-  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction') }
-  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction') }
-  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'conviction') }
+  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date1) }
+  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date2) }
+  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date3) }
 
   let(:check_result1) { instance_double(CheckResult, expiry_date: Date.new(2015, 10, 31)) }
   let(:check_result2) { instance_double(CheckResult, expiry_date: Date.new(2018, 10, 31)) }
@@ -15,6 +15,10 @@ RSpec.describe Calculators::Multiples::SameProceedings do
 
   let(:check_never_spent) { instance_double(CheckResult, expiry_date: ResultsVariant::NEVER_SPENT) }
   let(:check_indefinite) { instance_double(CheckResult, expiry_date: ResultsVariant::INDEFINITE) }
+
+  let(:known_date1) { Date.new(2018, 1, 1) }
+  let(:known_date2) { Date.new(2015, 1, 1) }
+  let(:known_date3) { Date.new(2016, 1, 1) }
 
   describe '#kind' do
     it 'is always conviction for same proceedings' do
@@ -25,6 +29,12 @@ RSpec.describe Calculators::Multiples::SameProceedings do
   describe '#conviction?' do
     it 'is always true for same proceedings' do
       expect(subject.conviction?).to eq(true)
+    end
+  end
+
+  context '#start_date' do
+    it 'returns the earliest known date from all the dates' do
+      expect(subject.start_date).to eq(known_date2)
     end
   end
 
