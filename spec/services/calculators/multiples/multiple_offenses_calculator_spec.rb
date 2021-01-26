@@ -6,8 +6,12 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   let(:disclosure_report) { instance_double(DisclosureReport, check_groups: groups_result_set) }
   let(:groups_result_set) { double('groups_result_set', with_completed_checks: [check_group1, check_group2]) }
 
-  let(:check_group1) { instance_double(CheckGroup, id: '100', disclosure_checks: %w(a b c)) }
-  let(:check_group2) { instance_double(CheckGroup, id: '200', disclosure_checks: %w(a)) }
+  let(:check_group1) { instance_double(CheckGroup, id: '100', disclosure_checks: [disclosure_check1, disclosure_check2]) }
+  let(:check_group2) { instance_double(CheckGroup, id: '200', disclosure_checks: [disclosure_check3]) }
+
+  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction') }
+  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction') }
+  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'caution') }
 
   before do
     subject.process!
@@ -34,10 +38,50 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       expect(subject.spent_date_for(check_group1)).to eq('date_Calculators::Multiples::SameProceedings')
       expect(subject.spent_date_for(check_group2)).to eq('date_Calculators::Multiples::SeparateProceedings')
     end
+  end
 
-    it 'returns nil if no date was found' do
-      group = double('group', id: 'foobar')
-      expect(subject.spent_date_for(group)).to be_nil
+  describe '#spent_date_for (factories)' do
+    context 'conviction with 2 sentences, and one simple caution' do
+      let(:disclosure_check1) { build(:disclosure_check, :dto_conviction) }
+      let(:disclosure_check2) { build(:disclosure_check, :suspended_prison_sentence) }
+      let(:disclosure_check3) { build(:disclosure_check, :youth_simple_caution) }
+
+      it 'returns the spent date for the matching check group' do
+        expect(subject.spent_date_for(check_group1)).to eq(Date.new(2024, 01, 30))
+        expect(subject.spent_date_for(check_group2)).to eq(ResultsVariant::SPENT_SIMPLE)
+      end
+    end
+
+    context 'conviction with 2 sentences, and another, separate proceedings conviction' do
+      let(:disclosure_check1) { build(:disclosure_check, :dto_conviction) }
+      let(:disclosure_check2) { build(:disclosure_check, :suspended_prison_sentence) }
+
+      context 'all sentences are dates' do
+        let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence) }
+
+        it 'returns the spent date for the matching check group' do
+          expect(subject.spent_date_for(check_group1)).to eq(Date.new(2024, 1, 30))
+          expect(subject.spent_date_for(check_group2)).to eq(Date.new(2024, 1, 30))
+        end
+      end
+
+      context 'one of the sentences has indefinite length' do
+        let(:disclosure_check3) { build(:disclosure_check, :with_motoring_disqualification, conviction_length_type: 'indefinite') }
+
+        it 'returns the spent date for the matching check group' do
+          expect(subject.spent_date_for(check_group1)).to eq(ResultsVariant::INDEFINITE)
+          expect(subject.spent_date_for(check_group2)).to eq(ResultsVariant::INDEFINITE)
+        end
+      end
+
+      context 'one of the sentences will never be spent' do
+        let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence, conviction_length: 50) }
+
+        it 'returns the spent date for the matching check group' do
+          expect(subject.spent_date_for(check_group1)).to eq(ResultsVariant::NEVER_SPENT)
+          expect(subject.spent_date_for(check_group2)).to eq(ResultsVariant::NEVER_SPENT)
+        end
+      end
     end
   end
 

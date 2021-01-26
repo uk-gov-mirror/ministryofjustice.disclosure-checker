@@ -34,25 +34,18 @@ RSpec.describe CheckAnswersPresenter do
 
   describe '#summary' do
     let(:summary) { subject.summary }
+    let(:spent_date) { 'date' }
 
-    context 'for a single youth caution' do
-      it 'returns CheckGroupPresenter' do
-        expect(summary.size).to eq(1)
-        expect(summary[0]).to be_an_instance_of(CheckGroupPresenter)
-        expect(summary[0].number).to eql(1)
-        expect(summary[0].check_group).to eql(disclosure_check.check_group)
-        expect(summary[0].spent_date).to be_nil
-      end
+    before do
+      allow(subject.calculator).to receive(:spent_date_for).and_return(spent_date)
+    end
 
-      context 'when there is a spent date for the group' do
-        before do
-          allow(subject.calculator).to receive(:spent_date_for).and_return('date')
-        end
-
-        it 'returns CheckGroupPresenter' do
-          expect(summary[0].spent_date).to eq('date')
-        end
-      end
+    it 'returns CheckGroupPresenter' do
+      expect(summary.size).to eq(1)
+      expect(summary[0]).to be_an_instance_of(CheckGroupPresenter)
+      expect(summary[0].number).to eql(1)
+      expect(summary[0].check_group).to eql(disclosure_check.check_group)
+      expect(summary[0].spent_date).to eq(spent_date)
     end
   end
 end

@@ -22,6 +22,18 @@ RSpec.describe Calculators::Multiples::SeparateProceedings do
     end
   end
 
+  describe '#conviction?' do
+    context 'for a caution' do
+      let(:kind) { 'caution' }
+      it { expect(subject.conviction?).to eq(false) }
+    end
+
+    context 'for a conviction' do
+      let(:kind) { 'conviction' }
+      it { expect(subject.conviction?).to eq(true) }
+    end
+  end
+
   context '#spent_date' do
     before do
       allow(CheckResult).to receive(:new).with(

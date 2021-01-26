@@ -22,6 +22,12 @@ RSpec.describe Calculators::Multiples::SameProceedings do
     end
   end
 
+  describe '#conviction?' do
+    it 'is always true for same proceedings' do
+      expect(subject.conviction?).to eq(true)
+    end
+  end
+
   context '#spent_date' do
     context 'when there is at least one `never_spent` date' do
       before do

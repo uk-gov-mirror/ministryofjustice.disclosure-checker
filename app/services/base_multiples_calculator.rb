@@ -9,6 +9,10 @@ class BaseMultiplesCalculator
     CheckKind.find_constant(disclosure_checks.first.kind)
   end
 
+  def conviction?
+    kind.inquiry.conviction?
+  end
+
   def spent?
     return false if spent_date == ResultsVariant::NEVER_SPENT
     return false if spent_date == ResultsVariant::INDEFINITE
