@@ -26,7 +26,7 @@ RSpec.describe CautionDecisionTree do
     context 'and type is `youth simple caution`' do
       let(:caution_type) { CautionType::YOUTH_SIMPLE_CAUTION.value }
 
-      it { is_expected.to complete_the_check_and_show_results }
+      it { is_expected.to have_destination(:known_date, :edit) }
     end
 
     context 'and type is `youth conditional caution`' do
@@ -38,7 +38,7 @@ RSpec.describe CautionDecisionTree do
     context 'and type is `adult simple caution`' do
       let(:caution_type) { CautionType::ADULT_SIMPLE_CAUTION.value }
 
-      it { is_expected.to complete_the_check_and_show_results }
+      it { is_expected.to have_destination(:known_date, :edit) }
     end
 
     context 'and type is `adult conditional caution`' do
@@ -54,6 +54,11 @@ RSpec.describe CautionDecisionTree do
     context 'and type is `conditional caution`' do
       let(:caution_type)  { CautionType::ADULT_CONDITIONAL_CAUTION.value }
       it { is_expected.to have_destination(:conditional_end_date, :edit) }
+    end
+
+    context 'and type is not `conditional caution`' do
+      let(:caution_type) { CautionType::ADULT_SIMPLE_CAUTION.value }
+      it { is_expected.to complete_the_check_and_show_results }
     end
   end
 

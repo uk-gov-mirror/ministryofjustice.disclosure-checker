@@ -51,7 +51,6 @@ FactoryBot.define do
 
     trait :youth_simple_caution do
       caution_type { CautionType::YOUTH_SIMPLE_CAUTION }
-      known_date { nil }
     end
 
     trait :youth_conditional_caution do

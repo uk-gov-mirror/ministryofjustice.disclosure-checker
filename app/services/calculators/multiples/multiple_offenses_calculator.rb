@@ -7,25 +7,27 @@ module Calculators
       def initialize(disclosure_report)
         @disclosure_report = disclosure_report
         @results = {}
+
+        process!
       end
 
-      def process!
-        disclosure_report.check_groups.with_completed_checks.each(&method(:process_group))
+      def proceedings
+        @_proceedings ||= results.values.sort_by(&:start_date)
       end
 
-      def spent_date_for(check_group)
-        return unless results.any?
+      def spent_date_for(proceeding)
+        return unless disclosure_report.completed?
 
-        spent_date = results[check_group.id].spent_date
+        spent_date = proceeding.spent_date
 
         # Cautions are always dealt with separately and do not have drag-through
-        return spent_date unless results[check_group.id].conviction?
+        return spent_date unless proceeding.conviction?
 
         # We have to loop through the rest of convictions and check if the spent date
         # of this group overlaps with the spent date of another group and if so, then
         # the spent date of this group becomes the spent date of the other group.
         #
-        convictions.each do |conviction|
+        proceedings.select(&:conviction?).each do |conviction|
           other_start_date = conviction.start_date
           other_spent_date = conviction.spent_date
 
@@ -48,8 +50,9 @@ module Calculators
 
       private
 
-      def convictions
-        @_convictions ||= results.values.select(&:conviction?).sort_by(&:start_date)
+      def process!
+        disclosure_report.check_groups.with_completed_checks.each(&method(:process_group))
+        self
       end
 
       def process_group(check_group)
