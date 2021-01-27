@@ -13,8 +13,8 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction') }
   let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'caution') }
 
-  let(:same_proceedings) { subject.results['100'] }
-  let(:separate_proceedings) { subject.results['200'] }
+  let(:same_proceedings) { subject.results[check_group1.id] }
+  let(:separate_proceedings) { subject.results[check_group2.id] }
 
   before do
     # Note: because these are doubles, the method does not work, so we emulate it
@@ -24,11 +24,11 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
   context '#process!' do
     it 'adds to the results the check groups having more than one disclosure check' do
-      expect(subject.results['100']).to be_kind_of(Calculators::Multiples::SameProceedings)
+      expect(same_proceedings).to be_kind_of(Calculators::Multiples::SameProceedings)
     end
 
     it 'adds to the results the check groups having only one disclosure check' do
-      expect(subject.results['200']).to be_kind_of(Calculators::Multiples::SeparateProceedings)
+      expect(separate_proceedings).to be_kind_of(Calculators::Multiples::SeparateProceedings)
     end
   end
 
