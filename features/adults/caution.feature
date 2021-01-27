@@ -5,20 +5,20 @@ Feature: Caution
     Then I should see "Were you cautioned or convicted?"
     When I choose "Cautioned"
     Then I should see "How old were you when you got cautioned?"
-
-  @happy_path
-  Scenario: Over 18, Simple caution
     And I choose "18 or over"
     Then I should see "What type of caution did you get?"
 
+  @happy_path
+  Scenario: Over 18, Simple caution
     And I choose "Simple caution"
+
+    Then I should see "When did you get the caution?"
+    When I enter a valid date
+
     Then I should see "This caution is spent on the day you receive it"
 
   @happy_path
   Scenario: Over 18, conditional caution
-    And I choose "18 or over"
-
-    Then I should see "What type of caution did you get?"
     And I choose "Conditional caution"
 
     Then I should see "When did you get the caution?"

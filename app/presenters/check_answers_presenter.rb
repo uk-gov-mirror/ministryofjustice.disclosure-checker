@@ -3,16 +3,14 @@ class CheckAnswersPresenter
 
   def initialize(disclosure_report)
     @disclosure_report = disclosure_report
-
-    calculator.process! if disclosure_report.completed?
   end
 
   def summary
-    disclosure_report.check_groups.with_completed_checks.map.with_index(1) do |check_group, i|
+    calculator.proceedings.map.with_index(1) do |proceeding, i|
       CheckGroupPresenter.new(
         i,
-        check_group,
-        spent_date: calculator.spent_date_for(check_group), # will be `nil` if no date found
+        proceeding.check_group,
+        spent_date: calculator.spent_date_for(proceeding),
         scope: to_partial_path
       )
     end

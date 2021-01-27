@@ -6,7 +6,7 @@ class CautionDecisionTree < BaseDecisionTree
 
     case step_name
     when :caution_type
-      after_caution_type
+      edit(:known_date)
     when :known_date
       after_known_date
     when :conditional_end_date
@@ -18,13 +18,9 @@ class CautionDecisionTree < BaseDecisionTree
 
   private
 
-  def after_caution_type
-    return edit(:known_date) if caution_type.conditional?
+  def after_known_date
+    return edit(:conditional_end_date) if caution_type.conditional?
 
     results
-  end
-
-  def after_known_date
-    edit(:conditional_end_date)
   end
 end

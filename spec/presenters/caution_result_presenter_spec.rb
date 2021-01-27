@@ -36,13 +36,16 @@ RSpec.describe CautionResultPresenter do
 
     context 'for a youth simple caution' do
       it 'returns the correct question-answer pairs' do
-        expect(summary.size).to eq(2)
+        expect(summary.size).to eq(3)
 
         expect(summary[0].question).to eql(:caution_type)
         expect(summary[0].answer).to eql('youth_simple_caution')
 
         expect(summary[1].question).to eql(:under_age)
         expect(summary[1].answer).to eql('yes')
+
+        expect(summary[2].question).to eql(:known_date)
+        expect(summary[2].answer).to eq('31 October 2018')
       end
     end
 
