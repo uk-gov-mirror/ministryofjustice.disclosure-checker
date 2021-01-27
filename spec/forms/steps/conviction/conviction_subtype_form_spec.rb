@@ -45,7 +45,6 @@ RSpec.describe Steps::Conviction::ConvictionSubtypeForm do
         expect(disclosure_check).to receive(:update).with(
           conviction_subtype: conviction_subtype,
           # Dependent attributes to be reset
-          known_date: nil,
           conviction_bail: nil,
           conviction_bail_days: nil,
           conviction_length: nil,

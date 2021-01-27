@@ -34,7 +34,6 @@ module Steps
         disclosure_check.update(
           conviction_subtype: conviction_subtype,
           # The following are dependent attributes that need to be reset if form changes
-          known_date: nil,
           conviction_bail: nil,
           conviction_bail_days: nil,
           conviction_length: nil,

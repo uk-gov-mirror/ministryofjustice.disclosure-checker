@@ -4,6 +4,7 @@ RSpec.describe ConvictionDecisionTree do
   let(:disclosure_check) do
     instance_double(
       DisclosureCheck,
+      check_group: check_group,
       conviction_type: conviction_type,
       conviction_subtype: conviction_subtype,
       compensation_paid: compensation_paid,
@@ -23,6 +24,8 @@ RSpec.describe ConvictionDecisionTree do
   let(:compensation_payment_over_100) { nil }
   let(:compensation_receipt_sent) { nil }
 
+  let(:check_group) { instance_double(CheckGroup, multiple_sentences?: multiple_sentences) }
+  let(:multiple_sentences) { false }
 
   subject { described_class.new(disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step) }
 
@@ -68,7 +71,15 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal youth_penalty_points' do
         let(:conviction_subtype) { :youth_penalty_points }
-        it { is_expected.to have_destination(:known_date, :edit) }
+
+        context 'for a new sentence in an existing conviction' do
+          let(:multiple_sentences) { true }
+          it { is_expected.to complete_the_check_and_show_results }
+        end
+
+        context 'for a new conviction' do
+          it { is_expected.to have_destination(:known_date, :edit) }
+        end
       end
     end
 
@@ -82,7 +93,15 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal adult_penalty_points' do
         let(:conviction_subtype) { :adult_penalty_points }
-        it { is_expected.to have_destination(:known_date, :edit) }
+
+        context 'for a new sentence in an existing conviction' do
+          let(:multiple_sentences) { true }
+          it { is_expected.to complete_the_check_and_show_results }
+        end
+
+        context 'for a new conviction' do
+          it { is_expected.to have_destination(:known_date, :edit) }
+        end
       end
     end
 
@@ -92,7 +111,14 @@ RSpec.describe ConvictionDecisionTree do
     end
 
     context 'for any other conviction subtypes' do
-      it { is_expected.to have_destination(:known_date, :edit) }
+      context 'for a new sentence in an existing conviction' do
+        let(:multiple_sentences) { true }
+        it { is_expected.to have_destination(:conviction_length_type, :edit) }
+      end
+
+      context 'for a new conviction' do
+        it { is_expected.to have_destination(:known_date, :edit) }
+      end
     end
   end
 

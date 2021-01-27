@@ -26,6 +26,7 @@ module Calculators
         # the spent date of this group becomes the spent date of the other group.
         #
         convictions.each do |conviction|
+          other_start_date = conviction.start_date
           other_spent_date = conviction.spent_date
 
           spent_date = ResultsVariant::NEVER_SPENT if other_spent_date == ResultsVariant::NEVER_SPENT
@@ -35,7 +36,7 @@ module Calculators
           next unless spent_date.is_a?(Date)
 
           # If the spent date falls inside another rehabilitation, we do drag-through
-          spent_date = other_spent_date if other_spent_date >= spent_date
+          spent_date = other_spent_date if spent_date.in?(other_start_date..other_spent_date)
         end
 
         spent_date
@@ -52,7 +53,7 @@ module Calculators
       end
 
       def process_group(check_group)
-        results[check_group.id] = if check_group.disclosure_checks.count > 1
+        results[check_group.id] = if check_group.multiple_sentences?
                                     # multiple sentences inside the same proceedings
                                     SameProceedings.new(check_group)
                                   else
