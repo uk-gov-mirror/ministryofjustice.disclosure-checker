@@ -11,6 +11,7 @@ module Calculators
         return ResultsVariant::INDEFINITE  if expiry_dates.include?(ResultsVariant::INDEFINITE)
 
         # Pick the latest date in the collection
+        # All sentences in same proceedings start the same date, overlapping
         expiry_dates.max
       end
 

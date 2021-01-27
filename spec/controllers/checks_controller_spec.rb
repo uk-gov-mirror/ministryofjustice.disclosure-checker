@@ -73,6 +73,9 @@ RSpec.describe ChecksController, type: :controller do
           # have happened at the same age
           expect(last_check.under_age).to eq(GenericYesNo::YES.to_s)
 
+          # we default the start date, as all sentences in the same conviction starts in the same date
+          expect(last_check.known_date).to eq(disclosure_check.known_date)
+
           # the back link should point to CYA page
           expect(last_check.navigation_stack).to eq([steps_check_check_your_answers_path])
         end

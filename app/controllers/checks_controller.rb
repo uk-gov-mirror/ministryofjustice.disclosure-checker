@@ -3,17 +3,18 @@ class ChecksController < ApplicationController
 
   def create
     if check_group_id
-      # add another conviction in existing proceedings
+      # add another sentence to an existing conviction (same proceedings)
       initialize_disclosure_check(
         navigation_stack: navigation_stack,
         kind: CheckKind::CONVICTION.value,
         under_age: first_check_in_group.under_age,
+        known_date: first_check_in_group.known_date,
         check_group: check_group
       )
 
       redirect_to edit_steps_conviction_conviction_type_path
     else
-      # add another caution or conviction in new proceedings
+      # add a new caution or conviction (separate proceedings)
       initialize_disclosure_check(
         navigation_stack: navigation_stack,
         disclosure_report: current_disclosure_report

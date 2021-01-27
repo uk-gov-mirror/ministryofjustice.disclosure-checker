@@ -14,6 +14,10 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'caution') }
 
   before do
+    # Note: because these are doubles, the method does not work, so we emulate it
+    allow(check_group1).to receive(:multiple_sentences?).and_return(check_group1.disclosure_checks.size > 1)
+    allow(check_group2).to receive(:multiple_sentences?).and_return(check_group2.disclosure_checks.size > 1)
+
     subject.process!
   end
 

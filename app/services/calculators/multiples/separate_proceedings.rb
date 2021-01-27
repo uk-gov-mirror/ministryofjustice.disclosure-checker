@@ -1,8 +1,3 @@
-# TODO: pending things to code or clarify
-#
-#   - This calculator is not finished, it just returns the spent date for the
-#     caution/conviction, nothing else. We are awaiting some clarifications.
-#
 module Calculators
   module Multiples
     class SeparateProceedings < BaseMultiplesCalculator

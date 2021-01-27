@@ -92,7 +92,11 @@ class ConvictionDecisionTree < BaseDecisionTree
     known_date_question
   end
 
+  # For multiples, all sentences given as part of the same conviction
+  # share the same start date so we don't need to ask this for each one.
   def known_date_question
+    return after_known_date if disclosure_check.check_group.multiple_sentences?
+
     edit(:known_date)
   end
 end
