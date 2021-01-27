@@ -97,6 +97,9 @@ FactoryBot.define do
       conviction_with_known_date
       conviction_type { self.under_age.inquiry.yes? ? ConvictionType::YOUTH_MOTORING : ConvictionType::ADULT_MOTORING }
       conviction_subtype { self.under_age.inquiry.yes? ? ConvictionType::YOUTH_DISQUALIFICATION : ConvictionType::ADULT_DISQUALIFICATION }
+      conviction_length { 6 }
+      conviction_length_type { ConvictionLengthType::MONTHS }
+      motoring_endorsement { GenericYesNo::NO }
     end
 
     trait :with_motoring_penalty_points do
@@ -123,6 +126,8 @@ FactoryBot.define do
       conviction_with_known_date
       conviction_type { self.under_age.inquiry.yes? ? ConvictionType::DISCHARGE : ConvictionType::ADULT_DISCHARGE }
       conviction_subtype { self.under_age.inquiry.yes? ? ConvictionType::CONDITIONAL_DISCHARGE : ConvictionType::ADULT_CONDITIONAL_DISCHARGE }
+      conviction_length { 12 }
+      conviction_length_type { ConvictionLengthType::MONTHS }
     end
 
     # Community Reparation
