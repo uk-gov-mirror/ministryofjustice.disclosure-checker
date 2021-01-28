@@ -13,6 +13,8 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
   context 'adult' do
     context 'when same proceedings' do
+      let(:same_proceedings) { subject.results[first_group.id] }
+
       context 'when a relevant order is the longest sentence' do
         before do
           first_group.disclosure_checks << build(:disclosure_check, :adult, :with_discharge_order, :completed, known_date: Date.new(2000, 1, 1), conviction_length: 36)
@@ -21,13 +23,12 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         end
 
         it 'ignores the relevant order' do
-          expect(subject.spent_date_for(subject.results[first_group.id])).to eq(Date.new(2000, 7, 1))
+          expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2000, 7, 1))
         end
       end
     end
 
     context 'with separate proceedings' do
-      let(:first_proceeding) { subject.results[first_group.id] }
       let(:second_proceeding) { subject.results[second_group.id] }
 
       context 'two convictions that overlap in time' do
