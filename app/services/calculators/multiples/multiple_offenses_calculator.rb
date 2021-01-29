@@ -11,8 +11,10 @@ module Calculators
         process!
       end
 
+      # The order returned in this collection is the order in which
+      # the user entered their cautions and/or convictions.
       def proceedings
-        @_proceedings ||= results.values.sort_by(&:start_date)
+        @_proceedings ||= results.values
       end
 
       def spent_date_for(proceeding)
@@ -27,7 +29,7 @@ module Calculators
         # of this group overlaps with the spent date of another group and if so, then
         # the spent date of this group becomes the spent date of the other group.
         #
-        proceedings.select(&:conviction?).each do |conviction|
+        convictions_by_start_date.each do |conviction|
           other_start_date = conviction.start_date
           other_spent_date = conviction.spent_date
 
@@ -49,6 +51,10 @@ module Calculators
       end
 
       private
+
+      def convictions_by_start_date
+        @_convictions ||= proceedings.select(&:conviction?).sort_by(&:start_date)
+      end
 
       def process!
         disclosure_report.check_groups.with_completed_checks.each(&method(:process_group))
