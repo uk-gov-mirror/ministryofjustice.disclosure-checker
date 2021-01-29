@@ -15,20 +15,36 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     context 'when same proceedings' do
       let(:same_proceedings) { subject.results[first_group.id] }
 
-      context 'when a relevant order is the longest sentence' do
+      context 'when both convictions are relevant orders' do
         before do
           first_group.disclosure_checks << build(:disclosure_check, :adult, :with_discharge_order, :completed, known_date: Date.new(2000, 1, 1), conviction_length: 36)
           first_group.disclosure_checks << build(:disclosure_check, :adult, :with_motoring_disqualification, :completed, known_date: Date.new(2000, 1, 1))
           save_report
         end
 
+        it 'the longest date is the spent date' do
+          expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2003, 1, 1))
+        end
+      end
+
+      # TODO: This needs confirmation, please visit the following card https://trello.com/c/sZ7qBDwe/
+      context 'when a relevant order is the longest sentence' do
+        before do
+          first_group.disclosure_checks << build(:disclosure_check, :adult, :with_discharge_order, :completed, known_date: Date.new(2000, 1, 1), conviction_length: 48)
+          first_group.disclosure_checks << build(:disclosure_check, :adult, :with_discharge_order, :completed, known_date: Date.new(2000, 1, 1), conviction_length: 36)
+          first_group.disclosure_checks << build(:disclosure_check, :adult, :with_motoring_fine, :completed, known_date: Date.new(2000, 1, 1))
+          save_report
+        end
+
         it 'ignores the relevant order' do
-          expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2000, 7, 1))
+          # motoring fine without endorsement lasts 6 months
+          expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2001, 7, 1))
         end
       end
     end
 
     context 'with separate proceedings' do
+      let(:first_proceeding) { subject.results[first_group.id] }
       let(:second_proceeding) { subject.results[second_group.id] }
 
       context 'two convictions that overlap in time' do

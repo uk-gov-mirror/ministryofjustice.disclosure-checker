@@ -121,6 +121,7 @@ FactoryBot.define do
       conviction_with_known_date
       conviction_type { self.under_age.inquiry.yes? ? ConvictionType::YOUTH_MOTORING : ConvictionType::ADULT_MOTORING }
       conviction_subtype { self.under_age.inquiry.yes? ? ConvictionType::YOUTH_MOTORING_FINE : ConvictionType::ADULT_MOTORING_FINE }
+      motoring_endorsement { GenericYesNo::NO }
     end
 
     # Discharge
