@@ -5,9 +5,9 @@ RSpec.describe Calculators::Multiples::SameProceedings do
 
   let(:check_group) { instance_double(CheckGroup, disclosure_checks: [disclosure_check1, disclosure_check2, disclosure_check3]) }
 
-  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date1) }
-  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date2) }
-  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date3) }
+  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date1, relevant_order?: false) }
+  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date2, relevant_order?: false) }
+  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'conviction', known_date: known_date3, relevant_order?: false) }
 
   let(:check_result1) { instance_double(CheckResult, expiry_date: Date.new(2015, 10, 31)) }
   let(:check_result2) { instance_double(CheckResult, expiry_date: Date.new(2018, 10, 31)) }
