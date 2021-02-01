@@ -3,19 +3,23 @@ class BaseDecisionTree
 
   include ApplicationHelper
 
-  attr_reader :disclosure_check, :record, :step_params, :as, :next_step
+  attr_reader :disclosure_check, :record, :step_params,
+              :as, :next_step, :multiples_enabled
 
-  # rubocop:disable Naming/MethodParameterName
-  def initialize(disclosure_check:, record: nil, step_params: {}, as: nil, next_step: nil)
+  def initialize(disclosure_check:, record: nil, step_params: {}, **options)
     @disclosure_check = disclosure_check
     @record = record
     @step_params = step_params
-    @as = as
-    @next_step = next_step
+    @as = options[:as]
+    @next_step = options[:next_step]
+    @multiples_enabled = options[:multiples_enabled]
   end
-  # rubocop:enable Naming/MethodParameterName
 
   private
+
+  def multiples_enabled?
+    @multiples_enabled
+  end
 
   def step_value(attribute_name)
     step_params.fetch(attribute_name)

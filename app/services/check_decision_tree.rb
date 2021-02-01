@@ -19,6 +19,8 @@ class CheckDecisionTree < BaseDecisionTree
     when CheckKind::CAUTION
       edit('/steps/caution/caution_type')
     when CheckKind::CONVICTION
+      return edit('/steps/conviction/conviction_date') if multiples_enabled?
+
       edit('/steps/conviction/conviction_type')
     end
   end
