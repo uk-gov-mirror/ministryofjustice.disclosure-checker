@@ -8,8 +8,8 @@ en:
       This is usually the day you were convicted in court. If you do not know the exact date, you can enter an approximate one.
       <span class='nowrap'>For example, 23 9 2018</span>
     order_started_hint_text: &order_started_hint_text |
-      Enter the date your sentence or order started. This might be the day you were sentenced in court or the first day you were held on remand. If you do not know the exact date, you can enter an approximate one.
-      <p>For example, 23 9 2018</p>
+      Enter the date your sentence or order started. This might be the day you were convicted or sentenced in court, or the first day you were held on remand.
+      <p>If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span></p>
 
     approximate_date_legend: &approximate_date_legend "Approximate date"
     approximate_date_checkbox: &approximate_date_checkbox "This is not the exact date"
@@ -180,6 +180,8 @@ en:
         conviction_html: Select your age when you got convicted, not when you committed the offence
       steps_caution_conditional_end_date_form:
         conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>"
+      steps_conviction_conviction_date_form:
+        conviction_date_html: This is the day you were found guilty of the offence. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
       steps_conviction_known_date_form:
         # default key
         default_html: *court_sentence_hint_text
@@ -268,6 +270,9 @@ en:
       steps_caution_caution_type_form:
         caution_type_options:
           <<: *CAUTION_TYPES
+      steps_conviction_conviction_date_form:
+        approximate_conviction_date_options:
+          'true': *approximate_date_checkbox
       steps_conviction_known_date_form:
         approximate_known_date_options:
           'true': *approximate_date_checkbox
@@ -318,6 +323,9 @@ en:
       steps_caution_conditional_end_date_form:
         conditional_end_date: When did the conditions end?
         approximate_conditional_end_date: *approximate_date_legend
+      steps_conviction_conviction_date_form:
+        conviction_date: When were you convicted?
+        approximate_conviction_date: *approximate_date_legend
       steps_conviction_known_date_form:
         approximate_known_date: *approximate_date_legend
         # default key
