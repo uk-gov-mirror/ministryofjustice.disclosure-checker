@@ -8,7 +8,7 @@ class ChecksController < ApplicationController
         navigation_stack: navigation_stack,
         kind: CheckKind::CONVICTION.value,
         under_age: first_check_in_group.under_age,
-        known_date: first_check_in_group.known_date,
+        conviction_date: first_check_in_group.conviction_date,
         check_group: check_group
       )
 

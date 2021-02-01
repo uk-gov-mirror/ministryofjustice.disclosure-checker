@@ -10,8 +10,9 @@ RSpec.describe ChecksController, type: :controller do
     end
 
     context 'when there is a disclosure check in the session' do
-      let(:disclosure_check) { create(:disclosure_check) }
+      let(:disclosure_check) { create(:disclosure_check, conviction_date: conviction_date) }
       let(:disclosure_report) { disclosure_check.disclosure_report }
+      let(:conviction_date) { Date.new(2018, 10, 25) }
 
       before do
         allow(controller).to receive(:current_disclosure_check).and_return(disclosure_check)
@@ -73,8 +74,8 @@ RSpec.describe ChecksController, type: :controller do
           # have happened at the same age
           expect(last_check.under_age).to eq(GenericYesNo::YES.to_s)
 
-          # we default the start date, as all sentences in the same conviction starts in the same date
-          expect(last_check.known_date).to eq(disclosure_check.known_date)
+          # we default the conviction date, as all sentences in the same conviction share this date
+          expect(last_check.conviction_date).to eq(conviction_date)
 
           # the back link should point to CYA page
           expect(last_check.navigation_stack).to eq([steps_check_check_your_answers_path])

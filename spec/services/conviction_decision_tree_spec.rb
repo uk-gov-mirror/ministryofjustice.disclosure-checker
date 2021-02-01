@@ -4,7 +4,6 @@ RSpec.describe ConvictionDecisionTree do
   let(:disclosure_check) do
     instance_double(
       DisclosureCheck,
-      check_group: check_group,
       conviction_type: conviction_type,
       conviction_subtype: conviction_subtype,
       compensation_paid: compensation_paid,
@@ -24,30 +23,17 @@ RSpec.describe ConvictionDecisionTree do
   let(:compensation_payment_over_100) { nil }
   let(:compensation_receipt_sent) { nil }
 
-  let(:check_group) { instance_double(CheckGroup, multiple_sentences?: multiple_sentences) }
-  let(:multiple_sentences) { false }
-
   subject { described_class.new(disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step) }
 
   it_behaves_like 'a decision tree'
 
-  context 'when the step is `known_date` ' do
-    let(:step_params) { { known_date: 'anything' } }
-
-    context 'when subtype has length' do
-      let(:conviction_subtype) { :detention_training_order }
-      it { is_expected.to have_destination(:conviction_length_type, :edit) }
-    end
-
-    context 'when subtype does not have length' do
-      let(:conviction_subtype) { :fine }
-      it { is_expected.to complete_the_check_and_show_results }
-    end
+  context 'when the step is `conviction_date`' do
+    let(:step_params) { { conviction_date: 'date' } }
+    it { is_expected.to have_destination(:conviction_type, :edit) }
   end
 
   context 'when the step is `conviction_type`' do
-    let(:step_params) { { conviction_type: conviction_type } }
-    let(:conviction_type) { 'referral_supervision_yro' }
+    let(:step_params) { { conviction_type: 'foobar' } }
     it { is_expected.to have_destination(:conviction_subtype, :edit) }
   end
 
@@ -71,15 +57,7 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal youth_penalty_points' do
         let(:conviction_subtype) { :youth_penalty_points }
-
-        context 'for a new sentence in an existing conviction' do
-          let(:multiple_sentences) { true }
-          it { is_expected.to complete_the_check_and_show_results }
-        end
-
-        context 'for a new conviction' do
-          it { is_expected.to have_destination(:known_date, :edit) }
-        end
+        it { is_expected.to have_destination(:known_date, :edit) }
       end
     end
 
@@ -93,15 +71,7 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal adult_penalty_points' do
         let(:conviction_subtype) { :adult_penalty_points }
-
-        context 'for a new sentence in an existing conviction' do
-          let(:multiple_sentences) { true }
-          it { is_expected.to complete_the_check_and_show_results }
-        end
-
-        context 'for a new conviction' do
-          it { is_expected.to have_destination(:known_date, :edit) }
-        end
+        it { is_expected.to have_destination(:known_date, :edit) }
       end
     end
 
@@ -111,14 +81,21 @@ RSpec.describe ConvictionDecisionTree do
     end
 
     context 'for any other conviction subtypes' do
-      context 'for a new sentence in an existing conviction' do
-        let(:multiple_sentences) { true }
-        it { is_expected.to have_destination(:conviction_length_type, :edit) }
-      end
+      it { is_expected.to have_destination(:known_date, :edit) }
+    end
+  end
 
-      context 'for a new conviction' do
-        it { is_expected.to have_destination(:known_date, :edit) }
-      end
+  context 'when the step is `known_date` ' do
+    let(:step_params) { { known_date: 'anything' } }
+
+    context 'when subtype has length' do
+      let(:conviction_subtype) { :detention_training_order }
+      it { is_expected.to have_destination(:conviction_length_type, :edit) }
+    end
+
+    context 'when subtype does not have length' do
+      let(:conviction_subtype) { :fine }
+      it { is_expected.to complete_the_check_and_show_results }
     end
   end
 

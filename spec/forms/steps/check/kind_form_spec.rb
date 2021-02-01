@@ -32,7 +32,8 @@ RSpec.describe Steps::Check::KindForm do
           under_age: nil,
           caution_type: nil,
           conviction_type: nil,
-          conviction_subtype: nil
+          conviction_subtype: nil,
+          conviction_date: nil
         ).and_return(true)
 
         expect(subject.save).to be(true)
