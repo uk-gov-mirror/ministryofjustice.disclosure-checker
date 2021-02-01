@@ -28,9 +28,10 @@ en:
         steps/conviction/known_date_form:
           attributes:
             known_date:
-              blank: Enter the date of the conviction in the format dd/mm/yyyy
+              blank: Enter the date in the format dd/mm/yyyy
               invalid: The date is too far in the past. Enter a date after 01/01/1940
-              future: The date of the conviction can’t be in the future
+              future: The date can’t be in the future
+              after_conviction_date: The date can’t be before the conviction date
         steps/conviction/conviction_type_form:
           attributes:
             conviction_type:
