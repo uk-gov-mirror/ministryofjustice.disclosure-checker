@@ -8,7 +8,7 @@ en:
       This is usually the day you were convicted in court. If you do not know the exact date, you can enter an approximate one.
       <span class='nowrap'>For example, 23 9 2018</span>
     order_started_hint_text: &order_started_hint_text |
-      Enter the date your sentence or order started. This might be the day you were convicted or sentenced in court, or the first day you were held on remand.
+      This is usually the day you were convicted or sentenced in court, or the first day you were held on remand.
       <p>If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span></p>
 
     approximate_date_legend: &approximate_date_legend "Approximate date"
