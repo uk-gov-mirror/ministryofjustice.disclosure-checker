@@ -25,7 +25,8 @@ module Steps
           under_age: nil,
           caution_type: nil,
           conviction_type: nil,
-          conviction_subtype: nil
+          conviction_subtype: nil,
+          conviction_date: nil
         )
       end
     end

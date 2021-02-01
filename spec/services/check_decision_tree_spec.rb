@@ -15,7 +15,13 @@ RSpec.describe CheckDecisionTree do
   let(:kind)             { nil }
   let(:under_age)        { nil }
 
-  subject { described_class.new(disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step) }
+  let(:multiples_enabled) { false }
+
+  subject {
+    described_class.new(
+      disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step, multiples_enabled: multiples_enabled
+    )
+  }
 
   it_behaves_like 'a decision tree'
 
@@ -29,6 +35,7 @@ RSpec.describe CheckDecisionTree do
 
     context 'and answer is `no`' do
       let(:under_age) { GenericYesNo::NO }
+
       context 'for a caution check' do
         let(:kind) { 'caution' }
         it { is_expected.to have_destination('/steps/caution/caution_type', :edit) }
@@ -36,7 +43,15 @@ RSpec.describe CheckDecisionTree do
 
       context 'for a conviction check' do
         let(:kind) { 'conviction' }
-        it { is_expected.to have_destination('/steps/conviction/conviction_type', :edit) }
+
+        context 'and multiples MVP is enabled' do
+          let(:multiples_enabled) { true }
+          it { is_expected.to have_destination('/steps/conviction/conviction_date', :edit) }
+        end
+
+        context 'and multiples MVP is disabled' do
+          it { is_expected.to have_destination('/steps/conviction/conviction_type', :edit) }
+        end
       end
     end
 
