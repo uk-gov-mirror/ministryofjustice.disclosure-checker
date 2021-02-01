@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     end
 
     namespace :conviction do
+      edit_step :conviction_date
       edit_step :known_date
       edit_step :conviction_type
       edit_step :conviction_subtype
