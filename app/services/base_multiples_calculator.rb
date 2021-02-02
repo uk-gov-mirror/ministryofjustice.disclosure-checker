@@ -6,7 +6,7 @@ class BaseMultiplesCalculator
   end
 
   def kind
-    CheckKind.find_constant(disclosure_checks.first.kind)
+    CheckKind.find_constant(first_disclosure_check.kind)
   end
 
   def conviction?
@@ -21,9 +21,10 @@ class BaseMultiplesCalculator
     spent_date.past?
   end
 
-  def start_date
-    # Pick the earliest date in the collection
-    disclosure_checks.map(&:known_date).min
+  # When there are more than one sentence (checks),
+  # all will share the same conviction date.
+  def conviction_date
+    first_disclosure_check.conviction_date
   end
 
   # :nocov:
@@ -36,6 +37,10 @@ class BaseMultiplesCalculator
 
   def disclosure_checks
     @_disclosure_checks ||= check_group.disclosure_checks
+  end
+
+  def first_disclosure_check
+    @_first_disclosure_check ||= disclosure_checks.first
   end
 
   def expiry_date_for(check)

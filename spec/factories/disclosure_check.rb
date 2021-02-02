@@ -21,6 +21,7 @@ FactoryBot.define do
 
     trait :conviction do
       kind { CheckKind::CONVICTION }
+      conviction_date { Date.new(2018, 1, 1) }
       known_date { nil }
       caution_type { nil }
     end
@@ -35,7 +36,7 @@ FactoryBot.define do
     end
 
     trait :dto_conviction do
-      kind { CheckKind::CONVICTION }
+      conviction_with_known_date
       conviction_type { ConvictionType::CUSTODIAL_SENTENCE }
       conviction_subtype { ConvictionType::DETENTION_TRAINING_ORDER }
       conviction_length { 9 }
@@ -43,7 +44,7 @@ FactoryBot.define do
     end
 
     trait :compensation do
-      kind { CheckKind::CONVICTION }
+      conviction_with_known_date
       conviction_type { ConvictionType::FINANCIAL }
       conviction_subtype { ConvictionType::COMPENSATION_TO_A_VICTIM }
       compensation_payment_date { Date.new(2019, 10, 31) }
@@ -59,8 +60,8 @@ FactoryBot.define do
     end
 
     trait :suspended_prison_sentence do
-      under_age { GenericYesNo::NO }
-      kind { CheckKind::CONVICTION }
+      conviction_with_known_date
+      adult
       conviction_type { ConvictionType::ADULT_CUSTODIAL_SENTENCE }
       conviction_subtype { ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE }
       conviction_length_type { ConvictionLengthType::MONTHS }
