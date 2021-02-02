@@ -25,12 +25,14 @@ module Calculators
         # Cautions are always dealt with separately and do not have drag-through
         return spent_date unless proceeding.conviction?
 
-        # We have to loop through the rest of convictions and check if the spent date
-        # of this group overlaps with the spent date of another group and if so, then
-        # the spent date of this group becomes the spent date of the other group.
+        # We have to loop through all the convictions and check if the spent date
+        # of this conviction overlaps with the rehabilitation of another one and if so,
+        # then the spent date of this conviction becomes the spent date of the other.
         #
-        convictions_by_start_date.each do |conviction|
-          other_start_date = conviction.start_date
+        convictions_by_date.each do |conviction|
+          next if proceeding == conviction
+
+          other_conviction_date = conviction.conviction_date
           other_spent_date = conviction.spent_date
 
           spent_date = ResultsVariant::NEVER_SPENT if other_spent_date == ResultsVariant::NEVER_SPENT
@@ -40,7 +42,7 @@ module Calculators
           next unless spent_date.is_a?(Date)
 
           # If the spent date falls inside another rehabilitation, we do drag-through
-          spent_date = other_spent_date if spent_date.in?(other_start_date..other_spent_date)
+          spent_date = other_spent_date if spent_date.in?(other_conviction_date..other_spent_date)
         end
 
         spent_date
@@ -52,8 +54,8 @@ module Calculators
 
       private
 
-      def convictions_by_start_date
-        @_convictions ||= proceedings.select(&:conviction?).sort_by(&:start_date)
+      def convictions_by_date
+        @_convictions ||= proceedings.select(&:conviction?).sort_by(&:conviction_date)
       end
 
       def process!
