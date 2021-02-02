@@ -8,8 +8,8 @@ RSpec.describe ConvictionLengthChoices do
       ConvictionLengthType::WEEKS,
       ConvictionLengthType::MONTHS,
       ConvictionLengthType::YEARS,
-      ConvictionLengthType::NO_LENGTH,
       ConvictionLengthType::INDEFINITE,
+      ConvictionLengthType::NO_LENGTH,
     ]
   }
 

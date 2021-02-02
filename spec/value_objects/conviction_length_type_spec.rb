@@ -36,8 +36,8 @@ RSpec.describe ConvictionLengthType do
         weeks
         months
         years
-        no_length
         indefinite
+        no_length
       ))
     end
   end
