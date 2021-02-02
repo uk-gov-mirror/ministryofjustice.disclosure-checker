@@ -79,7 +79,21 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         end
       end
 
-      context 'when there is a conviction with `indefinite`' do
+      context 'when there is a conviction with an `indefinite`' do
+        context 'and the indefinite sentence is a relevant order (scenario 2 from nacro)' do
+          before do
+            check_group.disclosure_checks << build(:disclosure_check, :adult, :with_prison_sentence, :completed, known_date: Date.new(2011, 6, 10), conviction_date: Date.new(2011, 6, 10), conviction_length: 6, conviction_length_type: ConvictionLengthType::MONTHS)
+            check_group.disclosure_checks << build(:disclosure_check, :adult, :with_restraining_order, :completed, known_date: Date.new(2011, 6, 10), conviction_date: Date.new(2011, 6, 10), conviction_length: nil, conviction_length_type: ConvictionLengthType::INDEFINITE)
+            check_group.disclosure_checks << build(:disclosure_check, :adult, :with_fine, :completed, known_date: Date.new(2011, 6, 10), conviction_date: Date.new(2011, 6, 10))
+
+            save_report
+          end
+
+          it 'returns indefinite' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::INDEFINITE)
+          end
+        end
+
         context 'when all sentences are relevant orders' do
           before do
             check_group.disclosure_checks << build(:disclosure_check, :adult, :with_discharge_order, :completed, known_date: Date.new(2000, 6, 1), conviction_length: nil, conviction_length_type: ConvictionLengthType::INDEFINITE)
