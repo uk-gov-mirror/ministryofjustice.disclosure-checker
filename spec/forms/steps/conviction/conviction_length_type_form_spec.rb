@@ -53,8 +53,8 @@ RSpec.describe Steps::Conviction::ConvictionLengthTypeForm do
             ConvictionLengthType.new(:weeks),
             ConvictionLengthType.new(:months),
             ConvictionLengthType.new(:years),
-            ConvictionLengthType.new(:no_length),
             ConvictionLengthType.new(:indefinite),
+            ConvictionLengthType.new(:no_length),
           ]
         )
       end
