@@ -16,59 +16,114 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
   context 'two separate convictions' do
     context 'scenario without relevant order' do
-      # Adult person was convicted of theft on 20 May 2015 and received:
-      # - a 4 month custodial sentence. (This conviction would become spent on 20 September 2017)
-      #
-      # On 1 February 2017, is convicted of battery and receives:
-      # -  a 3 month suspended custodial sentence. (This conviction would become spent on 1 May 2019)
-      #
-      # Both offences will remain unspent until the later date of 1 May 2019,
-      # because she was convicted of a further offence while within the rehabilitation period of the first offence.
-      #
-      # In this case, both convictions would be disclosed on a basic DBS certificate issued before 1 May 2019.
+      context 'when both convictions overlap' do
+        # Adult person was convicted of theft on 20 May 2015 and received:
+        # - a 4 month custodial sentence. (This conviction would become spent on 20 September 2017)
+        #
+        # On 1 February 2017, is convicted of battery and receives:
+        # -  a 3 month suspended custodial sentence. (This conviction would become spent on 1 May 2019)
+        #
+        # Both offences will remain unspent until the later date of 1 May 2019,
+        # because she was convicted of a further offence while within the rehabilitation period of the first offence.
+        #
+        # In this case, both convictions would be disclosed on a basic DBS certificate issued before 1 May 2019.
 
-      let(:first_conviction_date) { Date.new(2015, 5, 20) }
-      let(:second_conviction_date) { Date.new(2017, 2, 1) }
-      let(:expected_conviction_spent_date) { Date.new(2019, 4, 30) }
+        let(:first_conviction_date) { Date.new(2015, 5, 20) }
+        let(:second_conviction_date) { Date.new(2017, 2, 1) }
+        let(:expected_conviction_spent_date) { Date.new(2019, 4, 30) }
 
-      let(:prison_sentence) do
-        build(
-          :disclosure_check,
-          :with_prison_sentence,
-          :completed,
-          known_date: first_conviction_date,
-          conviction_date: first_conviction_date,
-          conviction_length: 4
-        )
+        let(:prison_sentence) do
+          build(
+            :disclosure_check,
+            :with_prison_sentence,
+            :completed,
+            known_date: first_conviction_date,
+            conviction_date: first_conviction_date,
+            conviction_length: 4
+          )
+        end
+
+        let(:suspended_prison_sentence) do
+          build(
+            :disclosure_check,
+            :suspended_prison_sentence,
+            :completed,
+            known_date: second_conviction_date,
+            conviction_date: second_conviction_date,
+            conviction_length: 3
+          )
+        end
+
+        before do
+          first_proceeding_group.disclosure_checks << prison_sentence
+          second_proceeding_group.disclosure_checks << suspended_prison_sentence
+
+          save_report
+        end
+
+        it 'returns the date for the first conviction' do
+          expect(subject.spent_date_for(first_proceedings)).to eq(expected_conviction_spent_date)
+        end
+
+        it 'returns the date for the second conviction' do
+          expect(subject.spent_date_for(second_proceedings)).to eq(expected_conviction_spent_date)
+        end
       end
 
-      let(:suspended_prison_sentence) do
-        build(
-          :disclosure_check,
-          :suspended_prison_sentence,
-          :completed,
-          known_date: second_conviction_date,
-          conviction_date: second_conviction_date,
-          conviction_length: 3
-        )
-      end
+      context 'when both convictions do not overlap' do
+        # Adult person was convicted of fraud on 20 May 2015 and received:
+        # - a 3 month custodial sentence. (This conviction would become spent on 20 August 2017)
+        #
+        # On 1 February 2018 he was convicted of and received:
+        # - a fine of £200. (This conviction would become spent on 1 February 2019)
+        #
+        # Although has been convicted of a further offence, the first conviction
+        # had reached the end of the rehabilitation period before he received the second conviction.
+        #
+        # In this case, only the later conviction would be disclosed on a basic DBS certificate issued between 21 August 2017 and 1 February 2019.
+        let(:first_conviction_date) { Date.new(2015, 5, 20) }
+        let(:second_conviction_date) { Date.new(2018, 2, 1) }
+        let(:expected_first_conviction_spent_date) { Date.new(2017, 8, 19) }
+        let(:expected_second_conviction_spent_date) { Date.new(2019, 2, 1) }
 
-      before do
-        first_proceeding_group.disclosure_checks << prison_sentence
-        second_proceeding_group.disclosure_checks << suspended_prison_sentence
+        let(:prison_sentence) do
+          build(
+            :disclosure_check,
+            :with_prison_sentence,
+            :completed,
+            known_date: first_conviction_date,
+            conviction_date: first_conviction_date,
+            conviction_length: 3
+          )
+        end
 
-        save_report
-      end
+        let(:financial_fine) do
+          build(
+            :disclosure_check,
+            :adult,
+            :with_fine,
+            :completed,
+            known_date: second_conviction_date,
+            conviction_date: second_conviction_date
+          )
+        end
 
-      it 'returns the date for the first conviction' do
-        expect(subject.spent_date_for(first_proceedings)).to eq(expected_conviction_spent_date)
-      end
+        before do
+          first_proceeding_group.disclosure_checks << prison_sentence
+          second_proceeding_group.disclosure_checks << financial_fine
 
-      it 'returns the date for the second conviction' do
-        expect(subject.spent_date_for(second_proceedings)).to eq(expected_conviction_spent_date)
+          save_report
+        end
+
+        it 'returns the date for the first conviction' do
+          expect(subject.spent_date_for(first_proceedings)).to eq(expected_first_conviction_spent_date)
+        end
+
+        it 'returns the date for the second conviction' do
+          expect(subject.spent_date_for(second_proceedings)).to eq(expected_second_conviction_spent_date)
+        end
       end
     end
-
 
     context 'scenario with relevant order' do
       # Scenario 1
