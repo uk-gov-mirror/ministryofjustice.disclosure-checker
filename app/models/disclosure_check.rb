@@ -6,8 +6,4 @@ class DisclosureCheck < ApplicationRecord
     in_progress: 0,
     completed: 10,
   }
-
-  def relevant_order?
-    ConvictionType.find_constant(conviction_subtype).relevant_order?
-  end
 end

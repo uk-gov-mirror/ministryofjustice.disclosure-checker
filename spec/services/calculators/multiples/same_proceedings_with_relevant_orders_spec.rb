@@ -25,7 +25,6 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
     end
 
-    # TODO: This needs confirmation, please visit the following card https://trello.com/c/sZ7qBDwe/
     context 'when a relevant order is the longest sentence' do
       before do
         check_group.disclosure_checks << build(:disclosure_check, :adult, :with_discharge_order, :completed, known_date: Date.new(2000, 1, 1), conviction_length: 48)
@@ -35,7 +34,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
 
       it 'ignores the relevant order' do
-        expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2001, 1, 1))
+        expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2004, 1, 1))
       end
     end
 
@@ -49,7 +48,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         end
 
         it 'distinguishes between different conviction length types' do
-          expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2001, 1, 1))
+          expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2001, 6, 1))
         end
       end
 
@@ -73,8 +72,8 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             save_report
           end
 
-          it 'ignores the relevant order date' do
-            expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2001, 1, 1))
+          it 'returns relevant order, no length given means minimum 24 months' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2002, 12, 1))
           end
         end
       end
@@ -113,9 +112,8 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             save_report
           end
 
-          # TODO: This needs to be confirmed, visit the following card https://trello.com/c/sZ7qBDwe/
-          it 'ignores the relevant order indefinite date' do
-            expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2001, 1, 1))
+          it 'returns relevant order indefinite date' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::INDEFINITE)
           end
         end
       end
