@@ -135,6 +135,12 @@ FactoryBot.define do
     # Community Reparation
     # Only for adults
 
+    trait :with_restraining_order do
+      conviction_with_known_date
+      conviction_subtype { ConvictionType::ADULT_RESTRAINING_ORDER }
+      conviction_type { ConvictionType::ADULT_COMMUNITY_REPARATION }
+    end
+
     trait :with_community_order do
       conviction_with_known_date
       conviction_type { ConvictionType::ADULT_COMMUNITY_REPARATION }
