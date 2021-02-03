@@ -47,31 +47,81 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     context 'conviction with 2 sentences, and another, separate proceedings conviction' do
       let(:disclosure_check1) { build(:disclosure_check, :dto_conviction) }
       let(:disclosure_check2) { build(:disclosure_check, :suspended_prison_sentence) }
+      let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence) }
 
       context 'all sentences are dates' do
-        let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence) }
-
         it 'returns the spent date for the matching check group' do
           expect(subject.spent_date_for(same_proceedings)).to eq(Date.new(2024, 1, 30))
-          expect(subject.spent_date_for(separate_proceedings)).to eq(Date.new(2024, 1, 30))
+          expect(subject.spent_date_for(separate_proceedings)).to eq(Date.new(2023, 10, 30))
+        end
+      end
+
+      # Rules:
+      #
+      # - If the first conviction is “never spent” and the second has an end date, then neither changes.
+      #
+      # - If the first conviction has an end date and the second conviction is “never spent”,
+      #   then the first conviction changes to “never spent”.
+      #
+      context 'one of the sentences has never spent length' do
+        context 'never spent sentence goes in the first conviction' do
+          let(:disclosure_check1) { build(:disclosure_check, :with_prison_sentence, conviction_length: 50) }
+
+          it 'returns the spent date for the matching check group' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+            expect(subject.spent_date_for(separate_proceedings)).to eq(Date.new(2023, 10, 30))
+          end
+        end
+
+        context 'never spent sentence goes in the second conviction' do
+          let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence, conviction_length: 50) }
+
+          it 'returns the spent date for the matching check group' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+            expect(subject.spent_date_for(separate_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+          end
         end
       end
 
       context 'one of the sentences has indefinite length' do
-        let(:disclosure_check3) { build(:disclosure_check, :with_motoring_disqualification, conviction_length_type: 'indefinite') }
+        context 'indefinite sentence goes in the first conviction' do
+          let(:disclosure_check1) { build(:disclosure_check, :with_motoring_disqualification, conviction_length_type: 'indefinite') }
 
-        it 'returns the spent date for the matching check group' do
-          expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::INDEFINITE)
-          expect(subject.spent_date_for(separate_proceedings)).to eq(ResultsVariant::INDEFINITE)
+          it 'returns the spent date for the matching check group' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::INDEFINITE)
+            expect(subject.spent_date_for(separate_proceedings)).to eq(Date.new(2023, 10, 30))
+          end
+        end
+
+        context 'indefinite sentence goes in the second conviction' do
+          let(:disclosure_check3) { build(:disclosure_check, :with_motoring_disqualification, conviction_length_type: 'indefinite') }
+
+          it 'returns the spent date for the matching check group' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::INDEFINITE)
+            expect(subject.spent_date_for(separate_proceedings)).to eq(ResultsVariant::INDEFINITE)
+          end
         end
       end
 
-      context 'one of the sentences will never be spent' do
-        let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence, conviction_length: 50) }
+      context 'one of the sentences is `never spent` and the other is `indefinite`' do
+        context 'never spent sentence goes in the first conviction and indefinite in the second conviction' do
+          let(:disclosure_check1) { build(:disclosure_check, :with_prison_sentence, conviction_length: 50) }
+          let(:disclosure_check3) { build(:disclosure_check, :with_motoring_disqualification, conviction_length_type: 'indefinite') }
 
-        it 'returns the spent date for the matching check group' do
-          expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
-          expect(subject.spent_date_for(separate_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+          it 'returns the spent date for the matching check group' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+            expect(subject.spent_date_for(separate_proceedings)).to eq(ResultsVariant::INDEFINITE)
+          end
+        end
+
+        context 'indefinite sentence goes in the first conviction and never spent in the second conviction' do
+          let(:disclosure_check1) { build(:disclosure_check, :with_motoring_disqualification, conviction_length_type: 'indefinite') }
+          let(:disclosure_check3) { build(:disclosure_check, :with_prison_sentence, conviction_length: 50) }
+
+          it 'returns the spent date for the matching check group' do
+            expect(subject.spent_date_for(same_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+            expect(subject.spent_date_for(separate_proceedings)).to eq(ResultsVariant::NEVER_SPENT)
+          end
         end
       end
     end

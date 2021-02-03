@@ -25,24 +25,28 @@ module Calculators
         # Cautions are always dealt with separately and do not have drag-through
         return spent_date unless proceeding.conviction?
 
-        # We have to loop through all the convictions and check if the spent date
+        # We have to loop through the other convictions and check if the spent date
         # of this conviction overlaps with the rehabilitation of another one and if so,
         # then the spent date of this conviction becomes the spent date of the other.
         #
-        convictions_by_date.each do |conviction|
-          next if proceeding == conviction
+        # We get the position of this conviction in the collection (for example in a
+        # collection of 4 convictions, if it is the first one it returns 0 and if it is
+        # the last one it returns 3). We use this to know where to start to iterate, as
+        # we only need to iterate through the convictions left, starting with this one.
+        #
+        position = convictions_by_date.index(proceeding)
 
+        convictions_by_date.values_at(position..).each do |conviction|
           other_conviction_date = conviction.conviction_date
           other_spent_date = conviction.spent_date
 
-          spent_date = ResultsVariant::NEVER_SPENT if other_spent_date == ResultsVariant::NEVER_SPENT
-          spent_date = ResultsVariant::INDEFINITE  if other_spent_date == ResultsVariant::INDEFINITE
+          next unless spent_date.to_date.in?(
+            other_conviction_date..other_spent_date.to_date
+          )
 
-          # Continue with next conviction if it is a variant
-          next unless spent_date.is_a?(Date)
-
-          # If the spent date falls inside another rehabilitation, we do drag-through
-          spent_date = other_spent_date if spent_date.in?(other_conviction_date..other_spent_date)
+          # If the spent date falls inside another rehabilitation, we do drag-through.
+          # The `spent_date` or the `other_spent_date` can be NEVER_SPENT or INDEFINITE.
+          spent_date = other_spent_date
         end
 
         spent_date
