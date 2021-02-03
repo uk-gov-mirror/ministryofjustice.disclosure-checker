@@ -33,6 +33,10 @@ class BaseMultiplesCalculator
   end
   # :nocov:
 
+  def without_relevant_orders
+    (disclosure_checks - relevant_orders)
+  end
+
   private
 
   def disclosure_checks
@@ -41,6 +45,10 @@ class BaseMultiplesCalculator
 
   def first_disclosure_check
     @_first_disclosure_check ||= disclosure_checks.first
+  end
+
+  def relevant_orders
+    @_relevant_orders ||= disclosure_checks.select(&:relevant_order?)
   end
 
   def expiry_date_for(check)
