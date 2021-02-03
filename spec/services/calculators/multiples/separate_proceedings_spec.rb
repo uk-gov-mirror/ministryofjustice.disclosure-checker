@@ -4,7 +4,7 @@ RSpec.describe Calculators::Multiples::SeparateProceedings do
   subject { described_class.new(check_group) }
 
   let(:check_group) { instance_double(CheckGroup, disclosure_checks: [disclosure_check]) }
-  let(:disclosure_check) { instance_double(DisclosureCheck, kind: kind, conviction_date: conviction_date) }
+  let(:disclosure_check) { instance_double(DisclosureCheck, kind: kind, conviction_date: conviction_date, relevant_order?: false) }
 
   let(:check_result) { instance_double(CheckResult, expiry_date: expiry_date) }
   let(:conviction_date) { Date.new(2015, 12, 25) }
@@ -50,6 +50,24 @@ RSpec.describe Calculators::Multiples::SeparateProceedings do
 
     it 'calculates and returns the spent date of the caution or conviction' do
       expect(subject.spent_date).to eq(expiry_date)
+    end
+  end
+
+  describe '#without_relevant_orders' do
+    context 'when a disclosure_check is not a relevant order' do
+      it 'includes the disclosure_check' do
+        expect(subject.without_relevant_orders).to include(disclosure_check)
+      end
+    end
+
+    context 'when a disclosure_check is a relevant order' do
+      let(:disclosure_check) { instance_double(DisclosureCheck, kind: kind, conviction_date: conviction_date, relevant_order?: true) }
+
+      it 'does not include the disclosure_check' do
+        expect(subject.without_relevant_orders).not_to include(disclosure_check)
+      end
+
+      it { expect(subject.without_relevant_orders).to be_empty }
     end
   end
 end
