@@ -7,7 +7,7 @@ RSpec.describe DisclosureCheck, type: :model do
 
   describe '#relevant_order?' do
     context 'when conviction_subtype is nil' do
-      it { expect { subject.relevant_order? }.to raise_error(NoMethodError) }
+      it { expect(subject.relevant_order?).to be false }
     end
 
     context 'when conviction_subtype is not a relevant order' do

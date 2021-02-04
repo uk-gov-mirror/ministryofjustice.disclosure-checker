@@ -194,14 +194,12 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       # - a fine for £50
       #
       # The 2011 conviction would remain unspent until further notice, due to the restraining order.
-      # Their first conviction in 2009 would will be extended until 10 December 2013
+      # Their first conviction in 2009 would will be extended until >> 10 December 2013 <<
       # due to the custodial sentence they received in the 10 June 2011.
       # However, the rehabilitation period would not be affected by the restraining order.
 
       let(:first_conviction_date) { Date.new(2009, 8, 1) }
       let(:second_conviction_date) { Date.new(2011, 6, 10) }
-      let(:expected_first_conviction_spent_date) { Date.new(2013, 12, 9) }
-      let(:expected_second_conviction_spent_date) { ResultsVariant::INDEFINITE }
 
       let(:suspended_prison_sentence) do
         build(
@@ -225,6 +223,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         )
       end
 
+      # relevant order
       let(:restraining_order) do
         build(
           :disclosure_check,
@@ -258,11 +257,11 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
 
       it 'returns the date for the first proceeeding' do
-        expect(subject.spent_date_for(first_proceedings)).to eq(expected_first_conviction_spent_date)
+        expect(subject.spent_date_for(first_proceedings)).to eq(Date.new(2013, 12, 9))
       end
 
       it 'returns indefinite for the second proceeding' do
-        expect(subject.spent_date_for(second_proceedings)).to eq(expected_second_conviction_spent_date)
+        expect(subject.spent_date_for(second_proceedings)).to eq(ResultsVariant::INDEFINITE)
       end
     end
   end

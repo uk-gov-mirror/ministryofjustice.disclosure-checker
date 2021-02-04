@@ -8,6 +8,9 @@ class DisclosureCheck < ApplicationRecord
   }
 
   def relevant_order?
+    # conviction subtype will be nil if it's a caution
+    return false if conviction_subtype.nil?
+
     ConvictionType.find_constant(conviction_subtype).relevant_order?
   end
 end

@@ -15,6 +15,12 @@ module Calculators
         expiry_dates.max
       end
 
+      def spent_date_without_relevant_orders
+        @_spent_date_without_relevant_orders ||= without_relevant_orders.map(
+          &method(:expiry_date_for)
+        ).max
+      end
+
       private
 
       def expiry_dates
