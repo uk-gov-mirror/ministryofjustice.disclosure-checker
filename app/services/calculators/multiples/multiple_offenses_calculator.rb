@@ -20,6 +20,7 @@ module Calculators
       def spent_date_for(proceeding)
         return unless disclosure_report.completed?
 
+        conviction_date = proceeding.conviction_date
         spent_date = proceeding.spent_date
 
         # Cautions are always dealt with separately and do not have drag-through
@@ -29,20 +30,23 @@ module Calculators
         # of this conviction overlaps with the rehabilitation of another one and if so,
         # then the spent date of this conviction becomes the spent date of the other.
         #
-        # We get the position of this conviction in the collection (for example in a
-        # collection of 4 convictions, if it is the first one it returns 0 and if it is
-        # the last one it returns 3). We use this to know where to start to iterate, as
-        # we only need to iterate through the convictions left, starting with this one.
+        # One important rule:
         #
-        position = convictions_by_date.index(proceeding)
+        #   Assuming there are overlaps, everything that has an end date given before a
+        #   "never spent" conviction becomes "never spent". Everything afterwards is not
+        #   affected by the "never spent". Same for "indefinite".
+        #
+        convictions_by_date.each do |conviction|
+          next if conviction == proceeding
 
-        convictions_by_date.values_at(position..).each do |conviction|
           other_conviction_date = conviction.conviction_date
           other_spent_date = conviction.spent_date
 
           next unless spent_date.to_date.in?(
             other_conviction_date..other_spent_date.to_date
           )
+
+          next if conviction_date > other_conviction_date
 
           # If the spent date falls inside another rehabilitation, we do drag-through.
           # The `spent_date` or the `other_spent_date` can be NEVER_SPENT or INDEFINITE.
