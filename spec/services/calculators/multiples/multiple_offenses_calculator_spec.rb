@@ -335,6 +335,55 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         expect(subject.spent_date_for(conviction_4)).to eq(Date.new(2025, 12, 31))
       end
     end
+
+    context '4 separate proceedings convictions (3 has a spent date and 4 has never spent)' do
+      before do
+        allow(subject).to receive(:proceedings).and_return([conviction_1, conviction_2, conviction_3, conviction_4])
+      end
+
+      let(:conviction_1) {
+        instance_double(
+          Calculators::Multiples::SeparateProceedings,
+          conviction?: true,
+          conviction_date: Date.new(2020, 1, 1),
+          spent_date: Date.new(2021, 1, 1),
+        )
+      }
+
+      let(:conviction_2) {
+        instance_double(
+          Calculators::Multiples::SeparateProceedings,
+          conviction?: true,
+          conviction_date: Date.new(2020, 6, 1),
+          spent_date: Date.new(2021, 1, 1),
+        )
+      }
+
+      let(:conviction_3) {
+        instance_double(
+          Calculators::Multiples::SeparateProceedings,
+          conviction?: true,
+          conviction_date: Date.new(2023, 1, 1),
+          spent_date: Date.new(2026, 1, 1),
+        )
+      }
+
+      let(:conviction_4) {
+        instance_double(
+          Calculators::Multiples::SeparateProceedings,
+          conviction?: true,
+          conviction_date: Date.new(2025, 1, 1),
+          spent_date: ResultsVariant::NEVER_SPENT,
+        )
+      }
+
+      it 'returns the spent date for the matching check group' do
+        expect(subject.spent_date_for(conviction_1)).to eq(Date.new(2021, 1, 1))
+        expect(subject.spent_date_for(conviction_2)).to eq(Date.new(2021, 1, 1))
+        expect(subject.spent_date_for(conviction_3)).to eq(ResultsVariant::NEVER_SPENT)
+        expect(subject.spent_date_for(conviction_4)).to eq(ResultsVariant::NEVER_SPENT)
+      end
+    end
   end
 
   describe '#all_spent?' do
