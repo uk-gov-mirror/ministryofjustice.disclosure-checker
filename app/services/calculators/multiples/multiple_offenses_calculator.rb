@@ -40,7 +40,10 @@ module Calculators
           next if conviction == proceeding
 
           other_conviction_date = conviction.conviction_date
-          other_spent_date = conviction.spent_date
+          other_spent_date = conviction.spent_date_without_relevant_orders
+
+          # solo relevant order
+          next if other_spent_date.nil?
 
           next unless spent_date.to_date.in?(
             other_conviction_date..other_spent_date.to_date

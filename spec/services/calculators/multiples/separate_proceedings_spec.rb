@@ -53,21 +53,33 @@ RSpec.describe Calculators::Multiples::SeparateProceedings do
     end
   end
 
-  describe '#without_relevant_orders' do
+  describe '#spent_date_without_relevant_orders' do
+    let(:conviction_subtype) { ConvictionType::ADULT_ABSOLUTE_DISCHARGE }
+
+    let(:disclosure_check) do
+      instance_double(
+        DisclosureCheck,
+        kind: CheckKind::CONVICTION.to_s,
+        known_date: conviction_date,
+        conviction_date: conviction_date,
+        relevant_order?: conviction_subtype.relevant_order?,
+        conviction_subtype: conviction_subtype.value,
+        conviction_type: conviction_subtype.parent.value
+      )
+    end
+
     context 'when a disclosure_check is not a relevant order' do
-      it 'includes the disclosure_check' do
-        expect(subject.without_relevant_orders).to include(disclosure_check)
+      it 'returns the expiry date' do
+        expect(subject.spent_date_without_relevant_orders).to eq(Date.new(2015, 12, 25))
       end
     end
 
-    context 'when a disclosure_check is a relevant order' do
-      let(:disclosure_check) { instance_double(DisclosureCheck, kind: kind, conviction_date: conviction_date, relevant_order?: true) }
+    context 'when there is one relevant order' do
+      let(:conviction_subtype) { ConvictionType::ADULT_CONDITIONAL_DISCHARGE }
 
-      it 'does not include the disclosure_check' do
-        expect(subject.without_relevant_orders).not_to include(disclosure_check)
+      it 'returns nil' do
+        expect(subject.spent_date_without_relevant_orders).to be_nil
       end
-
-      it { expect(subject.without_relevant_orders).to be_empty }
     end
   end
 end

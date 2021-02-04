@@ -76,6 +76,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
               conviction?: true,
               conviction_date: Date.new(2020, 1, 1),
               spent_date: Date.new(2022, 1, 1),
+              spent_date_without_relevant_orders: Date.new(2022, 1, 1),
             )
           }
 
@@ -85,6 +86,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
               conviction?: true,
               conviction_date: Date.new(2021, 1, 1),
               spent_date: Date.new(2025, 1, 1),
+              spent_date_without_relevant_orders: Date.new(2025, 1, 1),
             )
           }
 
@@ -101,6 +103,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
               conviction?: true,
               conviction_date: Date.new(2020, 1, 1),
               spent_date: Date.new(2022, 1, 1),
+              spent_date_without_relevant_orders: Date.new(2022, 1, 1),
             )
           }
 
@@ -110,6 +113,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
               conviction?: true,
               conviction_date: Date.new(2023, 1, 1),
               spent_date: Date.new(2025, 1, 1),
+              spent_date_without_relevant_orders: Date.new(2025, 1, 1),
             )
           }
 
@@ -134,6 +138,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             conviction?: true,
             conviction_date: Date.new(2020, 1, 1),
             spent_date: spent_date_1,
+            spent_date_without_relevant_orders: spent_date_1,
           )
         }
 
@@ -143,6 +148,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             conviction?: true,
             conviction_date: Date.new(2021, 1, 1),
             spent_date: spent_date_2,
+            spent_date_without_relevant_orders: spent_date_2,
           )
         }
 
@@ -174,6 +180,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             conviction?: true,
             conviction_date: Date.new(2020, 1, 1),
             spent_date: spent_date_1,
+            spent_date_without_relevant_orders: spent_date_1,
           )
         }
 
@@ -183,6 +190,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             conviction?: true,
             conviction_date: Date.new(2021, 1, 1),
             spent_date: spent_date_2,
+            spent_date_without_relevant_orders: spent_date_2,
           )
         }
 
@@ -214,6 +222,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             conviction?: true,
             conviction_date: Date.new(2020, 1, 1),
             spent_date: spent_date_1,
+            spent_date_without_relevant_orders: spent_date_1,
           )
         }
 
@@ -223,6 +232,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
             conviction?: true,
             conviction_date: Date.new(2021, 1, 1),
             spent_date: spent_date_2,
+            spent_date_without_relevant_orders: spent_date_2,
           )
         }
 
@@ -259,6 +269,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2021, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2021, 1, 1),
         )
       }
 
@@ -268,6 +279,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2020, 10, 25),
           spent_date: ResultsVariant::NEVER_SPENT,
+          spent_date_without_relevant_orders: ResultsVariant::NEVER_SPENT,
         )
       }
 
@@ -277,6 +289,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2023, 1, 1),
           spent_date: Date.new(2025, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2025, 1, 1),
         )
       }
 
@@ -298,6 +311,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2021, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2021, 1, 1),
         )
       }
 
@@ -307,6 +321,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2020, 6, 1),
           spent_date: Date.new(2021, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2021, 1, 1),
         )
       }
 
@@ -316,6 +331,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2023, 1, 1),
           spent_date: ResultsVariant::NEVER_SPENT,
+          spent_date_without_relevant_orders: ResultsVariant::NEVER_SPENT,
         )
       }
 
@@ -325,6 +341,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2025, 1, 1),
           spent_date: Date.new(2025, 12, 31),
+          spent_date_without_relevant_orders: Date.new(2025, 12, 31),
         )
       }
 
@@ -347,6 +364,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2021, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2021, 1, 1),
         )
       }
 
@@ -356,6 +374,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2020, 6, 1),
           spent_date: Date.new(2021, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2021, 1, 1),
         )
       }
 
@@ -365,6 +384,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2023, 1, 1),
           spent_date: Date.new(2026, 1, 1),
+          spent_date_without_relevant_orders: Date.new(2026, 1, 1),
         )
       }
 
@@ -374,6 +394,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           conviction?: true,
           conviction_date: Date.new(2025, 1, 1),
           spent_date: ResultsVariant::NEVER_SPENT,
+          spent_date_without_relevant_orders: ResultsVariant::NEVER_SPENT,
         )
       }
 
