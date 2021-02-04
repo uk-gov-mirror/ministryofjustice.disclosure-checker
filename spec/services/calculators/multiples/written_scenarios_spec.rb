@@ -125,6 +125,64 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
     end
 
+    # TODO: improve context
+    context 'scenario with 2 separate convictions where one is a relevant order' do
+      # Jack age 21 was convicted of possession of an offensive weapon on 25/01/17 and received:
+      # - a two-year conditional discharge order. Jack’s conviction would become spent on 25/01/19.
+      #
+      # On 10/12/18 Jack was convicted of battery and received
+      # - a 12-month community order. This conviction would become spent on 10/12/20.
+      #
+      # Although he has been convicted of a further offence while within the rehabilitation period of the first offence,
+      # the first conviction will not be subject to the ‘drag on effect’ because a conditional discharge is a relevant order and so it will not be taken into account.
+      # Therefore, in this scenario, the first conviction would become ‘spent’ on 25/01/19;
+      # And the second conviction would become ‘spent’ on 10/12/20.
+      let(:first_conviction_date) { Date.new(2017, 1, 25) }
+      let(:second_conviction_date) { Date.new(2018, 12, 10) }
+      let(:expected_first_conviction_spent_date) { Date.new(2019, 1, 25) }
+      let(:expected_second_conviction_spent_date) { Date.new(2020, 12, 10) }
+
+      let(:conditional_discharge_order) do
+        build(
+          :disclosure_check,
+          :adult,
+          :with_discharge_order,
+          :completed,
+          known_date: first_conviction_date,
+          conviction_date: first_conviction_date,
+          conviction_length: 2,
+          conviction_length_type: ConvictionLengthType::YEARS
+        )
+      end
+
+      let(:community_order) do
+        build(
+          :disclosure_check,
+          :with_community_order,
+          :completed,
+          known_date: second_conviction_date,
+          conviction_date: second_conviction_date,
+          conviction_length: 12,
+          conviction_length_type: ConvictionLengthType::MONTHS
+        )
+      end
+
+      before do
+        first_proceeding_group.disclosure_checks << conditional_discharge_order
+        second_proceeding_group.disclosure_checks << community_order
+
+        save_report
+      end
+
+      it 'returns the date for the first proceeeding' do
+        expect(subject.spent_date_for(first_proceedings)).to eq(expected_first_conviction_spent_date)
+      end
+
+      it 'returns indefinite for the second proceeding' do
+        expect(subject.spent_date_for(second_proceedings)).to eq(expected_second_conviction_spent_date)
+      end
+    end
+
     context 'scenario with relevant order' do
       # Scenario 1
       # Adult person was convicted of assault on 1 August 2009 and received:
