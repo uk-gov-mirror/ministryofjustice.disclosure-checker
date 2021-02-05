@@ -6,31 +6,12 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   let(:disclosure_report) { instance_double(DisclosureReport, check_groups: groups_result_set, completed?: true) }
   let(:groups_result_set) { double('groups_result_set', with_completed_checks: [check_group1, check_group2]) }
 
-  let(:check_group1) { instance_double(CheckGroup, id: '100', disclosure_checks: [disclosure_check1, disclosure_check2]) }
-  let(:check_group2) { instance_double(CheckGroup, id: '200', disclosure_checks: [disclosure_check3]) }
+  let(:check_group1) { instance_double(CheckGroup, disclosure_checks: [disclosure_check1, disclosure_check2]) }
+  let(:check_group2) { instance_double(CheckGroup, disclosure_checks: [disclosure_check3]) }
 
   let(:disclosure_check1) { instance_double(DisclosureCheck, kind: 'conviction') }
   let(:disclosure_check2) { instance_double(DisclosureCheck, kind: 'conviction') }
   let(:disclosure_check3) { instance_double(DisclosureCheck, kind: 'caution') }
-
-  let(:same_proceedings) { subject.results['100'] }
-  let(:separate_proceedings) { subject.results['200'] }
-
-  before do
-    # Note: because these are doubles, the method does not work, so we emulate it
-    allow(check_group1).to receive(:multiple_sentences?).and_return(true)
-    allow(check_group2).to receive(:multiple_sentences?).and_return(false)
-  end
-
-  context '#process!' do
-    it 'adds to the results the check groups having more than one disclosure check' do
-      expect(subject.results['100']).to be_kind_of(Calculators::Multiples::SameProceedings)
-    end
-
-    it 'adds to the results the check groups having only one disclosure check' do
-      expect(subject.results['200']).to be_kind_of(Calculators::Multiples::SeparateProceedings)
-    end
-  end
 
   # NOTE: Working with doubles so it is a lot more easier to understand what is going on
   describe '#spent_date_for' do
@@ -41,7 +22,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_1) {
         instance_double(
-          Calculators::Multiples::SameProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2022, 1, 1),
@@ -50,7 +31,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_2) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: false,
           conviction_date: nil,
           spent_date: ResultsVariant::SPENT_SIMPLE,
@@ -72,7 +53,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         context 'there is overlapping of rehabilitation periods' do
           let(:conviction_1) {
             instance_double(
-              Calculators::Multiples::SameProceedings,
+              Calculators::Multiples::Proceedings,
               conviction?: true,
               conviction_date: Date.new(2020, 1, 1),
               spent_date: Date.new(2022, 1, 1),
@@ -82,7 +63,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
           let(:conviction_2) {
             instance_double(
-              Calculators::Multiples::SeparateProceedings,
+              Calculators::Multiples::Proceedings,
               conviction?: true,
               conviction_date: Date.new(2021, 1, 1),
               spent_date: Date.new(2025, 1, 1),
@@ -99,7 +80,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         context 'there is no overlapping of rehabilitation periods' do
           let(:conviction_1) {
             instance_double(
-              Calculators::Multiples::SameProceedings,
+              Calculators::Multiples::Proceedings,
               conviction?: true,
               conviction_date: Date.new(2020, 1, 1),
               spent_date: Date.new(2022, 1, 1),
@@ -109,7 +90,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
           let(:conviction_2) {
             instance_double(
-              Calculators::Multiples::SeparateProceedings,
+              Calculators::Multiples::Proceedings,
               conviction?: true,
               conviction_date: Date.new(2023, 1, 1),
               spent_date: Date.new(2025, 1, 1),
@@ -134,7 +115,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       context 'one of the sentences has never spent length' do
         let(:conviction_1) {
           instance_double(
-            Calculators::Multiples::SameProceedings,
+            Calculators::Multiples::Proceedings,
             conviction?: true,
             conviction_date: Date.new(2020, 1, 1),
             spent_date: spent_date_1,
@@ -144,7 +125,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
         let(:conviction_2) {
           instance_double(
-            Calculators::Multiples::SeparateProceedings,
+            Calculators::Multiples::Proceedings,
             conviction?: true,
             conviction_date: Date.new(2021, 1, 1),
             spent_date: spent_date_2,
@@ -176,7 +157,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       context 'one of the sentences has indefinite length' do
         let(:conviction_1) {
           instance_double(
-            Calculators::Multiples::SameProceedings,
+            Calculators::Multiples::Proceedings,
             conviction?: true,
             conviction_date: Date.new(2020, 1, 1),
             spent_date: spent_date_1,
@@ -186,7 +167,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
         let(:conviction_2) {
           instance_double(
-            Calculators::Multiples::SeparateProceedings,
+            Calculators::Multiples::Proceedings,
             conviction?: true,
             conviction_date: Date.new(2021, 1, 1),
             spent_date: spent_date_2,
@@ -218,7 +199,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       context 'one of the sentences is never spent and the other is indefinite' do
         let(:conviction_1) {
           instance_double(
-            Calculators::Multiples::SameProceedings,
+            Calculators::Multiples::Proceedings,
             conviction?: true,
             conviction_date: Date.new(2020, 1, 1),
             spent_date: spent_date_1,
@@ -228,7 +209,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
         let(:conviction_2) {
           instance_double(
-            Calculators::Multiples::SeparateProceedings,
+            Calculators::Multiples::Proceedings,
             conviction?: true,
             conviction_date: Date.new(2021, 1, 1),
             spent_date: spent_date_2,
@@ -265,7 +246,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_1) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2021, 1, 1),
@@ -275,7 +256,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_2) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 10, 25),
           spent_date: ResultsVariant::NEVER_SPENT,
@@ -285,7 +266,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_3) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2023, 1, 1),
           spent_date: Date.new(2025, 1, 1),
@@ -307,7 +288,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_1) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2021, 1, 1),
@@ -317,7 +298,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_2) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 6, 1),
           spent_date: Date.new(2021, 1, 1),
@@ -327,7 +308,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_3) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2023, 1, 1),
           spent_date: ResultsVariant::NEVER_SPENT,
@@ -337,7 +318,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_4) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2025, 1, 1),
           spent_date: Date.new(2025, 12, 31),
@@ -360,7 +341,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_1) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 1, 1),
           spent_date: Date.new(2021, 1, 1),
@@ -370,7 +351,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_2) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2020, 6, 1),
           spent_date: Date.new(2021, 1, 1),
@@ -380,7 +361,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_3) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2023, 1, 1),
           spent_date: Date.new(2026, 1, 1),
@@ -390,7 +371,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
       let(:conviction_4) {
         instance_double(
-          Calculators::Multiples::SeparateProceedings,
+          Calculators::Multiples::Proceedings,
           conviction?: true,
           conviction_date: Date.new(2025, 1, 1),
           spent_date: ResultsVariant::NEVER_SPENT,
@@ -408,9 +389,14 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   end
 
   describe '#all_spent?' do
+    let(:conviction_1) { Calculators::Multiples::Proceedings.new(check_group1) }
+    let(:conviction_2) { Calculators::Multiples::Proceedings.new(check_group2) }
+
     before do
-      allow(same_proceedings).to receive(:spent_date).and_return(spent_dates[0])
-      allow(separate_proceedings).to receive(:spent_date).and_return(spent_dates[1])
+      allow(subject).to receive(:proceedings).and_return([conviction_1, conviction_2])
+
+      allow(conviction_1).to receive(:spent_date).and_return(spent_dates[0])
+      allow(conviction_2).to receive(:spent_date).and_return(spent_dates[1])
     end
 
     context 'when there is an offence that will never be spent' do

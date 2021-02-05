@@ -6,7 +6,7 @@ RSpec.describe CheckAnswersPresenter do
 
   describe '.initialize' do
     it 'processes the check groups (proceedings) for later use' do
-      expect(subject.calculator.results).not_to be_empty
+      expect(subject.calculator.proceedings).not_to be_empty
     end
   end
 
