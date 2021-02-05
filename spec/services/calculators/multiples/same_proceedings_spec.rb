@@ -66,12 +66,48 @@ RSpec.describe Calculators::Multiples::SameProceedings do
         expect(subject.spent_date).to eq(ResultsVariant::INDEFINITE)
       end
     end
-  end
 
-  describe '#without_relevant_orders' do
-    it 'does not return relevant orders' do
-      expect(subject.without_relevant_orders).not_to include(disclosure_check3)
-      expect(subject.without_relevant_orders).to include(disclosure_check1, disclosure_check2)
+    describe '#spent_date_without_relevant_orders' do
+      let(:conviction_subtype) { ConvictionType::ADULT_ABSOLUTE_DISCHARGE }
+      let(:conviction_subtype2) { ConvictionType::ADULT_CONDITIONAL_DISCHARGE }
+
+      let(:disclosure_check1) do
+        instance_double(
+          DisclosureCheck,
+          kind: CheckKind::CONVICTION.to_s,
+          known_date: conviction_date,
+          conviction_date: conviction_date,
+          relevant_order?: conviction_subtype.relevant_order?,
+          conviction_subtype: conviction_subtype.value,
+          conviction_type: conviction_subtype.parent.value
+        )
+      end
+
+      let(:disclosure_check2) do
+        instance_double(
+          DisclosureCheck,
+          kind: CheckKind::CONVICTION.to_s,
+          known_date: conviction_date,
+          conviction_date: conviction_date,
+          relevant_order?: conviction_subtype2.relevant_order?,
+          conviction_subtype: conviction_subtype2.value,
+          conviction_type: conviction_subtype2.parent.value
+        )
+      end
+
+      context 'when there are two sentences and one is a relevant order' do
+        it 'returns the expiry date of the non relevant order' do
+          expect(subject.spent_date_without_relevant_orders).to eq(Date.new(2018, 1, 1))
+        end
+      end
+
+      context 'when there is two sentences that are relevant orders' do
+        let(:conviction_subtype) { ConvictionType::ADULT_CONDITIONAL_DISCHARGE }
+
+        it 'returns nil' do
+          expect(subject.spent_date_without_relevant_orders).to be_nil
+        end
+      end
     end
   end
 end

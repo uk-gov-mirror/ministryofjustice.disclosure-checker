@@ -33,11 +33,17 @@ class BaseMultiplesCalculator
   end
   # :nocov:
 
-  def without_relevant_orders
-    (disclosure_checks - relevant_orders)
+  def spent_date_without_relevant_orders
+    @_spent_date_without_relevant_orders ||= without_relevant_orders.map(
+      &method(:expiry_date_for)
+    ).max
   end
 
   private
+
+  def without_relevant_orders
+    (disclosure_checks - relevant_orders)
+  end
 
   def disclosure_checks
     @_disclosure_checks ||= check_group.disclosure_checks
