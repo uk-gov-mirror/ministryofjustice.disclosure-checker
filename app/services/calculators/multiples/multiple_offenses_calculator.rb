@@ -20,6 +20,10 @@ module Calculators
         # Cautions are always dealt with separately and do not have drag-through
         return spent_date unless proceeding.conviction?
 
+        # Comparison of dates between different convictions
+        # should be done without relevant order dates
+        spent_date_without_relevant_order = proceeding.spent_date_without_relevant_orders
+
         # We have to loop through the other convictions and check if the spent date
         # of this conviction overlaps with the rehabilitation of another one and if so,
         # then the spent date of this conviction becomes the spent date of the other.
@@ -35,9 +39,17 @@ module Calculators
           other_spent_date = conviction.spent_date_without_relevant_orders
 
           # solo relevant order
+          # if there's only one sentence and it is a relevant order
+          # then _spent_date_without_relevant_orders_ is nil which means it's not a date
+          # and we can't proceed to compare overlapping times (neither should we)
+          # because relevant orders do not dictacte the spent_date of another conviction.
           next if other_spent_date.nil?
+          next if spent_date_without_relevant_order.nil?
 
-          next unless spent_date.to_date.in?(
+          # the comparison to know if there's an overlap in conviction dates
+          # should be done without the relevant order
+          # because relevant orders do not dictacte the spent_date of another conviction.
+          next unless spent_date_without_relevant_order.to_date.in?(
             other_conviction_date..other_spent_date.to_date
           )
 
