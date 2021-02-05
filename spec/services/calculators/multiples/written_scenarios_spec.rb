@@ -7,8 +7,8 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   let(:first_proceeding_group) { disclosure_report.check_groups.build }
   let(:second_proceeding_group) { disclosure_report.check_groups.build }
 
-  let(:first_proceedings) { subject.results[first_proceeding_group.id] }
-  let(:second_proceedings) { subject.results[second_proceeding_group.id] }
+  let(:first_proceedings) { subject.proceedings.first }
+  let(:second_proceedings) { subject.proceedings.second }
 
   def save_report
     disclosure_report.completed!

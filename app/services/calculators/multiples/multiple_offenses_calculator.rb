@@ -2,19 +2,13 @@ module Calculators
   module Multiples
     class MultipleOffensesCalculator
       attr_reader :disclosure_report,
-                  :results
+                  :proceedings
 
       def initialize(disclosure_report)
         @disclosure_report = disclosure_report
-        @results = {}
+        @proceedings = []
 
         process!
-      end
-
-      # The order returned in this collection is the order in which
-      # the user entered their cautions and/or convictions.
-      def proceedings
-        @_proceedings ||= results.values
       end
 
       def spent_date_for(proceeding)
@@ -36,9 +30,7 @@ module Calculators
         #   "never spent" conviction becomes "never spent". Everything afterwards is not
         #   affected by the "never spent". Same for "indefinite".
         #
-        convictions_by_date.each do |conviction|
-          next if conviction == proceeding
-
+        convictions_by_date.without(proceeding).each do |conviction|
           other_conviction_date = conviction.conviction_date
           other_spent_date = conviction.spent_date_without_relevant_orders
 
@@ -60,7 +52,7 @@ module Calculators
       end
 
       def all_spent?
-        results.values.all?(&:spent?)
+        proceedings.all?(&:spent?)
       end
 
       private
@@ -69,19 +61,14 @@ module Calculators
         @_convictions ||= proceedings.select(&:conviction?).sort_by(&:conviction_date)
       end
 
+      # The order of the `proceedings` collection is the order in which
+      # the user entered their cautions and/or convictions.
       def process!
-        disclosure_report.check_groups.with_completed_checks.each(&method(:process_group))
-        self
-      end
+        disclosure_report.check_groups.with_completed_checks.each do |check_group|
+          @proceedings.append(Proceedings.new(check_group))
+        end
 
-      def process_group(check_group)
-        results[check_group.id] = if check_group.multiple_sentences?
-                                    # multiple sentences inside the same proceedings
-                                    SameProceedings.new(check_group)
-                                  else
-                                    # sentences given in separate proceedings
-                                    SeparateProceedings.new(check_group)
-                                  end
+        self
       end
     end
   end
