@@ -2,7 +2,13 @@
   How this result has been worked out
 </h2>
 
-<p class="govuk-body">The result you’ve been given is based on the current law as well as the information you provided.</p>
+<p class="govuk-body">
+  <% if result.approximate_dates? %>
+    You entered an approximate date so your results will be approximate.
+  <% end %>
+
+  Your results are based on the current law as well as the information you provided.
+</p>
 
 <dl class="govuk-summary-list">
   <%= render result.summary %>
