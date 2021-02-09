@@ -25,6 +25,13 @@ module CustomFormHelpers
     ).html_safe
   end
 
+  # Used to customise lead text when reusing the same view
+  def i18n_lead_text
+    I18n.t(
+      object.i18n_attribute, scope: scope_for_locale(:lead_text), default: :default
+    )
+  end
+
   private
 
   def submit_button(i18n_key, opts = {}, &block)

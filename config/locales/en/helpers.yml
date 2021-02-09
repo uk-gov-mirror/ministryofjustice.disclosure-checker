@@ -1,15 +1,13 @@
 ---
 en:
   dictionary:
-    court_sentence_hint_text: &court_sentence_hint_text |
-      This is usually the day you were sentenced in court. If you do not know the exact date, you can enter an approximate one.
-      <span class='nowrap'>For example, 23 9 2018</span>
-    court_conviction_hint_text: &court_conviction_hint_text |
-      This is usually the day you were convicted in court. If you do not know the exact date, you can enter an approximate one.
-      <span class='nowrap'>For example, 23 9 2018</span>
-    order_started_hint_text: &order_started_hint_text |
+    date_hint_text: &date_hint_text |
+      If you do not know the exact date, you can enter an approximate one. However, if you use an approximate date, your results will be approximate.
+      <p>For example, 23 9 2018</p>
+    court_conviction_lead_text: &court_conviction_lead_text |
+      This is usually the day you were convicted in court.
+    order_started_lead_text: &order_started_lead_text |
       This is usually the day you were convicted or sentenced in court, or the first day you were held on remand.
-      <p>If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span></p>
 
     approximate_date_legend: &approximate_date_legend "Approximate date"
     approximate_date_checkbox: &approximate_date_checkbox "This is not the exact date"
@@ -174,33 +172,18 @@ en:
           caution: You were given an official warning by the police
           conviction: You were found guilty of a crime in court
       steps_caution_known_date_form:
-        known_date_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
+        known_date_html: *date_hint_text
       steps_check_under_age_form:
         caution_html: Select your age when you got the caution, not when you committed the offence
         conviction_html: Select your age when you got convicted, not when you committed the offence
       steps_caution_conditional_end_date_form:
-        conditional_end_date_html: "Enter the date you agreed the conditions would end. This might have included paying a fine or compensation. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>"
+        conditional_end_date_html: *date_hint_text
       steps_conviction_conviction_date_form:
-        conviction_date_html: This is the day you were found guilty of the offence. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
+        conviction_date_html: *date_hint_text
       steps_conviction_known_date_form:
-        # default key
-        default_html: *court_sentence_hint_text
-        # alternative keys defined with `i18_attribute`
-        referral_order_html: Enter the date of your first youth offender panel meeting. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
-        bind_over_html: *court_conviction_hint_text
-        absolute_discharge_html: *court_conviction_hint_text
-        conditional_discharge_html: *court_conviction_hint_text
-        adult_bind_over_html: *court_conviction_hint_text
-        adult_absolute_discharge_html: *court_conviction_hint_text
-        adult_conditional_discharge_html: *court_conviction_hint_text
-        detention_training_order_html: *order_started_hint_text
-        detention_html: *order_started_hint_text
-        adult_prison_sentence_html: *order_started_hint_text
-        adult_suspended_prison_sentence_html: *order_started_hint_text
-        adult_disqualification_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
-        youth_disqualification_html: If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
+        known_date_html: *date_hint_text
       steps_conviction_compensation_payment_date_form:
-        compensation_payment_date_html: If you paid the compensation in stages, enter the date you made the final payment. If you do not know the exact date, you can enter an approximate one. <span class='nowrap'>For example, 23 9 2018</span>
+        compensation_payment_date_html: *date_hint_text
       steps_conviction_compensation_payment_receipt_form:
         compensation_receipt_sent: You must send the compensation payment receipt to the Disclosure and Barring service for the convition to be spent.
       steps_conviction_motoring_endorsement_form:
@@ -395,3 +378,22 @@ en:
         weeks: Number of weeks
         months: Number of months
         years: Number of years
+
+    lead_text:
+      steps_conviction_known_date_form:
+        # default key
+        default: This is usually the day you were sentenced in court.
+        # alternative keys defined with `i18_attribute`
+        referral_order: Enter the date of your first youth offender panel meeting.
+        bind_over: *court_conviction_lead_text
+        absolute_discharge: *court_conviction_lead_text
+        conditional_discharge: *court_conviction_lead_text
+        adult_bind_over: *court_conviction_lead_text
+        adult_absolute_discharge: *court_conviction_lead_text
+        adult_conditional_discharge: *court_conviction_lead_text
+        detention_training_order: *order_started_lead_text
+        detention: *order_started_lead_text
+        adult_prison_sentence: *order_started_lead_text
+        adult_suspended_prison_sentence: *order_started_lead_text
+        adult_disqualification: ''
+        youth_disqualification: ''

@@ -33,6 +33,7 @@ en:
       conviction_date:
         edit:
           page_title: Conviction date
+          lead_text: This is the day you were found guilty of the offence.
       conviction_type:
         edit:
           page_title: Conviction type
@@ -69,6 +70,7 @@ en:
       compensation_payment_date:
         edit:
           page_title: Compensation payment date
+          lead_text: If you paid the compensation in stages, enter the date you made the final payment.
       compensation_payment_receipt:
         edit:
           page_title: Compensation receipt sent to DBS

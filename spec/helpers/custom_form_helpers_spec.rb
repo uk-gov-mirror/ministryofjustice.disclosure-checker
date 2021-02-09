@@ -68,4 +68,18 @@ RSpec.describe CustomFormHelpers, type: :helper do
       builder.i18n_hint
     end
   end
+
+  describe '#i18n_lead_text' do
+    before do
+      allow(form_object).to receive(:i18n_attribute).and_return(:foobar)
+    end
+
+    it 'seeks the expected locale key' do
+      expect(I18n).to receive(:t).with(
+        :foobar, scope: [:helpers, :lead_text, :disclosure_check], default: :default
+      )
+
+      builder.i18n_lead_text
+    end
+  end
 end

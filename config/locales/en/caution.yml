@@ -12,6 +12,7 @@ en:
       conditional_end_date:
         edit:
           page_title: End date of conditions
+          lead_text: Enter the date you agreed the conditions would end. This might have included paying a fine or compensation.
           details:
             title: My conditions have not ended
             body_html: |
