@@ -115,6 +115,11 @@ en:
       page_title: Page not found
       heading: Page not found
       lead_text: If you copied a web address, please check it’s correct.
+    results_not_found:
+      page_title: Results not found
+      heading: Results not found
+      lead_text: We couldn’t find the results you are looking for.
+      more_text: Results are stored for up to %{report_expiry_days} days before they are deleted from this service.
     unhandled:
       page_title: Unexpected error
       heading: Sorry, something went wrong with our service

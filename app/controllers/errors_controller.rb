@@ -9,6 +9,10 @@ class ErrorsController < ApplicationController
     respond_with_status(:not_found)
   end
 
+  def results_not_found
+    respond_with_status(:not_found)
+  end
+
   def check_completed
     respond_with_status(:unprocessable_entity)
   end
