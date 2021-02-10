@@ -6,6 +6,8 @@ module ErrorHandling
       case exception
       when Errors::InvalidSession, ActionController::InvalidAuthenticityToken
         redirect_to invalid_session_errors_path
+      when Errors::ResultsNotFound
+        redirect_to results_not_found_errors_path
       when Errors::CheckCompleted
         redirect_to check_completed_errors_path
       when Errors::ReportCompleted

@@ -70,12 +70,15 @@ Rails.application.routes.draw do
     post '', action: :create, as: :group
   end
 
+  resources :results, only: [:show], param: :report_id
+
   resources :pilot, only: [:show]
 
   resource :errors, only: [] do
     get :invalid_session
     get :unhandled
     get :not_found
+    get :results_not_found
     get :check_completed
     get :report_completed
   end
