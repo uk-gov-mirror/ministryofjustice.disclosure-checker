@@ -16,12 +16,13 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   # NOTE: Working with doubles so it is a lot more easier to understand what is going on
   describe '#spent_date_for' do
     context 'relevant orders' do
+
+      before do
+        allow(subject).to receive(:proceedings).and_return([conviction_A, conviction_B, conviction_C])
+      end
+
       context 'conviction A with 2 sentences (relevant and non relevant),' \
               'conviction B with 1 relevant order sentence, conviction C with 1 non relevant sentence' do
-
-        before do
-          allow(subject).to receive(:proceedings).and_return([conviction_A, conviction_B, conviction_C])
-        end
 
         # conviction with:
         # 1 relevant order, the longest of both, spent_date: 1 Jan 2005
@@ -63,6 +64,75 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         it 'returns the spent date for the matching check group' do
           expect(subject.spent_date_for(conviction_A)).to eq(Date.new(2005, 1, 1))
           expect(subject.spent_date_for(conviction_B)).to eq(Date.new(2003, 1, 1))
+          expect(subject.spent_date_for(conviction_C)).to eq(Date.new(2006, 6, 1))
+        end
+      end
+
+      context 'conviction A with 2 sentences (relevant & non-relevant) conviction B with 1 non-relevant sentence - overlaps A,' \
+              'conviction C with 1 non-relevant sentence - overlaps non-relevant sentence of conviction A' do
+
+        # conviction with:
+        # 1 relevant order, the longest of both, spent_date: 1 Jan 2005
+        # 1 non relevant order, spent_date: 1 Jan 2003
+        let(:conviction_A) {
+          instance_double(
+            Calculators::Multiples::Proceedings,
+            conviction?: true,
+            conviction_date: Date.new(2001, 1, 1),
+            spent_date: Date.new(2005, 1, 1), # relevant order
+            spent_date_without_relevant_orders: Date.new(2003, 1, 1), # non-relevant order
+          )
+        }
+
+        # conviction with non relevant order
+        # overlaps with conviction A
+        let(:conviction_B) {
+          instance_double(
+            Calculators::Multiples::Proceedings,
+            conviction?: true,
+            conviction_date: Date.new(2000, 1, 1),
+            spent_date: Date.new(2002, 2, 1),
+            # same date, meaning there's no relevant order
+            spent_date_without_relevant_orders: Date.new(2002, 2, 1),
+          )
+        }
+
+        # conviction with non relevant order
+        # overlaps with relevant sentence of conviction A
+        let(:conviction_C) {
+          instance_double(
+            Calculators::Multiples::Proceedings,
+            conviction?: true,
+            conviction_date: Date.new(2002, 3, 1),
+            spent_date: Date.new(2006, 6, 1),
+            # same date, meaning there's no relevant order
+            spent_date_without_relevant_orders: Date.new(2006, 6, 1),
+          )
+        }
+
+        # Conviction A
+        # non-relevant order finishes when conviction C finishes: 2006, 6, 1
+        # relevant order finishes on 2005, 1, 1
+
+        # Conviction B
+        # non-relevant order finishes when Conviction C finishes: 2006, 6, 1
+
+        # Conviction C
+        # non-relevant order finishes on 2006, 6, 1
+
+        # The end date of Conviction B is tied to the overlapping of the non-relevant
+        # sentences between Conviction A and Conviction C
+        #
+        # Meaning that without Conviction C
+        # the spent date of Conviction B would be 2003, 1, 1
+        # 
+        # Although, because there's an overlap between convictions A & C,
+        # the spent date of Conviction B is extendend to meet the
+        # spent date of the non-relevant sentence found in Conviction C
+
+        it 'returns the spent date for the matching check group' do
+          expect(subject.spent_date_for(conviction_A)).to eq(Date.new(2006, 6, 1))
+          expect(subject.spent_date_for(conviction_B)).to eq(Date.new(2006, 6, 1))
           expect(subject.spent_date_for(conviction_C)).to eq(Date.new(2006, 6, 1))
         end
       end

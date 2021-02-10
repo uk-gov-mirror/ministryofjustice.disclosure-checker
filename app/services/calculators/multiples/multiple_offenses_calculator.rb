@@ -16,6 +16,7 @@ module Calculators
 
         conviction_date = proceeding.conviction_date
         spent_date = proceeding.spent_date
+        current_spent_date = proceeding.spent_date
 
         # Cautions are always dealt with separately and do not have drag-through
         return spent_date unless proceeding.conviction?
@@ -34,9 +35,19 @@ module Calculators
         #   "never spent" conviction becomes "never spent". Everything afterwards is not
         #   affected by the "never spent". Same for "indefinite".
         #
+        # convictions_by_date.map(&:conviction_date)
+        # [conviction_B, conviction_A, conviction_C]
+        # => [Sat, 01 Jan 2000, Mon, 01 Jan 2001, Fri, 01 Mar 2002]
+
+        # convictions_by_date.map(&:spent_date_without_relevant_orders)
+        # => [Fri, 01 Feb 2002, Wed, 01 Jan 2003, Thu, 01 Jun 2006]
+
+        conviction_B, conviction_A, conviction_C = convictions_by_date
+
+
         convictions_by_date.without(proceeding).each do |conviction|
           other_conviction_date = conviction.conviction_date
-          other_spent_date = conviction.spent_date_without_relevant_orders
+          other_spent_date = conviction.new_spent_date.nil? ? conviction.spent_date_without_relevant_orders : conviction.new_spent_date
 
           # solo relevant order
           # if there's only one sentence and it is a relevant order
@@ -49,15 +60,48 @@ module Calculators
           # the comparison to know if there's an overlap in conviction dates
           # should be done without the relevant order
           # because relevant orders do not dictacte the spent_date of another conviction.
+
+          # Conviction A compares with Conviction B
+          # => Wed, 01 Jan 2003 in? (Sat, 01 Jan 2000 .. Fri, 01 Feb 2002)
+          # => false
+
+          # Conviction A compares with conviction C
+          # => 2003-01-01 in ? 2002-03-01 .. 2006-06-01
+          # => true
+          # Conviction A spent date becomes Conviction C
+          # spent date: 2006, 6, 1
+          # Although we have already compared A with B
+          # meaning that Conviction B won't be affected because
+          # Conviction C does not overlap with Conviction B
+
+          puts "#{spent_date_without_relevant_order} in ? #{other_conviction_date} .. #{other_spent_date}"
+
+          # spent_date_without_relevant_order.to_date.in?( other_conviction_date..other_spent_date.to_date )
+          # binding.pry
+
           next unless spent_date_without_relevant_order.to_date.in?(
             other_conviction_date..other_spent_date.to_date
           )
 
+          puts "#{conviction_date} > #{other_conviction_date} = #{conviction_date > other_conviction_date}"
+          puts conviction_date > other_conviction_date
+
+          puts "conviction A: #{conviction == conviction_A}"
+          puts "conviction B: #{conviction == conviction_B}"
+          puts "conviction C: #{conviction == conviction_C}"
+
+          puts "proceeding A: #{proceeding == conviction_A}"
+          puts "proceeding B: #{proceeding == conviction_B}"
+          puts "proceeding C: #{proceeding == conviction_C}"
+
           next if conviction_date > other_conviction_date
+
+          # binding.pry
 
           # If the spent date falls inside another rehabilitation, we do drag-through.
           # The `spent_date` or the `other_spent_date` can be NEVER_SPENT or INDEFINITE.
           spent_date = other_spent_date
+          proceeding.new_spent_date = spent_date
         end
 
         spent_date
@@ -70,7 +114,7 @@ module Calculators
       private
 
       def convictions_by_date
-        @_convictions ||= proceedings.select(&:conviction?).sort_by(&:conviction_date)
+        @_convictions = proceedings.select(&:conviction?).sort_by(&:conviction_date)
       end
 
       # The order of the `proceedings` collection is the order in which

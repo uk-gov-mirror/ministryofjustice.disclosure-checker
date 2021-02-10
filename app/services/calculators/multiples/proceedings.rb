@@ -2,9 +2,11 @@ module Calculators
   module Multiples
     class Proceedings
       attr_reader :check_group
+      attr_accessor :new_spent_date
 
       def initialize(check_group)
         @check_group = check_group
+        @new_spent_date = nil
       end
 
       def spent_date
