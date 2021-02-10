@@ -148,6 +148,15 @@ FactoryBot.define do
       conviction_with_known_date
       conviction_type { ConvictionType::ADULT_COMMUNITY_REPARATION }
       conviction_subtype { ConvictionType::ADULT_COMMUNITY_ORDER }
+      conviction_length { 12 }
+      conviction_length_type { ConvictionLengthType::MONTHS }
+    end
+
+    trait :with_serious_crime_prevention do
+      adult
+      conviction_with_known_date
+      conviction_type { ConvictionType::ADULT_COMMUNITY_REPARATION }
+      conviction_subtype { ConvictionType::ADULT_SERIOUS_CRIME_PREVENTION }
     end
 
     trait :with_sexual_harm_order do
