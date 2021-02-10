@@ -70,6 +70,8 @@ Rails.application.routes.draw do
     post '', action: :create, as: :group
   end
 
+  resources :results, only: [:show], param: :report_id
+
   resources :pilot, only: [:show]
 
   resource :errors, only: [] do

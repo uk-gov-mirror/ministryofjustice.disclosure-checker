@@ -21,4 +21,8 @@
   <% render partial: 'layouts/footer_links' %>
 <% end %>
 
+<% if dev_tools_enabled? %>
+  <%= render partial: 'layouts/developer_tools' if current_disclosure_report.try(:completed?) %>
+<% end %>
+
 <%= render file: 'layouts/govuk_template' %>

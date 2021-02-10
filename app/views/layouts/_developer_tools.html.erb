@@ -1,0 +1,14 @@
+<% content_for(:footer_top) do %>
+  <details class="govuk-details" data-module="govuk-details">
+    <summary class="govuk-details__summary">
+      <span class="govuk-details__summary-text">
+        Developer Tools
+      </span>
+    </summary>
+    <div class="govuk-details__text app-util--inline-buttons">
+      <h4 class="govuk-heading-s">Share the results page</h4>
+      <%= link_to result_path(current_disclosure_report), result_url(current_disclosure_report),
+                  class: 'govuk-link govuk-link--no-visited-state', rel: 'nofollow' %>
+    </div>
+  </details>
+<% end %>
