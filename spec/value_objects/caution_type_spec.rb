@@ -62,6 +62,30 @@ RSpec.describe CautionType do
     end
   end
 
+  describe '#youth?' do
+    subject { described_class.new(value).youth? }
+
+    context 'youth_conditional_caution' do
+      let(:value) { :youth_conditional_caution }
+      it { expect(subject).to eq(true) }
+    end
+
+    context 'adult_conditional_caution' do
+      let(:value) { :adult_conditional_caution }
+      it { expect(subject).to eq(false) }
+    end
+
+    context 'youth_simple_caution' do
+      let(:value) { :youth_simple_caution }
+      it { expect(subject).to eq(true) }
+    end
+
+    context 'adult_simple_caution' do
+      let(:value) { :adult_simple_caution }
+      it { expect(subject).to eq(false) }
+    end
+  end
+
   describe '#calculator_class' do
     subject { described_class.new(:youth_conditional_caution) }
 
