@@ -11,6 +11,7 @@ module Calculators
         process!
       end
 
+      # rubocop:disable Metrics/AbcSize
       def spent_date_for(proceeding)
         return unless disclosure_report.completed?
 
@@ -36,7 +37,9 @@ module Calculators
         #
         convictions_by_date.without(proceeding).each do |conviction|
           other_conviction_date = conviction.conviction_date
-          other_spent_date = conviction.spent_date_without_relevant_orders
+
+          # Pick the spent date from memory if we have it, otherwise get it fresh.
+          other_spent_date = dates_memory.fetch(conviction, conviction.spent_date_without_relevant_orders)
 
           # solo relevant order
           # if there's only one sentence and it is a relevant order
@@ -55,19 +58,25 @@ module Calculators
 
           next if conviction_date > other_conviction_date
 
-          # If the spent date falls inside another rehabilitation, we do drag-through.
-          # The `spent_date` or the `other_spent_date` can be NEVER_SPENT or INDEFINITE.
-          spent_date = other_spent_date
+          # If the spent date falls inside another rehabilitation, we do drag-through,
+          # saving this new spent date in the memory for later use.
+          # Note: `other_spent_date` could be NEVER_SPENT or INDEFINITE (not real dates).
+          spent_date = dates_memory[proceeding] = other_spent_date
         end
 
         spent_date
       end
+      # rubocop:enable Metrics/AbcSize
 
       def all_spent?
         proceedings.all?(&:spent?)
       end
 
       private
+
+      def dates_memory
+        @_dates_memory ||= {}
+      end
 
       def convictions_by_date
         @_convictions ||= proceedings.select(&:conviction?).sort_by(&:conviction_date)
