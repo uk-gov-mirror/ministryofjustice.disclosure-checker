@@ -18,6 +18,10 @@ class CautionType < ValueObject
     ].include?(self)
   end
 
+  def youth?
+    YOUTH_TYPES.include?(self)
+  end
+
   def calculator_class
     Calculators::CautionCalculator
   end
