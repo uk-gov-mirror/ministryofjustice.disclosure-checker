@@ -454,4 +454,69 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       end
     end
   end
+
+  context 'scenario 7' do
+    let(:third_proceeding_group) { disclosure_report.check_groups.build }
+    let(:third_proceedings) { subject.proceedings.third }
+    let(:conviction_date_A)  { Date.new(2001, 1, 1) } # spent on 1, 1, 2004
+    let(:conviction_date_B)  { Date.new(2000, 6, 1) } # spent on 1, 6, 2001
+    let(:conviction_date_C)  { Date.new(2002, 3, 1) } # spent on 28 feb 2012
+    let(:conviction_A) do
+      [
+        build(
+          :disclosure_check,
+          :adult,
+          :with_discharge_order,
+          :completed,
+          known_date: conviction_date_A,
+          conviction_date: conviction_date_A,
+          conviction_length: 3,
+          conviction_length_type: ConvictionLengthType::YEARS
+          # THIS IS SPENT ON 1 Jan 2004
+        ),
+        build(
+          :disclosure_check,
+          :with_prison_sentence,
+          :completed,
+          known_date: conviction_date_A,
+          conviction_date: conviction_date_A,
+          conviction_length: 6,
+          conviction_length_type: ConvictionLengthType::MONTHS
+          # 6 months = 30 June 2003!!!
+        )
+      ]
+    end
+    let(:conviction_B) do
+      build(
+        :disclosure_check,
+        :adult,
+        :with_fine,
+        :completed,
+        known_date: conviction_date_B,
+        conviction_date: conviction_date_B,
+      )
+    end
+    let(:conviction_C) do
+      build(
+        :disclosure_check,
+        :with_prison_sentence,
+        :completed,
+        known_date: conviction_date_C,
+        conviction_date: conviction_date_C,
+        conviction_length: 3,
+        conviction_length_type: ConvictionLengthType::YEARS
+      )
+    end
+    before do
+      first_proceeding_group.disclosure_checks << conviction_A
+      second_proceeding_group.disclosure_checks << conviction_B
+      third_proceeding_group.disclosure_checks << conviction_C
+      save_report
+    end
+    it 'dates' do
+      expect(subject.spent_date_for(first_proceedings)).to eq(Date.new(2012, 2, 28))
+      expect(subject.spent_date_for(second_proceedings)).to eq(Date.new(2012, 2, 28))
+      expect(subject.spent_date_for(third_proceedings)).to eq(Date.new(2012, 2, 28))
+    end
+  end
 end
