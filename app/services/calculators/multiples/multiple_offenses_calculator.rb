@@ -37,9 +37,6 @@ module Calculators
         conviction_date = proceeding.conviction_date
         spent_date = proceeding.spent_date
 
-        # TODO: remove this line when we find it's not needed
-        current_spent_date = proceeding.spent_date
-
         # Cautions are always dealt with separately and do not have drag-through
         return spent_date unless proceeding.conviction?
 
