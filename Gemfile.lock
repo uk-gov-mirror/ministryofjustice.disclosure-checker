@@ -368,7 +368,7 @@ DEPENDENCIES
   cucumber-rails
   dotenv-rails
   factory_bot_rails
-  govuk_design_system_formbuilder (~> 2.1.2)
+  govuk_design_system_formbuilder (~> 2.1.8)
   i18n-debug
   i18n-tasks (~> 0.9.28)
   jquery-rails
