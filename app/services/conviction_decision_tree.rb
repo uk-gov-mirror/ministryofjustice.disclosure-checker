@@ -14,12 +14,10 @@ class ConvictionDecisionTree < BaseDecisionTree
       edit(:conviction_subtype)
     when :conviction_subtype
       after_conviction_subtype
-    when :motoring_endorsement
+    when :conviction_bail_days, :motoring_endorsement
       known_date_question
     when :conviction_bail
       after_conviction_bail
-    when :conviction_bail_days
-      known_date_question
     when :known_date
       after_known_date
     when :conviction_length_type

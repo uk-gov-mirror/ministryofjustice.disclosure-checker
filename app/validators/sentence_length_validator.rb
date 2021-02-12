@@ -1,5 +1,5 @@
 class SentenceLengthValidator < ActiveModel::EachValidator
-  DEFAULT_OPTIONS ||= {
+  DEFAULT_OPTIONS = {
     only: [
       ConvictionType::DETENTION_TRAINING_ORDER,
       ConvictionType::ADULT_SUSPENDED_PRISON_SENTENCE,

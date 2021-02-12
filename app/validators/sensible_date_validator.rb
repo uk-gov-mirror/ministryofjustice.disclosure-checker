@@ -1,5 +1,5 @@
 class SensibleDateValidator < ActiveModel::EachValidator
-  DEFAULT_OPTIONS ||= {
+  DEFAULT_OPTIONS = {
     on_or_after_year: 1940,
     allow_future: false,
   }.freeze

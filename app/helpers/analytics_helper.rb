@@ -1,5 +1,5 @@
 module AnalyticsHelper
-  CUSTOM_DIMENSIONS_MAP ||= {
+  CUSTOM_DIMENSIONS_MAP = {
     spent: :dimension1,
   }.freeze
 
