@@ -1,5 +1,5 @@
 class ConvictionLengthChoices
-  SUBTYPES_HIDE_NO_LENGTH_CHOICE ||= [
+  SUBTYPES_HIDE_NO_LENGTH_CHOICE = [
     ConvictionType::DETENTION,
     ConvictionType::DETENTION_TRAINING_ORDER,
     ConvictionType::ADULT_PRISON_SENTENCE,

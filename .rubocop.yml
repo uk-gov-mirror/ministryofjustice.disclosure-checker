@@ -1,5 +1,6 @@
 AllCops:
   TargetRubyVersion: 2.7
+  SuggestExtensions: false
   NewCops: enable
   Exclude:
     - './*'
@@ -32,6 +33,9 @@ Layout/SpaceInsideHashLiteralBraces:
   Enabled: false
 
 Naming/MemoizedInstanceVariableName:
+  Enabled: false
+
+Naming/VariableNumber:
   Enabled: false
 
 Layout/HashAlignment:
