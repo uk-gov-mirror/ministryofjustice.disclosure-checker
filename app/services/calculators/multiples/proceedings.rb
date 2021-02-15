@@ -45,7 +45,7 @@ module Calculators
       private
 
       def disclosure_checks
-        @_disclosure_checks ||= check_group.disclosure_checks
+        @_disclosure_checks ||= check_group.disclosure_checks.completed
       end
 
       def first_disclosure_check
