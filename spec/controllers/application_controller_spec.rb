@@ -5,7 +5,6 @@ RSpec.describe ApplicationController do
     def my_url; true; end
     def invalid_session; raise Errors::InvalidSession; end
     def results_not_found; raise Errors::ResultsNotFound; end
-    def check_completed; raise Errors::CheckCompleted; end
     def report_completed; raise Errors::ReportCompleted; end
     def another_exception; raise Exception; end
   end
@@ -35,17 +34,6 @@ RSpec.describe ApplicationController do
 
         get :results_not_found
         expect(response).to redirect_to(results_not_found_errors_path)
-      end
-    end
-
-    context 'Errors::CheckCompleted' do
-      it 'should not report the exception, and redirect to the error page' do
-        routes.draw { get 'check_completed' => 'anonymous#check_completed' }
-
-        expect(Raven).not_to receive(:capture_exception)
-
-        get :check_completed
-        expect(response).to redirect_to(check_completed_errors_path)
       end
     end
 

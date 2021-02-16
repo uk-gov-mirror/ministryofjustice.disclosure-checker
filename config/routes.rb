@@ -79,7 +79,6 @@ Rails.application.routes.draw do
     get :unhandled
     get :not_found
     get :results_not_found
-    get :check_completed
     get :report_completed
   end
 
