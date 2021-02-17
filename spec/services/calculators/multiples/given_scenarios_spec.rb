@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+# Please refer to any of the graphs we have in the folder docs/results/
+# They have been added to aid understanding how the rules for convictions work
+
 RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   subject { described_class.new(disclosure_report) }
 
@@ -455,6 +458,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     end
   end
 
+  # See graph in docs/results/07_relevant_order_2.png
   context 'scenario 7' do
     let(:third_proceeding_group) { disclosure_report.check_groups.build }
     let(:third_proceedings) { subject.proceedings.third }

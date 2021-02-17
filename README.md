@@ -5,6 +5,30 @@
 This is a Rails application to enable citizens to check when their convictions are spent.
 It is based on software patterns developed for the [C100 Application][c100-application].
 
+### Documentation for calculations of convictions
+
+This service follows several rules to calculate spent dates of multiple convictions,
+we have documented all of the scenarios known to us in our tests:
+
+- [spec/services/calculators/multiples/given_scenarios_spec.rb](spec/services/calculators/multiples/given_scenarios_spec.rb)
+- [spec/services/calculators/multiples/multiple_offenses_calculator_spec.rb](spec/services/calculators/multiples/multiple_offenses_calculator_spec.rb)
+
+We have also added visual graphics to better aid understanding:
+
+- [docs/results](docs/results)
+
+We have also gather together all the documents and information we have gone through in one ticket:
+
+- https://trello.com/c/kT50EDZ7
+
+If for some reason the ticket is not available, please refer to the following:
+
+- https://www.gov.uk/guidance/rehabilitation-periods
+- https://hub.unlock.org.uk/knowledgebase/detailedguideroa/
+- https://docs.google.com/spreadsheets/d/1ZSCk-wgMfIc22GQahKH_ys4u-E9GWIn6dQ7mm5t1RFI/edit#gid=2019860123
+
+It is important to understand how convictions work, as this is the main reason for the existence of this service.
+
 ## Docker
 
 The application can be run inside a docker container. This will take care of the ruby environment, postgres database,
@@ -16,7 +40,7 @@ The application will be run in "production" mode, so will be as accurate as poss
 An nginx reverse proxy will also be run to serve the static assets and to fallback to a static error page if the
 upstream server (rails with puma) does not respond.
 
-If you make local changes to the assets (images, javascript or stylesheets), you need to remove the docker volume, as 
+If you make local changes to the assets (images, javascript or stylesheets), you need to remove the docker volume, as
 otherwise old versions of these assets may persist.  
 In order to do this, please run: `docker volume rm disclosure-checker_assets`
 
