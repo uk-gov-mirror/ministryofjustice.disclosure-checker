@@ -1,5 +1,8 @@
 require 'rails_helper'
 
+# Please refer to any of the graphs we have in the folder docs/results/
+# They have been added to aid understanding how the rules for convictions work
+
 RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
   subject { described_class.new(disclosure_report) }
 
@@ -20,6 +23,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         allow(subject).to receive(:proceedings).and_return([conviction_A, conviction_B, conviction_C])
       end
 
+      # See graph in docs/results/06_relevant_order_1.png
       context 'conviction A with 2 sentences (relevant and non relevant),' \
               'conviction B with 1 relevant order sentence, conviction C with 1 non relevant sentence' do
 
@@ -67,6 +71,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
         end
       end
 
+      # See graph in docs/results/07_relevant_order_2.png
       context 'conviction A with 2 sentences (relevant & non-relevant) conviction B with 1 non-relevant sentence - overlaps A,' \
               'conviction C with 1 non-relevant sentence - overlaps non-relevant sentence of conviction A' do
 
@@ -241,6 +246,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           )
         }
 
+        # See graph docs/results/03_never_spent_1.png
         context 'never spent sentence goes in the first conviction' do
           let(:spent_date_1) { ResultsVariant::NEVER_SPENT }
           let(:spent_date_2) { Date.new(2023, 1, 1) }
@@ -251,6 +257,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
           end
         end
 
+        # See graph docs/results/04_never_spent_2.png
         context 'never spent sentence goes in the second conviction' do
           let(:spent_date_1) { Date.new(2023, 1, 1) }
           let(:spent_date_2) { ResultsVariant::NEVER_SPENT }
