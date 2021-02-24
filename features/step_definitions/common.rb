@@ -89,7 +89,6 @@ end
 
 When(/^I have started a check$/) do
   step %[I visit "/"]
-  step %[I click the "Start now" link]
 end
 
 When(/^I am in the conviction known date step$/) do
