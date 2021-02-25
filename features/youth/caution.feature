@@ -1,7 +1,6 @@
 Feature: Caution
   Background:
     When I visit "/"
-    And I click the "Start now" link
     Then I should see "Were you cautioned or convicted?"
     When I choose "Cautioned"
     Then I should see "How old were you when you got cautioned?"

@@ -13,9 +13,9 @@ RSpec.describe HomeController, type: :controller do
         let(:navigation_stack) { %w(/1 /2 /3) }
 
         context 'and user bypass the warning' do
-          it 'responds with HTTP success' do
+          it 'redirects to /steps/check/kind' do
             get :index, session: { disclosure_check_id: existing_disclosure_check.id }, params: {new: 'y'}
-            expect(response).to be_successful
+            expect(response).to redirect_to('/steps/check/kind')
           end
 
           it 'resets the disclosure_check session data' do
@@ -53,9 +53,9 @@ RSpec.describe HomeController, type: :controller do
       context 'with not enough steps advanced' do
         let(:navigation_stack) { %w(/1) }
 
-        it 'responds with HTTP success' do
+        it 'redirects to /steps/check/kind' do
           get :index, session: { disclosure_check_id: existing_disclosure_check.id }
-          expect(response).to be_successful
+          expect(response).to redirect_to('/steps/check/kind')
         end
 
         it 'resets the disclosure check session data' do
@@ -71,9 +71,9 @@ RSpec.describe HomeController, type: :controller do
       let!(:existing_disclosure_check) { nil }
       let(:navigation_stack) { [] }
 
-      it 'responds with HTTP success' do
+      it 'redirects to /steps/check/kind' do
         get :index
-        expect(response).to be_successful
+        expect(response).to redirect_to('/steps/check/kind')
       end
 
       it 'resets the disclosure_checker session data' do
