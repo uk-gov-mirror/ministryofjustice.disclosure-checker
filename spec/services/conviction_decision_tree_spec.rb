@@ -57,7 +57,7 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal youth_penalty_notice' do
         let(:conviction_subtype) { :youth_penalty_notice }
-        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
+        it { is_expected.to have_destination(:known_date, :edit) }
       end
 
       context 'when subtype equal youth_penalty_points' do
@@ -76,7 +76,7 @@ RSpec.describe ConvictionDecisionTree do
 
       context 'when subtype equal adult_penalty_notice' do
         let(:conviction_subtype) { :adult_penalty_notice }
-        it { is_expected.to have_destination(:motoring_endorsement, :edit) }
+        it { is_expected.to have_destination(:known_date, :edit) }
       end
 
       context 'when subtype equal adult_penalty_points' do
