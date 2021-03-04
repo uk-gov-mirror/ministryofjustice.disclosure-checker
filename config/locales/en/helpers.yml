@@ -195,6 +195,9 @@ en:
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: This is decided by the court. If you do not know the exact number of days you can enter an approximate number or leave this blank, but it might affect the accuracy of your result.
       steps_conviction_conviction_subtype_form:
+        default_html: ''
+        adult_motoring_html: A fixed penalty notice (FPN) with no penalty points is a fine for a minor driving offence. It will not appear on your criminal record unless a court gives you a conviction because of one.
+        youth_motoring_html: A fixed penalty notice (FPN) with no penalty points is a fine for a minor driving offence. It will not appear on your criminal record unless a court gives you a conviction because of one.
         conviction_subtype_options:
           # referral_supervision_yro
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
