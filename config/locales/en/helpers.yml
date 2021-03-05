@@ -91,12 +91,12 @@ en:
       # adult_motoring
       adult_disqualification: Disqualification
       adult_motoring_fine: Fine
-      adult_penalty_notice: Fixed Penalty notice (FPN)
+      adult_penalty_notice: Fixed Penalty notice (FPN) with penalty points (endorsement)
       adult_penalty_points: Penalty points
       # adult_motoring
       youth_disqualification: Disqualification
       youth_motoring_fine: Fine
-      youth_penalty_notice: Fixed Penalty notice (FPN)
+      youth_penalty_notice: Fixed Penalty notice (FPN) with penalty points (endorsement)
       youth_penalty_points: Penalty points
       # adult_discharge
       adult_bind_over: Bind over
@@ -195,6 +195,9 @@ en:
       steps_conviction_conviction_bail_days_form:
         conviction_bail_days: This is decided by the court. If you do not know the exact number of days you can enter an approximate number or leave this blank, but it might affect the accuracy of your result.
       steps_conviction_conviction_subtype_form:
+        default_html: ''
+        adult_motoring_html: A fixed penalty notice (FPN) with no penalty points is a fine for a minor driving offence. It will not appear on your criminal record unless a court gives you a conviction because of one.
+        youth_motoring_html: A fixed penalty notice (FPN) with no penalty points is a fine for a minor driving offence. It will not appear on your criminal record unless a court gives you a conviction because of one.
         conviction_subtype_options:
           # referral_supervision_yro
           referral_order: You were referred to community volunteers and the youth offending team (YOT)
@@ -223,12 +226,12 @@ en:
           # adult_motoring
           adult_disqualification: You were banned from driving
           adult_motoring_fine: A court gave you a fine that was not a fixed penalty notice (FPN)
-          adult_penalty_notice: You were given a fine ‘on the spot’ or by post
+          adult_penalty_notice: You were given a fine ‘on the spot’ or by post that is recorded on your driving licence
           adult_penalty_points: You were given a number of penalty points for a driving offence
           # youth motoring
           youth_disqualification: You were banned from driving
           youth_motoring_fine: A court gave you a fine that was not a fixed penalty notice (FPN)
-          youth_penalty_notice: You were given a fine ‘on the spot’ or by post
+          youth_penalty_notice: You were given a fine ‘on the spot’ or by post that is recorded on your driving licence
           youth_penalty_points: You were given a number of penalty points for a driving offence
           # adult_discharge
           adult_bind_over: Your sentence was postponed as long as you kept to certain conditions
