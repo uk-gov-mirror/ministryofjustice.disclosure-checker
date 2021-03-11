@@ -19,9 +19,10 @@ Feature: Conviction
     And I should be on "<result>"
 
     Examples:
-      | subtype                  | known_date_header              | length_type_header                                           | length_header                     | result               |
-      | Overseas community order | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? | /steps/check/results |
-      | Service community order  | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? | /steps/check/results |
+    | subtype                  | length_type_header                                               | known_date_header                  | length_header                         | result               |
+    | Overseas community order | Was the length of the order given in weeks, months or years?     | When were you given the order?     | What was the length of the order?     | /steps/check/results |
+    | Service community order  | Was the length of the order given in weeks, months or years?     | When were you given the order?     | What was the length of the order?     | /steps/check/results |
+    | Service detention        | Was the length of the detention given in weeks, months or years? | When were you given the detention? | What was the length of the detention? | /steps/check/results |
 
   @happy_path
   Scenario Outline: Adult military convictions without length
@@ -37,4 +38,3 @@ Feature: Conviction
     Examples:
       | subtype                  | known_date_header                  | result               |
       | Dismissal                | When were you given the dismissal? | /steps/check/results |
-      | Service detention        | When were you given the detention? | /steps/check/results |
