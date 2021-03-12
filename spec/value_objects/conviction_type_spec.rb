@@ -207,9 +207,9 @@ RSpec.describe ConvictionType do
     context 'SERVICE_DETENTION' do
       let(:subtype) { 'service_detention' }
 
-      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.relevant_order?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusSixMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusSixMonths) }
     end
 
     context 'SERVICE_COMMUNITY_ORDER' do
@@ -444,9 +444,9 @@ RSpec.describe ConvictionType do
     context 'ADULT_SERVICE_DETENTION' do
       let(:subtype) { 'adult_service_detention' }
 
-      it { expect(conviction_type.skip_length?).to eq(true) }
+      it { expect(conviction_type.skip_length?).to eq(false) }
       it { expect(conviction_type.relevant_order?).to eq(false) }
-      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::StartPlusTwelveMonths) }
+      it { expect(conviction_type.calculator_class).to eq(Calculators::AdditionCalculator::PlusTwelveMonths) }
     end
 
     # YOUTH_MOTORING
