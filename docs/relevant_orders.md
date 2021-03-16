@@ -29,4 +29,4 @@
 | Referral or youth rehabilitation order    | Referral order                 |
 | Prevention or reparation order            | Reparation order               |
 | Prevention or reparation order            | Restraining order              |
-| Prevention or reparation order            | Sexual prevention order        |
+| Prevention or reparation order            | Sexual harm prevention order   |

@@ -71,7 +71,7 @@ en:
       # prevention_reparation
       reparation_order: Reparation order
       restraining_order: Restraining order
-      sexual_harm_prevention_order: Sexual prevention order
+      sexual_harm_prevention_order: Sexual harm prevention order
       # adult community, prevention and reparation orders
       adult_attendance_centre_order: Attendance centre order
       adult_community_order: Community order
@@ -79,7 +79,7 @@ en:
       adult_reparation_order: Reparation order
       adult_restraining_order: Restraining order
       adult_serious_crime_prevention: Serious crime prevention order
-      adult_sexual_harm_prevention_order: Sexual prevention order
+      adult_sexual_harm_prevention_order: Sexual harm prevention order
       # adult_financial
       adult_fine: A fine
       adult_compensation_to_a_victim: Compensation to a victim
@@ -157,7 +157,7 @@ en:
           prevention_reparation: For example, a restraining order or sexual harm prevention order
           youth_motoring: For example, penalty points, fines or a driving ban
           # adults
-          adult_community_reparation: For example, a sexual prevention order or a restraining order. You might have been asked to wear a tag as part of your order
+          adult_community_reparation: For example, a sexual harm prevention order or a restraining order. You might have been asked to wear a tag as part of your order
           adult_discharge: For example, a conditional discharge order or bind over
           adult_financial: For example, paying a fine or compensation
           adult_military: For example, a dismissal or service detention
