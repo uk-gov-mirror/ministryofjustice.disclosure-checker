@@ -13,4 +13,11 @@ class DisclosureCheck < ApplicationRecord
 
     ConvictionType.find_constant(conviction_subtype).relevant_order?
   end
+
+  def drag_through?
+    # conviction subtype will be nil if it's a caution
+    return false if conviction_subtype.nil?
+
+    ConvictionType.find_constant(conviction_subtype).drag_through?
+  end
 end

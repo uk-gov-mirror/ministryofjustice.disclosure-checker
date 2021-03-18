@@ -25,7 +25,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     # -  a 12-month community order. This conviction would become spent on 10/12/2020.
     #
     # Outcome:
-    # - First conviction is spent on 25/01/2019
+    # - First conviction is spent on 10/12/2020
     # - Second conviction is spent on 10/12/2020
 
     let(:first_conviction_date) { Date.new(2017, 1, 25) }
@@ -64,7 +64,7 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
     end
 
     it 'returns the date for the first proceeeding' do
-      expect(subject.spent_date_for(first_proceedings)).to eq(Date.new(2019, 1, 25))
+      expect(subject.spent_date_for(first_proceedings)).to eq(Date.new(2020, 12, 10))
     end
 
     it 'returns indefinite for the second proceeding' do
