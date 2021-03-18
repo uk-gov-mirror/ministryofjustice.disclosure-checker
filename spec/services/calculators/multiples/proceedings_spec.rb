@@ -6,9 +6,9 @@ RSpec.describe Calculators::Multiples::Proceedings do
   let(:check_group) { instance_double(CheckGroup, disclosure_checks: disclosure_checks_scope) }
   let(:disclosure_checks_scope) { double('scope', completed: [disclosure_check1, disclosure_check2, disclosure_check3]) }
 
-  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: kind, conviction_date: conviction_date, relevant_order?: false) }
-  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: kind, relevant_order?: false) }
-  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: kind, relevant_order?: true) }
+  let(:disclosure_check1) { instance_double(DisclosureCheck, kind: kind, conviction_date: conviction_date, drag_through?: false) }
+  let(:disclosure_check2) { instance_double(DisclosureCheck, kind: kind, drag_through?: false) }
+  let(:disclosure_check3) { instance_double(DisclosureCheck, kind: kind, drag_through?: true) }
 
   let(:check_result1) { instance_double(CheckResult, expiry_date: Date.new(2015, 10, 31)) }
   let(:check_result2) { instance_double(CheckResult, expiry_date: Date.new(2018, 10, 31)) }
@@ -108,8 +108,8 @@ RSpec.describe Calculators::Multiples::Proceedings do
 
     context 'filters our relevant orders' do
       context 'only some are relevant orders' do
-        let(:disclosure_check1) { instance_double(DisclosureCheck, relevant_order?: true) }
-        let(:disclosure_check2) { instance_double(DisclosureCheck, relevant_order?: false) }
+        let(:disclosure_check1) { instance_double(DisclosureCheck, drag_through?: true) }
+        let(:disclosure_check2) { instance_double(DisclosureCheck, drag_through?: false) }
 
         it 'calculates the spent_date of the non-relevant orders' do
           expect(subject).not_to receive(:expiry_date_for).with(disclosure_check1)
@@ -120,8 +120,8 @@ RSpec.describe Calculators::Multiples::Proceedings do
       end
 
       context 'all are relevant orders' do
-        let(:disclosure_check1) { instance_double(DisclosureCheck, relevant_order?: true) }
-        let(:disclosure_check2) { instance_double(DisclosureCheck, relevant_order?: true) }
+        let(:disclosure_check1) { instance_double(DisclosureCheck, drag_through?: true) }
+        let(:disclosure_check2) { instance_double(DisclosureCheck, drag_through?: true) }
 
         it 'returns a nil spent_date' do
           expect(subject).not_to receive(:expiry_date_for).with(disclosure_check1)
