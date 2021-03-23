@@ -2,18 +2,26 @@ RSpec.describe CheckGroupPresenter do
   let!(:disclosure_check) { create(:disclosure_check, :completed) }
   let(:number) { 1 }
   let(:spent_date) { nil }
+  let(:results_page) { false }
 
   subject {
     described_class.new(
       number,
       disclosure_check.check_group,
       spent_date: spent_date,
-      scope: 'some/path'
+      scope: 'some/path',
+      results_page: results_page
     )
   }
 
   describe '#to_partial_path' do
     it { expect(subject.to_partial_path).to eq('check_your_answers/shared/check') }
+
+    context 'when results page' do
+      let(:results_page) { true }
+
+      it { expect(subject.to_partial_path).to eq('results/multiples/check') }
+    end
   end
 
   describe '#summary' do

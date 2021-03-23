@@ -1,3 +1,9 @@
+<% if check_row.show_sentence_header? %>
+  <h3 class="govuk-heading-m govuk-!-margin-bottom-1">
+    Sentence <%= check_row.number %>
+  </h3>
+<% end %>
+
 <dl class="govuk-summary-list multiple-checks-summary">
   <%= render check_row.summary.question_answers %>
 </dl>

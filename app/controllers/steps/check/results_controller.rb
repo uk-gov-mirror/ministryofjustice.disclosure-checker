@@ -8,7 +8,7 @@ module Steps
 
       def show
         @presenter = if show_multiple_results?
-                       CheckAnswersPresenter.new(current_disclosure_report)
+                       MultipleResultsPresenter.new(current_disclosure_report)
                      else
                        ResultsPresenter.build(current_disclosure_check)
                      end

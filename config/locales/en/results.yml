@@ -87,6 +87,10 @@ en:
     kind:
       caution: Caution
       conviction: Conviction
+  results/multiples/check:
+    kind:
+      caution: Caution
+      conviction: Conviction
 
   steps:
     check:

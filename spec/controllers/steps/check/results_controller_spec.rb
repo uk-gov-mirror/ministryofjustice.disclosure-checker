@@ -31,7 +31,7 @@ RSpec.describe Steps::Check::ResultsController, type: :controller do
           get :show, params: { show_results: true }
 
           expect(response).to render_template(:show)
-          expect(assigns[:presenter]).to be_a_kind_of(CheckAnswersPresenter)
+          expect(assigns[:presenter]).to be_a_kind_of(MultipleResultsPresenter)
         end
       end
 
