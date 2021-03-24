@@ -71,6 +71,10 @@ en:
           attributes:
             motoring_endorsement:
               inclusion: Select yes if you have received an endorsement
+        steps/check/caution_or_conviction_form:
+          attributes:
+            add_caution_or_conviction:
+              inclusion: Select yes if you have another caution on conviction to check
 
   errors:
     format: "%{message}"
