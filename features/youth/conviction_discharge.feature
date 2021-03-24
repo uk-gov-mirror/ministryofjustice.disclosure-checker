@@ -17,6 +17,8 @@ Feature: Conviction
     And I fill in "Number of years" with "2"
 
     Then I click the "Continue" button
+    And I should be on "/steps/check/check_your_answers"
+    Then I click the "Go to results page" link
     And I should be on "/steps/check/results"
 
   @happy_path
@@ -26,6 +28,8 @@ Feature: Conviction
     And I should see "When were you given the discharge?"
 
     When I enter a valid date
+    Then I should be on "/steps/check/check_your_answers"
+    Then I click the "Go to results page" link
     Then I should be on "/steps/check/results"
 
   @happy_path
@@ -42,4 +46,6 @@ Feature: Conviction
     And I fill in "Number of years" with "2"
 
     Then I click the "Continue" button
+    And I should be on "/steps/check/check_your_answers"
+    Then I click the "Go to results page" link
     And I should be on "/steps/check/results"
