@@ -10,12 +10,6 @@
 
     <%= render @presenter.summary %>
 
-    <h2 class="govuk-heading-m">Add a separate caution or conviction</h2>
-
-    <%= button_to 'Enter a new caution or conviction', checks_path,
-                  class: 'govuk-button govuk-button--secondary',
-                  data: { module: 'govuk-button', 'prevent-double-click': true } %>
-
-    <%= link_button :results_page, steps_check_results_path(show_results: true), class: 'govuk-button govuk-!-margin-top-5' %>
+    <%= link_to t('helpers.buttons.continue'), edit_steps_check_caution_or_conviction_path, class: 'govuk-button govuk-!-margin-top-5' %>
   </div>
 </div>

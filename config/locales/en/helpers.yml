@@ -173,6 +173,8 @@ en:
         kind_options:
           caution: You were given an official warning by the police
           conviction: You were found guilty of a crime in court
+      steps_check_caution_or_conviction_form:
+        add_caution_or_conviction_html: You must enter details of all cautious or convictions if you have received more than one.
       steps_caution_known_date_form:
         known_date_html: *date_hint_text
       steps_check_under_age_form:
@@ -251,6 +253,8 @@ en:
         under_age_options:
           'yes': Under 18
           'no': 18 or over
+      steps_check_caution_or_conviction_form:
+        add_caution_or_conviction_options: *YESNO
       steps_caution_known_date_form:
         approximate_known_date_options:
           'true': *approximate_date_checkbox
@@ -307,6 +311,8 @@ en:
       steps_check_under_age_form:
         caution: How old were you when you got cautioned?
         conviction: How old were you when you got convicted?
+      steps_check_caution_or_conviction_form:
+        add_caution_or_conviction: Do you have another caution on conviction you'd like to check?
       steps_caution_known_date_form:
         known_date: When did you get the caution?
         approximate_known_date: *approximate_date_legend
