@@ -55,6 +55,8 @@ When(/^I am completing a basic under 18 "([^"]*)" conviction$/) do |value|
   step %[I choose "Convicted"]
   step %[I should see "How old were you when you got convicted?"]
   step %[I choose "Under 18"]
+  step %[I should see "When were you convicted?"]
+  step %[I enter a valid date]
   step %[I should see "What type of conviction did you get?"]
   step %[I choose "#{value}"]
 end
