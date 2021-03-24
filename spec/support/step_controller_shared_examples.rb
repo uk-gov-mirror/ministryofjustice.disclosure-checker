@@ -24,9 +24,6 @@ RSpec.shared_examples 'a generic step controller' do |form_class, decision_tree_
 
       before do
         existing_case.disclosure_report.completed!
-
-        # feature flag
-        allow(controller).to receive(:multiples_enabled?).and_return(true)
       end
 
       it 'redirects to the report completed error page' do

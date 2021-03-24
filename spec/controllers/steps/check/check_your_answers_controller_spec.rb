@@ -24,9 +24,6 @@ RSpec.describe Steps::Check::CheckYourAnswersController, type: :controller do
 
       before do
         disclosure_check.disclosure_report.completed!
-
-        # feature flag
-        allow(controller).to receive(:multiples_enabled?).and_return(true)
       end
 
       it 'redirects to the report completed error page' do
