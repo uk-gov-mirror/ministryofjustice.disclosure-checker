@@ -19,19 +19,6 @@ RSpec.describe Steps::Check::CheckYourAnswersController, type: :controller do
       end
     end
 
-    context 'when the disclosure report is completed (and feature flag enabled)' do
-      let(:disclosure_check) { DisclosureCheck.create(status: :in_progress) }
-
-      before do
-        disclosure_check.disclosure_report.completed!
-      end
-
-      it 'redirects to the report completed error page' do
-        get :show, session: { disclosure_check_id: disclosure_check.id }
-        expect(response).to redirect_to(report_completed_errors_path)
-      end
-    end
-
     context 'for a caution' do
       let(:kind) { 'caution' }
 
