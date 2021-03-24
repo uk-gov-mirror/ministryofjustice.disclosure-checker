@@ -9,6 +9,7 @@ RSpec.describe CheckDecisionTree do
     )
   end
 
+  let(:controller)       { double('controller', multiples_enabled?: multiples_enabled) }
   let(:step_params)      { double('Step') }
   let(:next_step)        { nil }
   let(:as)               { nil }
@@ -19,7 +20,7 @@ RSpec.describe CheckDecisionTree do
 
   subject {
     described_class.new(
-      disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step, multiples_enabled: multiples_enabled
+      disclosure_check: disclosure_check, step_params: step_params, as: as, next_step: next_step, controller: controller
     )
   }
 
@@ -67,6 +68,27 @@ RSpec.describe CheckDecisionTree do
         let(:kind) { 'conviction' }
         it { is_expected.to have_destination('/steps/conviction/conviction_type', :edit) }
       end
+    end
+  end
+
+  describe 'when the step is `add_caution_or_conviction`' do
+    let(:step_params) { { add_caution_or_conviction: add_caution_or_conviction } }
+
+    context 'and answer is `yes`' do
+      let(:add_caution_or_conviction) { GenericYesNo::YES }
+
+      before do
+        allow(disclosure_check).to receive(:disclosure_report).and_return('disclosure_report')
+        allow(controller).to receive(:initialize_disclosure_check).with(disclosure_report: 'disclosure_report')
+      end
+
+      it {is_expected.to have_destination(:kind, :edit) }
+    end
+
+    context 'and answer is `no`' do
+      let(:add_caution_or_conviction) { GenericYesNo::NO }
+
+      it { expect(subject.destination).to eq({controller: :results, action: :show, show_results: true}) }
     end
   end
 end

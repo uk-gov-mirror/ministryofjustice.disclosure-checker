@@ -39,6 +39,7 @@ Rails.application.routes.draw do
       edit_step :under_age
       show_step :results
       show_step :check_your_answers
+      edit_step :caution_or_conviction
     end
 
     namespace :caution do
