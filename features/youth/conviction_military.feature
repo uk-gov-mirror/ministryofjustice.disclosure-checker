@@ -16,9 +16,7 @@ Feature: Conviction
     And I fill in "Number of years" with "5"
 
     Then I click the "Continue" button
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+     And I check my answers and go to the results page
 
     Examples:
       | subtype                  | length_type_header                                               | known_date_header                  | length_header                         |
@@ -35,9 +33,7 @@ Feature: Conviction
     Then I should see "<known_date_header>"
 
     And I enter a valid date
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
 
     Examples:
       | subtype                  | known_date_header                  |

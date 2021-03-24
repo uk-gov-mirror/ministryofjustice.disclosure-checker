@@ -21,9 +21,7 @@ Feature: Adult Conviction
     And I fill in "Number of months" with "<length_months>"
     And I click the "Continue" button
 
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
     And I should see "<spent_date>"
 
     Examples:
@@ -47,9 +45,7 @@ Feature: Adult Conviction
     Then I should see "<length_type_header>"
     And  I choose "<length_option>"
 
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
     And I should see "<spent_date>"
 
     Examples:
@@ -70,9 +66,7 @@ Feature: Adult Conviction
     Then I should see "<known_date_header>"
     And I enter the following date 01-01-2020
 
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
     And I should see "<spent_date>"
 
     Examples:
@@ -88,9 +82,7 @@ Feature: Adult Conviction
     Then I should see "When was the endorsement given?"
     And I enter the following date 01-01-2020
 
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
     And I should see "This conviction will be spent on 1 January 2025"
 
   @happy_path  @date_travel
@@ -101,9 +93,7 @@ Feature: Adult Conviction
     Then I should see "When was the endorsement given?"
     And I enter the following date 01-01-2020
 
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
     And I should see "This conviction will be spent on 1 January 2025"
 
   @happy_path @date_travel
@@ -114,9 +104,7 @@ Feature: Adult Conviction
     Then I should see "<known_date_header>"
     And I enter the following date 01-01-2020
 
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
     And I should see "This conviction <spent_date>"
 
     Examples:

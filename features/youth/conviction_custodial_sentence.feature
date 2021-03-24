@@ -24,9 +24,7 @@ Feature: Conviction
     And I fill in "Number of months" with "24"
 
     Then I click the "Continue" button
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+     And I check my answers and go to the results page
     And I should see "<result>"
 
     Examples:
@@ -51,9 +49,7 @@ Feature: Conviction
     And I fill in "Number of years" with "2"
 
     Then I click the "Continue" button
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+     And I check my answers and go to the results page
 
     Examples:
       | subtype        | known_date_header              | length_type_header                                           | length_header                     | result               |
@@ -73,9 +69,7 @@ Feature: Conviction
     Then I should see "<length_type_header>"
 
     When I choose "<length_type>"
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+     And I check my answers and go to the results page
     And I should see "<result>"
 
     Examples:

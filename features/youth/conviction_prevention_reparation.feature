@@ -15,9 +15,7 @@ Feature: Conviction
     And I fill in "Number of weeks" with "10"
 
    Then I click the "Continue" button
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page
 
     Examples:
       | subtype                      | known_date_header              | length_type_header                                           | length_header                     |
@@ -33,6 +31,4 @@ Feature: Conviction
     Then I should see "When were you given the order?"
 
     And I enter a valid date
-    And I should be on "/steps/check/check_your_answers"
-   Then I click the "Go to results page" link
-    And I should be on "/steps/check/results"
+    And I check my answers and go to the results page

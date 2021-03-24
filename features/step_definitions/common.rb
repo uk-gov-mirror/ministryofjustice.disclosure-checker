@@ -99,3 +99,9 @@ When(/^I am in the conviction known date step$/) do
   step %[I am completing a basic under 18 "Discharge" conviction]
   step %[I choose "Bind over"]
 end
+
+And(/^I check my answers and go to the results page$/) do
+  step %[I should be on "/steps/check/check_your_answers"]
+  step %[I click the "Go to results page" link]
+  step %[I should be on "/steps/check/results"]
+end
