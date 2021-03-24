@@ -14,13 +14,15 @@ Feature: Conviction
     Then I should see "<length_header>"
     And I fill in "Number of weeks" with "10"
 
-    Then I click the "Continue" button
-    And I should be on "<result>"
+   Then I click the "Continue" button
+    And I should be on "/steps/check/check_your_answers"
+   Then I click the "Go to results page" link
+    And I should be on "/steps/check/results"
 
     Examples:
-      | subtype                 | known_date_header              | length_type_header                                           | length_header                     | result               |
-      | Restraining order       | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? | /steps/check/results |
-      | Sexual harm prevention order | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? | /steps/check/results |
+      | subtype                      | known_date_header              | length_type_header                                           | length_header                     |
+      | Restraining order            | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? |
+      | Sexual harm prevention order | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? |
 
 
   Scenario: Prevention or reparation order - Reparation order
@@ -31,4 +33,6 @@ Feature: Conviction
     Then I should see "When were you given the order?"
 
     And I enter a valid date
-    Then I should be on "/steps/check/results"
+    And I should be on "/steps/check/check_your_answers"
+   Then I click the "Go to results page" link
+    And I should be on "/steps/check/results"
