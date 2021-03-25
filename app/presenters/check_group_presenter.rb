@@ -1,11 +1,14 @@
 class CheckGroupPresenter
-  attr_reader :number, :check_group, :spent_date, :scope
+  attr_reader :number, :check_group, :spent_date, :scope, :show_spent_date_panel
 
-  def initialize(number, check_group, spent_date:, scope:)
+  alias show_spent_date_panel? show_spent_date_panel
+
+  def initialize(number, check_group, spent_date:, scope:, show_spent_date_panel:)
     @number = number
     @check_group = check_group
     @spent_date = spent_date
     @scope = scope
+    @show_spent_date_panel = show_spent_date_panel
   end
 
   def summary

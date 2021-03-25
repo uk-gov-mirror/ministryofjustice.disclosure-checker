@@ -6,7 +6,7 @@ module Steps
       append_before_action :show_check_answers_if_enabled, only: [:show]
 
       def show
-        @presenter = CheckAnswersPresenter.new(current_disclosure_report)
+        @presenter = CheckAnswersPresenter.new(current_disclosure_report, show_spent_date_panel: true)
 
         render variants: @presenter.variant
       end

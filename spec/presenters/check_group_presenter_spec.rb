@@ -2,13 +2,15 @@ RSpec.describe CheckGroupPresenter do
   let!(:disclosure_check) { create(:disclosure_check, :completed) }
   let(:number) { 1 }
   let(:spent_date) { nil }
+  let(:show_spent_date_panel) { false }
 
   subject {
     described_class.new(
       number,
       disclosure_check.check_group,
       spent_date: spent_date,
-      scope: 'some/path'
+      scope: 'some/path',
+      show_spent_date_panel: show_spent_date_panel
     )
   }
 
@@ -40,6 +42,16 @@ RSpec.describe CheckGroupPresenter do
       expect(panel).to be_an_instance_of(SpentDatePanel)
       expect(panel.spent_date).to eq(spent_date)
       expect(panel.kind).to eq('caution')
+    end
+  end
+
+  describe '#show_spent_date_panel?' do
+    it { expect(subject.show_spent_date_panel?).to be(false) }
+
+    context 'when `show_spent_date_panel` is true' do
+      let(:show_spent_date_panel) { true }
+
+      it { expect(subject.show_spent_date_panel?).to be(true) }
     end
   end
 

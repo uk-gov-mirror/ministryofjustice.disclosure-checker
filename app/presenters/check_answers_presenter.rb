@@ -1,8 +1,9 @@
 class CheckAnswersPresenter
   attr_reader :disclosure_report
 
-  def initialize(disclosure_report)
+  def initialize(disclosure_report, show_spent_date_panel: false)
     @disclosure_report = disclosure_report
+    @show_spent_date_panel = show_spent_date_panel
   end
 
   def summary
@@ -11,7 +12,8 @@ class CheckAnswersPresenter
         i,
         proceeding.check_group,
         spent_date: calculator.spent_date_for(proceeding),
-        scope: to_partial_path
+        scope: to_partial_path,
+        show_spent_date_panel: @show_spent_date_panel
       )
     end
   end
