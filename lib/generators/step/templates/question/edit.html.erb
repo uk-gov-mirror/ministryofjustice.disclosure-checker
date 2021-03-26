@@ -8,7 +8,7 @@
     <!-- The header is part of the radios legend by default, but can be configured -->
 
     <%%= step_form @form_object do |f| %>
-      <%%= f.radio_button_fieldset :<%= step_name.underscore %>, inline: true, choices: GenericYesNo.values %>
+      <%%= f.govuk_collection_radio_buttons :<%= step_name.underscore %>, GenericYesNo.values, :value, nil, inline: true %>
       <%%= f.continue_button %>
     <%% end %>
   </div>
