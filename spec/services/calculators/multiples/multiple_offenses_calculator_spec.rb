@@ -18,7 +18,56 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
 
   # NOTE: Working with doubles so it is a lot more easier to understand what is going on
   describe '#spent_date_for' do
-    context 'relevant orders' do
+    context 'relevant orders with 2 convictions' do
+      before do
+        allow(subject).to receive(:proceedings).and_return([conviction_A, conviction_B])
+      end
+
+      # see graph in docs/results/08_relevant_order_3.png
+      context 'conviction A with 2 sentences (non-relevant and relevant)', \
+              'conviction B with 1 sentence (non relevant)' do
+
+        # conviction A with:
+        # 1 non relevant order
+        # 1 relevant order, the longest of both (spent in 2024, 12, 1)
+
+        # conviction B with:
+        # 1 non relevant order,
+        #   overlaps with non relevant order of conviction A
+        #   but is spent before relevant order of conviction A
+        #
+        # The outcome is:
+        # Conviction A is spent when relevant order sentence is spent
+        # Conviction B is spent when it's non relevant setence is spent
+
+        let(:conviction_A) {
+          instance_double(
+            Calculators::Multiples::Proceedings,
+            conviction?: true,
+            conviction_date: Date.new(2010, 1, 1),
+            spent_date: Date.new(2024, 12, 31),
+            spent_date_without_relevant_orders: Date.new(2020, 12, 31),
+          )
+        }
+
+        let(:conviction_B) {
+          instance_double(
+            Calculators::Multiples::Proceedings,
+            conviction?: true,
+            conviction_date: Date.new(2012, 1, 1),
+            spent_date: Date.new(2022, 12, 31),
+            spent_date_without_relevant_orders: Date.new(2022, 12, 31),
+          )
+        }
+
+        it 'returns the spent date for the matching check group' do
+          expect(subject.spent_date_for(conviction_A)).to eq(Date.new(2024, 12, 31))
+          expect(subject.spent_date_for(conviction_B)).to eq(Date.new(2022, 12, 31))
+        end
+      end
+    end
+
+    context 'relevant orders with 3 convictions' do
       before do
         allow(subject).to receive(:proceedings).and_return([conviction_A, conviction_B, conviction_C])
       end
