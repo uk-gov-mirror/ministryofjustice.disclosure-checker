@@ -49,8 +49,11 @@ environments (kubernetes cluster). But the general ideal is the same (nginx reve
 
 ## Getting Started
 
+You will need to install [Homebrew](https://brew.sh), to enable the `brew` command.
+
 * Copy `.env.example` to `.env` and replace with suitable values.
 
+* `brew install shared-mime-info`
 * `bundle install`
 * `bundle exec rails db:setup`
 * `bundle exec rails db:migrate`

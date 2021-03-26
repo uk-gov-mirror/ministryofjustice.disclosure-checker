@@ -20,6 +20,7 @@ gem 'sass-rails', '< 6.0.0'
 gem 'sentry-raven', '~> 3.0'
 gem 'uglifier'
 gem 'virtus'
+gem 'mimemagic', '~> 0.3.7'
 
 group :production do
   gem 'lograge'

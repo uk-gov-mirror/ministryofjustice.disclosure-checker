@@ -18,6 +18,7 @@ RUN apk --no-cache add --virtual build-deps \
   curl \
 && apk --no-cache add \
   postgresql-client \
+  shared-mime-info \
   linux-headers \
   xz-libs \
   tzdata \
