@@ -12,6 +12,8 @@ module Calculators
       end
 
       # rubocop:disable Metrics/AbcSize
+      # rubocop:disable Metrics/PerceivedComplexity
+      # rubocop:disable Metrics/CyclomaticComplexity
       def spent_date_for(proceeding)
         return unless disclosure_report.completed?
 
@@ -58,6 +60,11 @@ module Calculators
 
           next if conviction_date > other_conviction_date
 
+          # This comparison determines wether the relevant order spent date is the longest
+          # within the same conviction and also when compared to another conviction spent date.
+          # see graph in docs/results/08_relevant_order_3.png
+          next if spent_date.to_date >= spent_date_without_relevant_order.to_date && spent_date.to_date >= other_spent_date.to_date
+
           # If the spent date falls inside another rehabilitation, we do drag-through,
           # saving this new spent date in the memory for later use.
           # Note: `other_spent_date` could be NEVER_SPENT or INDEFINITE (not real dates).
@@ -67,6 +74,8 @@ module Calculators
         spent_date
       end
       # rubocop:enable Metrics/AbcSize
+      # rubocop:enable Metrics/PerceivedComplexity
+      # rubocop:enable Metrics/CyclomaticComplexity
 
       def all_spent?
         proceedings.all?(&:spent?)

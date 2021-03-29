@@ -523,4 +523,74 @@ RSpec.describe Calculators::Multiples::MultipleOffensesCalculator do
       expect(subject.spent_date_for(third_proceedings)).to eq(Date.new(2012, 2, 28))
     end
   end
+
+  context 'scenario 8' do
+    # Jack age 21 was convicted on 01/01/2010 and received
+    # - a four-year custodial sentence
+    # - a fifteen-year restraining order
+    #
+    # On 01/01/2012 Jack was convicted of battery and received:
+    # - a four-month custodial sentence.
+    #
+    # Outcome:
+    # - First conviction is spent on 01/01/2025
+    # - Second conviction is spent on 01/01/2022
+    # see graph in docs/results/08_relevant_order_3.png
+
+    let(:first_conviction_date) { Date.new(2010, 01, 01) }
+    let(:second_conviction_date) { Date.new(2012, 01, 01) }
+
+    let(:custodial_sentence) do
+      build(
+        :disclosure_check,
+        :with_prison_sentence,
+        :completed,
+        known_date: first_conviction_date,
+        conviction_date: first_conviction_date,
+        conviction_length: 4,
+        conviction_length_type: ConvictionLengthType::YEARS
+      )
+    end
+
+    # relevant order
+    let(:restraining_order) do
+      build(
+        :disclosure_check,
+        :with_restraining_order,
+        :completed,
+        known_date: first_conviction_date,
+        conviction_date: first_conviction_date,
+        conviction_length: 15,
+        conviction_length_type: ConvictionLengthType::YEARS
+      )
+    end
+
+    let(:second_custodial_sentence) do
+      build(
+        :disclosure_check,
+        :with_prison_sentence,
+        :completed,
+        known_date: second_conviction_date,
+        conviction_date: second_conviction_date,
+        conviction_length: 4,
+        conviction_length_type: ConvictionLengthType::YEARS
+      )
+    end
+
+    before do
+      first_proceeding_group.disclosure_checks << custodial_sentence
+      first_proceeding_group.disclosure_checks << restraining_order
+      second_proceeding_group.disclosure_checks << second_custodial_sentence
+
+      save_report
+    end
+
+    it 'returns the date for the first proceeeding' do
+      expect(subject.spent_date_for(first_proceedings)).to eq(Date.new(2025, 01, 01))
+    end
+
+    it 'returns indefinite for the second proceeding' do
+      expect(subject.spent_date_for(second_proceedings)).to eq(Date.new(2022, 12, 31))
+    end
+  end
 end
