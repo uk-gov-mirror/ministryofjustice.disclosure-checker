@@ -1,6 +1,7 @@
 module AnalyticsHelper
   CUSTOM_DIMENSIONS_MAP = {
     spent: :dimension1,
+    proceedings: :dimension2,
   }.freeze
 
   def analytics_tracking_id
@@ -16,6 +17,7 @@ module AnalyticsHelper
 
     content_for :transaction_data, {
       id: current_disclosure_check.id,
+      name: current_disclosure_check.kind,
       sku: transaction_sku,
       quantity: 1,
     }.merge(

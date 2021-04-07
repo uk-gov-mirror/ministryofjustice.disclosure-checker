@@ -20,6 +20,10 @@ class CheckAnswersPresenter
     @_calculator ||= Calculators::Multiples::MultipleOffensesCalculator.new(disclosure_report)
   end
 
+  def proceedings_size
+    calculator.proceedings.size
+  end
+
   def variant
     :multiples
   end

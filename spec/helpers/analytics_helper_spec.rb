@@ -27,16 +27,36 @@ RSpec.describe AnalyticsHelper, type: :helper do
 
       expect(
         helper.content_for(:transaction_data)
-      ).to eq("{\"id\":\"12345\",\"sku\":\"caution\",\"quantity\":1,\"name\":\"whatever\"}")
+      ).to eq("{\"id\":\"12345\",\"name\":\"whatever\",\"sku\":\"caution\",\"quantity\":1}")
+    end
+
+    it 'defaults transaction attributes if not present' do
+      helper.track_transaction({})
+
+      expect(
+        helper.content_for(:transaction_data)
+      ).to eq("{\"id\":\"12345\",\"name\":\"caution\",\"sku\":\"caution\",\"quantity\":1}")
     end
 
     context 'custom dimensions' do
-      it 'sets the transaction attributes to track' do
-        helper.track_transaction(name: 'whatever', dimensions: { spent: 'yes' } )
+      context 'spent' do
+        it 'sets the transaction attributes to track' do
+          helper.track_transaction(name: 'whatever', dimensions: { spent: 'yes' })
 
-        expect(
-          helper.content_for(:transaction_data)
-        ).to match(/"name":"whatever","dimension1":"yes"/)
+          expect(
+            helper.content_for(:transaction_data)
+          ).to match(/"dimension1":"yes"/)
+        end
+      end
+
+      context 'proceedings' do
+        it 'sets the transaction attributes to track' do
+          helper.track_transaction(name: 'whatever', dimensions: { proceedings: 3 })
+
+          expect(
+            helper.content_for(:transaction_data)
+          ).to match(/"dimension2":3/)
+        end
       end
     end
   end
