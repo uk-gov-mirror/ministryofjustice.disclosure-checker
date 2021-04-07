@@ -50,4 +50,10 @@ RSpec.describe CheckAnswersPresenter do
       end
     end
   end
+
+  describe '#proceedings_size' do
+    it 'returns the calculator proceedings size' do
+      expect(subject.proceedings_size).to eq(1)
+    end
+  end
 end
