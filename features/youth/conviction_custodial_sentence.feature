@@ -21,6 +21,7 @@ Feature: Conviction
 
     And  I choose "Months"
     Then I should see "<length_header>"
+    And I should see "If you got more than one sentence at the same time"
     And I fill in "Number of months" with "24"
 
     Then I click the "Continue" button
@@ -45,6 +46,7 @@ Feature: Conviction
 
     And  I choose "Years"
     Then I should see "<length_header>"
+    And I should see "If you got more than one sentence at the same time"
     And I fill in "Number of years" with "2"
 
     Then I click the "Continue" button

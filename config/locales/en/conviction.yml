@@ -1,30 +1,5 @@
 ---
 en:
-  dictionary:
-    sentence_info: &sentence_info |
-      <p class="govuk-body">
-        Enter the whole length of the sentence you were given in court, even if you were released:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>early</li>
-        <li>on temporary license</li>
-        <li>on parole</li>
-        <li>under supervision</li>
-      </ul>
-    sentence_info_with_callout: &sentence_info_with_callout |
-      <p class="govuk-body">
-        Enter the whole length of the sentence you were given in court, even if you were released:
-      </p>
-      <ul class="govuk-list govuk-list--bullet">
-        <li>early</li>
-        <li>on temporary license</li>
-        <li>on parole</li>
-        <li>under supervision</li>
-      </ul>
-      <div class="govuk-inset-text">
-        If your sentence was extended, the number you enter must include both the original sentence length and the length it was extended by.
-      </div>
-
   steps:
     conviction:
       known_date:
@@ -58,11 +33,12 @@ en:
             youth_disqualification: What was the length of the disqualification?
             adult_service_detention: What was the length of the detention?
             service_detention: What was the length of the detention?
-          explanation:
-            detention_html: *sentence_info_with_callout
-            detention_training_order_html: *sentence_info
-            adult_prison_sentence_html: *sentence_info_with_callout
-            adult_suspended_prison_sentence_html: *sentence_info_with_callout
+          sentence_details:
+            title: If you got more than one sentence at the same time
+            body_html: |
+              <p>If you served one sentence after the other (consecutively), enter the total sentence length.</p>
+              <p>For example, if you got a 5 month and a 3 month sentence to serve consecutively, enter 8 months.</p>
+              <p>If you served more than one sentence at the same time (concurrently), enter them as separate sentences.</p>
       compensation_paid:
         edit:
           page_title: Compensation paid

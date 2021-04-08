@@ -1,17 +1,27 @@
 <% title t('.page_title') %>
 <% step_header %>
 
-<%
-  heading = t(".heading.#{@form_object.conviction_subtype}", default: t('.heading.default'))
-  explanation = t(".explanation.#{@form_object.conviction_subtype}_html", default: '')
-%>
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
     <%= govuk_error_summary %>
 
     <%= step_form @form_object do |f| %>
-      <%= f.govuk_fieldset legend: { text: heading }, caption: { text: f.i18n_caption } do %>
+      <%= f.govuk_fieldset legend: { text: t(".heading.#{@form_object.conviction_subtype}", default: t('.heading.default')) },
+                           caption: { text: f.i18n_caption } do %>
+
+        <% if @form_object.conviction_type.custodial_sentence? %>
+          <details class="govuk-details" data-module="govuk-details">
+            <summary class="govuk-details__summary">
+              <span class="govuk-details__summary-text" data-ga-category="explanations" data-ga-label="consecutive sentences">
+                <%=t '.sentence_details.title' %>
+              </span>
+            </summary>
+            <div class="govuk-details__text">
+              <%=t '.sentence_details.body_html' %>
+            </div>
+          </details>
+        <% end %>
+
         <%= f.govuk_text_field :conviction_length, label: { text: f.i18n_legend }, width: 3, pattern: "[0-9]*", inputmode: "numeric" %>
       <% end %>
 
