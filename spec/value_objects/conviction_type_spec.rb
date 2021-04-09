@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe ConvictionType do
   describe 'YOUTH_PARENT_TYPES' do
     let(:values) {
-      (described_class::YOUTH_PARENT_TYPES - described_class::DISABLED_PARENT_TYPES).map(&:to_s)
+      described_class::YOUTH_PARENT_TYPES.map(&:to_s)
     }
 
     it 'returns top level youth convictions' do
@@ -21,7 +21,7 @@ RSpec.describe ConvictionType do
 
   describe 'ADULT_PARENT_TYPES' do
     let(:values) {
-      (described_class::ADULT_PARENT_TYPES.map(&:to_s) - described_class::DISABLED_PARENT_TYPES).map(&:to_s)
+      described_class::ADULT_PARENT_TYPES.map(&:to_s)
     }
 
     it 'returns top level adult convictions' do
