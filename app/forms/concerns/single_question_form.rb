@@ -34,7 +34,7 @@ module SingleQuestionForm
   end
 
   def attributes_to_reset
-    Hash[self.class.reset_attributes[answer].collect { |att| [att, nil] }]
+    self.class.reset_attributes[answer].collect { |att| [att, nil] }.to_h
   end
 
   def persist!

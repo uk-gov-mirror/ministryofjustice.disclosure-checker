@@ -20,7 +20,7 @@ Bundler.require(*Rails.groups)
 module Disclosure
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
-    config.load_defaults 5.2
+    config.load_defaults 6.1
 
     # This automatically adds id: :uuid to create_table in all future migrations
     config.generators do |g|

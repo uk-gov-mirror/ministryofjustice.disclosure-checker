@@ -12,9 +12,9 @@ gem 'bootsnap', '>= 1.1.0', require: false
 gem 'govuk_design_system_formbuilder', '~> 2.1.8'
 
 gem 'jquery-rails'
-gem 'pg', '~> 1.1'
+gem 'pg'
 gem 'puma'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.1'
 gem 'responders'
 gem 'sass-rails', '< 6.0.0'
 gem 'sentry-raven', '~> 3.0'
@@ -36,10 +36,10 @@ end
 
 group :development, :test do
   gem 'dotenv-rails'
-  gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'listen'
   gem 'pry-byebug'
   gem 'pry-rails'
-  gem 'i18n-tasks', '~> 0.9.28'
+  gem 'i18n-tasks'
 
   # Available in dev env for generators
   gem 'factory_bot_rails'
@@ -49,7 +49,7 @@ end
 group :test do
   gem 'brakeman'
   gem 'capybara'
-  gem 'cucumber', '< 5.0.0'
+  gem 'cucumber'
   gem 'cucumber-rails', require: false
   gem 'rails-controller-testing'
   gem 'rubocop', require: false

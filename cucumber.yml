@@ -3,3 +3,4 @@ default: >
   -r features/step_definitions features
   --format pretty
   --tags 'not @skip'
+  --publish-quiet

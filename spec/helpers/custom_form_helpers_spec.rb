@@ -1,16 +1,13 @@
 require 'rails_helper'
 
-class TestHelper < ActionView::Base ; end
-
 RSpec.describe CustomFormHelpers, type: :helper do
-  let(:helper) { TestHelper.new }
   let(:form_object) { double('FormObject') }
 
   let(:builder) do
     GOVUKDesignSystemFormBuilder::FormBuilder.new(
       :disclosure_check,
       form_object,
-      helper,
+      self,
       {}
     )
   end

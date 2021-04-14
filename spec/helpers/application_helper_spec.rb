@@ -102,24 +102,6 @@ RSpec.describe ApplicationHelper, type: :helper do
     end
   end
 
-  describe 'capture missing translations' do
-    before do
-      ActionView::Base.raise_on_missing_translations = false
-    end
-
-    it 'should not raise an exception, and capture in Sentry the missing translation' do
-      expect(Raven).to receive(:capture_exception).with(an_instance_of(I18n::MissingTranslationData))
-      expect(Raven).to receive(:extra_context).with(
-        {
-          locale: :en,
-          scope: nil,
-          key: 'a_missing_key_here'
-        }
-      )
-      helper.translate('a_missing_key_here')
-    end
-  end
-
   describe '#title' do
     let(:title) { helper.content_for(:page_title) }
 
