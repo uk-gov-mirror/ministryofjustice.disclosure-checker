@@ -25,4 +25,4 @@
   <%= render partial: 'layouts/developer_tools' if multiples_enabled? && current_disclosure_report.try(:completed?) %>
 <% end %>
 
-<%= render file: 'layouts/govuk_template' %>
+<%= render template: 'layouts/govuk_template', layout: false %>
