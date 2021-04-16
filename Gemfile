@@ -9,7 +9,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 # This gem complies with the GOV.UK Design System
 # https://design-system.service.gov.uk
 # https://govuk-form-builder.netlify.app
-gem 'govuk_design_system_formbuilder', '~> 2.1.8'
+gem 'govuk_design_system_formbuilder', '~> 2.5.0'
 
 gem 'jquery-rails'
 gem 'pg'
@@ -49,7 +49,7 @@ end
 group :test do
   gem 'brakeman'
   gem 'capybara'
-  gem 'cucumber'
+  gem 'cucumber', '< 6.0.0'
   gem 'cucumber-rails', require: false
   gem 'rails-controller-testing'
   gem 'rubocop', require: false
