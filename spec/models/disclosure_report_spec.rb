@@ -27,4 +27,20 @@ RSpec.describe DisclosureReport, type: :model do
       described_class.purge!(28.days.ago)
     end
   end
+
+  describe '#completed!' do
+    before do
+      travel_to Time.at(123)
+    end
+
+    it 'marks the application as completed' do
+      expect(
+        subject
+      ).to receive(:update!).with(
+        status: :completed, completed_at: Time.at(123)
+      ).and_return(true)
+
+      subject.completed!
+    end
+  end
 end

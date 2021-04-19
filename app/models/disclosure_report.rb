@@ -10,4 +10,8 @@ class DisclosureReport < ApplicationRecord
   def self.purge!(date)
     where('created_at <= :date', date: date).destroy_all
   end
+
+  def completed!
+    update!(status: :completed, completed_at: Time.current)
+  end
 end
