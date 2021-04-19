@@ -2,19 +2,19 @@
 
 ## Adults
 
-| Category                                  | Conviction                     |
-| ----------------------------------------- | ------------------------------ |
-| Discharge                                 | Bind over                      |
-| Discharge                                 | Conditional discharge          |
-| Motoring                                  | Disqualification               |
-| Financial penalty                         | Compensation to a victim       |
-| Custody or hospital order                 | Hospital order                 |
-| Community, prevention or reparation order | Criminal behaviour order       |
-| Community, prevention or reparation order | Community order                |
-| Community, prevention or reparation order | Reparation order               |
-| Community, prevention or reparation order | Restraining order              |
-| Community, prevention or reparation order | Serious crime prevention order |
-| Community, prevention or reparation order | Sexual harm prevention order   |
+| Category                                               | Conviction                     |
+| ------------------------------------------------------ | ------------------------------ |
+| Discharge                                              | Bind over                      |
+| Discharge                                              | Conditional discharge          |
+| Motoring                                               | Disqualification               |
+| Financial penalty                                      | Compensation to a victim       |
+| Custody or hospital order                              | Hospital order                 |
+| Community, reparation or other order with requirements | Criminal behaviour order       |
+| Community, reparation or other order with requirements | Community order                |
+| Community, reparation or other order with requirements | Reparation order               |
+| Community, reparation or other order with requirements | Restraining order              |
+| Community, reparation or other order with requirements | Serious crime prevention order |
+| Community, reparation or other order with requirements | Sexual harm prevention order   |
 
 
 ## Youths
