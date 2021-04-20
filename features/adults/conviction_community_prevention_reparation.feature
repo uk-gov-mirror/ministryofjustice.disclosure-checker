@@ -25,6 +25,7 @@ Feature: Conviction
       | Restraining order              | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? |
       | Serious crime prevention order | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? |
       | Sexual harm prevention order   | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? |
+      | Any other order with a requirement | When were you given the order? | Was the length of the order given in weeks, months or years? | What was the length of the order? |
 
   Scenario: Adult community, prevention or reparation order - Reparation order
     Given I am completing a basic 18 or over "Community, prevention or reparation order" conviction
