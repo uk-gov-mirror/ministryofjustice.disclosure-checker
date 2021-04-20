@@ -97,6 +97,16 @@ RSpec.describe AnalyticsHelper, type: :helper do
           ).to match(/"dimension2":3/)
         end
       end
+
+      context 'orders' do
+        it 'sets the transaction attributes to track' do
+          helper.track_transaction(name: 'whatever', dimensions: { orders: 5 })
+
+          expect(
+              helper.content_for(:transaction_data)
+          ).to match(/"dimension3":5/)
+        end
+      end
     end
   end
 

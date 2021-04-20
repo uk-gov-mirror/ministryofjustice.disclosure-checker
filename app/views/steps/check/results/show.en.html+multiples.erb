@@ -2,7 +2,7 @@
 
 <% track_transaction name: 'Multiple check completed', category: 'Completed checks', sku: 'multiples',
                      id: current_disclosure_report.id,
-                     dimensions: { proceedings: @presenter.proceedings_size } %>
+                     dimensions: { proceedings: @presenter.proceedings_size, orders: @presenter.orders_size } %>
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
