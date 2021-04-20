@@ -56,4 +56,10 @@ RSpec.describe CheckAnswersPresenter do
       expect(subject.proceedings_size).to eq(1)
     end
   end
+
+  describe '#orders_size' do
+    it 'returns the sum of each proceedings size' do
+      expect(subject.orders_size).to eq(1)
+    end
+  end
 end

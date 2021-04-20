@@ -2,6 +2,7 @@ module AnalyticsHelper
   CUSTOM_DIMENSIONS_MAP = {
     spent: :dimension1,
     proceedings: :dimension2,
+    orders: :dimension3,
   }.freeze
 
   # Because transactions can be triggered more than once for the same report,

@@ -21,6 +21,10 @@ RSpec.describe Calculators::Multiples::Proceedings do
   let(:kind) { 'conviction' }
   let(:conviction_date) { Date.new(2018, 1, 1) }
 
+  describe '#size' do
+    it { expect(subject.size).to eq(3) }
+  end
+
   describe '#kind' do
     context 'for a caution' do
       let(:kind) { 'caution' }

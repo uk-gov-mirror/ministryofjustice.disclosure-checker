@@ -3,6 +3,8 @@ module Calculators
     class Proceedings
       attr_reader :check_group
 
+      delegate :size, to: :disclosure_checks
+
       def initialize(check_group)
         @check_group = check_group
       end
