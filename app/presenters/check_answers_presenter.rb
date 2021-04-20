@@ -21,7 +21,7 @@ class CheckAnswersPresenter
   end
 
   def proceedings_size
-    calculator.proceedings.size
+    disclosure_report.disclosure_checks.completed.size
   end
 
   def variant
