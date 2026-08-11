@@ -59,7 +59,26 @@ jobs:
           minimum_suite_coverage: 100
           minimum_file_coverage: 100
 
+  snyk-security:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Setup Ruby and install gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Run Snyk to check for vulnerabilities
+        uses: snyk/actions/ruby@master
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+        with:
+          args: --severity-threshold=high
+
   build-and-deploy:
-    needs: test
+    needs: [test, snyk-security]
     uses: ./.github/workflows/deploy.yml
     secrets: inherit
